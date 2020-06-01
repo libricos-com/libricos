@@ -21,6 +21,9 @@ node_modules/
 *.log
 *.sql
 *.sqlite
-nbproject
-/nbproject
 /nbproject/private/
+
+#jesus ignores
+.htaccess
+nbproject
+wp-config.php
