@@ -38,6 +38,10 @@ git push origin master
 
 End with an example of getting some data out of the system or using it for a little demo
 
+See:
+
+* https://git-lfs.github.com/
+
 ## Running the tests
 
 Explain how to run the automated tests for this system
