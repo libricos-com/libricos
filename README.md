@@ -21,13 +21,19 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
+ cd c:/xammp/htdocs/jesuserro.com
+ git lfs install
+ git config 'lfs.locksverify' false
+ git lfs track "*.zip" "*.gz" "*.wpress"
+ git add .gitattributes
 ```
 
 And repeat
 
 ```
-until finished
+git add file.zip
+git commit -m "Add zip file"
+git push origin master
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -66,6 +72,19 @@ Add additional notes about how to deploy this on a live system
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
+
+### v0.0.1
+
+* Wordpress 5.4.1
+* Permalinks: 
+  * Custom: category/postname
+  * Category base: a dot
+* Theme Twenty Eleven Child
+* Plugins:
+  * Updraftplus + backup files
+  * All In One Wordpress Migration + backup file
+  * Pods: Libros, Autores, Reviews, Géneros, Notas
+* Menú principal: inicio & libros.
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
