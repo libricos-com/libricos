@@ -18,6 +18,8 @@
  * @package WordPress
  */
 
+define('PODS_SHORTCODE_ALLOW_SUB_SHORTCODES',true);
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'database_name_here' );
