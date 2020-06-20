@@ -17,6 +17,19 @@ Text Domain: twentyeleven-child
 -------------------------------------------------------------- */
 @import url("../twentyeleven/style.css");
 
+/**
+* Editoriales List Pod
+*/
+.columns {
+    columns: 3;
+  	-webkit-columns: 3;
+  	-moz-columns: 3;
+}
+
+
+/**
+* Lists Pod
+*/
 .jei-item {
 	margin: 2px;
     display: inline-block;
