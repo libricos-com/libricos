@@ -598,7 +598,7 @@ function sb_instagram_settings_page() {
 								<?php endforeach; ?>
 
                             </div> <!-- end scrollable -->
-                            <p style="font-size: 11px; line-height: 1.5; margin-bottom: 0;"><b><i style="color: #666;">*<?php echo sprintf( __( 'Changing the password, updating privacy settings, or removing page admins for the related Facebook page may require %smanually reauthorizing our app%s to reconnect an account.', 'instagram-feed' ), '<a href="https://smashballoon.com/reauthorizing-our-instagram-facebook-app/" target="_blank" rel="noopener noreferrer">', '</a>' ); ?></i></p>
+                            <p style="font-size: 11px; line-height: 1.5; margin-bottom: 0;"><i style="color: #666;">*<?php echo sprintf( __( 'Changing the password, updating privacy settings, or removing page admins for the related Facebook page may require %smanually reauthorizing our app%s to reconnect an account.', 'instagram-feed' ), '<a href="https://smashballoon.com/reauthorizing-our-instagram-facebook-app/" target="_blank" rel="noopener noreferrer">', '</a>' ); ?></i></p>
 
                             <a href="JavaScript:void(0);" id="sbi-connect-business-accounts" class="button button-primary" disabled="disabled" style="margin-top: 20px;">Connect Accounts</a>
 
@@ -906,6 +906,26 @@ function sb_instagram_settings_page() {
 
                                 <p class="sbi_tooltip"><?php _e( 'Display posts that your account has been tagged in.', 'instagram-feed' ); ?></p>
                             </div>
+                        </div>
+
+                        <div class="sbi_pro sbi_row sbi_mixed_directions">
+                            <div class="sbi_col sbi_one">
+                                <input type="radio" name="sb_instagram_type" disabled />
+                                <label class="sbi_radio_label" for="sb_instagram_type_mixed">Mixed:</label>
+                            </div>
+                            <div class="sbi_col sbi_two">
+                                <input readonly type="text" size="25" style="height: 32px; top: -2px; position: relative; box-shadow: none;" disabled />
+                                &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e( 'What is this?', 'instagram-feed' ); ?></a>
+
+                                <div class="sbi_tooltip sbi_type_tooltip">
+                                    <p>
+			                            <?php echo sprintf( __('To display multiple feed types in a single feed, use %s in your shortcode and then add the user name or hashtag for each feed into the shortcode, like so: %s. This will combine a user feed and a hashtag feed into the same feed.', 'instagram-feed'), 'type="mixed"', '<code>[instagram-feed type="mixed" user="smashballoon" hashtag="#awesomeplugins"]</code>' ); ?>
+                                    </p>
+                                    <p style="padding-top: 8px;"><b>Note:</b> To display a hashtag feed, it is required that you first connect an Instagram Business Profile using the <b>"Connect an Instagram Account"</b> button above. &nbsp;<a href="https://smashballoon.com/instagram-business-profiles/" target="_blank">Why is this required?</a>
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
 
 						<div class="sbi_row sbi_pro">

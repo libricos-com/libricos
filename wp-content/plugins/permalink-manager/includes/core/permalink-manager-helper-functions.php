@@ -59,9 +59,9 @@ class Permalink_Manager_Helper_Functions extends Permalink_Manager_Class {
 			$primary_term = the_seo_framework()->get_primary_term($post_id, $taxonomy);
 		}
 		// C. RankMath
-		else if(class_exists('RankMath') && $taxonomy == 'category') {
-			$primary_cat_id = get_post_meta($post_id, 'rank_math_primary_category', true);
-			$primary_term = (!empty($primary_cat_id)) ? get_term($primary_cat_id, 'category') : '';
+		else if(class_exists('RankMath')) {
+			$primary_cat_id = get_post_meta($post_id, "rank_math_primary_{$taxonomy}", true);
+			$primary_term = (!empty($primary_cat_id)) ? get_term($primary_cat_id, $taxonomy) : '';
 		}
 		// D. SEOPress
 		else if(function_exists('seopress_init') && $taxonomy == 'category') {
@@ -187,7 +187,7 @@ class Permalink_Manager_Helper_Functions extends Permalink_Manager_Class {
 	static function get_disabled_taxonomies($include_user_excluded = true) {
 		global $wp_taxonomies, $permalink_manager_options;
 
-		$disabled_taxonomies = array('product_shipping_class', 'post_status', 'fl-builder-template-category', 'post_format', 'nav_menu');
+		$disabled_taxonomies = array('product_shipping_class', 'post_status', 'fl-builder-template-category', 'post_format', 'nav_menu', 'language');
 
 		// 1. Disable taxonomies that are not publicly_queryable
 		foreach($wp_taxonomies as $taxonomy) {
@@ -257,7 +257,9 @@ class Permalink_Manager_Helper_Functions extends Permalink_Manager_Class {
 
 		foreach($wp_taxonomies as $taxonomy) {
 			$key = ($prefix) ? "tax-{$taxonomy->name}" : $taxonomy->name;
-			$taxonomies_array[$taxonomy->name] = ($format == 'full') ? array('label' => $taxonomy->labels->name, 'name' => $taxonomy->name) : $taxonomy->labels->name;
+			$taxonomy_name = (!empty($taxonomy->labels->name)) ? $taxonomy->labels->name : '-';
+
+			$taxonomies_array[$taxonomy->name] = ($format == 'full') ? array('label' => $taxonomy->labels->name, 'name' => $taxonomy->name) : $taxonomy_name;
 		}
 
 		if(is_array($disabled_taxonomies)) {

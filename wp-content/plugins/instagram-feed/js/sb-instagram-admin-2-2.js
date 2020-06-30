@@ -225,6 +225,7 @@ jQuery(document).ready(function($) {
     }
 
     function sbiAfterUpdateToken(savedToken,saveID){
+        $('.sbi_no_accounts').remove();
         if (saveID) {
             sbSaveID(savedToken.user_id);
             $('.sbi_user_feed_ids_wrap').prepend(

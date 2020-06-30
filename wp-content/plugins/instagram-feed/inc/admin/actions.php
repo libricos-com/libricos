@@ -329,10 +329,11 @@ function sbi_test_token() {
 						$token_data = $basic_account_access_token_connect->get_data();
 						$expires_in = $token_data['expires_in'];
 						$expires_timestamp = time() + $expires_in;
+						$account_type = isset( $new_data['account_type'] ) ? $new_data['account_type'] : 'personal';
 
 						$new_connected_account = array(
 							'access_token' => $access_token,
-							'account_type' => $new_data['account_type'],
+							'account_type' => $account_type,
 							'user_id' => $new_data['id'],
 							'username' => $new_data['username'],
 							'expires_timestamp' => $expires_timestamp,

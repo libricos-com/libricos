@@ -3,7 +3,7 @@ Contributors: smashballoon, craig-at-smash-balloon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram widget, Instagram gallery
 Requires at least: 3.4
 Tested up to: 5.4
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -325,6 +325,12 @@ We understand that sometimes you need help, have issues or just have questions. 
 * Plus more customization options added all the time!
 
 == Changelog ==
+= 2.4.4 =
+* Fix: Workaround added for PHP warning related to an undefined media_url index.
+* Fix: Connecting a business account on a mobile device when more than 2 pages where returned was not possible.
+* Fix: After connecting an account, the warning that there were no connected accounts would still be visible.
+* Fix: URL for retrieving image files from Instagram using a redirect method was changed to prevent an extra, unnecessary redirect.
+
 = 2.4.3 =
 * Fix: The opt-in notice to help improve the plugin was not dismissing as expected for some sites due to the admin JavaScript file being cached by the browser.
 * Fix: Disabled the “About Us” page plugin installation if using a version of WordPress earlier than 4.6.
