@@ -31,11 +31,13 @@ Text Domain: twentyeleven-child
 * Lists Pod
 */
 .jei-item {
-	margin: 2px;
-    display: inline-block;
     max-width: 30%;
-    border: solid 1px #3d3b3b;
-    padding: 5px;
+    width: 22%;
+    display:inline-block;
+    margin-bottom: 4%;
+}
+.jei-item a {
+    /*border: solid 1px red;*/
 }
 
 
