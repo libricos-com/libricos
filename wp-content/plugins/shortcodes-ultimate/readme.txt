@@ -6,7 +6,7 @@ Tags: shortcode, toggle, columns, button, slider
 Requires at least: 4.6
 Tested up to: 5.5
 Requires PHP: 5.3
-Stable tag: 5.9.1
+Stable tag: 5.9.2
 
 A comprehensive collection of visual components for your site
 
@@ -146,7 +146,7 @@ First, visit the [Help Center](https://getshortcodes.com/support/). If you get s
 ## Changelog
 
 
-### 5.9.1
+### 5.9.2
 
 **What's new**
 
@@ -157,6 +157,7 @@ First, visit the [Help Center](https://getshortcodes.com/support/). If you get s
 
 - Fixed issue in the Insert Shortcode tool with Taxonomy and Tax terms fields
 - Fixed error `Posts: invalid template name` on some installations
+- This update also fixes the plugin options issue present in 5.9.1
 
 
 ---

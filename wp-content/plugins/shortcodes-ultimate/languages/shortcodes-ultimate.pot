@@ -494,8 +494,12 @@ msgstr ""
 msgid "Save current settings as preset"
 msgstr ""
 
-#: inc/core/generator.php:392, inc/core/generator.php:395
+#: inc/core/generator.php:395, inc/core/generator.php:392
 msgid "Presets not found"
+msgstr ""
+
+#: inc/core/generator.php:611
+msgid "Get more styles"
 msgstr ""
 
 #: inc/core/generator.php:602
@@ -504,10 +508,6 @@ msgstr ""
 
 #: inc/core/generator.php:603
 msgid "Open dropdown to choose one of new styles"
-msgstr ""
-
-#: inc/core/generator.php:611
-msgid "Get more styles"
 msgstr ""
 
 #: inc/core/widget.php:7
@@ -3995,16 +3995,16 @@ msgstr ""
 msgid "Shortcode options"
 msgstr ""
 
-#: admin/partials/pages/shortcodes-single-content.php:47
-msgid "This shortcode do not have options"
-msgstr ""
-
 #: admin/partials/pages/shortcodes-single-content.php:53
 msgid "Option name"
 msgstr ""
 
 #: admin/partials/pages/shortcodes-single-content.php:54
 msgid "Possible values"
+msgstr ""
+
+#: admin/partials/pages/shortcodes-single-content.php:47
+msgid "This shortcode do not have options"
 msgstr ""
 
 #: admin/partials/pages/shortcodes-single.php:13, admin/partials/pages/shortcodes-single.php:24
@@ -4056,6 +4056,10 @@ msgstr ""
 msgid "Help article"
 msgstr ""
 
+#: includes/partials/shortcodes/posts/templates/default-loop.php:46, includes/partials/shortcodes/posts/templates/list-loop.php:30, includes/partials/shortcodes/posts/templates/single-post.php:46, includes/partials/shortcodes/posts/templates/teaser-loop.php:29
+msgid "Posts not found"
+msgstr ""
+
 #: includes/partials/shortcodes/posts/templates/default-loop.php:30, includes/partials/shortcodes/posts/templates/single-post.php:31
 msgid "Posted"
 msgstr ""
@@ -4066,10 +4070,6 @@ msgstr ""
 
 #: includes/partials/shortcodes/posts/templates/default-loop.php:38, includes/partials/shortcodes/posts/templates/single-post.php:33
 msgid "1 comment"
-msgstr ""
-
-#: includes/partials/shortcodes/posts/templates/default-loop.php:46, includes/partials/shortcodes/posts/templates/list-loop.php:30, includes/partials/shortcodes/posts/templates/single-post.php:46, includes/partials/shortcodes/posts/templates/teaser-loop.php:29
-msgid "Posts not found"
 msgstr ""
 
 #: includes/partials/shortcodes/posts/templates/single-post.php:33
