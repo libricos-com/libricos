@@ -427,6 +427,7 @@ function su_shortcode_posts_locate_template( $template ) {
 	foreach ( $locations as $base ) {
 
 		$base = untrailingslashit( $base );
+		$base = realpath( $base );
 
 		$path = path_join( $base, $template );
 		$path = realpath( $path );

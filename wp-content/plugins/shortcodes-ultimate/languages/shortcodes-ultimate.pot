@@ -312,36 +312,36 @@ msgstr ""
 msgid "Last used settings"
 msgstr ""
 
-#: inc/core/assets.php:118
+#: inc/core/assets.php:117
 msgid "This shortcode doesn't work in live preview. Please insert it into editor and preview on the site."
 msgstr ""
 
-#: inc/core/assets.php:120
+#: inc/core/assets.php:119
 msgid "Close (Esc)"
 msgstr ""
 
-#: inc/core/assets.php:121
+#: inc/core/assets.php:120
 msgid "Loading..."
 msgstr ""
 
-#: inc/core/assets.php:122
+#: inc/core/assets.php:121
 msgid "Previous (Left arrow key)"
 msgstr ""
 
-#: inc/core/assets.php:123
+#: inc/core/assets.php:122
 msgid "Next (Right arrow key)"
 msgstr ""
 
 #. translators: %1$s of %2$s represents image counter in lightbox, will be replaced with "1 of 5"
-#: inc/core/assets.php:125
+#: inc/core/assets.php:124
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: inc/core/assets.php:126
+#: inc/core/assets.php:125
 msgid "Failed to load content."
 msgstr ""
 
-#: inc/core/assets.php:126
+#: inc/core/assets.php:125
 msgid "Open link"
 msgstr ""
 

@@ -91,13 +91,7 @@ class Shortcodes_Ultimate_Activator {
 		$defaults = su_get_config( 'default-settings' );
 
 		foreach ( $defaults as $option => $value ) {
-
-			if ( get_option( $option, 0 ) !== 0 ) {
-				continue;
-			}
-
-			update_option( $option, $value, false );
-
+			add_option( $option, $value );
 		}
 
 	}

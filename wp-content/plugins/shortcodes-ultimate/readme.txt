@@ -6,7 +6,7 @@ Tags: shortcode, toggle, columns, button, slider
 Requires at least: 4.6
 Tested up to: 5.5
 Requires PHP: 5.3
-Stable tag: 5.9.0
+Stable tag: 5.9.1
 
 A comprehensive collection of visual components for your site
 
@@ -146,26 +146,18 @@ First, visit the [Help Center](https://getshortcodes.com/support/). If you get s
 ## Changelog
 
 
-### 5.9.0
-
-**Important changes**
-
-`[su_slider]` and `[su_carousel]` shortcodes are marked as deprecated. These shortcodes will disappaer from the *Available shortcodes* page and from the *Insert shortcode* window. Deprecated shortcodes will continue to work, but you'll not be able to insert them. You can enable deprecated shortcodes under *Dashboard → Shortcodes → Settings → Advanced settings*, but that's not recommended.
-
-Use [su_image_carousel](https://getshortcodes.com/docs/image-carousel/) instead, it has more options, and much more reliable.
+### 5.9.1
 
 **What's new**
 
-- `[su_image_carousel]` now supports media taxonomies
-- New options `min_width` and `max_width` for `[su_lightbox_content]` shortcode
+- `[su_qrcode]` now supports nested shortcodes in the `data` attribute
+- Improved performance by reducing the number of DB queries
 
 **Fixes**
 
-- Fixed fatal errors `WP_Error` in `[su_slider]` and `[su_custom_gallery]`
-- Fixed PHP notice `undefined variable` in `[su_post]` shortcode
-- Fixed PHP notice `top_link` in `[su_divider]` shortcode
-- Fixed PHP notice `filter_content` in `[su_post]` shortcode
-- Fixed `related` option in `[su_dailymotion]` shortcode
-- Fixed non-working *Slide Link* issue with `[su_custom_gallery]`
-- Minor improvement to `[su_image_carousel]`
-- Minor UI improvements
+- Fixed issue in the Insert Shortcode tool with Taxonomy and Tax terms fields
+- Fixed error `Posts: invalid template name` on some installations
+
+
+---
+[Older changelog entries](https://plugins.trac.wordpress.org/browser/shortcodes-ultimate/trunk/changelog.txt).
