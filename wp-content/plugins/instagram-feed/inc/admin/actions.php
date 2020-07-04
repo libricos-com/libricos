@@ -286,12 +286,69 @@ function sbi_test_token() {
 	$access_token = isset( $_POST['access_token'] ) ? trim( sanitize_text_field( $_POST['access_token'] ) ) : false;
 	$account_id = isset( $_POST['account_id'] ) ? sanitize_text_field( $_POST['account_id'] ) : false;
 
+	$return = sbi_connect_new_account( $access_token, $account_id );
+
+	echo $return;
+	die();
+}
+add_action( 'wp_ajax_sbi_test_token', 'sbi_test_token' );
+
+function sbi_delete_account() {
+	$nonce = $_POST['sbi_nonce'];
+
+	if ( ! wp_verify_nonce( $nonce, 'sbi_nonce' ) ) {
+		die ( 'You did not do this the right way!' );
+	}
+	$account_id = isset( $_POST['account_id'] ) ? sanitize_text_field( $_POST['account_id'] ) : false;
+
+	sbi_do_account_delete( $account_id );
+
+	die();
+}
+add_action( 'wp_ajax_sbi_delete_account', 'sbi_delete_account' );
+
+function sbi_do_account_delete( $account_id ) {
+	$options = get_option( 'sb_instagram_settings', array() );
+	$connected_accounts =  isset( $options['connected_accounts'] ) ? $options['connected_accounts'] : array();
+
+	wp_cache_delete ( 'alloptions', 'options' );
+	$username = $connected_accounts[ $account_id ]['username'];
+
+	$num_times_used = 0;
+
+	$new_con_accounts = array();
+	foreach ( $connected_accounts as $connected_account ) {
+
+		if ( $connected_account['username'] === $username ) {
+			$num_times_used++;
+		}
+
+		if ( $connected_account['username'] !== '' && $account_id !== $connected_account['user_id'] && ! empty( $connected_account['user_id'] ) ) {
+			$new_con_accounts[ $connected_account['user_id'] ] = $connected_account;
+		}
+	}
+
+	if ( $num_times_used < 2 ) {
+		sbi_delete_local_avatar( $username );
+	}
+
+
+	$options['connected_accounts'] = $new_con_accounts;
+
+	update_option( 'sb_instagram_settings', $options );
+	global $sb_instagram_posts_manager;
+
+	$sb_instagram_posts_manager->remove_error( 'at_' . $username );
+	$sb_instagram_posts_manager->remove_error( 'api' );
+}
+
+function sbi_connect_new_account( $access_token, $account_id ) {
 	$split_id = explode( ' ', trim( $account_id ) );
 	$account_id = preg_replace("/[^A-Za-z0-9 ]/", '', $split_id[0] );
 	if ( ! empty( $account_id ) ) {
 		$split_token = explode( ' ', trim( $access_token ) );
 		$access_token = preg_replace("/[^A-Za-z0-9 ]/", '', $split_token[0] );
-    }
+	}
 
 
 	$options = sbi_get_database_settings();
@@ -342,8 +399,7 @@ function sbi_test_token() {
 
 						$updated_options = sbi_connect_basic_account( $new_connected_account );
 
-						echo wp_json_encode( $updated_options['connected_accounts'][ $new_data['id'] ] );
-						die();
+						return wp_json_encode( $updated_options['connected_accounts'][ $new_data['id'] ] );
 
 					} else {
 						if ( $basic_account_access_token_connect->is_wp_error() ) {
@@ -351,9 +407,8 @@ function sbi_test_token() {
 						} else {
 							$error = $basic_account_access_token_connect->get_data();
 						}
-						echo sbi_formatted_error( $error );
-						die();
-                    }
+						return sbi_formatted_error( $error );
+					}
 
 				} else {
 					if ( $basic_account_attempt->is_wp_error() ) {
@@ -361,8 +416,7 @@ function sbi_test_token() {
 					} else {
 						$error = $basic_account_attempt->get_data();
 					}
-					echo sbi_formatted_error( $error );
-					die();
+					return sbi_formatted_error( $error );
 				}
 			}
 
@@ -400,8 +454,7 @@ function sbi_test_token() {
 
 						$updated_options = sbi_connect_basic_account( $new_connected_account );
 
-						echo wp_json_encode( $updated_options['connected_accounts'][ $new_data['id'] ] );
-						die();
+						return wp_json_encode( $updated_options['connected_accounts'][ $new_data['id'] ] );
 
 					} else {
 						if ( $basic_account_access_token_connect->is_wp_error() ) {
@@ -409,8 +462,7 @@ function sbi_test_token() {
 						} else {
 							$error = $basic_account_access_token_connect->get_data();
 						}
-						echo sbi_formatted_error( $error );
-						die();
+						return sbi_formatted_error( $error );
 					}
 
 				} else {
@@ -419,8 +471,7 @@ function sbi_test_token() {
 					} else {
 						$error = $basic_account_attempt->get_data();
 					}
-					echo sbi_formatted_error( $error );
-					die();
+					return sbi_formatted_error( $error );
 				}
 
 			} else {
@@ -447,7 +498,7 @@ function sbi_test_token() {
 		}
 
 		if ( isset( $test_connection_data['error_message'] ) ) {
-			echo $test_connection_data['error_message'];
+			return $test_connection_data['error_message'];
 		} elseif ( $test_connection_data !== false && ! empty( $new_user_id ) ) {
 			$username = $test_connection_data['username'] ? $test_connection_data['username'] : $connected_accounts[ $new_user_id ]['username'];
 			$user_id = $test_connection_data['id'] ? $test_connection_data['id'] : $connected_accounts[ $new_user_id ]['user_id'];
@@ -486,9 +537,8 @@ function sbi_test_token() {
 						$connected_accounts[ $new_user_id ]['use_tagged'] = '1';
 					}
 				} else {
-					echo sbi_formatted_error( $response );
-					die();
-                }
+					return sbi_formatted_error( $response );
+				}
 			}
 
 			delete_transient( SBI_USE_BACKUP_PREFIX . 'sbi_'  . $user_id );
@@ -499,95 +549,34 @@ function sbi_test_token() {
 
 			update_option( 'sb_instagram_settings', $options );
 
-			echo wp_json_encode( $connected_accounts[ $new_user_id ] );
+			return wp_json_encode( $connected_accounts[ $new_user_id ] );
 		} else {
-			echo 'A successful connection could not be made. Please make sure your Access Token is valid.';
+			return 'A successful connection could not be made. Please make sure your Access Token is valid.';
 		}
 
 	}
 
-	die();
+	return '';
 }
-add_action( 'wp_ajax_sbi_test_token', 'sbi_test_token' );
 
-function sbi_delete_account() {
-	$nonce = $_POST['sbi_nonce'];
-
-	if ( ! wp_verify_nonce( $nonce, 'sbi_nonce' ) ) {
-		die ( 'You did not do this the right way!' );
+function sbi_no_js_connected_account_management() {
+	if ( ! current_user_can( 'manage_instagram_feed_options' ) ) {
+		return;
 	}
-	$account_id = isset( $_POST['account_id'] ) ? sanitize_text_field( $_POST['account_id'] ) : false;
-	$options = get_option( 'sb_instagram_settings', array() );
-	$connected_accounts =  isset( $options['connected_accounts'] ) ? $options['connected_accounts'] : array();
-
-	wp_cache_delete ( 'alloptions', 'options' );
-	$username = $connected_accounts[ $account_id ]['username'];
-
-	$num_times_used = 0;
-
-	$new_con_accounts = array();
-	foreach ( $connected_accounts as $connected_account ) {
-
-		if ( $connected_account['username'] === $username ) {
-			$num_times_used++;
+	if ( isset( $_POST['sb_manual_at'] ) ) {
+		$access_token = isset( $_POST['sb_manual_at'] ) ? trim( sanitize_text_field( $_POST['sb_manual_at'] ) ) : false;
+		$account_id = isset( $_POST['sb_manual_account_id'] ) ? sanitize_text_field( $_POST['sb_manual_account_id'] ) : false;
+		if ( ! $access_token || ! $account_id ) {
+			return;
 		}
-
-		if ( $connected_account['username'] !== '' && $account_id !== $connected_account['user_id'] && ! empty( $connected_account['user_id'] ) ) {
-			$new_con_accounts[ $connected_account['user_id'] ] = $connected_account;
-		}
+		sbi_connect_new_account( $access_token, $account_id );
+	} elseif ( isset( $_GET['disconnect'] ) && isset( $_GET['page'] ) && $_GET['page'] === 'sb-instagram-feed' ) {
+		$account_id = sanitize_text_field( $_GET['disconnect'] );
+		sbi_do_account_delete( $account_id );
 	}
 
-	if ( $num_times_used < 2 ) {
-		sbi_delete_local_avatar( $username );
-	}
-
-	$options['connected_accounts'] = $new_con_accounts;
-
-	update_option( 'sb_instagram_settings', $options );
-
-
-	die();
 }
-add_action( 'wp_ajax_sbi_delete_account', 'sbi_delete_account' );
-
-function sbi_account_data_for_token( $access_token ) {
-	$return = array(
-		'id' => false,
-		'username' => false,
-		'is_valid' => false,
-		'last_checked' => time()
-	);
-	$url = 'https://api.instagram.com/v1/users/self/?access_token=' . sbi_maybe_clean( $access_token );
-	$args = array(
-		'timeout' => 60,
-		'sslverify' => false
-	);
-	$result = wp_remote_get( $url, $args );
-
-	if ( ! is_wp_error( $result ) ) {
-		$data = json_decode( $result['body'] );
-	} else {
-		$data = array();
-	}
-
-	if ( isset( $data->data->id ) ) {
-		$return['id'] = $data->data->id;
-		$return['username'] = $data->data->username;
-		$return['is_valid'] = true;
-		$return['profile_picture'] = $data->data->profile_picture;
-
-	} elseif ( isset( $data->error_type ) && $data->error_type === 'OAuthRateLimitException' ) {
-		$return['error_message'] = 'This account\'s access token is currently over the rate limit. Try removing this access token from all feeds and wait an hour before reconnecting.';
-	} else {
-		$return = false;
-	}
-
-	$sbi_options = get_option( 'sb_instagram_settings', array() );
-	$sbi_options['sb_instagram_at'] = '';
-	update_option( 'sb_instagram_settings', $sbi_options );
-
-	return $return;
-}
+add_action( 'admin_init', 'sbi_no_js_connected_account_management' );
 
 function sbi_get_connected_accounts_data( $sb_instagram_at ) {
 	$sbi_options = get_option( 'sb_instagram_settings' );

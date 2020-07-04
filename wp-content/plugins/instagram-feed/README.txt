@@ -3,7 +3,7 @@ Contributors: smashballoon, craig-at-smash-balloon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram widget, Instagram gallery
 Requires at least: 3.4
 Tested up to: 5.4
-Stable tag: 2.4.4
+Stable tag: 2.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -325,6 +325,10 @@ We understand that sometimes you need help, have issues or just have questions. 
 * Plus more customization options added all the time!
 
 == Changelog ==
+= 2.4.5 =
+* Fix: Accounts can be connected without the use of JavaScript.
+* Fix: Default URL for connecting an account changed to prevent "Invalid Scope" connection issue.
+
 = 2.4.4 =
 * Fix: Workaround added for PHP warning related to an undefined media_url index.
 * Fix: Connecting a business account on a mobile device when more than 2 pages where returned was not possible.
