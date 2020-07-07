@@ -18,6 +18,10 @@
  * @package WordPress
  */
 
+define('WP_MEMORY_LIMIT', '1024M');
+
+define('WP_CACHE', false);
+
 define('PODS_SHORTCODE_ALLOW_SUB_SHORTCODES',true);
 
 // ** MySQL settings - You can get this info from your web host ** //
