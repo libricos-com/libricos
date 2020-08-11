@@ -629,7 +629,7 @@ function sb_instagram_settings_page() {
 			$matches_existing_personal = sbi_matches_existing_personal( $new_account_details );
 			$button_text = $matches_existing_personal ? __( 'Update This Account', 'instagram-feed' ) : __( 'Connect This Account', 'instagram-feed' );
 
-			$account_json = wp_json_encode( $new_account_details );
+			$account_json = sbi_json_encode( $new_account_details );
 
 			$already_connected_as_business_account = (isset( $connected_accounts[ $user_id ] ) && $connected_accounts[ $user_id ]['type'] === 'business');
 
