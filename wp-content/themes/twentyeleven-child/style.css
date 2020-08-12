@@ -31,8 +31,8 @@ Text Domain: twentyeleven-child
 * Lists Pod
 */
 .jei-item {
-    max-width: 30%;
-    width: 22%;
+    max-width: 32%;
+    width: 32%;
     display:inline-block;
     margin-bottom: 4%;
 }
