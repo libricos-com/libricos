@@ -11,7 +11,7 @@ class Permalink_Manager_Admin_Functions extends Permalink_Manager_Class {
 	public function __construct() {
 		add_action( 'admin_menu', array($this, 'add_menu_page') );
 		add_action( 'admin_init', array($this, 'init') );
-		add_action( 'admin_bar_menu',  array($this, 'fix_customize_url'), 10);
+		add_action( 'admin_bar_menu',  array($this, 'fix_customize_url'), 41);
 
 		add_action( 'admin_notices', array($this, 'display_plugin_notices'));
 		add_action( 'admin_notices', array($this, 'display_global_notices'));
@@ -38,6 +38,7 @@ class Permalink_Manager_Admin_Functions extends Permalink_Manager_Class {
 	 */
 	public function fix_customize_url($wp_admin_bar) {
 		$object = get_queried_object();
+		
 		$customize = $wp_admin_bar->get_node('customize');
 
 		if(empty($customize->href)) { return; }
