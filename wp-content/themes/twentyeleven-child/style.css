@@ -87,4 +87,10 @@ Botón de Amazon
 }
 
 
+.jei-amz:hover {
+    background: linear-gradient(to bottom,#f4f2ed 0,#efdeb3 6%,#e8bb4a 100%);
+    color:#fff !important;
+}
+
+
 
