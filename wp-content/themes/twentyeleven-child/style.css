@@ -68,3 +68,22 @@ Text Domain: twentyeleven-child
 	top:1px;
 }
 
+
+/**
+Botón de Amazon
+*/
+.jei-amz{
+	background: -webkit-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
+    background: -o-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
+    background: -ms-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
+    background: linear-gradient(to bottom,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
+
+    font: normal 13px/17px Arial,Helvetica,sans-serif !important;
+    color: #333 !important;
+
+    width: 80%;
+    margin: 2%;
+}
+
+
+
