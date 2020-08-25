@@ -71,6 +71,7 @@ Text Domain: twentyeleven-child
 
 /**
 Botón de Amazon
+@see: https://stackoverflow.com/questions/49089320/bootstrap-4-customized-button-with-text-and-image-on-right-flexed-for-bootstr;
 */
 .jei-amz{
 	background: -webkit-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
