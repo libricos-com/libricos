@@ -20,6 +20,9 @@ Text Domain: twentyeleven-child
 /**
 * Ajustes cabecera
 */
+#page {
+    margin: 0 auto;
+}
 header #searchform {
 	display:none;
 }
