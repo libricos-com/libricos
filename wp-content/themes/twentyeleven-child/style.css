@@ -18,6 +18,19 @@ Text Domain: twentyeleven-child
 @import url("../twentyeleven/style.css");
 
 /**
+* Ajustes cabecera
+*/
+header #searchform {
+	display:none;
+}
+#site-title {
+    padding: 0;
+}
+#site-description {
+    margin-bottom: 2em;
+}
+
+/**
 * Editoriales List Pod
 */
 .columns {
@@ -41,34 +54,6 @@ Text Domain: twentyeleven-child
 }
 
 
-.jei-btn-container{
-	text-align: center;
-}
-.myButton {
-	box-shadow:inset 0px 1px 0px 0px #cf866c;
-	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
-	background-color:#d0451b;
-	border-radius:3px;
-	border:1px solid #942911;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #854629;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
-	background-color:#bc3315;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-
-
 /**
 Botón de Amazon
 @see: https://stackoverflow.com/questions/49089320/bootstrap-4-customized-button-with-text-and-image-on-right-flexed-for-bootstr;
@@ -81,8 +66,6 @@ Botón de Amazon
 
     font: normal 13px/17px Arial,Helvetica,sans-serif !important;
     color: #333 !important;
-
-    width: 80%;
     margin: 2%;
 }
 
