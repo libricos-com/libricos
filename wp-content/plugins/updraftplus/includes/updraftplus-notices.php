@@ -197,15 +197,6 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'supported_positions' => $this->anywhere,
 				'validity_function' => 'wp_optimize_installed',
 			),
-			'metaslider' => array(
-				'prefix' => '',
-				'title' => "MetaSlider: The world's #1 slider plugin from the makers of UpdraftPlus",
-				'text' => __("With Metaslider, you can easily add style and flare with beautifully-designed sliders.", "updraftplus") . ' ' . $this->url_start(true, 'metaslider.com'),
-				'image' => 'notices/metaslider_logo.png',
-				'dismiss_time' => 'dismiss_notice',
-				'supported_positions' => $this->anywhere,
-				'validity_function' => 'metaslider_installed',
-			),
 			
 			// The sale adverts content starts here
 			'blackfriday' => array(
@@ -326,37 +317,6 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 			}
 		}
 		return true;
-	}
-
-	protected function metaslider_installed($plugin_base_dir = null, $product_name = null) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Filter use
-		if (!function_exists('get_plugins')) include_once(ABSPATH.'wp-admin/includes/plugin.php');
-		$plugins = get_plugins();
-
-		foreach ($plugins as $key => $value) {
-			if ('ml-slider' == $value['TextDomain']) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	protected function clef_2fa_installed($plugin_base_dir = null, $product_name = null) {// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Filter use
-
-		if (!function_exists('get_plugins')) include_once(ABSPATH.'wp-admin/includes/plugin.php');
-
-		$plugins = get_plugins();
-		$clef_found = false;
-
-		foreach ($plugins as $key => $value) {
-			if ('wpclef' == $value['TextDomain']) {
-				$clef_found = true;
-			} elseif ('two-factor-authentication' == $value['TextDomain'] || 'two-factor-authentication-premium' == $value['TextDomain']) {
-				return false;
-			}
-		}
-
-		return $clef_found;
-		
 	}
 	
 	protected function url_start($html_allowed = false, $url, $https = false, $website_home = 'updraftplus.com') {
