@@ -34,6 +34,26 @@ header #searchform {
 }
 
 /**
+Corrección cajas PODS
+*/
+.single-libro.singular #primary, .single-review.singular #primary, .single-nota.singular #primary, .single-autor.singular #primary, .single-editorial.singular #primary{
+	width: 73%;
+}
+
+.single-libro.singular .entry-content, .single-libro.singular .entry-header,
+.single-review.singular .entry-content, .single-review.singular .entry-header,
+.single-nota.singular .entry-content, .single-nota.singular .entry-header,
+.single-editorial.singular .entry-content, .single-editorial.singular .entry-header,
+.single-autor.singular .entry-content, .single-autor.singular .entry-header{
+	width:98%;
+}
+	
+.single-libro.singular #content, .single-review #primary, .single-nota #primary, .single-autor #primary, .single-editorial #primary{
+	margin: 0;
+}
+
+
+/**
 * Editoriales List Pod
 */
 .columns {
