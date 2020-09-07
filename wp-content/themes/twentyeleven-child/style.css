@@ -16,6 +16,7 @@ Text Domain: twentyeleven-child
 /* =Reset default browser CSS. Based on work by Eric Meyer.
 -------------------------------------------------------------- */
 @import url("../twentyeleven/style.css");
+@import url("../twentyeleven-child/css/libro.css");
 
 /**
 * Ajustes cabecera
