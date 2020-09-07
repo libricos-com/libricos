@@ -17,6 +17,14 @@ Text Domain: twentyeleven-child
 -------------------------------------------------------------- */
 @import url("../twentyeleven/style.css");
 @import url("../twentyeleven-child/css/libro.css");
+@import url("../twentyeleven-child/css/amazon.css");
+
+/*
+Added icons:
+https://glyphsearch.com/?query=amazon
+*/
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
 
 /**
 * Ajustes cabecera
@@ -75,28 +83,6 @@ Corrección cajas PODS
 }
 .jei-item a {
     /*border: solid 1px red;*/
-}
-
-
-/**
-Botón de Amazon
-@see: https://stackoverflow.com/questions/49089320/bootstrap-4-customized-button-with-text-and-image-on-right-flexed-for-bootstr;
-*/
-.jei-amz{
-	background: -webkit-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
-    background: -o-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
-    background: -ms-linear-gradient(top,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
-    background: linear-gradient(to bottom,#f8e6b8 0,#f3d686 6%,#ebb62c 100%);
-
-    font: normal 13px/17px Arial,Helvetica,sans-serif !important;
-    color: #333 !important;
-    margin: 2%;
-}
-
-
-.jei-amz:hover {
-    background: linear-gradient(to bottom,#f4f2ed 0,#efdeb3 6%,#e8bb4a 100%);
-    color:#fff !important;
 }
 
 
