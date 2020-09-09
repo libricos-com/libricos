@@ -1,0 +1,40 @@
+/**
+* Ajustes cabecera
+*/
+#page {
+    margin: 0 auto;
+}
+header #searchform {
+	display:none;
+}
+#site-title {
+    padding: 0;
+}
+#site-description {
+    margin-bottom: 2em;
+}
+
+/**
+Corrección cajas PODS
+*/
+.single-libro.singular #primary, .single-review.singular #primary, .single-nota.singular #primary, 
+.single-autor.singular #primary, .single-editorial.singular #primary, .single-post.singular #primary
+{
+	width: 73%;
+}
+
+.single-libro.singular .entry-content, .single-libro.singular .entry-header,
+.single-review.singular .entry-content, .single-review.singular .entry-header,
+.single-nota.singular .entry-content, .single-nota.singular .entry-header,
+.single-editorial.singular .entry-content, .single-editorial.singular .entry-header,
+.single-autor.singular .entry-content, .single-autor.singular .entry-header,
+.single-post .entry-header
+{
+	width:98%;
+}
+	
+.single-libro.singular #content, .single-review #primary, .single-nota #primary, 
+.single-autor #primary, .single-editorial #primary, .single-post #primary
+{
+	margin: 0;
+}

@@ -16,7 +16,7 @@ Text Domain: twentyeleven-child
 /* =Reset default browser CSS. Based on work by Eric Meyer.
 -------------------------------------------------------------- */
 @import url("../twentyeleven/style.css");
-@import url("../twentyeleven-child/css/libro.css");
+@import url("../twentyeleven-child/css/estructura.css");
 @import url("../twentyeleven-child/css/amazon.css");
 
 /*
@@ -26,64 +26,6 @@ https://glyphsearch.com/?query=amazon
 /*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
 @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.css");
 
-/**
-* Ajustes cabecera
-*/
-#page {
-    margin: 0 auto;
-}
-header #searchform {
-	display:none;
-}
-#site-title {
-    padding: 0;
-}
-#site-description {
-    margin-bottom: 2em;
-}
-
-/**
-Corrección cajas PODS
-*/
-.single-libro.singular #primary, .single-review.singular #primary, .single-nota.singular #primary, .single-autor.singular #primary, .single-editorial.singular #primary{
-	width: 73%;
-}
-
-.single-libro.singular .entry-content, .single-libro.singular .entry-header,
-.single-review.singular .entry-content, .single-review.singular .entry-header,
-.single-nota.singular .entry-content, .single-nota.singular .entry-header,
-.single-editorial.singular .entry-content, .single-editorial.singular .entry-header,
-.single-autor.singular .entry-content, .single-autor.singular .entry-header{
-	width:98%;
-}
-	
-.single-libro.singular #content, .single-review #primary, .single-nota #primary, .single-autor #primary, .single-editorial #primary{
-	margin: 0;
-}
-
-
-/**
-* Editoriales List Pod
-*/
-.columns {
-    columns: 3;
-  	-webkit-columns: 3;
-  	-moz-columns: 3;
-}
-
-
-/**
-* Lists Pod
-*/
-.jei-item {
-    max-width: 32%;
-    width: 32%;
-    display:inline-block;
-    margin-bottom: 4%;
-}
-.jei-item a {
-    /*border: solid 1px red;*/
-}
 
 
 
