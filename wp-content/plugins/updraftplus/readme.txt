@@ -3,7 +3,7 @@ Contributors: Backup with UpdraftPlus, DavidAnderson, DNutbourne, aporter, snigh
 Tags: backup, restore, database backup, wordpress backup, cloud backup, s3, dropbox, google drive, onedrive, ftp, backups
 Requires at least: 3.2
 Tested up to: 5.5
-Stable tag: 1.16.28
+Stable tag: 1.16.29
 Author URI: https://updraftplus.com
 Donate link: https://david.dw-perspective.org.uk/donate
 License: GPLv3 or later
@@ -166,7 +166,15 @@ Unfortunately not; since this is free software, there’s no warranty and no gua
 
 The <a href="https://updraftplus.com/news/">UpdraftPlus backup blog</a> is the best place to learn in more detail about any important changes.
 
-N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.16.28.x of the free version correspond to changes made in 2.16.28.x of the paid version.
+N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.16.29.x of the free version correspond to changes made in 2.16.29.x of the paid version.
+
+= 1.16.29 - 08/Sep/2020 =
+
+* FIX: Added Africa (Cape Town), Asia Pacific (Hong Kong) & Asia Pacific (Osaka-Local) to AWS
+* FIX: Fix bug where incorrect function call prevented backup file downloads from the WP dashboard
+* TWEAK: Removed LinkedIn and Google+ links
+* TWEAK: Choosing email remote storage method in the free version will automatically tick the "Email" field setting, making the UI meaning clearer
+* TWEAK: Work around the invalid file paths if found in some key-value pairs in the PHP user.ini file or Apache .htaccess file when restoring
 
 = 1.16.28 - 02/Sep/2020 =
 
@@ -1058,7 +1066,7 @@ Older changes are found <a href="https://plugins.svn.wordpress.org/updraftplus/t
 
 == License ==
 
-    Copyright 2011-19 David Anderson
+    Copyright 2011-20 David Anderson
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -1079,4 +1087,4 @@ Furthermore, reliance upon any non-English translation is at your own risk. Updr
 We recognise and thank the following for code and/or libraries used and/or modified under the terms of their open source licences; see: https://updraftplus.com/acknowledgements/
 
 == Upgrade Notice ==
-* 1.16.28: Support backing up and restoring MySQL/MariaDB routines (stored procedures and functions), plus a fix and various other tweaks. A recommended update for all.
+* 1.16.29: Fix a couple of issues with S3 backups to Cape Town and downloading via the dashboard; various other small tweaks/improvements. A recommended update for all.

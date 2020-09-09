@@ -136,8 +136,12 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 			'social_media' => array(
 				'prefix' => '',
 				'title' => __('UpdraftPlus is on social media - check us out!', 'updraftplus'),
-				'text' => $this->url_start(true, 'twitter.com/updraftplus', true).__('Twitter', 'updraftplus').$this->url_end(true, 'twitter.com/updraftplus', true).' - '.$this->url_start(true, 'facebook.com/updraftplus', true).__('Facebook', 'updraftplus').$this->url_end(true, 'facebook.com/updraftplus', true).' - '.$this->url_start(true, 'plus.google.com/u/0/b/112313994681166369508/112313994681166369508/about', true).__('Google+', 'updraftplus').$this->url_end(true, 'plus.google.com/u/0/b/112313994681166369508/112313994681166369508/about', true).' - '.$this->url_start(true, 'www.linkedin.com/company/updraftplus', true).__('LinkedIn', 'updraftplus').$this->url_end(true, 'www.linkedin.com/company/updraftplus', true),
-				'text_plain' => $this->url_start(false, 'twitter.com/updraftplus', true).__('Twitter', 'updraftplus').$this->url_end(false, 'twitter.com/updraftplus', true).' - '.$this->url_start(false, 'facebook.com/updraftplus', true).__('Facebook', 'updraftplus').$this->url_end(false, 'facebook.com/updraftplus', true).' - '.$this->url_start(false, 'plus.google.com/u/0/b/112313994681166369508/112313994681166369508/about', true).__('Google+', 'updraftplus').$this->url_end(false, 'plus.google.com/u/0/b/112313994681166369508/112313994681166369508/about', true).' - '.$this->url_start(false, 'www.linkedin.com/company/updraftplus', true).__('LinkedIn', 'updraftplus').$this->url_end(false, 'www.linkedin.com/company/updraftplus', true),
+				'text' => $this->url_start(true, 'twitter.com/updraftplus', true). __('Twitter', 'updraftplus'). $this->url_end(true, 'twitter.com/updraftplus', true).
+						' - '.
+						$this->url_start(true, 'facebook.com/updraftplus', true). __('Facebook', 'updraftplus'). $this->url_end(true, 'facebook.com/updraftplus', true),
+				'text_plain' => $this->url_start(false, 'twitter.com/updraftplus', true). __('Twitter', 'updraftplus'). $this->url_end(false, 'twitter.com/updraftplus', true).
+						' - '.
+						$this->url_start(false, 'facebook.com/updraftplus', true). __('Facebook', 'updraftplus'). $this->url_end(false, 'facebook.com/updraftplus', true),
 				'image' => 'notices/updraft_logo.png',
 				'dismiss_time' => false,
 				'supported_positions' => $this->anywhere,

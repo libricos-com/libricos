@@ -1664,6 +1664,7 @@ class Updraft_Restorer {
 		// Permissions changes (at the top level - i.e. this does not apply if using recursion) are now *additive* - i.e. there's no danger of permissions being removed from what's on-disk
 		switch ($type) {
 			case 'wpcore':
+				$this->adjust_auto_prepend_directive();
 				$this->chmod_if_needed($wp_filesystem_dir, FS_CHMOD_DIR, false, $wp_filesystem);
 				// In case we restored a .htaccess which is incorrect for the local setup
 				$this->flush_rewrite_rules();
@@ -3934,6 +3935,96 @@ class Updraft_Restorer {
 	 */
 	private function drop_tables($tables) {
 		foreach ($tables as $table) $this->sql_exec('DROP TABLE IF EXISTS '.UpdraftPlus_Manipulation_Functions::backquote($table), 1, '', false);
+	}
+
+	/**
+	 * Adjust and replace the invalid root path of the auto_prepend_file values with the current server's root path
+	 */
+	private function adjust_auto_prepend_directive() {
+
+		global $wp_filesystem, $updraftplus;
+
+		$external_plugins = array(
+			'wordfence' => array(
+				'filename' => 'wordfence-waf.php', // this file is located in the root directory so there's no additional path in it, other plugins may place the corresponding file in its plugin directory, in that case the additional path should be added (e.g. 'wp-content/plugins/plugin-name/file-name.php')
+				'callback' => 'adjust_wordfencewaf_root_path',
+			)
+		);
+
+		foreach ($updraftplus->server_configuration_file_list() as $server_config_file) {
+			if (empty($server_config_file)) continue;
+			if (file_exists($this->abspath.$server_config_file)) {
+				$updraftplus->log("$server_config_file configuration file has been detected during the restoration. Trying to open the file now for various-fixing tasks");
+				$server_config_file_content = file_get_contents($this->abspath.$server_config_file);
+				if (false !== $server_config_file_content) {
+					foreach ($external_plugins as $name => $data) {
+						$file_pattern = str_replace(array('/', '.', "'", '"'), array('\/', '\.', "\'", '\"'), $data['filename']);
+						if (file_exists($this->abspath.$data['filename'])) {
+							if (!$wp_filesystem->put_contents($this->abspath.$server_config_file, preg_replace('/((?:php_value\s\s*)?auto_prepend_file(?:\s*=)?\s*(?:\'|")).+?'.$file_pattern.'(\'|")/is', "$1{$this->abspath}{$data['filename']}$2", $server_config_file_content))) {
+								$updraftplus->log("Couldn't write a fix into the $server_config_file file");
+							}
+							if (isset($data['callback']) && method_exists($this, $data['callback'])) call_user_func(array($this, $data['callback']));
+						} else {
+							// if somehow, some way, the plugin's auto prepended file is missing then the auto_prepend_file directive in the config file needs to be removed or it will cause a fatal error
+							if (!$wp_filesystem->put_contents($this->abspath.$server_config_file, preg_replace('/((?:php_value\s\s*)?auto_prepend_file(?:\s*=)?\s*(?:\'|")).+?'.$file_pattern.'(\'|")/is', "", $server_config_file_content))) {
+								$updraftplus->log("The {$data['filename']} file doesn't exist, couldn't write a fix into the $server_config_file file");
+							}
+						}
+					}
+				} else {
+					$updraftplus->log("Failed to read the $server_config_file file");
+				}
+			}
+		}
+	}
+
+	/**
+	 * Adjust and replace the root paths in the wordfence-waf.php file with the current server's root path
+	 */
+	private function adjust_wordfencewaf_root_path() {
+		global $wp_filesystem, $updraftplus;
+		if (file_exists($this->abspath.'wordfence-waf.php')) {
+			$updraftplus->log("Wordfence auto-prepended file has been detected during the restoration. Trying to open the file now for various-fixing tasks");
+			$wordfence_waf = file_get_contents($this->abspath.'wordfence-waf.php');
+			if (false !== $wordfence_waf) {
+				// https://regex101.com/r/VeCwzH/1/
+				if (preg_match_all('/(?:wp-content[\/\\\]+plugins[\/\\\]+wordfence[\/\\\]+waf[\/\\\]+bootstrap\.php|wp-content[\/\\\]+wflogs[\/\\\]*)((?:\'|"))/is', $wordfence_waf, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER)) {
+					$matches = array_reverse($matches);
+					foreach ($matches as $match) {
+						$enclosure_cnt = 0;
+						$start = (int) $match[0][1];
+						$enclosure = $match[1][0];
+						$offset = -1;
+						for ($i=$start; $i>=0; $i--) {
+							if ($enclosure_cnt > 0) {
+								if ('\\' === $wordfence_waf[$i]) {
+									$enclosure_cnt--;
+								} else {
+									$offset = $i+2;
+									break;
+								}
+							} else {
+								if ($enclosure === $wordfence_waf[$i]) {
+									$enclosure_cnt++;
+								}
+							}
+						}
+						if ($offset >= 0) {
+							if (false !== stripos($match[0][0], 'wflogs')) {
+								$wordfence_waf = substr_replace($wordfence_waf, WP_CONTENT_DIR.'/wflogs/', $offset, ((int) $match[1][1]) - $offset);
+							} else {
+								$wordfence_waf = substr_replace($wordfence_waf, WP_PLUGIN_DIR.'/wordfence/waf/bootstrap.php', $offset, ((int) $match[1][1]) - $offset);
+							}
+						}
+					}
+					if (!$wp_filesystem->put_contents($this->abspath.'wordfence-waf.php', $wordfence_waf)) {
+						$updraftplus->log("Couldn't write fixes into the wordfence-waf.php file");
+					}
+				}
+			} else {
+				$updraftplus->log("Failed to read the wordfence-waf.php file");
+			}
+		}
 	}
 }
 

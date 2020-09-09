@@ -114,7 +114,7 @@
         "version_normalized": "2.70.0.0",
         "source": {
             "type": "git",
-            "url": "git@github.com:malsup/blockui.git",
+            "url": "https://github.com/malsup/blockui.git",
             "reference": "316f6e5d76a33266970778e80507149d9ef6a02d"
         },
         "dist": {

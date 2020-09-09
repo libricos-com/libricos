@@ -4402,7 +4402,7 @@ class UpdraftPlus {
 		try {
 			$range_header = UpdraftPlus_RangeHeader::createFromHeaderString($range_header);
 			$servlet = new UpdraftPlus_PartialFileServlet($range_header);
-			$servlet->send_file($fullpath, $content_type);
+			$servlet->sendFile($fullpath, $content_type);
 		} catch (UpdraftPlus_InvalidRangeHeaderException $e) {
 			header("HTTP/1.1 400 Bad Request");
 			error_log("UpdraftPlus: UpdraftPlus_InvalidRangeHeaderException: ".$e->getMessage());
@@ -5472,5 +5472,19 @@ class UpdraftPlus {
 			add_filter('pre_site_transient_update_plugins', '__return_false'); // Disable WordPress plugin updates
 			add_filter('pre_site_transient_update_themes', '__return_false'); // Disable WordPress themes updates
 		}
+	}
+
+	/**
+	 * Retrieve the list of server (Apache, Nginx, PHP, etc..) configuration file names
+	 */
+	public function server_configuration_file_list() {
+		$server_config_filenames = array(
+			'.user.ini',
+			'.htaccess',
+		);
+		// the default value for user_ini.filename setting in PHP.ini file is '.user.ini' but this could be set to use different file name
+		$server_config_filenames[] = ini_get('user_ini.filename'); // phpcs:ignore PHPCompatibility.IniDirectives.NewIniDirectives.user_ini_filenameFound
+		$server_config_filenames = array_unique($server_config_filenames);
+		return $server_config_filenames;
 	}
 }
