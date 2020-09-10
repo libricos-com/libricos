@@ -28,20 +28,16 @@ add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );
 
 /*
 Añadir CPTs (objetos propios de PODs) a la línea de tiempo del blog
-@see: https://docs.pods.io/code-snippets/modifying-pre_get_posts-categories-tags-show-custom-post-types/
+@see: https://wordpress.stackexchange.com/questions/241060/display-custom-post-type-in-recent-posts
 */
-add_action( 'pre_get_posts', function ( $q )
+add_filter( 'pre_get_posts', 'my_get_posts' );
+function my_get_posts( $query ) 
 {
-    if (  !is_admin() // Only target front end queries
-          && $q->is_main_query() // Only target the main query
-          // && $q->is_category()   // Only target category archives [comment out if not needed]
-          // && $q->is_tag()        // Only target tag archives [comment out if not needed]
-    ) {
-        $q->set( 'post_type', ['post', 'libro'] ); 
-        // Change 'custom_post_type' to YOUR Custom Post Type
-        // You can add multiple CPT's separated by comma's
-    }
-});
+    if ( is_home() && $query->is_main_query() )
+        $query->set( 'post_type', array( 'post', 'libro' ) );
+
+    return $query;
+}
 
 
 /*
