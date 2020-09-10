@@ -45,6 +45,7 @@ add_action( 'pre_get_posts', function ( $q )
 
 
 /*
+Añade shortcode para las entradas de los Libros en el timeline del blog
 @see: https://www.wpbeginner.com/wp-tutorials/how-to-add-a-shortcode-in-wordpress/
 */
 add_shortcode( 'get_libro_intro', 'the_dramatist_return_post_id' );
