@@ -24,7 +24,10 @@ Added icons:
 https://glyphsearch.com/?query=amazon
 */
 /*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
-@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.css");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
+/*@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.css");*/
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/brands.min.css");
+
 @import url("//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css");
 
 
