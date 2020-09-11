@@ -1,0 +1,12 @@
+/* 
+Bootstrap btn primary de otro color 
+@see darker colors from one given: https://www.0to255.com/ffa500
+*/
+.btn-primary-orange {
+    color: #fff;
+    background-color: orange !important;
+}
+.btn-primary-orange:hover {
+    color: #fff;
+    background-color: #dd8f00 !important;
+}
