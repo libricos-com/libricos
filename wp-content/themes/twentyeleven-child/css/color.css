@@ -10,3 +10,7 @@ Bootstrap btn primary de otro color
     color: #fff;
     background-color: #dd8f00 !important;
 }
+
+.color-yellow{
+	color: #FFC107;
+}
