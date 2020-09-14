@@ -61,6 +61,7 @@ function theme_slug_filter_the_content( $content )
 {
 	global $post;
     $postType = get_post_type();
+    $id = get_the_id();
 
     switch ($postType) {
     	case 'libro':
@@ -89,7 +90,7 @@ function theme_slug_filter_the_content( $content )
 
 
 
-    $meta = get_post_meta(get_the_id());
+    $meta = get_post_meta($id);
     $htmlReviews = '';
     if(!empty($meta['reviews'])){
     	$numReviews = count($meta['reviews']);
@@ -105,15 +106,15 @@ function theme_slug_filter_the_content( $content )
  
 
 
-    $portada = get_post_meta(get_the_id(),'portada');
+    $portada = get_post_meta($id,'portada');
     $htmlImagen = '';
      if( !empty($portada[0]['guid']) ){
-     	$htmlImagen = '<div class="text-center"><img src="'.$portada[0]['guid'].'" alt="Imagen de "></div>';
+     	$htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de "></a></div>';
      }
 
 
 
-    $estado = get_post_meta(get_the_id(),'estado');
+    $estado = get_post_meta($id,'estado');
     /*
 	0 | Por leer
 	1 | Siguiente
@@ -134,7 +135,7 @@ function theme_slug_filter_the_content( $content )
 		switch ($estado) {
 	    	case 1:
 	    		$color = 'btn-info';
-	    		$icon = 'fa-forward';
+	    		$icon = 'fab fa-hotjar';
 	    		$title = 'A leer próximamente';
 	    		$text = 'Siguiente';
 	    		break;
@@ -165,7 +166,7 @@ function theme_slug_filter_the_content( $content )
    
     $expectativasHtml = '';
     if($postType == 'libro'){
-    	$expectativas = get_post_meta(get_the_id(),'expectativas');
+    	$expectativas = get_post_meta($id,'expectativas');
 	    if(!empty($expectativas[0])){
 	    	$expectativasHtml = '<p>'.$expectativas[0].'</p>';
 	    }
