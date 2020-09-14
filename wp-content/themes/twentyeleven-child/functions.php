@@ -85,7 +85,7 @@ function theme_slug_filter_the_content( $content )
     		break;
     }
 
-    $entidad = '<a href="'.get_permalink().'" class="btn btn-lg px-3 '.$color.' mb-2" role="button" data-toggle="tooltip" title="'.$title.' '.get_the_title().'"><i class="fas '.$icon.'"></i> '.ucfirst($postType).'</a>';
+    $entidad = '<a href="'.get_permalink().'" class="btn '.$color.'" role="button" data-toggle="tooltip" title="'.$title.' '.get_the_title().'"><i class="fas '.$icon.'"></i> '.ucfirst($postType).'</a>';
 
 
 
@@ -142,7 +142,7 @@ function theme_slug_filter_the_content( $content )
 	    		$text = 'Quiero leer';
 	    		break;
 	    }
-	    $estadoHtml = '<a href="#" class="btn btn-lg px-3 '.$color.' ml-2" role="button" data-toggle="tooltip" title="'.$title.'"><i class="fas '.$icon.'"></i> '.$text.'</a>';
+	    $estadoHtml = '<a href="#" class="btn '.$color.' ml-2" role="button" data-toggle="tooltip" title="'.$title.'"><i class="fas '.$icon.'"></i> '.$text.'</a>';
     }
 
     $barra = '<div>'.$entidad.$estadoHtml.'</div>';
