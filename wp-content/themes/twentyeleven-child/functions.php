@@ -89,6 +89,22 @@ function theme_slug_filter_the_content( $content )
 
 
 
+    $meta = get_post_meta(get_the_id());
+    $htmlReviews = '';
+    if(!empty($meta['reviews'])){
+    	$numReviews = count($meta['reviews']);
+    	$htmlReviews = '<button type="button" class="btn btn-danger ml-2"><i class="fas fa-clipboard-list"></i> Reviews <span class="badge badge-danger">'.$numReviews.'</span>
+</button>';
+    }
+    $htmlNotas = '';
+    if(!empty($meta['notas'])){
+    	$numNotas = count($meta['notas']);
+    	$htmlNotas = '<button type="button" class="btn btn-warning ml-2"><i class="fas fa-pencil-alt"></i> Notas <span class="badge badge-danger">'.$numNotas.'</span>
+</button>';
+    }
+ 
+
+
     $portada = get_post_meta(get_the_id(),'portada');
     $htmlImagen = '';
      if( !empty($portada[0]['guid']) ){
@@ -145,7 +161,7 @@ function theme_slug_filter_the_content( $content )
 	    $estadoHtml = '<a href="#" class="btn '.$color.' ml-2" role="button" data-toggle="tooltip" title="'.$title.'"><i class="fas '.$icon.'"></i> '.$text.'</a>';
     }
 
-    $barra = '<div>'.$entidad.$estadoHtml.'</div>';
+    $barra = '<div>'.$entidad.$estadoHtml.$htmlReviews.$htmlNotas.'</div>';
    
     $expectativasHtml = '';
     if($postType == 'libro'){
