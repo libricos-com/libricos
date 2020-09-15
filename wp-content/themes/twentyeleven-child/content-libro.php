@@ -100,9 +100,10 @@ Template Name: Libro detail page
 			//get the value for some_field in related post and echo it
 			// $someField = get_post_meta( $idA, 'post_title', true );
 			$urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
+			$numPosts = $genero['count'];
 			?>
 			<li class="list-group-item">
-				<a href="<?php echo $urlGenero;?>"><?php echo $nombreGenero;?></a>
+				<a href="<?php echo $urlGenero;?>"><?php echo $nombreGenero;?></a> (<?php echo $numPosts;?>)
 			</li>
 			<?php
 		} //end of foreach
@@ -165,6 +166,10 @@ Template Name: Libro detail page
 		</ul>
 	    <?php
 	}
+	?>
+
+	<?php 
+
 	?>
 	
 
