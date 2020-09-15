@@ -36,13 +36,8 @@ Template Name: Libro detail page
 	$portada = get_post_meta($id,'portada');
 	$sinopsis = get_post_meta($id,'sinopsis')[0];
 
-
 	//get Pods object for current post
     $pod = pods( 'libro', $id );
-	//get the value for the relationship field
-	$autores = $pod->field( 'autores' );
-	$generos = $pod->field( 'generos_literarios' );
-    
 ?>
 
 
@@ -57,8 +52,10 @@ Template Name: Libro detail page
 
 
 	<?php 
+	//get the value for the relationship field 
 	//loop through related field, creating links to their own pages
 	//only if there is anything to loop through
+	$autores = $pod->field( 'autores' );
 	if ( ! empty( $autores ) ) {
 		?>
 		<h2>Autor/es</h2>
@@ -86,6 +83,7 @@ Template Name: Libro detail page
 	?>
 
 	<?php 
+	$generos = $pod->field( 'generos_literarios' );
 	if ( ! empty( $generos ) ) {
 		?>
 		<h2>Géneros</h2>
@@ -169,18 +167,24 @@ Template Name: Libro detail page
 	?>
 
 	<?php 
+	$editorial = $pod->field( 'editorial' );
+	$urlEditorial = esc_url( get_permalink( $editorial['ID'] ) );
 
+	$fecha_publicacion = get_post_meta($id,'fecha_publicacion')[0];
+	$paginas = get_post_meta($id,'paginas')[0];
+	$idioma = get_post_meta($id,'idioma')[0];
+	$url_goodreads = get_post_meta($id,'url_goodreads')[0];
 	?>
 	
 
 
 	<h2>Ficha técnica</h2>
 	<ul class="list-group mb-4">
-		<li class="list-group-item"><strong>Editorial</strong>: <a href="{@editorial.permalink}">{@editorial}</a></li>
-		<li class="list-group-item"><strong>Fecha publicación</strong>: {@fecha_publicacion}</li>
-		<li class="list-group-item"><strong>Páginas</strong>: {@paginas}</li>
-		<li class="list-group-item"><strong>Idioma</strong>: <span class="flag-icon flag-icon-{@idioma}"></span></li>
-		<li class="list-group-item"><i class="fab fa-goodreads"></i><a href="{@url_goodreads}" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
+		<li class="list-group-item"><strong>Editorial</strong>: <a href="<?php echo $urlEditorial;?>"><?php echo $editorial['post_title'];?></a></li>
+		<li class="list-group-item"><strong>Fecha publicación</strong>: <?php echo $fecha_publicacion;?></li>
+		<li class="list-group-item"><strong>Páginas</strong>: <?php echo $paginas;?></li>
+		<li class="list-group-item"><strong>Idioma</strong>: <span class="flag-icon flag-icon-<?php echo $idioma;?>"></span></li>
+		<li class="list-group-item"><i class="fab fa-goodreads"></i><a href="<?php echo $url_goodreads;?>" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
 	</ul>
 	
 	[if reviews]
