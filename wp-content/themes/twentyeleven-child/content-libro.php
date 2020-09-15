@@ -9,7 +9,7 @@ Template Name: Libro detail page
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title">Content libro <?php the_title(); ?></h1>
+		<h1 class="entry-title"><?php the_title(); ?></h1>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 		<div class="entry-meta">
@@ -187,35 +187,90 @@ Template Name: Libro detail page
 		<li class="list-group-item"><i class="fab fa-goodreads"></i><a href="<?php echo $url_goodreads;?>" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
 	</ul>
 	
-	[if reviews]
-		<h2>Mis Reseñas</h2>
-		<ul>
-		[each reviews]
-			<li>{@post_date, my_datum}: <a href="{@permalink,esc_url}">{@post_title}</a> Mi puntuación: {@puntuacion}</li>
-		[/each]
+	<?php 
+    $params = array( 
+        'orderby' => 'post_date DESC'
+    ); 
+	$reviews = $pod->field( 'reviews', $params );
+	if ( ! empty( $reviews ) ) {
+		?>
+		<h2>Mis reseñas</h2>
+		<ul class="list-unstyled">
+			<?php
+			foreach ( $reviews as $review ) { 
+				$idA = $review[ 'ID' ];
+				$urlReview = esc_url( get_permalink( $idA ) );
+				$nombreReview = get_the_title( $idA );
+				?>
+				<li>
+					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($review['post_date']));?></span>
+					<a href="<?php echo $urlReview;?>" class="btn btn-lg px-3 btn-danger" role="button" data-toggle="tooltip" title="Esto es un análisis del libro"><i class="fas fa-clipboard-list"></i> <?php echo $nombreReview;?></a>
+				</li>
+				<?php
+			} //end of foreach
+			?>
 		</ul>
-	[/if]
+		<?php
+	} //endif ! empty ( $reviews )
+	?>
 
-	[if notas]
+
+	<?php 
+    $params = array( 
+        'orderby' => 'post_date DESC'
+    ); 
+	$notas = $pod->field( 'notas', $params );
+	if ( ! empty( $notas ) ) {
+		?>
 		<h2>Mis Notas</h2>
-		<ul>
-		[each notas]
-			<li>{@post_date, my_datum}: <a href="{@permalink,esc_url}">{@post_title}</a></li>
-		[/each]
+		<ul class="list-unstyled">
+			<?php
+			foreach ( $notas as $nota ) { 
+				$idA = $nota[ 'ID' ];
+				$urlNota = esc_url( get_permalink( $idA ) );
+				$nombreNota = get_the_title( $idA );
+				?>
+				<li>
+					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($nota['post_date']));?></span>
+					<a href="<?php echo $urlNota;?>" class="btn btn-lg px-3 btn-warning" role="button" data-toggle="tooltip" title="Esto es una nota del libro"><i class="fas fa-pencil-alt"></i> <?php echo $nombreNota;?></a>
+				</li>
+				<?php
+			} //end of foreach
+			?>
 		</ul>
-	[/if]
+		<?php
+	} //endif ! empty ( $notas )
+	?>
 
-	[if recomendaciones]
+	<?php 
+    $params = array( 
+        'orderby' => 'post_date DESC'
+    ); 
+	$recomendaciones = $pod->field( 'recomendaciones', $params );
+	if ( ! empty( $recomendaciones ) ) {
+		?>
 		<h2>Mis Recomendaciones</h2>
-		<ul>
-		[each recomendaciones]
-			<li>{@post_date, my_datum}: <a href="{@permalink,esc_url}">{@post_title}</a></li>
-		[/each]
+		<ul class="list-unstyled">
+			<?php
+			foreach ( $recomendaciones as $recomendacion ) { 
+				$idA = $recomendacion[ 'ID' ];
+				$urlrecomendacion = esc_url( get_permalink( $idA ) );
+				$nombrerecomendacion = get_the_title( $idA );
+				?>
+				<li>
+					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($recomendacion['post_date']));?></span>
+					<a href="<?php echo $urlrecomendacion;?>" class="btn btn-lg px-3 btn-info" role="button" data-toggle="tooltip" title="Esto es una recomendacion del libro"><i class="fas fa-comment-dots"></i> <?php echo $nombrerecomendacion;?></a>
+				</li>
+				<?php
+			} //end of foreach
+			?>
 		</ul>
-	[/if]
+		<?php
+	} //endif ! empty ( $recomendaciones )
+	?>
 
 	<div class="text-center p-2">
-		{@iframe_compra_amazon}
+		<?php echo get_post_meta($id,'iframe_compra_amazon')[0];?>
 	</div>
 </div>	
 
