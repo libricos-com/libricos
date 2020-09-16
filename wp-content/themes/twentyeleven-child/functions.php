@@ -135,7 +135,7 @@ function theme_slug_filter_the_content( $content )
 	    }
 		switch ($estado) {
 	    	case 1:
-	    		$color = 'btn-info';
+	    		$color = 'btn-primary-orange';
 	    		$icon = 'fab fa-hotjar';
 	    		$title = 'A leer próximamente';
 	    		$text = 'Siguiente';
