@@ -178,6 +178,42 @@ echo do_shortcode('[kkstarratings force="false" valign="bottom" align="left"]');
 	$paginas = get_post_meta($id,'paginas')[0];
 	$idioma = get_post_meta($id,'idioma')[0];
 	$url_goodreads = get_post_meta($id,'url_goodreads')[0];
+	
+	$formato = get_post_meta($id,'formato')[0];
+	/*
+	Formato:
+	1 | Kindle
+	2 | E-book
+	3 | Paperback
+	4 | Hardback
+	5 | Audiobook
+	*/
+	switch ($formato) {
+		case 1:
+			$iconFormato = 'fab fa-amazon';
+			$textoFormato = 'Kindle';
+			break;
+		case 2:
+			$iconFormato = 'fas fa-tablet-alt';
+			$textoFormato = 'E-book';
+			break;
+		case 3:
+			$iconFormato = 'fas fa-book-open';
+			$textoFormato = 'Paperback';
+			break;
+		case 4:
+			$iconFormato = 'fas fa-book';
+			$textoFormato = 'Hardback';
+			break;
+		case 5:
+			$iconFormato = 'fas fa-volume-up';
+			$textoFormato = 'Audiobook';
+			break;
+		default:
+			$iconFormato = 'fas fa-question';
+			$textoFormato = '-';
+			break;
+	}
 	?>
 	
 
@@ -186,6 +222,7 @@ echo do_shortcode('[kkstarratings force="false" valign="bottom" align="left"]');
 	<ul class="list-group mb-4">
 		<li class="list-group-item"><strong>Editorial</strong>: <a href="<?php echo $urlEditorial;?>"><?php echo $editorial['post_title'];?></a></li>
 		<li class="list-group-item"><strong>Fecha publicación</strong>: <?php echo $fecha_publicacion;?></li>
+		<li class="list-group-item"><strong>Formato</strong>: <span class="<?php echo $iconFormato;?>"></span> <?php echo $textoFormato;?></li>
 		<li class="list-group-item"><strong>Páginas</strong>: <?php echo $paginas;?></li>
 		<li class="list-group-item"><strong>Idioma</strong>: <span class="flag-icon flag-icon-<?php echo $idioma;?>"></span></li>
 		<li class="list-group-item"><i class="fab fa-goodreads"></i><a href="<?php echo $url_goodreads;?>" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
