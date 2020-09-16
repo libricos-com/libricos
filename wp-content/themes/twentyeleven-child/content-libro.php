@@ -193,8 +193,8 @@ Template Name: Libro detail page
         'orderby' => 'post_date DESC'
     ); 
 	$reviews = $pod->field( 'reviews', $params );
-	$numReviews = count($reviews);
 	if ( ! empty( $reviews ) ) {
+		$numReviews = count($reviews);
 		?>
 		<h2>Reviews <span class="badge badge-danger"><i class="fas fa-clipboard-list mr-1"></i><span class="badge badge-danger"><?php echo $numReviews;?></span></span></h2>
 		<ul class="list-unstyled">
@@ -222,8 +222,8 @@ Template Name: Libro detail page
         'orderby' => 'post_date DESC'
     ); 
 	$notas = $pod->field( 'notas', $params );
-	$numNotas = count($notas);
 	if ( ! empty( $notas ) ) {
+		$numNotas = count($notas);
 		?>
 		<h2>Notas <span class="badge badge-warning"> <i class="fas fa-pencil-alt mr-1"></i><span class="badge badge-danger"><?php echo $numNotas;?></span></span></h2>
 		<ul class="list-unstyled">
@@ -250,8 +250,8 @@ Template Name: Libro detail page
         'orderby' => 'post_date DESC'
     ); 
 	$recomendaciones = $pod->field( 'recomendaciones', $params );
-	$numRecomendaciones = count($recomendaciones);
 	if ( ! empty( $recomendaciones ) ) {
+		$numRecomendaciones = count($recomendaciones);
 		?>
 		<h2>Recomendaciones <span class="badge badge-info"> <i class="fas fa-comment-dots mr-1"></i><span class="badge badge-info"><?php echo $numRecomendaciones;?></span></span></h2>
 		<ul class="list-unstyled">
