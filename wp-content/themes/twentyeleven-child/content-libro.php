@@ -18,11 +18,11 @@ Template Name: Libro detail page
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
+
+
+
 	<div class="entry-content">
 		
-
-
-
 
 
 <?php 
@@ -46,6 +46,9 @@ Template Name: Libro detail page
 	
 	<div class="text-center mb-4">
 		<a href="<?php echo $url;?>"><img src="<?php echo $portada[0]['guid'];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
+		<div><?php 
+echo do_shortcode('[kkstarratings force="false" valign="bottom" align="left"]');
+		?></div>
 	</div>
 
 	<h2>Sinopsis</h2>
