@@ -62,6 +62,7 @@ function theme_slug_filter_the_content( $content )
 {
 	global $post;
     $postType = get_post_type();
+    $titulo = get_the_title();
     $id = get_the_id();
 
     switch ($postType) {
@@ -87,7 +88,7 @@ function theme_slug_filter_the_content( $content )
     		break;
     }
 
-    $entidad = '<a href="'.get_permalink().'" class="btn '.$color.'" role="button" data-toggle="tooltip" title="'.$title.' '.get_the_title().'"><i class="fas '.$icon.'"></i> '.ucfirst($postType).'</a>';
+    $entidad = '<a href="'.get_permalink().'" class="btn '.$color.'" role="button" data-toggle="tooltip" title="'.$title.' '.$titulo.'"><i class="fas '.$icon.'"></i> '.ucfirst($postType).'</a>';
 
 
 
@@ -110,7 +111,7 @@ function theme_slug_filter_the_content( $content )
     $portada = get_post_meta($id,'portada');
     $htmlImagen = '';
      if( !empty($portada[0]['guid']) ){
-     	$htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de "></a></div>';
+     	$htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
      }
 
 
@@ -165,15 +166,18 @@ function theme_slug_filter_the_content( $content )
 
     $barra = '<div>'.$entidad.$estadoHtml.$htmlReviews.$htmlNotas.'</div>';
    
-    $expectativasHtml = '';
+    $libroHtml = $expectativasHtml = '';
     if($postType == 'libro'){
-    	$expectativas = get_post_meta($id,'expectativas');
-	    if(!empty($expectativas[0])){
-	    	$expectativasHtml = '<p>'.$expectativas[0].'</p>';
+    	$libroHtml = get_post_meta($id,'sinopsis')[0];
+    	$expectativas = trim(get_post_meta($id,'expectativas')[0]);
+	    if(!empty($expectativas)){
+	    	$expectativasHtml = $expectativas;
+	    	$libroHtml = $expectativasHtml;
 	    }
+	    $libroHtml = '<p>'.$libroHtml.'</p>';
 	}
 
-    return $barra.$content.$htmlImagen.$expectativasHtml;
+    return $barra.$content.$htmlImagen.$libroHtml;
     
 }
 add_filter( 'the_content', 'theme_slug_filter_the_content' );
