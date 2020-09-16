@@ -31,6 +31,7 @@ Template Name: Libro detail page
     $id = get_the_id();
 
     $titulo = get_post_meta( $id, 'titulo', true );
+    $post_title = get_the_title();
     $url = esc_url( get_permalink( $id ) );
 
 	$portada = get_post_meta($id,'portada');
@@ -192,9 +193,10 @@ Template Name: Libro detail page
         'orderby' => 'post_date DESC'
     ); 
 	$reviews = $pod->field( 'reviews', $params );
+	$numReviews = count($reviews);
 	if ( ! empty( $reviews ) ) {
 		?>
-		<h2>Mis reseñas</h2>
+		<h2>Reviews <span class="badge badge-danger"><i class="fas fa-clipboard-list mr-1"></i><span class="badge badge-danger"><?php echo $numReviews;?></span></span></h2>
 		<ul class="list-unstyled">
 			<?php
 			foreach ( $reviews as $review ) { 
@@ -204,7 +206,7 @@ Template Name: Libro detail page
 				?>
 				<li>
 					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($review['post_date']));?></span>
-					<a href="<?php echo $urlReview;?>" class="btn btn-lg px-3 btn-danger" role="button" data-toggle="tooltip" title="Esto es un análisis del libro"><i class="fas fa-clipboard-list"></i> <?php echo $nombreReview;?></a>
+					<i class="fas fa-clipboard-list"><a href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Esto es una reseña del libro <?php echo $post_title;?>"></i> <?php echo $nombreReview;?></a>
 				</li>
 				<?php
 			} //end of foreach
@@ -220,9 +222,10 @@ Template Name: Libro detail page
         'orderby' => 'post_date DESC'
     ); 
 	$notas = $pod->field( 'notas', $params );
+	$numNotas = count($notas);
 	if ( ! empty( $notas ) ) {
 		?>
-		<h2>Mis Notas</h2>
+		<h2>Notas <span class="badge badge-warning"> <i class="fas fa-pencil-alt mr-1"></i><span class="badge badge-danger"><?php echo $numNotas;?></span></span></h2>
 		<ul class="list-unstyled">
 			<?php
 			foreach ( $notas as $nota ) { 
@@ -232,7 +235,7 @@ Template Name: Libro detail page
 				?>
 				<li>
 					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($nota['post_date']));?></span>
-					<a href="<?php echo $urlNota;?>" class="btn btn-lg px-3 btn-warning" role="button" data-toggle="tooltip" title="Esto es una nota del libro"><i class="fas fa-pencil-alt"></i> <?php echo $nombreNota;?></a>
+					<i class="fas fa-pencil-alt"></i> <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="Esto es una nota del libro <?php echo $post_title;?>"><?php echo $nombreNota;?></a>
 				</li>
 				<?php
 			} //end of foreach
@@ -247,9 +250,10 @@ Template Name: Libro detail page
         'orderby' => 'post_date DESC'
     ); 
 	$recomendaciones = $pod->field( 'recomendaciones', $params );
+	$numRecomendaciones = count($recomendaciones);
 	if ( ! empty( $recomendaciones ) ) {
 		?>
-		<h2>Mis Recomendaciones</h2>
+		<h2>Recomendaciones <span class="badge badge-info"> <i class="fas fa-comment-dots mr-1"></i><span class="badge badge-info"><?php echo $numRecomendaciones;?></span></span></h2>
 		<ul class="list-unstyled">
 			<?php
 			foreach ( $recomendaciones as $recomendacion ) { 
@@ -259,7 +263,7 @@ Template Name: Libro detail page
 				?>
 				<li>
 					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($recomendacion['post_date']));?></span>
-					<a href="<?php echo $urlrecomendacion;?>" class="btn btn-lg px-3 btn-info" role="button" data-toggle="tooltip" title="Esto es una recomendacion del libro"><i class="fas fa-comment-dots"></i> <?php echo $nombrerecomendacion;?></a>
+					<i class="fas fa-comment-dots"></i> <a href="<?php echo $urlrecomendacion;?>" data-toggle="tooltip" title="Esto es una recomendacion del libro <?php echo $post_title;?>"><?php echo $nombrerecomendacion;?></a>
 				</li>
 				<?php
 			} //end of foreach

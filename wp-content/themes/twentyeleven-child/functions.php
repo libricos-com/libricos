@@ -55,6 +55,7 @@ function the_dramatist_return_post_id()
 
 
 /*
+Para el índice de posts en el blog
 @see: https://wordpress.stackexchange.com/questions/39918/wordpress-hooks-filters-insert-before-content-or-after-title
 */
 function theme_slug_filter_the_content( $content ) 
