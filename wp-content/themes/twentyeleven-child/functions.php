@@ -34,7 +34,7 @@ add_filter( 'pre_get_posts', 'my_get_posts' );
 function my_get_posts( $query ) 
 {
     if ( is_home() && $query->is_main_query() )
-        $query->set( 'post_type', array( 'post', 'libro' ) );
+        $query->set( 'post_type', array( 'post', 'libro', 'review', 'nota', 'autor', 'editorial' ) );
 
     return $query;
 }
@@ -80,6 +80,16 @@ function theme_slug_filter_the_content( $content )
     		$color = 'btn-warning';
     		$title = 'Esto es un conjunto de apuntes y pensamientos de un libro';
     		$icon  = 'fa-pencil-alt';
+    		break;
+		case 'autor':
+    		$color = 'btn-info';
+    		$title = 'Ficha de autor';
+    		$icon  = 'fa-user';
+    		break;
+		case 'editorial':
+    		$color = 'btn-info';
+    		$title = 'Ficha de la editorial';
+    		$icon  = 'fa-newspaper';
     		break;
     	default:
     		$color = 'btn-primary-orange';
