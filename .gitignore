@@ -27,3 +27,4 @@ node_modules/
 .htaccess
 nbproject
 wp-config.php
+wp-content/plugins/all-in-one-wp-migration/storage/index.html
