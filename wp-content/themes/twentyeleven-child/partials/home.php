@@ -1,9 +1,19 @@
+<?php 
+/*
+The template for displaying content in the tpl/home.php template
+@see: 
+- https://florianbrinkmann.com/en/organizing-files-functions-wordpress-theme-4190/
+- https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
+*/
+$urlBase = get_site_url();
+?>
+
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
     <div class="wp-block-column"><!-- wp:image {"align":"center","id":13561,"width":183,"height":183,"sizeSlug":"large"} -->
         <div class="wp-block-image">
 	       <figure class="aligncenter size-large is-resized"><a href="<?php echo $urlBase;?>/libros/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/libros.png" alt="" class="wp-image-13561" width="183" height="183"/></a></figure>
-       </div>
+        </div>
         <!-- /wp:image -->
 
         <!-- wp:heading {"align":"center"} -->
@@ -12,12 +22,13 @@
 
         <!-- wp:paragraph {"align":"center"} -->
         <p class="has-text-align-center">Libros que cuidan y sanan el alma. </p>
-        <!-- /wp:paragraph --></div>
-        <!-- /wp:column -->
+        <!-- /wp:paragraph -->
+    </div>
+    <!-- /wp:column -->
 
-        <!-- wp:column -->
-        <div class="wp-block-column"><!-- wp:image {"align":"center","id":13560,"sizeSlug":"large"} -->
-            <div class="wp-block-image"><figure class="aligncenter size-large"><a href="<?php echo $urlBase;?>/fotos/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/instagram.png" alt="" class="wp-image-13560"/></a></figure>
+    <!-- wp:column -->
+    <div class="wp-block-column"><!-- wp:image {"align":"center","id":13560,"sizeSlug":"large"} -->
+        <div class="wp-block-image"><figure class="aligncenter size-large"><a href="<?php echo $urlBase;?>/fotos/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/instagram.png" alt="" class="wp-image-13560"/></a></figure>
         </div>
         <!-- /wp:image -->
 
@@ -27,23 +38,24 @@
 
         <!-- wp:paragraph {"align":"center"} -->
         <p class="has-text-align-center">A través de la imagen trato de describir el mundo tal y como lo veo.</p>
-        <!-- /wp:paragraph --></div>
-        <!-- /wp:column -->
+        <!-- /wp:paragraph -->
+    </div>
+    <!-- /wp:column -->
 
-        <!-- wp:column -->
-        <div class="wp-block-column"><!-- wp:image {"align":"center","id":13562,"sizeSlug":"large"} -->
-            <div class="wp-block-image">
-                <figure class="aligncenter size-large"><a href="<?php echo $urlBase;?>/blog/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/wordpress.png" alt="" class="wp-image-13562"/></a></figure>
-            </div>
-            <!-- /wp:image -->
+    <!-- wp:column -->
+    <div class="wp-block-column"><!-- wp:image {"align":"center","id":13562,"sizeSlug":"large"} -->
+        <div class="wp-block-image">
+            <figure class="aligncenter size-large"><a href="<?php echo $urlBase;?>/blog/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/wordpress.png" alt="" class="wp-image-13562"/></a></figure>
+        </div>
+        <!-- /wp:image -->
 
-            <!-- wp:heading {"align":"center"} -->
-            <h2 class="has-text-align-center">Blog</h2>
-            <!-- /wp:heading -->
+        <!-- wp:heading {"align":"center"} -->
+        <h2 class="has-text-align-center">Blog</h2>
+        <!-- /wp:heading -->
 
-            <!-- wp:paragraph {"align":"center"} -->
-            <p class="has-text-align-center">Pildoras de fe, pensamientos y palabras.</p>
-            <!-- /wp:paragraph -->
+        <!-- wp:paragraph {"align":"center"} -->
+        <p class="has-text-align-center">Pildoras de fe, pensamientos y palabras.</p>
+        <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 </div>

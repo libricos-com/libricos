@@ -1,9 +1,7 @@
-<?php
+<?php 
 /*
-Template Name: Libro detail page
-@see: 
-- https://wordpress.org/support/topic/providing-templates-with-php/
-- https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
+The template for displaying content in the single-libro.php template
+@see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 */
 ?>
 
