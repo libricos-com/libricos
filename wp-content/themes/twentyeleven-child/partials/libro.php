@@ -33,6 +33,7 @@ The template for displaying content in the single-libro.php template
     $url = esc_url( get_permalink( $id ) );
 
 	$portada = get_post_meta($id,'portada');
+	$src = wp_get_attachment_image_src($portada[0]['ID'], 400);
 	$sinopsis = get_post_meta($id,'sinopsis')[0];
 
 	//get Pods object for current post
@@ -43,7 +44,7 @@ The template for displaying content in the single-libro.php template
 <div>
 	
 	<div class="text-center mb-4">
-		<a href="<?php echo $url;?>"><img src="<?php echo $portada[0]['guid'];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
+		<a href="<?php echo $url;?>"><img src="<?php echo $src[0];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
 		<div><?php echo get_kkstarring();?></div>
 	</div>
 
