@@ -17,7 +17,7 @@ class Permalink_Manager_Admin_Functions extends Permalink_Manager_Class {
 		add_action( 'admin_notices', array($this, 'display_global_notices'));
 		add_action( 'wp_ajax_dismissed_notice_handler', array($this, 'hide_global_notice') );
 
-		add_filter( 'default_hidden_columns', array($this, 'quick_edit_hide_column'), 10, 2 );
+		add_filter( 'default_hidden_columns', array($this, 'quick_edit_hide_column'), 99, 2 );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Permalink_Manager_Admin_Functions extends Permalink_Manager_Class {
 	 */
 	public function fix_customize_url($wp_admin_bar) {
 		$object = get_queried_object();
-		
+
 		$customize = $wp_admin_bar->get_node('customize');
 
 		if(empty($customize->href)) { return; }
@@ -1013,7 +1013,7 @@ class Permalink_Manager_Admin_Functions extends Permalink_Manager_Class {
 		if(class_exists('Permalink_Manager_Pro_Functions')) {
 			$exp_date = Permalink_Manager_Pro_Functions::get_expiration_date(true);
 
-			$is_pro = ($exp_date > 0) ? false : true;
+			$is_pro = ($exp_date > 1) ? false : true;
 		} else {
 			$is_pro = false;
 		}
