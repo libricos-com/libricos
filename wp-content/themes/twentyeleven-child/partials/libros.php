@@ -132,5 +132,5 @@ if( ! empty( $posts ) ){
 ?>
 
 <h2>Libros leídos</h2>
-<?php echo get_amazon_grid_beta(2);?>
+<?php echo get_amazon_grid_shortcode_beta(2);?>
 

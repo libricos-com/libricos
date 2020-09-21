@@ -10,4 +10,7 @@ add_shortcode( 'get_blog_intro', 'the_dramatist_return_post_id' );
 add_shortcode( 'get_kkstarring', 'get_kkstarring' );
 
 /* Grid de iframes de compra Amazon en template de Pods */
-add_shortcode( 'get_amazon_grid_beta', 'get_amazon_grid_beta' );
+add_shortcode( 'get_amazon_grid_shortcode_beta', 'get_amazon_grid_shortcode_beta' );
+
+/* Grid de reviews en la página ppal de reviews */
+add_shortcode( 'get_grid_reviews_shortcode', 'get_grid_reviews_shortcode' );

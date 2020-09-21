@@ -22,8 +22,15 @@ function get_kkstarring()
 6 | No interesado
 7 | Cuarentena
 */
-function get_amazon_grid_beta($estado = 2) 
+function get_amazon_grid_shortcode_beta($estado = 2) 
 {
     return do_shortcode('[pods name="libro" limit="99" where="estado.meta_value='.$estado.'" orderby="post_date DESC" template="Libros Amazon Grid"]');
 }
+
+function get_grid_reviews_shortcode() 
+{
+    return do_shortcode('[pods name="review" limit="99" orderby="post_date DESC" template="Reviews Grid Template"]');
+}
+
+
 
