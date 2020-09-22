@@ -3,5 +3,22 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MariaDB",
+				"name": "Jesuserro.com - Localhost",
+				"database": "jesuserro.com",
+				"username": "demo",
+				"password": "demo"
+			}
+		]
+	}
 }
