@@ -1,3 +1,12 @@
+GET http://192.168.1.47/jesuserro.com/wp-json
+
+###
+
+GET http://jesuserro.com/wp-json
+
+###
+
+
 GET https://www.googleapis.com/books/v1/volumes?q=isbn:9788428537698
 
 ###
