@@ -23,6 +23,9 @@ node_modules/
 *.sqlite
 /nbproject/private/
 
+# Composer ignores
+vendor
+
 #jesus ignores
 .htaccess
 nbproject
