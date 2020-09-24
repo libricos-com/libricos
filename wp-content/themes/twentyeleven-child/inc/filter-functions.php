@@ -126,7 +126,7 @@ function theme_slug_filter_the_content( $content )
 
     $barra = '<div>'.$entidad.$estadoHtml.$htmlReviews.$htmlNotas.'</div>';
    
-    $libroHtml = $expectativasHtml = '';
+    $libroHtml = $contentHtml = $expectativasHtml = '';
     if($postType == 'libro'){
     	$libroHtml = get_post_meta($id,'sinopsis')[0];
     	$expectativas = trim(get_post_meta($id,'expectativas')[0]);
@@ -134,9 +134,18 @@ function theme_slug_filter_the_content( $content )
 	    	$expectativasHtml = $expectativas;
 	    	$libroHtml = $expectativasHtml;
 	    }
-	    $libroHtml = '<p>'.$libroHtml.'</p>';
-	}
+	    $contentHtml = $libroHtml;
+	}else if($postType == 'review'){
+        $libro = get_post_meta($id,'libro')[0];
+        $portada = get_post_meta($libro['ID'],'portada');
+        $htmlImagen = '';
+        if( !empty($portada[0]['guid']) ){
+            $htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
+        }
+        $contentHtml = get_post_meta($id,'entradilla')[0];
+    }
+    $contentHtml = '<p>'.$contentHtml.'</p>';
 
-    return $barra.$content.$htmlImagen.$libroHtml;
+    return $barra.$content.$htmlImagen.$contentHtml;
     
 }
