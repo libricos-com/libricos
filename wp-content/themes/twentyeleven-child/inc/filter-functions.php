@@ -143,6 +143,8 @@ function theme_slug_filter_the_content( $content )
             $htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
         }
         $contentHtml = get_post_meta($id,'entradilla')[0];
+    }else if($postType == 'autor'){
+        $contentHtml = get_post_meta($id,'entradilla')[0];
     }
     $contentHtml = '<p>'.$contentHtml.'</p>';
 
