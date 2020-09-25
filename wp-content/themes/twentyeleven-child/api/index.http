@@ -15,11 +15,11 @@ GET https://www.googleapis.com/books/v1/volumes?q=isbn:9788428537698
 
 ###
 
-GET https://www.goodreads.com/book/isbn?format=xml&key=DkLO3yfzNSM1JLOIJFXL3A&isbn=9788428537698
+GET https://www.goodreads.com/book/isbn?format=xml&key=1234567890123456789012&isbn=9788428537698
 
 ###
 
-POST https://www.goodreads.com/book/isbn?format=xml&key=DkLO3yfzNSM1JLOIJFXL3A&isbn=9788428537698
+POST https://www.goodreads.com/book/isbn?format=xml&key=1234567890123456789012&isbn=9788428537698
 
 ###
 
