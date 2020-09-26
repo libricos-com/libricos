@@ -740,6 +740,7 @@ function sb_instagram_settings_page() {
 							$in_user_feed = in_array( $account['user_id'], $user_feed_ids, true );
 							$account_type = isset( $account['type'] ) ? $account['type'] : 'personal';
 							$use_tagged = isset( $account['use_tagged'] ) && $account['use_tagged'] == '1';
+							$is_private = isset( $account['private'] ) && $account['private'] !== false;
 
 							if ( empty( $profile_picture ) && $account_type === 'personal' ) {
 								$account_update = sbi_account_data_for_token( $account['access_token'] );
@@ -779,18 +780,31 @@ function sb_instagram_settings_page() {
                                     </div>
 
                                     <div class="sbi_ca_username">
-										<?php echo $profile_picture; ?>
-                                        <strong><?php echo $username; ?><span><?php echo sbi_account_type_display( $account_type ); ?></span></strong>
+		                                <?php echo $profile_picture; ?>
+                                        <strong><?php echo $username; ?><span><?php echo sbi_account_type_display( $account_type, isset( $account['private'] ) ); ?></span></strong>
                                     </div>
 
                                     <div class="sbi_ca_actions">
-										<?php if ( ! $in_user_feed ) : ?>
+		                                <?php if ( ! $in_user_feed ) : ?>
                                             <a href="JavaScript:void(0);" class="sbi_use_in_user_feed button-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php _e( 'Add to Primary Feed', 'instagram-feed' ); ?></a>
-										<?php else : ?>
+		                                <?php else : ?>
                                             <a href="JavaScript:void(0);" class="sbi_remove_from_user_feed button-primary"><i class="fa fa-minus-circle" aria-hidden="true"></i><?php _e( 'Remove from Primary Feed', 'instagram-feed' ); ?></a>
-										<?php endif; ?>
+		                                <?php endif; ?>
                                         <a class="sbi_ca_token_shortcode button-secondary" href="JavaScript:void(0);"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i><?php _e( 'Add to another Feed', 'instagram-feed' ); ?></a>
                                         <a class="sbi_ca_show_token button-secondary" href="JavaScript:void(0);" title="<?php _e('Show access token and account info', 'instagram-feed'); ?>"><i class="fa fa-cog"></i></a>
+		                                <?php if ( $is_private ) :
+			                                $expires_in = max( 0, floor( ($account['expires_timestamp'] - time()) / DAY_IN_SECONDS ) );
+			                                $message = $expires_in > 0 ? sprintf( __( 'Expires in %s days', 'instagram-feed' ), $expires_in ) : __( 'Access Token Expired', 'instagram-feed' );
+			                                $alert_class = $expires_in < 10 ? ' sbi_alert' : '';
+			                                ?>
+                                            <div class="sbi_is_private<?php echo esc_attr( $alert_class ); ?>">
+                                                <span><?php echo esc_html( $message ); ?></span>
+                                                <a class="sbi_tooltip_link sbi_tooltip_outside" href="JavaScript:void(0);" style="position: relative; top: 2px;"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+
+                                                <a href="https://api.instagram.com/oauth/authorize?app_id=423965861585747&redirect_uri=https://api.smashballoon.com/instagram-basic-display-redirect.php&response_type=code&scope=user_profile,user_media&state=<?php echo admin_url( 'admin.php?page=sb-instagram-feed' ); ?>" class="button button-secondary"><?php _e( 'Refresh now', 'instagram-feed' ); ?></a>
+                                            </div>
+                                            <p class="sbi_tooltip sbi-more-info" style="display: none; width: 100%; box-sizing: border-box;"><?php echo sprintf( __( 'This account is a "private" account on Instagram. It needs to be manually reconnected every 60 days. %sChange this account to be "public"%s to have access tokens that are automatically refreshed.', 'instagram-feed' ), '<a href="https://help.instagram.com/116024195217477/In" target="_blank">', '</a>' ); ?></p>
+		                                <?php endif; ?>
 
                                     </div>
 
@@ -799,16 +813,12 @@ function sb_instagram_settings_page() {
                                         <p><?php _e('Copy and paste this shortcode into your page or widget area', 'instagram-feed'); ?>:<br>
 											<?php if ( !empty( $account['username'] ) ) : ?>
                                                 <code>[instagram-feed user="<?php echo $account['username']; ?>"]</code>
-											<?php else : ?>
-                                                <code>[instagram-feed accesstoken="<?php echo $account['access_token']; ?>"]</code>
 											<?php endif; ?>
                                         </p>
 
                                         <p><?php _e('To add multiple users in the same feed, simply separate them using commas', 'instagram-feed'); ?>:<br>
 											<?php if ( !empty( $account['username'] ) ) : ?>
                                                 <code>[instagram-feed user="<?php echo $account['username']; ?>, a_second_user, a_third_user"]</code>
-											<?php else : ?>
-                                                <code>[instagram-feed accesstoken="<?php echo $account['access_token']; ?>, another_access_token"]</code>
 											<?php endif; ?>
 
                                         <p><?php echo sprintf( __('Click on the %s tab to learn more about shortcodes', 'instagram-feed'), '<a href="?page=sb-instagram-feed&tab=display" target="_blank">'. __( 'Display Your Feed', 'instagram-feed' ) . '</a>' ); ?></p>
@@ -2175,7 +2185,6 @@ function sb_instagram_settings_page() {
 			<p><?php _e( 'You can display as many different feeds as you like, on either the same page or on different pages, by just using the shortcode options below. For example:', 'instagram-feed' ); ?><br />
 				<code>[instagram-feed]</code><br />
 				<code>[instagram-feed num=4 cols=4 showfollow=false]</code><br />
-				<code>[instagram-feed accesstoken="ANOTHER_ACCESS_TOKEN"]</code>
 			</p>
 			<p><?php _e("See the table below for a full list of available shortcode options:", 'instagram-feed'); ?></p>
 

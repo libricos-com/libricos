@@ -7,7 +7,8 @@
 #sbi_admin h3{
 	padding: 15px 0 0 0;
 }
-#sbi_admin .sbi_tooltip{
+#sbi_admin .sbi_tooltip,
+#sbi_admin .sbi_extra_info{
 	width: 80%;
 	display: none;
 
@@ -16,7 +17,7 @@
 	font-size: 13px;
 	background: #f9f9f9;
 	background: rgba(255,255,255,0.8);
-	
+
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
@@ -324,6 +325,12 @@
 }
 
 /* Error notice */
+#sbi_admin .sbi_alert,
+#sbi_admin .sbi_alert .sbi_tooltip {
+	background: #F7E6E6;
+	border-color: #BA7B7B;
+	color: #592626;
+}
 #sbi_admin .sbi_notice{
 	margin-top: 5px;
 	background: #f9ecda;
@@ -360,6 +367,11 @@
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
+}
+.sbi_alert {
+	background: #F7E6E6;
+	border-color: #BA7B7B;
+	color: #592626;
 }
 
 /* Update notice */
@@ -630,7 +642,7 @@
 #sbi_admin .sbi_connected_account {
 	position: relative;
 	box-sizing: border-box;
-	padding: 10px 35px 10px 10px;
+	padding: 10px 86px 10px 10px;
 	border-radius: 5px;
 	background: #fff;
 	margin-bottom: 5px;
@@ -682,6 +694,34 @@
 #sbi_admin .sbi_ca_at_is_valid {
 	margin-top: 10px;
 	display: none;
+}
+
+#sbi_admin .sbi_is_private .sbi_tooltip_link{
+	top: 1px !important;
+	margin: 0 -5px 0 5px;
+}
+
+.sbi_is_private {
+	position: relative;
+	display: inline-block;
+	border: 1px solid #ccc;
+	font-size: 12px;
+	padding: 4px 4px 4px 8px;
+	vertical-align: top;
+	margin: 4px 5px 0 0;
+	border-radius: 4px;
+
+	background: #fdf4e5;
+	border: 1px solid #e6bc88;
+	color: #94570c;
+}
+.sbi_is_private > span {
+	display: inline-block;
+	padding-top: 3px;
+}
+#sbi_admin .sbi_is_private a.button.button-secondary {
+	margin: 0 0 0 5px;
+	padding: 2px 6px;
 }
 
 @-webkit-keyframes sbi_flash {

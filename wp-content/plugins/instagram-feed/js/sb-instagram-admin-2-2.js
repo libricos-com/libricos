@@ -268,7 +268,7 @@ jQuery(document).ready(function($) {
                     $('#sbi_connected_account_'+savedToken.user_id + ' .sbi_ca_username').prepend('<img class="sbi_ca_avatar" src="'+savedToken.profile_picture+'">');
                 }
             }
-            $('#sbi_connected_account_'+savedToken.user_id + ' .sbi_ca_username').find('span').text(sbiAccountType(savedToken.type));
+            $('#sbi_connected_account_'+savedToken.user_id + ' .sbi_ca_username').find('span').text(sbiAccountType(savedToken.type,false));
 
             $('#sbi_connected_account_'+savedToken.user_id).find('.sbi_ca_accesstoken .sbi_ca_token').text(savedToken.access_token);
             $('#sbi_connected_account_'+savedToken.user_id).find('.sbi_tooltip code').text('[instagram-feed accesstoken="'+savedToken.access_token+'"]');
@@ -281,6 +281,7 @@ jQuery(document).ready(function($) {
             } else {
                 var accountType = 'personal';
             }
+            var isPrivate = (typeof savedToken.private !== 'undefined');
 
             var avatarHTML = '';
             if (savedToken.profile_picture !== '') {
@@ -299,7 +300,7 @@ jQuery(document).ready(function($) {
 
                     '<div class="sbi_ca_username">'+
                     avatarHTML+
-                    '<strong>'+savedToken.username+'<span>'+sbiAccountType(accountType)+'</span></strong>'+
+                    '<strong>'+savedToken.username+'<span>'+sbiAccountType(accountType,isPrivate)+'</span></strong>'+
                     '</div>'+
 
                     '<div class="sbi_ca_actions">'+
@@ -358,9 +359,13 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function sbiAccountType(accountType) {
+    function sbiAccountType(accountType,isPrivate) {
         if (accountType === 'basic') {
-            return 'personal (new API)';
+            var returnText = 'personal';
+            if (isPrivate) {
+                returnText += ' (private)'
+            }
+            return returnText;
         }
         return accountType;
     }
@@ -798,7 +803,9 @@ jQuery(document).ready(function($) {
         if( jQuery(this).hasClass('sbi_type_tooltip_link') ){
             jQuery(this).closest('.sbi_row').children('.sbi_tooltip').slideToggle();
         } else {
-            jQuery(this).siblings('.sbi_tooltip').slideToggle();
+            $el = jQuery(this);
+            if( jQuery(this).hasClass('sbi_tooltip_outside') ) $el = jQuery(this).parent();
+            $el.siblings('.sbi_tooltip').slideToggle();
         }
     });
 

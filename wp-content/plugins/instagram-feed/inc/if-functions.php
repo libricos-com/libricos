@@ -828,6 +828,28 @@ function sbi_json_encode( $thing ) {
     }
 }
 
+function sbi_private_account_near_expiration( $connected_account ) {
+	$expires_in = max( 0, floor( ($connected_account['expires_timestamp'] - time()) / DAY_IN_SECONDS ) );
+	return $expires_in < 10;
+}
+
+function sbi_update_connected_account( $account_id, $to_update ) {
+	$if_database_settings = sbi_get_database_settings();
+
+	$connected_accounts = $if_database_settings['connected_accounts'];
+
+	if ( isset( $connected_accounts[ $account_id ] ) ) {
+
+		foreach ( $to_update as $key => $value ) {
+			$connected_accounts[ $account_id ][ $key ] = $value;
+		}
+
+		$if_database_settings['connected_accounts'] = $connected_accounts;
+
+		update_option( 'sb_instagram_settings', $if_database_settings );
+	}
+}
+
 /**
  * Used to clear caches when transients aren't working
  * properly
@@ -1266,12 +1288,34 @@ function sbi_send_report_email() {
 	$headers = array( 'Content-Type: text/html; charset=utf-8', $header_from );
 
 	$header_image = SBI_PLUGIN_URL . 'img/balloon-120.png';
-	$title = __( 'Instagram Feed Report for ' . home_url() );
+
 	$link = admin_url( '?page=sb-instagram-feed');
-	$footer_link = admin_url('admin.php?page=sb-instagram-feed&tab=customize&flag=emails');
-	$bold = __( 'There\'s an Issue with an Instagram Feed on Your Website', 'instagram-feed' );
-	$details = '<p>' . __( 'An Instagram feed on your website is currently unable to connect to Instagram to retrieve new posts. Don\'t worry, your feed is still being displayed using a cached version, but is no longer able to display new posts.', 'instagram-feed' ) . '</p>';
-	$details .= '<p>' . sprintf( __( 'This is caused by an issue with your Instagram account connecting to the Instagram API. For information on the exact issue and directions on how to resolve it, please visit the %sInstagram Feed settings page%s on your website.', 'instagram-feed' ), '<a href="' . esc_url( $link ) . '">', '</a>' ). '</p>';
+	//&tab=customize-advanced
+	$footer_link = admin_url('admin.php?page=sb-instagram-feed&tab=customize-advanced&flag=emails');
+
+	$is_expiration_notice = false;
+
+	if ( isset( $options['connected_accounts'] ) ) {
+		foreach ( $options['connected_accounts'] as $account ) {
+			if ( $account['type'] === 'basic'
+			     && isset( $account['private'] )
+			     && sbi_private_account_near_expiration( $account ) ) {
+				$is_expiration_notice = true;
+			}
+		}
+	}
+
+	if ( ! $is_expiration_notice ) {
+		$title = sprintf( __( 'Instagram Feed Report for %s', 'instagram-feed' ), str_replace( array( 'http://', 'https://' ), '', home_url() ) );
+		$bold = __( 'There\'s an Issue with an Instagram Feed on Your Website', 'instagram-feed' );
+		$details = '<p>' . __( 'An Instagram feed on your website is currently unable to connect to Instagram to retrieve new posts. Don\'t worry, your feed is still being displayed using a cached version, but is no longer able to display new posts.', 'instagram-feed' ) . '</p>';
+		$details .= '<p>' . sprintf( __( 'This is caused by an issue with your Instagram account connecting to the Instagram API. For information on the exact issue and directions on how to resolve it, please visit the %sInstagram Feed settings page%s on your website.', 'instagram-feed' ), '<a href="' . esc_url( $link ) . '">', '</a>' ). '</p>';
+	} else {
+		$title = __( 'Your Private Instagram Feed Account Needs to be Reauthenticated', 'instagram-feed' );
+		$bold = __( 'Access Token Refresh Needed', 'instagram-feed' );
+		$details = '<p>' . __( 'As your Instagram account is set to be "Private", Instagram requires that you reauthenticate your account every 60 days. This a courtesy email to let you know that you need to take action to allow the Instagram feed on your website to continue updating. If you don\'t refresh your account, then a backup cache will be displayed instead.', 'instagram-feed' ) . '</p>';
+		$details .= '<p>' . sprintf( __( 'To prevent your account expiring every 60 days %sswitch your account to be public%s. For more information and to refresh your account, click here to visit the %sInstagram Feed settings page%s on your website.', 'instagram-feed' ), '<a href="https://help.instagram.com/116024195217477/In">', '</a>', '<a href="' . esc_url( $link ) . '">', '</a>' ). '</p>';
+	}
 	$message_content = '<h6 style="padding:0;word-wrap:normal;font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;font-weight:bold;line-height:130%;font-size: 16px;color:#444444;text-align:inherit;margin:0 0 20px 0;Margin:0 0 20px 0;">' . $bold . '</h6>' . $details;
 	include_once SBI_PLUGIN_DIR . 'inc/class-sb-instagram-education.php';
 	$educator = new SB_Instagram_Education();
@@ -1280,6 +1324,7 @@ function sbi_send_report_email() {
 	include SBI_PLUGIN_DIR . 'inc/email.php';
 	$email_body = ob_get_contents();
 	ob_get_clean();
+
 	$sent = wp_mail( $to_array, $title, $email_body, $headers );
 
 	return $sent;

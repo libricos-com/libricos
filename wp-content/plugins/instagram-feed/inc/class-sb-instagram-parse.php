@@ -268,10 +268,10 @@ class SB_Instagram_Parse
 	public static function get_name( $header_data ) {
 		if ( isset( $header_data['name'] ) ) {
 			return $header_data['name'];
-		} elseif ( isset( $header_data['data'] ) ) {
+		} elseif ( isset( $header_data['data']['full_name'] ) ) {
 			return $header_data['data']['full_name'];
 		}
-		return '';
+		return SB_Instagram_Parse::get_username( $header_data );
 	}
 
 	/**
