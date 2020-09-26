@@ -7,6 +7,22 @@ function my_get_posts( $query )
     return $query;
 }
 
+function str_replace_first($from, $to, $content)
+{
+    $from = '/'.preg_quote($from, '/').'/';
+    return preg_replace($from, $to, $content, 1);
+}
+
+/*
+En DEV las urls cambian con las IPs del XAMPP
+Por ejemplo: http://192.168.1.44/jesuserro.com/wp-content/uploads/2020/09/ignacio-loyola.jpg
+Cuando el domain ha cambiado a .47
+*/
+function fix_url_domain($src)
+{
+    $domain = get_site_url(); // http://192.168.1.47/jesuserro.com
+    return preg_replace('/(.*\/jesuserro\.com)/m', $domain, $src);
+}
 
 function theme_slug_filter_the_content( $content ) 
 {
@@ -66,12 +82,14 @@ function theme_slug_filter_the_content( $content )
 </button>';
     }
  
-
-
     $portada = get_post_meta($id,'portada');
     $htmlImagen = '';
      if( !empty($portada[0]['guid']) ){
-     	$htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
+        $src = $portada[0]['guid']; 
+        if(WP_DEBUG){
+            $src = fix_url_domain($src);
+        }
+     	$htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$src.'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
      }
 
 
