@@ -1,11 +1,11 @@
-=== WordPress SEO Plugin - Rank Math ===
+=== Rank Math - SEO Plugin for WordPress ===
 Contributors: rankmath
 Plugin link: https://s.rankmath.com/homepage
 Tags: seo, sitemap, google search console, schema, redirection
 Tested up to: 5.5.1
 Requires at least: 5.2
 Requires PHP: 7.0
-Stable tag: 1.0.48
+Stable tag: 1.0.48.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -475,6 +475,14 @@ Please drop us an email at support@rankmath.com and we would be more than happy 
 
 == Changelog ==
 
+= 1.0.48.1 [Sep 27, 2020] =
+* Added: A Filter hook in the Setup Wizard steps
+* Fixed: External Redirections were not working on some installations
+* Fixed: Content analysis was not detecting the content added in the Elementor editor
+* Fixed: Hidden Primary Category option in the Classic Editor due to small CSS bug
+* Fixed: Breaking of Rank Math metabox after using `rank_math/gutenberg/enabled` filter in the Block editor
+* Fixed: jQuery Migrate Helper deprecated warning appearing after the last update
+
 = 1.0.48 [Sep 26, 2020] =
 * Added: [HUGE] Completely revamped the UI for our [Schema](https://rankmath.com/kb/rich-snippets/) module. Introducing tree structure UI, now anyone can easily understand the Schema markup in a visual format. Comes with required field validation.
 * Added: [NEW] [Entity Graph](https://www.w3.org/TR/json-ld/#named-graphs) for the Schema markup. Now all the nodes are connected by edges
@@ -495,7 +503,6 @@ Please drop us an email at support@rankmath.com and we would be more than happy 
 * Fixed: Removed non-archive CPT pages from the breadcrumb's schema markup code
 * Fixed: Shortcodes were not rendering on the frontend for the Category/Taxonomy description text
 * Fixed: CPTs created by some third party plugins in the [Titles & Meta](https://rankmath.com/kb/titles-and-meta/) global settings were not displaying
-* Fixed: PHP warnings related to [beta testing](https://rankmath.com/kb/version-control/#beta-updates) functionality on some installations
 * Fixed: Datepicker styling issue with the Coupon theme from PremiumPress
 * Fixed: Opening Days in the Restaurant Schema were not available for the block editor & Elementor
 * Fixed: Minimum required WordPress version notice in the Setup Wizard
