@@ -8,6 +8,8 @@ The template for displaying content in the tpl/home.php template
 $urlBase = get_site_url();
 ?>
 
+<p class="lead text-center">Bienvenido a mi blog. Trato de fomentar la lectura en general - clásicos de la literatura fundamentalmente - y los libros sobre espiritualidad cristiana en particular.</p>
+
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
     <div class="wp-block-column"><!-- wp:image {"align":"center","id":13561,"width":183,"height":183,"sizeSlug":"large"} -->
