@@ -36,7 +36,8 @@ if($reviews){
 // echo aawp_get_field_value($asin, 'price');
 ?>
 
-<div class="jei12345" style="clear:both; min-height:46px; overflow:hidden;">
+<div class="jei12345" style="clear:both; min-height:73px; overflow:hidden;">
+    <a href="<?php echo get_permalink($id_libro);?>" data-toggle="tooltip" title="Ficha del libro <?php echo $post_title;?>" class="badge badge-primary"><i class="fas fa-book"></i> Ficha</a>
     <?php if($reviews){ ?>
         <ul class="list-unstyled" style="margin:0;">
             <?php
@@ -47,8 +48,8 @@ if($reviews){
                     $nombreReview = get_the_title( $idA );
                     ?>
                     <li>
-                        <span class="badge badge-pill btn-danger"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($review['post_date']));?></span>
-                        <i class="fas fa-clipboard-list"></i> <a href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Esto es una reseña del libro <?php echo $post_title;?>">Review <?php echo $i;?></a>
+                        <span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($review['post_date']));?></span>
+                        <a class="badge badge-danger" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $post_title;?>"><i class="fas fa-clipboard-list"></i> Review <?php echo $i;?></a>
                     </li>
                     <?php
                     $i++;
