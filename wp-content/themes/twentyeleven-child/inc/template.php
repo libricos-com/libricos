@@ -10,3 +10,14 @@ function my_datum($input_date)
 {
 	return date_i18n('Y F d', strtotime($input_date));
 }
+
+// @see https://stackoverflow.com/questions/5629853/creating-a-custom-php-template
+function view($file, $vars) 
+{
+    ob_start();
+    extract($vars);
+    include dirname(__FILE__) . '/../aawp/products/' . $file . '.php';
+    $buffer = ob_get_contents();
+    ob_end_clean();
+    return $buffer;
+}
