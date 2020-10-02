@@ -36,15 +36,16 @@ $argsLibros = array(
 );
 $libros = get_posts($argsLibros);
 $num = count($libros);
-$asins = '';
+$asins = $ids = '';
 if( ! empty( $libros ) ){
 	foreach ( $libros as $libro ){
         if(empty($libro->asin)){
             continue;
         }
         $asins .= $libro->asin.',';
+        $ids .= $libro->ID.',';
     }
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" grid="3"]');
+    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 }
 ?>
 
@@ -68,7 +69,7 @@ $args = array(
     )
 );
 $libros = get_posts($args);
-$asins = '';
+$asins = $ids = '';
 $num = count($libros);
 if( ! empty( $libros ) ){
 	foreach ( $libros as $libro ){
@@ -76,8 +77,9 @@ if( ! empty( $libros ) ){
             continue;
         }
         $asins .= $libro->asin.',';
+        $ids .= $libro->ID.',';
     }
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" grid="3"]');
+    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 }
 ?>
 
@@ -95,7 +97,7 @@ $args = array(
     )
 );
 $libros = get_posts($args);
-$asins = '';
+$asins = $ids = '';
 $num = count($libros);
 if( ! empty( $libros ) ){
 	foreach ( $libros as $libro ){
@@ -103,8 +105,9 @@ if( ! empty( $libros ) ){
             continue;
         }
         $asins .= $libro->asin.',';
+        $ids .= $libro->ID.',';
     }
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" grid="3"]');
+    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 }
 ?>
 
