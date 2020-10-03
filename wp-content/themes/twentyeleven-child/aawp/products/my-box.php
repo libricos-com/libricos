@@ -1,5 +1,4 @@
 <div class="my-box">
-    <a href="<?php echo get_permalink($this2->id_libro);?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->post_title;?>" class="badge badge-primary"><i class="fas fa-book"></i> Ficha</a>
     <?php if($this2->reviews){ ?>
         <ul class="list-unstyled">
             <?php

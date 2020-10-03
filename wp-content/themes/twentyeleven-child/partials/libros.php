@@ -111,6 +111,10 @@ if( ! empty( $libros ) ){
 }
 ?>
 
+<h2>Novedades Amazon</h2>
+<?php echo do_shortcode('[amazon new="cristianismo" grid="3"]'); ?>
+
+
 <h2>Otros libros de cristianismo</h2>
-<?php echo do_shortcode('[amazon bestseller="%cristianismo%"] grid="3"'); ?>
+<?php echo do_shortcode('[amazon bestseller="%cristianismo%"]'); ?>
 
