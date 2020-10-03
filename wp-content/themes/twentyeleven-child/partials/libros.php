@@ -111,6 +111,3 @@ if( ! empty( $libros ) ){
 }
 ?>
 
-<h2>Libros leídos</h2>
-<?php echo get_amazon_grid_shortcode_beta(2);?>
-

@@ -1,0 +1,9 @@
+.my-box{
+    clear:both; 
+    min-height:73px; 
+    overflow:hidden;
+}
+
+.my-box ul{
+    margin:0;
+}

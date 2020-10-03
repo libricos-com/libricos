@@ -10,6 +10,30 @@
 if ( ! defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
+
+$this->asin = $this->get_product_id();
+$this->index = $this->item_index;
+// $variables = $this->get_template_variables();
+$this->ids = $this->get_template_variable( 'ids', false );
+
+if( !is_array($this->ids) ){
+    $this->ids = explode(',', $this->ids);
+}
+
+$this->id_libro =  $this->ids[ $this->index - 1 ];
+$this->post_title = get_the_title($this->id_libro);
+
+$this->pod = pods( 'libro', $this->id_libro );
+$this->params = array( 
+    'orderby' => 'post_date DESC'
+); 
+$this->reviews = $this->pod->field( 'reviews', $this->params );
+if($this->reviews){
+    $this->numReviews = count($this->reviews);
+}else{
+    $this->numReviews = 0;
+}
+// echo aawp_get_field_value($asin, 'price');
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
