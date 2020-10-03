@@ -29,6 +29,7 @@ The template for displaying content in the single-libro.php template
     $id = get_the_id();
 
     $titulo = get_post_meta( $id, 'titulo', true );
+    $asin = get_post_meta( $id, 'asin', true );
     $post_title = get_the_title();
     $url = esc_url( get_permalink( $id ) );
 
@@ -176,7 +177,10 @@ The template for displaying content in the single-libro.php template
 	$idioma = get_post_meta($id,'idioma')[0];
 	$url_goodreads = get_post_meta($id,'url_goodreads')[0];
 	
-	$formato = get_post_meta($id,'formato')[0];
+    $formato = get_post_meta($id,'formato');
+    if(!empty($formato[0])){
+        $formato = $formato[0];
+    }
 	/*
 	Formato:
 	1 | Kindle
@@ -242,7 +246,7 @@ The template for displaying content in the single-libro.php template
 				$nombreReview = get_the_title( $idA );
 				?>
 				<li>
-					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($review['post_date']));?></span>
+					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d-m-y', strtotime($review['post_date']));?></span>
 					<i class="fas fa-clipboard-list"><a href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Esto es una reseña del libro <?php echo $post_title;?>"></i> <?php echo $nombreReview;?></a>
 				</li>
 				<?php
@@ -271,7 +275,7 @@ The template for displaying content in the single-libro.php template
 				$nombreNota = get_the_title( $idA );
 				?>
 				<li>
-					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($nota['post_date']));?></span>
+					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d-m-y', strtotime($nota['post_date']));?></span>
 					<i class="fas fa-pencil-alt"></i> <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="Esto es una nota del libro <?php echo $post_title;?>"><?php echo $nombreNota;?></a>
 				</li>
 				<?php
@@ -282,37 +286,17 @@ The template for displaying content in the single-libro.php template
 	} //endif ! empty ( $notas )
 	?>
 
-	<?php 
-    $params = array( 
-        'orderby' => 'post_date DESC'
-    ); 
-	$recomendaciones = $pod->field( 'recomendaciones', $params );
-	if ( ! empty( $recomendaciones ) ) {
-		$numRecomendaciones = count($recomendaciones);
-		?>
-		<h2>Recomendaciones <span class="badge badge-info"> <i class="fas fa-comment-dots mr-1"></i><span class="badge badge-info"><?php echo $numRecomendaciones;?></span></span></h2>
-		<ul class="list-unstyled">
-			<?php
-			foreach ( $recomendaciones as $recomendacion ) { 
-				$idA = $recomendacion[ 'ID' ];
-				$urlrecomendacion = esc_url( get_permalink( $idA ) );
-				$nombrerecomendacion = get_the_title( $idA );
-				?>
-				<li>
-					<span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($recomendacion['post_date']));?></span>
-					<i class="fas fa-comment-dots"></i> <a href="<?php echo $urlrecomendacion;?>" data-toggle="tooltip" title="Esto es una recomendacion del libro <?php echo $post_title;?>"><?php echo $nombrerecomendacion;?></a>
-				</li>
-				<?php
-			} //end of foreach
-			?>
-		</ul>
-		<?php
-	} //endif ! empty ( $recomendaciones )
-	?>
-
+    <hr />
 	<div class="text-center p-2">
-		<?php echo get_post_meta($id,'iframe_compra_amazon')[0];?>
+        <?php echo do_shortcode('[amazon box="'.$asin.'"]');?>
 	</div>
+    <hr />
+
+    <h2>Similares</h2>
+	<div class="text-center p-2">
+        <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($id,'titulo')[0].'"]');?>
+	</div>
+
 </div>	
 
 
