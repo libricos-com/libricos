@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $asin = $this2->get_product_id();
 $index = $this2->item_index;
-$variables = $this2->get_template_variables();
+// $variables = $this2->get_template_variables();
 $ids = $this2->get_template_variable( 'ids', false );
 
 if( !is_array($ids) ){
@@ -48,7 +48,10 @@ if($reviews){
                     $nombreReview = get_the_title( $idA );
                     ?>
                     <li>
-                        <span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d M Y', strtotime($review['post_date']));?></span>
+                        <span class="badge badge-pill btn-secondary">
+                            <i class="fas fa-clock" aria-hidden="true"></i> 
+                            <?php echo date('d-m-y', strtotime($review['post_date']));?>
+                        </span>
                         <a class="badge badge-danger" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $post_title;?>"><i class="fas fa-clipboard-list"></i> Review <?php echo $i;?></a>
                     </li>
                     <?php
