@@ -51,6 +51,10 @@ while ( have_posts() ) : the_post();
     $asins .= $asin.',';
     $ids .= $id.',';
 endwhile; 
+
+// Remove duplicate ids
+$asins = implode(',', array_unique(explode(',', $asins)));
+$ids = implode(',', array_unique(explode(',', $ids)));
 ?>
 
 <?php get_header();?>
@@ -63,18 +67,20 @@ endwhile;
         <header class="page-header">
             <h1 class="page-title">
                 <?php
-                if( count($otros_posts) > 0 ){
-                    if ( is_day() ) {
-                        /* translators: %s: Date. */
-                        printf( __( 'Daily Archives: %s', 'twentyeleven' ), '<span>' . get_the_date() . '</span>' );
-                    } elseif ( is_month() ) {
-                        /* translators: %s: Date. */
-                        printf( __( 'Monthly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'twentyeleven' ) ) . '</span>' );
-                    } elseif ( is_year() ) {
-                        /* translators: %s: Date. */
-                        printf( __( 'Yearly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'twentyeleven' ) ) . '</span>' );
-                    } else {
-                        _e( 'Blog Archives', 'twentyeleven' );
+                if(empty($asins)){
+                    if( count($otros_posts) > 0 ){
+                        if ( is_day() ) {
+                            /* translators: %s: Date. */
+                            printf( __( 'Daily Archives: %s', 'twentyeleven' ), '<span>' . get_the_date() . '</span>' );
+                        } elseif ( is_month() ) {
+                            /* translators: %s: Date. */
+                            printf( __( 'Monthly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'twentyeleven' ) ) . '</span>' );
+                        } elseif ( is_year() ) {
+                            /* translators: %s: Date. */
+                            printf( __( 'Yearly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'twentyeleven' ) ) . '</span>' );
+                        } else {
+                            _e( 'Blog Archives', 'twentyeleven' );
+                        }
                     }
                 }
                 ?>
@@ -85,16 +91,12 @@ endwhile;
 
         <h2>Libros de <?php echo $term->name;?></h2>
         <?php
-        // Remove duplicate ids
-        $asins = implode(',', array_unique(explode(',', $asins)));
-        $ids = implode(',', array_unique(explode(',', $ids)));
         echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
         ?>
 
-        <?php if( count($otros_posts) > 0 ){ ?>
+        <?php if(empty($asins)){?>
             <h2>Timeline</h2>
             <?php
-            // Start the Loop.
             while ( $otros_posts ) : the_post();
                 // llamada por defecto de wordpress: como un artículo en el timeline de wordpress
                 get_template_part( 'content', get_post_format() );
