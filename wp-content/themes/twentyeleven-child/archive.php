@@ -14,6 +14,7 @@
 
 $term = get_queried_object(); // object "clásicos"
 $asins = $ids = '';
+$otros_posts = [];
 
 // jdump($term);
 
@@ -42,6 +43,7 @@ while ( have_posts() ) : the_post();
             $asin = get_post_meta( $id, 'asin', true );
             break;
         default:
+            $otros_posts[] = $post;
             // llamada por defecto de wordpress: como un artículo en el timeline de wordpress
             // get_template_part( 'content', get_post_format() );
             break;
@@ -61,17 +63,19 @@ endwhile;
         <header class="page-header">
             <h1 class="page-title">
                 <?php
-                if ( is_day() ) {
-                    /* translators: %s: Date. */
-                    printf( __( 'Daily Archives: %s', 'twentyeleven' ), '<span>' . get_the_date() . '</span>' );
-                } elseif ( is_month() ) {
-                    /* translators: %s: Date. */
-                    printf( __( 'Monthly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'twentyeleven' ) ) . '</span>' );
-                } elseif ( is_year() ) {
-                    /* translators: %s: Date. */
-                    printf( __( 'Yearly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'twentyeleven' ) ) . '</span>' );
-                } else {
-                    _e( 'Blog Archives', 'twentyeleven' );
+                if( count($otros_posts) > 0 ){
+                    if ( is_day() ) {
+                        /* translators: %s: Date. */
+                        printf( __( 'Daily Archives: %s', 'twentyeleven' ), '<span>' . get_the_date() . '</span>' );
+                    } elseif ( is_month() ) {
+                        /* translators: %s: Date. */
+                        printf( __( 'Monthly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'twentyeleven' ) ) . '</span>' );
+                    } elseif ( is_year() ) {
+                        /* translators: %s: Date. */
+                        printf( __( 'Yearly Archives: %s', 'twentyeleven' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'twentyeleven' ) ) . '</span>' );
+                    } else {
+                        _e( 'Blog Archives', 'twentyeleven' );
+                    }
                 }
                 ?>
             </h1>
@@ -79,7 +83,7 @@ endwhile;
 
         <?php twentyeleven_content_nav( 'nav-above' ); ?>
 
-        <h2>Libros sobre <?php echo $term->name;?></h2>
+        <h2>Libros de <?php echo $term->name;?></h2>
         <?php
         // Remove duplicate ids
         $asins = implode(',', array_unique(explode(',', $asins)));
@@ -87,14 +91,20 @@ endwhile;
         echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
         ?>
 
-        <h2>Timeline</h2>
-        <?php
-        // Start the Loop.
-        while ( have_posts() ) : the_post();
-            // llamada por defecto de wordpress: como un artículo en el timeline de wordpress
-            get_template_part( 'content', get_post_format() );
-        endwhile;
+        <?php if( count($otros_posts) > 0 ){ ?>
+            <h2>Timeline</h2>
+            <?php
+            // Start the Loop.
+            while ( $otros_posts ) : the_post();
+                // llamada por defecto de wordpress: como un artículo en el timeline de wordpress
+                get_template_part( 'content', get_post_format() );
+            endwhile;
+        }
         ?>
+
+        <h2>Otros libros de <?php echo $term->name;?></h2>
+        <?php echo do_shortcode('[amazon bestseller="%'.$term->name.' + cristianismo%"]'); ?>
+
 
         <?php twentyeleven_content_nav( 'nav-below' ); ?>
 
