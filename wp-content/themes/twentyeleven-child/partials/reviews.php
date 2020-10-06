@@ -31,8 +31,14 @@ if( ! empty( $reviews ) ){
 $asins = implode(',', array_unique(explode(',', $asins)));
 $ids = implode(',', array_unique(explode(',', $ids)));
 
+?>
+<h1>Reviews</h1>
+<?php
+
 if(!empty($asins)){ 
     echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
+}else{
+    echo 'No hay reviews';
 }
 ?>
 
