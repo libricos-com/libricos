@@ -24,9 +24,9 @@ while ( have_posts() ) : the_post();
     */
     $post = get_post();
     $post_type = $post->post_type;
+    $id = $post->ID;
     switch ($post_type) {
         case 'libro':
-            $id = $post->ID;
             $asin = get_post_meta( $id, 'asin', true );
             break;
         case 'review':
