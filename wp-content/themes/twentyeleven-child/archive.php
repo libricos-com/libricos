@@ -15,6 +15,8 @@
 $term = get_queried_object(); // object "clásicos"
 $asins = $ids = '';
 
+// jdump($term);
+
 while ( have_posts() ) : the_post();
     /*
     * Include the Post-Format-specific template for the content.

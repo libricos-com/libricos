@@ -3,7 +3,7 @@
  * Usando var_dump
  * @see https://decodecms.com/depurar-codigo-php-en-wordpress/
  */
-function dump_error_log( $object=null )
+function jdump( $object=null )
 {
     ob_start();
     var_dump( $object );
@@ -11,3 +11,6 @@ function dump_error_log( $object=null )
     ob_end_clean();
     error_log( $contents );
 }
+
+
+
