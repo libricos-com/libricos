@@ -33,3 +33,4 @@ wp-config.php
 wp-content/plugins/all-in-one-wp-migration/storage/index.html
 wp-content/themes/twentyeleven-child/api/cache
 wp-content/themes/twentyeleven-child/api/config.php
+.vscode
