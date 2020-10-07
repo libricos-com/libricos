@@ -85,7 +85,7 @@ $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_
             <?php } ?>
 
             <?php if($is_my_book){
-                echo view('my-box', array('this2' => $this));
+                echo view('/../aawp/products/my-box', array('this2' => $this));
             }?>
 
         </div>

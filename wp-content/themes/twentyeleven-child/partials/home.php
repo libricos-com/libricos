@@ -8,7 +8,17 @@ The template for displaying content in the tpl/home.php template
 $urlBase = get_site_url();
 ?>
 
-<p class="lead text-center">Bienvenido a mi blog. Trato de fomentar la lectura en general - clásicos de la literatura fundamentalmente - y los libros sobre espiritualidad cristiana en particular. Los contenidos del sitio están agrupados en 3 secciones:</p>
+<p class="lead text-center">
+Bienvenido a mi blog. Trato de fomentar la lectura en general - especialmente clásicos de la literatura universal - y libros de espiritualidad cristiana en particular. 
+Como decía Exupery <em>"lo esencial es invisible a lo ojos"</em> - la construcción de nuestro mundo interior debería ser prioridad.
+También hablo de fotografía, espiritualidad, programación de aplicaciones informáticas, palabras, etc.
+</p>
+
+<?php 
+echo view('../partials/searchbox', array('this2' => null));
+?>
+
+<h5>Los contenidos del sitio están agrupados en 3 secciones:</h5>
 
 <div class="container">
   <div class="row">
