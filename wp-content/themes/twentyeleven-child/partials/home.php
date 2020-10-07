@@ -17,7 +17,7 @@ $urlBase = get_site_url();
             <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/libros.png" alt=""/>
         </a>
         <h2 class="has-text-align-center">Libros</h2>
-        <p class="has-text-align-center">Libros que cuidan y sanan el alma. </p>
+        <p class="has-text-align-center">Libros revisados por este site o próximos a ser leídos. Obras que cuidan y sanan el alma.</p>
     </div>
     <div class="col-sm">
         <a href="<?php echo $urlBase;?>/fotos/">
@@ -36,6 +36,9 @@ $urlBase = get_site_url();
   </div>
 </div>
 
+<h2>Novedades libros espiritualidad</h2>
+<?php echo do_shortcode('[amazon new="libros+cristianos" items="12"]');?>
+	
 
 <h2>Leyenda</h2>
 <a href="#" class="badge badge-primary">Libro</a>
