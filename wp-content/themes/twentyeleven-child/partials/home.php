@@ -8,63 +8,36 @@ The template for displaying content in the tpl/home.php template
 $urlBase = get_site_url();
 ?>
 
-<p class="lead text-center">Bienvenido a mi blog. Trato de fomentar la lectura en general - clásicos de la literatura fundamentalmente - y los libros sobre espiritualidad cristiana en particular.</p>
+<p class="lead text-center">Bienvenido a mi blog. Trato de fomentar la lectura en general - clásicos de la literatura fundamentalmente - y los libros sobre espiritualidad cristiana en particular. Los contenidos del sitio están agrupados en 3 secciones:</p>
 
-<!-- wp:columns -->
-<div class="wp-block-columns"><!-- wp:column -->
-    <div class="wp-block-column"><!-- wp:image {"align":"center","id":13561,"width":183,"height":183,"sizeSlug":"large"} -->
-        <div class="wp-block-image">
-	       <figure class="aligncenter size-large is-resized"><a href="<?php echo $urlBase;?>/libros/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/libros.png" alt="" class="wp-image-13561" width="183" height="183"/></a></figure>
-        </div>
-        <!-- /wp:image -->
-
-        <!-- wp:heading {"align":"center"} -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <a href="<?php echo $urlBase;?>/libros/">
+            <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/libros.png" alt=""/>
+        </a>
         <h2 class="has-text-align-center">Libros</h2>
-        <!-- /wp:heading -->
-
-        <!-- wp:paragraph {"align":"center"} -->
         <p class="has-text-align-center">Libros que cuidan y sanan el alma. </p>
-        <!-- /wp:paragraph -->
     </div>
-    <!-- /wp:column -->
-
-    <!-- wp:column -->
-    <div class="wp-block-column"><!-- wp:image {"align":"center","id":13560,"sizeSlug":"large"} -->
-        <div class="wp-block-image"><figure class="aligncenter size-large"><a href="<?php echo $urlBase;?>/fotos/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/instagram.png" alt="" class="wp-image-13560"/></a></figure>
-        </div>
-        <!-- /wp:image -->
-
-        <!-- wp:heading {"align":"center"} -->
+    <div class="col-sm">
+        <a href="<?php echo $urlBase;?>/fotos/">
+            <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/instagram.png" alt=""/>
+        </a>
         <h2 class="has-text-align-center">Fotos</h2>
-        <!-- /wp:heading -->
-
-        <!-- wp:paragraph {"align":"center"} -->
         <p class="has-text-align-center">A través de la imagen trato de describir el mundo tal y como lo veo.</p>
-        <!-- /wp:paragraph -->
     </div>
-    <!-- /wp:column -->
-
-    <!-- wp:column -->
-    <div class="wp-block-column"><!-- wp:image {"align":"center","id":13562,"sizeSlug":"large"} -->
-        <div class="wp-block-image">
-            <figure class="aligncenter size-large"><a href="<?php echo $urlBase;?>/blog/"><img src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/wordpress.png" alt="" class="wp-image-13562"/></a></figure>
-        </div>
-        <!-- /wp:image -->
-
-        <!-- wp:heading {"align":"center"} -->
+    <div class="col-sm">
+        <a href="<?php echo $urlBase;?>/blog/">
+            <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/wordpress.png" alt=""/>
+        </a>
         <h2 class="has-text-align-center">Blog</h2>
-        <!-- /wp:heading -->
-
-        <!-- wp:paragraph {"align":"center"} -->
         <p class="has-text-align-center">Pildoras de fe, pensamientos y palabras.</p>
-        <!-- /wp:paragraph -->
     </div>
-    <!-- /wp:column -->
+  </div>
 </div>
-<!-- /wp:columns -->
 
 
-<h2>Leyenda mía</h2>
+<h2>Leyenda</h2>
 <a href="#" class="badge badge-primary">Libro</a>
 <span class="badge badge-primary"><i class="fas fa-book"></i> Libro</span>
 <button type="button" class="btn btn-primary"><i class="fas fa-book"></i> Libros <span class="badge badge-danger">4,3</span>
