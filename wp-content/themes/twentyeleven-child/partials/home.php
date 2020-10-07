@@ -12,38 +12,48 @@ $urlBase = get_site_url();
 echo view('../partials/searchbox', array('this2' => null));
 ?>
 
-<h2>Novedades libros espiritualidad</h2>
-<?php echo do_shortcode('[amazon new="libros+cristianos" items="12"]');?>
-    
-<h5>Los contenidos del sitio están agrupados en 3 secciones:</h5>
 <div class="container">
   <div class="row">
-    <div class="col-sm text-center">
-        <a href="<?php echo $urlBase;?>/libros/">
-            <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/libros.png" alt=""/> -->
-            <i class="fas fa-book-reader fa-10x text-primary"></i>
-        </a>
-        <h2 class="has-text-align-center">Libros</h2>
-        <p class="has-text-align-center">Libros revisados por este site o próximos a ser leídos. Obras que cuidan y sanan el alma.</p>
+        <div class="col-md text-center">
+            <a href="<?php echo $urlBase;?>/libros/">
+                <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/libros.png" alt=""/> -->
+                <i class="fas fa-book-reader fa-10x text-primary"></i>
+            </a>
+            <h2 class="has-text-align-center">Libros</h2>
+            <p class="has-text-align-center">Libros revisados por este site o próximos a ser leídos. Obras que cuidan y sanan el alma.</p>
+        </div>
+        <div class="col-md text-center">
+            <a href="<?php echo $urlBase;?>/reviews/">
+                <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/10/256px-Feed-icon.svg_.png" alt=""/> -->
+                <i class="fas fa-clipboard-list fa-10x text-danger"></i>
+            </a>
+            <h2 class="has-text-align-center">Reviews</h2>
+            <p class="has-text-align-center">Reseñas de libros.</p>
+        </div>
     </div>
-    <div class="col-sm text-center">
-        <a href="<?php echo $urlBase;?>/fotos/">
-            <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/instagram.png" alt=""/> -->
-            <i class="fab fa-instagram fa-10x color-instagram"></i>
-        </a>
-        <h2 class="has-text-align-center">Fotos</h2>
-        <p class="has-text-align-center">A través de la imagen trato de describir el mundo tal y como lo veo.</p>
-    </div>
-    <div class="col-sm text-center">
-        <a href="<?php echo $urlBase;?>/blog/">
-            <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/10/256px-Feed-icon.svg_.png" alt=""/> -->
-            <i class="fas fa-rss-square fa-10x color-darkorange"></i>
-        </a>
-        <h2 class="has-text-align-center">Blog</h2>
-        <p class="has-text-align-center">Pildoras de fe, pensamientos y palabras.</p>
+    <div class="row">
+        <div class="col-md text-center">
+            <a href="<?php echo $urlBase;?>/fotos/">
+                <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/09/instagram.png" alt=""/> -->
+                <i class="fab fa-instagram fa-10x color-instagram"></i>
+            </a>
+            <h2 class="has-text-align-center">Fotos</h2>
+            <p class="has-text-align-center">A través de la imagen trato de describir el mundo tal y como lo veo.</p>
+        </div>
+        <div class="col-md text-center">
+            <a href="<?php echo $urlBase;?>/blog/">
+                <!-- <img class="img-fluid img-thumbnail rounded" src="<?php echo $urlBase;?>/wp-content/uploads/2020/10/256px-Feed-icon.svg_.png" alt=""/> -->
+                <i class="fas fa-rss-square fa-10x color-darkorange"></i>
+            </a>
+            <h2 class="has-text-align-center">Blog</h2>
+            <p class="has-text-align-center">Pildoras de fe, pensamientos y palabras.</p>
+        </div>
     </div>
   </div>
 </div>
+
+<h2>Novedades libros espiritualidad</h2>
+<?php echo do_shortcode('[amazon new="libros+cristianos" items="12"]');?>
 
 <h2>Leyenda</h2>
 <a href="#" class="badge badge-primary">Libro</a>
