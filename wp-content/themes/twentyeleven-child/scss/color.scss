@@ -1,0 +1,30 @@
+$color-instagram: #C13584;
+$color-yellow: #FFC107;
+$color-orange:orange;
+$color-darkorange:darkorange;
+
+/* 
+Bootstrap btn primary de otro color 
+@see darker colors from one given: https://www.0to255.com/ffa500
+*/
+.btn-primary-orange {
+    color: #fff !important;
+    background-color:$color-orange !important;
+
+    &:hover {
+        background-color: darken($color-orange, 10%) !important;
+    }
+}
+
+.color-yellow{
+	color: $color-yellow;
+}
+
+.color-darkorange{
+	color: $color-darkorange;
+}
+
+.color-instagram{
+	color: $color-instagram;
+}
+

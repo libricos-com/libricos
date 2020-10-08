@@ -3,22 +3,21 @@ Bootstrap btn primary de otro color
 @see darker colors from one given: https://www.0to255.com/ffa500
 */
 .btn-primary-orange {
-    color: #fff;
-    background-color: orange !important;
+  color: #fff !important;
+  background-color: orange !important;
 }
 .btn-primary-orange:hover {
-    color: #fff;
-    background-color: #dd8f00 !important;
+  background-color: #cc8400 !important;
 }
 
-.color-yellow{
-	color: #FFC107;
+.color-yellow {
+  color: #FFC107;
 }
 
-.color-darkorange{
-	color: darkorange;
+.color-darkorange {
+  color: darkorange;
 }
 
-.color-instagram{
-	color: #C13584;
+.color-instagram {
+  color: #C13584;
 }
