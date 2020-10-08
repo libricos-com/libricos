@@ -1,0 +1,26 @@
+#secondary.jei-sidebar {
+    // border: solid 1px green;
+
+    margin-right: 0;
+    width: 26%;
+
+    aside {
+        // border: solid   1px blue;
+
+        .wp-tag-cloud{
+            text-align: center;
+        }
+
+        ul:not(.wp-tag-cloud) {
+            // border: solid 1px red;
+            padding-left: 7%;
+        }
+        
+        div#gr_custom_widget_1590433898 > div, // Goodreads leyendo ahora
+        div#gr_custom_widget_1590432677 > div  // Goodreads siguientes
+        {
+            // border: solid 1px red;
+            width: 100% !important;
+        }
+    }
+}
