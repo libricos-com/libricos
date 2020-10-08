@@ -9,7 +9,7 @@ $urlBase = get_site_url();
 ?>
 
 <?php 
-echo view('../partials/searchbox', array('this2' => null));
+echo view('../searchform', array('this2' => null));
 ?>
 
 <div class="container">
