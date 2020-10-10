@@ -33,6 +33,11 @@ if(!empty($this->ids[ $this->index - 1 ])){
         // 'orderby' => 'post_date DESC'
     ); 
     $this->reviews = $this->pod->field( 'reviews', $this->params );
+    // $this->puntuacion = $this->pod->field( 'mi_puntuacion');
+    $this->puntuacion = '0.0';
+    if(!empty(get_post_meta($this->id_libro,'mi_puntuacion')[0])){
+        $this->puntuacion = get_post_meta($this->id_libro,'mi_puntuacion')[0];
+    }
     if($this->reviews){
         $this->numReviews = count($this->reviews);
     }else{
@@ -52,7 +57,6 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 // $this->star_rating = aawp_get_field_value($this->asin, 'star_rating');
 // $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_rating"]');
 // $this->star_rating = do_shortcode('[amazon box="'.$this->asin.'" rating="4.5"]');
-$this->star_rating = rating_func('3.5');
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -75,7 +79,7 @@ $this->star_rating = rating_func('3.5');
             // if($this->star_rating){
             // echo view('/../partials/rating', array('this2' => $this));
             // }
-            echo $this->star_rating;
+            echo rating($this->puntuacion);
             ?>
 
             <?php if ( $this->get_product_rating() ) { ?>
@@ -86,10 +90,6 @@ $this->star_rating = rating_func('3.5');
             <?php } ?>
 
             <?php $this->the_product_check_prime_logo(); ?>
-
-            <?php if(!$this->is_prime){ ?>
-                <div style="height:23px;clear:both;"></div>
-            <?php } ?>
 
             <?php if($is_my_book){
                 echo view('/../aawp/products/my-box', array('this2' => $this));
