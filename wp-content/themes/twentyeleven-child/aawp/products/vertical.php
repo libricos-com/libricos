@@ -52,12 +52,7 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 // $this->star_rating = aawp_get_field_value($this->asin, 'star_rating');
 // $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_rating"]');
 // $this->star_rating = do_shortcode('[amazon box="'.$this->asin.'" rating="4.5"]');
-
-
-
-$this->star_rating = rating_func([
-    'stars' => '4.3'
-]);
+$this->star_rating = rating_func('3.5');
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>

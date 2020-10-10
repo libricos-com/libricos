@@ -18,54 +18,26 @@ require_once('inc/shortcodes.php');
  * @return  void
  * @see https://es.wordpress.org/plugins/five-star-ratings-shortcode/
  */
-
-define( 'FSRS_BASE', 'fsrs_' );
-function rating_func( $atts )
+function rating_func( $star = '0.0' )
 {
-    $atts = shortcode_atts( array(
-        'stars' => '',
-    ), $atts );
     $arr = array();
     
-    if ( get_option( FSRS_BASE . 'syntax' ) != NULL ) {
-        $syntax = get_option( FSRS_BASE . 'syntax' );
-    } else {
-        $syntax = 'i';
-    }
-    
     // Default syntax.
-    
-    if ( get_option( FSRS_BASE . 'starsmax' ) != NULL ) {
-        $starsmax = get_option( FSRS_BASE . 'starsmax' );
-    } else {
-        $starsmax = '5';
-    }
-    
-    // Default value; also the only value for the FREE plugin.
-    
-    if ( get_option( FSRS_BASE . 'size' ) != NULL ) {
-        $size = get_option( FSRS_BASE . 'size' );
-    } else {
-        $size = '';
-    }
+    $starsmax = '5';
     
     // Get the value and if it's a float, trim it.
-    $star = esc_attr( $atts['stars'] );
     $parts = explode( '.', $star );
     array_pop( $parts );
     $startrim = implode( '.', $parts );
     // Recast string to integer.
     $startrim = (double) $startrim;
     // How many whole stars?
-    // $stars = str_repeat( '<' . $syntax . ' class="fsrs-fas fa-fw fa-star ' . $size . '"></' . $syntax . '>', $startrim );
     $stars =  str_repeat('<i class="fas bg-light fa-star color-yellow" aria-hidden="true"></i>', $startrim);
     // How many leftover stars if there is no half star?
     $dif = wp_kses( $starsmax, $arr ) - $startrim;
     // Output for the half star.
-    // $halfstar = '<' . $syntax . ' class="fsrs-fas fa-fw fa-star-half-alt ' . $size . '"></' . $syntax . '>';
     $halfstar = '<i class="fas bg-light fa-star-half-alt color-yellow" aria-hidden="true"></i>';
     // Empty stars if there is no half star.
-    // $empty = str_repeat( '<' . $syntax . ' class="fsrs-far fa-fw fa-star ' . $size . '"></' . $syntax . '>', $dif );
     $empty = str_repeat( '<i class="far bg-light fa-star"></i>', $dif);
     //  How many leftover stars if there is a half star?
     
@@ -76,7 +48,6 @@ function rating_func( $atts )
     }
     
     // Empty stars if there is a half star.
-    // $emptyhalf = str_repeat( '<' . $syntax . ' class="fsrs-far fa-fw fa-star ' . $size . '"></' . $syntax . '>', $dif2 );
     $emptyhalf = str_repeat( '<i class="far bg-light fa-star"></i>', $dif2 );
     
     if ( $startrim == $star ) {
