@@ -50,8 +50,14 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 // $this->is_premium = aawp_get_field_value($this->asin, 'premium');
 
 // $this->star_rating = aawp_get_field_value($this->asin, 'star_rating');
-$this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_rating"]');
+// $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_rating"]');
 // $this->star_rating = do_shortcode('[amazon box="'.$this->asin.'" rating="4.5"]');
+
+
+
+$this->star_rating = rating_func([
+    'stars' => '4.3'
+]);
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -72,8 +78,9 @@ $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_
 
             <?php 
             // if($this->star_rating){
-            echo view('/../partials/rating', array('this2' => $this));
+            // echo view('/../partials/rating', array('this2' => $this));
             // }
+            echo $this->star_rating;
             ?>
 
             <?php if ( $this->get_product_rating() ) { ?>
