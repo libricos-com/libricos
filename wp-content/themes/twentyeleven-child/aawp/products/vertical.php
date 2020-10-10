@@ -15,6 +15,7 @@ $this->asin = $this->get_product_id();
 $this->index = $this->item_index;
 // $variables = $this->get_template_variables();
 $this->ids = $this->get_template_variable( 'ids', false );
+$this->entity = $this->get_template_variable( 'entity', false );
 
 if( !is_array($this->ids) ){
     $this->ids = explode(',', $this->ids);
@@ -29,7 +30,7 @@ if(!empty($this->ids[ $this->index - 1 ])){
 
     $this->pod = pods( 'libro', $this->id_libro );
     $this->params = array( 
-        'orderby' => 'post_date DESC'
+        // 'orderby' => 'post_date DESC'
     ); 
     $this->reviews = $this->pod->field( 'reviews', $this->params );
     if($this->reviews){
@@ -69,7 +70,11 @@ $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_
 
         <div class="aawp-product__meta">
 
-            <div>Rating: <?php echo $this->star_rating;?></div>
+            <?php 
+            // if($this->star_rating){
+            echo view('/../partials/rating', array('this2' => $this));
+            // }
+            ?>
 
             <?php if ( $this->get_product_rating() ) { ?>
                 <?php echo $this->get_product_star_rating( array( 'size' => 'small' ) ); ?>

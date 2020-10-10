@@ -46,7 +46,7 @@ The template for displaying content in the single-libro.php template
 	
 	<div class="text-center mb-4">
 		<a href="<?php echo $url;?>"><img src="<?php echo $src[0];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
-		<div><?php echo get_kkstarring();?></div>
+		<div><?php // echo get_kkstarring();?></div>
 	</div>
 
 	<h2>Sinopsis</h2>

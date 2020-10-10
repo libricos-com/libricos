@@ -9,7 +9,8 @@ The template for displaying content in the tpl/reviews.php template
 $asins = $ids = '';
 $input = array(
     'posts_per_page' => -1,
-    'post_type' => 'review'
+    'post_type' => 'review',
+    'orderby' => 'post_date DESC'
 );
 $reviews = get_posts($input);
 $num = count($reviews);
@@ -34,9 +35,8 @@ $ids = implode(',', array_unique(explode(',', $ids)));
 ?>
 <h1>Reviews</h1>
 <?php
-
 if(!empty($asins)){ 
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
+    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_entity="reviews" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 }else{
     echo 'No hay reviews';
 }
