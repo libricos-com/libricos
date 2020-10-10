@@ -151,6 +151,14 @@ class SB_Instagram_Token_Refresher
 		update_option( 'sb_instagram_settings', $options );
 	}
 
+	/**
+	 * Helps determine if an access token is from a private
+	 * account which can't be refreshed
+	 *
+	 * @return bool
+	 *
+	 * @since 2.4.7/5.7.1
+	 */
 	public function get_last_error_code() {
 		if ( isset( $this->report['error_log'] ) ) {
 			$error = $this->report['error_log']->get_data();

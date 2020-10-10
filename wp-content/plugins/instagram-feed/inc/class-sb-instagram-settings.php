@@ -123,8 +123,8 @@ class SB_Instagram_Settings {
 			$this->settings['showheader'] = false;
 		}
 		$this->settings['disable_resize'] = isset( $db['sb_instagram_disable_resize'] ) && ($db['sb_instagram_disable_resize'] === 'on');
-		$this->settings['favor_local'] = isset( $db['sb_instagram_favor_local'] ) && ($db['sb_instagram_favor_local'] === 'on');
-		$this->settings['backup_cache_enabled'] = ! isset( $db['sb_instagram_backup'] ) || ($db['sb_instagram_backup'] === 'on');
+		$this->settings['favor_local'] = ! isset( $db['sb_instagram_favor_local'] ) || ($db['sb_instagram_favor_local'] === 'on') || ($db['sb_instagram_favor_local'] === true);
+		$this->settings['backup_cache_enabled'] = ! isset( $db['sb_instagram_backup'] ) || ($db['sb_instagram_backup'] === 'on') || $db['sb_instagram_backup'] === true;
 		$this->settings['font_method'] = isset( $db['sbi_font_method'] ) ? $db['sbi_font_method'] : 'svg';
 		$this->settings['headeroutside'] = ($this->settings['headeroutside'] === true || $this->settings['headeroutside'] === 'on' || $this->settings['headeroutside'] === 'true');
 		$this->settings['disable_js_image_loading'] = isset( $db['disable_js_image_loading'] ) && ($db['disable_js_image_loading'] === 'on');
@@ -720,10 +720,10 @@ class SB_Instagram_Settings {
 			'enqueue_js_in_head'                => false,
 			'disable_js_image_loading'          => false,
 			'sb_instagram_disable_resize'       => false,
-			'sb_instagram_favor_local'          => false,
+			'sb_instagram_favor_local'          => true,
 			'sb_instagram_cache_time'           => '1',
 			'sb_instagram_cache_time_unit'      => 'hours',
-			'sbi_caching_type'                  => 'page',
+			'sbi_caching_type'                  => 'background',
 			'sbi_cache_cron_interval'           => '12hours',
 			'sbi_cache_cron_time'               => '1',
 			'sbi_cache_cron_am_pm'              => 'am',

@@ -363,7 +363,7 @@ class SB_Instagram_Posts_Manager
 			return;
 		}
 		foreach ( $this->errors as $type => $error ) {
-			if ( strpos( $type, 'expiration_' ) !== false ) {
+			if ( strpos( $type, 'expiration_' ) === false ) {
 				unset( $this->errors[ $type ] );
 			}
 		}

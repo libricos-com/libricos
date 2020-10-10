@@ -1171,7 +1171,7 @@ function sbi_notices_html() {
             <div class='sbi_notice sbi_review_notice'>
                 <img src='". SBI_PLUGIN_URL . 'img/sbi-icon.png' ."' alt='" . __( 'Instagram Feed', 'instagram-feed' ) . "'>
                 <div class='sbi-notice-text'>
-                    <p style='padding-top: 4px;'>" . sprintf( __( "It's great to see that you've been using the %sInstagram Feed%s plugin for a while now. Hopefully you're happy with it!&nbsp; If so, would you consider leaving a positive review? It really helps to support the plugin and helps others to discover it too!", 'instagram-feed' ), '<strong style=\'font-weight: 700;\'>', '</strong>' ) . "</p>
+                    <p style='padding-top: 4px;'>" . sprintf( __( "It's great to see that you've been using the %1sInstagram Feed%2s plugin for a while now. Hopefully you're happy with it!&nbsp; If so, would you consider leaving a positive review? It really helps to support the plugin and helps others to discover it too!", 'instagram-feed' ), '<strong style=\'font-weight: 700;\'>', '</strong>' ) . "</p>
                     <p class='links'";
                     if( $should_show_bfcm_discount ) echo " style='margin-top: 0 !important;'";
                     echo ">
@@ -1198,7 +1198,7 @@ function sbi_notices_html() {
         <div class='sbi_notice sbi_review_notice sbi_new_user_sale_notice'>
             <img src='" . SBI_PLUGIN_URL . 'img/sbi-icon-offer.png' . "' alt='Instagram Feed'>
             <div class='sbi-notice-text'>
-                <p><b style'font-weight: 700;'>" . sprintf( __( 'Exclusive offer!%s We don\'t run promotions very often, but for a limited time we\'re offering %s60%% off%s our Pro version to all users of our free Instagram Feed plugin.', 'instagram-feed' ), '</b> ', '<b style="font-weight: 700;">', '</b>' ) . "</p>
+                <p><b style'font-weight: 700;'>" . sprintf( __( 'Exclusive offer!%1s We don\'t run promotions very often, but for a limited time we\'re offering %2s60%% off%3s our Pro version to all users of our free Instagram Feed plugin.', 'instagram-feed' ), '</b> ', '<b style="font-weight: 700;">', '</b>' ) . "</p>
                 <p class='sbi-links'>
                     <a class='sbi_notice_dismiss sbi_offer_btn' href='https://smashballoon.com/instagram-feed/?utm_campaign=instagram-free&utm_source=notices&utm_medium=newuser&discount=instagramthankyou' target='_blank'><b>" . __( 'Get this offer', 'instagram-feed' ) . "</b></a>
                     <a class='sbi_notice_dismiss' style='margin-left: 5px;' href='" . esc_url( add_query_arg( 'sbi_ignore_new_user_sale_notice', 'always' ) ) . "'>" . __( 'I\'m not interested', 'instagram-feed' ) . "</a>
@@ -1299,7 +1299,7 @@ function sbi_get_future_date( $month, $year, $week, $day, $direction ) {
 function sbi_admin_hide_unrelated_notices() {
 
 	// Bail if we're not on a sbi screen or page.
-	if ( ! isset( $_GET['page'] ) || strpos( $_GET['page'], 'sb-instagram-feed') === false ) {
+	if ( ! isset( $_GET['page'] ) || ( strpos( $_GET['page'], 'sb-instagram-feed') === false && strpos( $_GET['page'], 'sbi-') === false ) ) {
 		return;
 	}
 
@@ -1403,3 +1403,25 @@ function sbi_usage_opt_in_or_out() {
 	die();
 }
 add_action( 'wp_ajax_sbi_usage_opt_in_or_out', 'sbi_usage_opt_in_or_out' );
+
+function sbi_oembed_disable() {
+	$nonce = isset( $_POST['sbi_nonce'] ) ? sanitize_text_field( $_POST['sbi_nonce'] ) : '';
+
+	if ( ! wp_verify_nonce( $nonce, 'sbi_nonce' ) ) {
+		die ( 'You did not do this the right way!' );
+	}
+
+	$oembed_settings = get_option( 'sbi_oembed_token', array() );
+	$oembed_settings['access_token'] = '';
+	$oembed_settings['disabled'] = true;
+	echo '<strong>';
+	if ( update_option( 'sbi_oembed_token', $oembed_settings ) ) {
+		_e( 'Instagram oEmbeds will no longer be handled by Instagram Feed.', 'instagram-feed' );
+	} else {
+		_e( 'An error occurred when trying to delete your oEmbed token.', 'instagram-feed' );
+	}
+	echo '</strong>';
+
+	die();
+}
+add_action( 'wp_ajax_sbi_oembed_disable', 'sbi_oembed_disable' );

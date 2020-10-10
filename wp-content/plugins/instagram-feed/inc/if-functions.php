@@ -943,9 +943,9 @@ function sb_instagram_scripts_enqueue() {
 	//Options to pass to JS file
 	$sb_instagram_settings = get_option( 'sb_instagram_settings' );
 
-	$js_file = 'js/sb-instagram-2-2.min.js';
+	$js_file = 'js/sbi-scripts.min.js';
 	if ( isset( $_GET['sbi_debug'] ) ) {
-		$js_file = 'js/sb-instagram.js';
+		$js_file = 'js/sbi-scripts.js';
 	}
 
 	if ( isset( $sb_instagram_settings['enqueue_js_in_head'] ) && $sb_instagram_settings['enqueue_js_in_head'] ) {
@@ -955,9 +955,9 @@ function sb_instagram_scripts_enqueue() {
 	}
 
 	if ( isset( $sb_instagram_settings['enqueue_css_in_shortcode'] ) && $sb_instagram_settings['enqueue_css_in_shortcode'] ) {
-		wp_register_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sb-instagram-2-2.min.css', array(), SBIVER );
+		wp_register_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sbi-styles.min.css', array(), SBIVER );
 	} else {
-		wp_enqueue_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sb-instagram-2-2.min.css', array(), SBIVER );
+		wp_enqueue_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sbi-styles.min.css', array(), SBIVER );
 	}
 
 	$font_method = isset( $sb_instagram_settings['sbi_font_method'] ) ? $sb_instagram_settings['sbi_font_method'] : 'svg';

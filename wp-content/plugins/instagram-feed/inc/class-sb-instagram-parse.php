@@ -307,13 +307,13 @@ class SB_Instagram_Parse
 	 *
 	 * @since 2.0/5.0
 	 */
-	protected static function fix_permalink( $permalink ) {
+	public static function fix_permalink( $permalink ) {
 		if ( substr_count( $permalink, '/' ) > 5 ) {
 			$permalink_array = explode( '/', $permalink );
 			$perm_id = $permalink_array[ count( $permalink_array ) - 2 ];
 			$permalink = 'https://www.instagram.com/p/' . $perm_id . '/';
 		}
-
 		return $permalink;
+
 	}
 }
