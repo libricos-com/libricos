@@ -1,4 +1,5 @@
-@import "_color";
+@use '_color' as c;
+// @import "_color";
 
 %flex-display {
     display: flex;
@@ -15,13 +16,13 @@
 }
 .back-stars {
     @extend %flex-display;
-    color: $color-gris-price-amazon;
+    color: c.$color-gris-price-amazon;
     position: relative;
     // text-shadow: 4px 4px 10px #843a3a;
 }
 .front-stars {
     @extend %flex-display;
-    color: $color-yellow;
+    color: c.$color-yellow;
     overflow: hidden;
     position: absolute;
     // text-shadow: 2px 2px 5px #d29b09;
