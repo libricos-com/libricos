@@ -15,13 +15,12 @@ $this->asin = $this->get_product_id();
 $this->index = $this->item_index;
 // $variables = $this->get_template_variables();
 $this->ids = $this->get_template_variable( 'ids', false );
-$this->entity = $this->get_template_variable( 'entity', false );
 
 if( !is_array($this->ids) ){
     $this->ids = explode(',', $this->ids);
 }
 
-$is_my_book = false;
+$is_my_book = $hay_reviews = false;
 if(!empty($this->ids[ $this->index - 1 ])){
     $is_my_book = true;
     $this->id_libro =  $this->ids[ $this->index - 1 ];
@@ -41,6 +40,7 @@ if(!empty($this->ids[ $this->index - 1 ])){
         $this->rating_percent = $this->puntuacion*100/5;
     }
     if($this->reviews){
+        $hay_reviews = true;
         $this->numReviews = count($this->reviews);
     }else{
         $this->numReviews = 0;
@@ -86,8 +86,8 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 
             <?php $this->the_product_check_prime_logo(); ?>
 
-            <?php if($is_my_book){
-                echo view('/../aawp/products/my-box', array('this2' => $this));
+            <?php if($hay_reviews){
+                echo view('/../partials/review-list-amazon-box', array('this2' => $this));
             }?>
 
         </div>

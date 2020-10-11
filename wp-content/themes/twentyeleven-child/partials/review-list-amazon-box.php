@@ -1,4 +1,4 @@
-<div class="my-box">
+<div class="review-list-amazon-box">
     <?php if($this2->reviews){ ?>
         <ul class="list-unstyled">
             <?php
