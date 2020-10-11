@@ -16,6 +16,7 @@ Text Domain: twentyeleven-child
 /* =Reset default browser CSS. Based on work by Eric Meyer.
 -------------------------------------------------------------- */
 @import url("../twentyeleven/style.css");
+@import url("../twentyeleven-child/css/_color.css");
 @import url("../twentyeleven-child/css/color.css");
 @import url("../twentyeleven-child/css/archive.css");
 @import url("../twentyeleven-child/css/single.css");
@@ -23,6 +24,7 @@ Text Domain: twentyeleven-child
 @import url("../twentyeleven-child/css/my-box.css");
 @import url("../twentyeleven-child/css/searchform.css");
 @import url("../twentyeleven-child/css/sidebar.css");
+@import url("../twentyeleven-child/css/rating.css");
 
 /*
 Added icons:

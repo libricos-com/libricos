@@ -35,8 +35,10 @@ if(!empty($this->ids[ $this->index - 1 ])){
     $this->reviews = $this->pod->field( 'reviews', $this->params );
     // $this->puntuacion = $this->pod->field( 'mi_puntuacion');
     $this->puntuacion = '0.0';
+    $this->rating_percent = 0;
     if(!empty(get_post_meta($this->id_libro,'mi_puntuacion')[0])){
         $this->puntuacion = get_post_meta($this->id_libro,'mi_puntuacion')[0];
+        $this->rating_percent = $this->puntuacion*100/5;
     }
     if($this->reviews){
         $this->numReviews = count($this->reviews);
@@ -74,14 +76,7 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
         </a>
 
         <div class="aawp-product__meta">
-
-            <?php 
-            // if($this->star_rating){
-            // echo view('/../partials/rating', array('this2' => $this));
-            // }
-            echo rating($this->puntuacion);
-            ?>
-
+            <?php echo view('../partials/rating', ['this2' =>  $this]);?>
             <?php if ( $this->get_product_rating() ) { ?>
                 <?php echo $this->get_product_star_rating( array( 'size' => 'small' ) ); ?>
                 <?php if ( $this->get_product_reviews() ) { ?>

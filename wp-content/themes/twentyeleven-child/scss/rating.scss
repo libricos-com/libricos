@@ -1,0 +1,30 @@
+@import "_color";
+
+%flex-display {
+    display: flex;
+}
+.star-rating {
+    @extend %flex-display;
+    // align-items: center;
+    // font-size: 3em;
+    // justify-content: center;
+    // margin-bottom: 7%;
+
+    display: inline-flex;
+    width: min-content;
+}
+.back-stars {
+    @extend %flex-display;
+    color: $color-gris-price-amazon;
+    position: relative;
+    // text-shadow: 4px 4px 10px #843a3a;
+}
+.front-stars {
+    @extend %flex-display;
+    color: $color-yellow;
+    overflow: hidden;
+    position: absolute;
+    // text-shadow: 2px 2px 5px #d29b09;
+    top: 0;
+    transition: all .5s
+}
