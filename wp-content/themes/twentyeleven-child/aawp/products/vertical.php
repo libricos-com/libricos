@@ -11,54 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
 
-$this->asin = $this->get_product_id();
-$this->index = $this->item_index;
-// $variables = $this->get_template_variables();
-$this->ids = $this->get_template_variable( 'ids', false );
-
-if( !is_array($this->ids) ){
-    $this->ids = explode(',', $this->ids);
-}
-
-$is_my_book = $hay_reviews = false;
-if(!empty($this->ids[ $this->index - 1 ])){
-    $is_my_book = true;
-    $this->id_libro =  $this->ids[ $this->index - 1 ];
-    $this->post_title = get_the_title($this->id_libro);
-    $this->url_libro = esc_url( get_permalink( $this->id_libro ) );
-
-    $this->pod = pods( 'libro', $this->id_libro );
-    $this->params = array( 
-        // 'orderby' => 'post_date DESC'
-    ); 
-    $this->reviews = $this->pod->field( 'reviews', $this->params );
-    // $this->puntuacion = $this->pod->field( 'mi_puntuacion');
-    $this->puntuacion = '0.0';
-    $this->rating_percent = 0;
-    if(!empty(get_post_meta($this->id_libro,'mi_puntuacion')[0])){
-        $this->puntuacion = get_post_meta($this->id_libro,'mi_puntuacion')[0];
-        $this->rating_percent = $this->puntuacion*100/5;
-    }
-    if($this->reviews){
-        $hay_reviews = true;
-        $this->numReviews = count($this->reviews);
-    }else{
-        $this->numReviews = 0;
-    }
-    // echo aawp_get_field_value($asin, 'price');
-}else{
-    
-    // $url1 = $this->get_product_image_link();
-    $this->url_libro  = $this->get_product_url();
-}
-
-// @see: https://getaawp.com/docs/article/fields-single-product-data/
-$this->is_prime = aawp_get_field_value($this->asin, 'prime');
-// $this->is_premium = aawp_get_field_value($this->asin, 'premium');
-
-// $this->star_rating = aawp_get_field_value($this->asin, 'star_rating');
-// $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_rating"]');
-// $this->star_rating = do_shortcode('[amazon box="'.$this->asin.'" rating="4.5"]');
+set_libro($this);
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -78,7 +31,7 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
         <div class="aawp-product__meta">
 
             <?php echo view('../partials/rating', ['this2' =>  $this]);?>
-            
+
             <?php if ( $this->get_product_rating() ) { ?>
                 <?php echo $this->get_product_star_rating( array( 'size' => 'small' ) ); ?>
                 <?php if ( $this->get_product_reviews() ) { ?>
@@ -88,7 +41,7 @@ $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 
             <?php $this->the_product_check_prime_logo(); ?>
 
-            <?php if($hay_reviews){
+            <?php if($this->hay_reviews){
                 echo view('/../partials/review-list-amazon-box', array('this2' => $this));
             }?>
 
