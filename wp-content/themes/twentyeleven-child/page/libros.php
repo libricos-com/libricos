@@ -18,7 +18,7 @@ $urlBase = get_site_url();
 
         <?php 
          // Include the page content template.
-        get_template_part( 'partials/libros', 'page' );
+        get_template_part( 'page-content/libros', 'page' );
         ?>
 
 		<?php

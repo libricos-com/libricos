@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: JEI Notas Page 
+Template Name: JEI Reviews Page 
 
 @see: 
 - https://florianbrinkmann.com/en/organizing-files-functions-wordpress-theme-4190/
@@ -18,7 +18,7 @@ $urlBase = get_site_url();
 
         <?php 
          // Include the page content template.
-        get_template_part( 'partials/notas', 'page' );
+        get_template_part( 'page-content/reviews', 'page' );
         ?>
 
 		<?php
