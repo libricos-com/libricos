@@ -19,7 +19,7 @@ node_modules/
 
 # ignore log files and databases
 *.log
-*.sql
+wp-content/plugins/pods/sql/*.sql
 *.sqlite
 /nbproject/private/
 
