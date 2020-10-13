@@ -5,7 +5,7 @@
         <i class="fa fa-star" aria-hidden="true"></i>
         <i class="fa fa-star" aria-hidden="true"></i>
         <i class="fa fa-star" aria-hidden="true"></i>      
-        <div class="front-stars" style="width:<?php echo $this2->rating_percent?>%">
+        <div class="front-stars" style="width:<?php echo $this2->rating_percent;?>%">
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>

@@ -24,7 +24,7 @@ Tag oración ID 246
 http://192.168.1.44/jesuserro.com/tag/oracion/
 taxonomy=post_tag&tag_ID=246&post_type=post
 */
-$argsLibros = array(
+$args = array(
     'posts_per_page' => -1,
     'post_type' => 'libro',
     'tax_query' => array(
@@ -34,19 +34,11 @@ $argsLibros = array(
         )
     )
 );
-$libros = get_posts($argsLibros);
-$num = count($libros);
-$asins = $ids = '';
-if( ! empty( $libros ) ){
-	foreach ( $libros as $libro ){
-        if(empty($libro->asin)){
-            continue;
-        }
-        $asins .= $libro->asin.',';
-        $ids .= $libro->ID.',';
-    }
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
-}
+
+$libros = get_libros_asins($args);
+$asins = $libros[0];
+$ids = $libros[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 ?>
 
 <h2>Libros sobre profecías cumplidas</h2>
@@ -68,19 +60,10 @@ $args = array(
         )
     )
 );
-$libros = get_posts($args);
-$asins = $ids = '';
-$num = count($libros);
-if( ! empty( $libros ) ){
-	foreach ( $libros as $libro ){
-        if(empty($libro->asin)){
-            continue;
-        }
-        $asins .= $libro->asin.',';
-        $ids .= $libro->ID.',';
-    }
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
-}
+$libros = get_libros_asins($args);
+$asins = $libros[0];
+$ids = $libros[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 ?>
 
 <h2>Categoría Libros</h2>
@@ -96,19 +79,10 @@ $args = array(
         )
     )
 );
-$libros = get_posts($args);
-$asins = $ids = '';
-$num = count($libros);
-if( ! empty( $libros ) ){
-	foreach ( $libros as $libro ){
-        if(empty($libro->asin)){
-            continue;
-        }
-        $asins .= $libro->asin.',';
-        $ids .= $libro->ID.',';
-    }
-    echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
-}
+$libros = get_libros_asins($args);
+$asins = $libros[0];
+$ids = $libros[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
 ?>
 
 <h2>Novedades Amazon</h2>

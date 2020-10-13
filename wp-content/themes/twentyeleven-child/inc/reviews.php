@@ -1,11 +1,12 @@
 <?php
 /**
+ * Caja Amazon class Reviews
  * Captura las últimas reviews y coge los asins y los ids del libro correspondiente 
  *
  * @param string[] $input
  * @return string[ string $asins, string $ids ]
  */
-function get_asins($input)
+function get_reviews_asins($input)
 {
     $asins = $ids = '';
     $reviews = get_posts($input);
@@ -14,14 +15,17 @@ function get_asins($input)
             $libro = get_post_meta( $review->ID, 'libro', true );
             $id = $libro['ID'];
             $asin = get_post_meta( $id, 'asin', true );
+            $id_review = $review->ID;
+            
             if(!empty($asin)){
                 $asins .= $asin.',';
-                $ids .= $id.',';
+                $ids .= $id_review.',';
             }
         }
-        // Remove duplicate ids and remove last comma
-        $asins = rtrim(implode(',', array_unique(explode(',', $asins))),',');
-        $ids = rtrim(implode(',', array_unique(explode(',', $ids))),',');
+
+        // and remove last comma
+        $asins = rtrim($asins,',');
+        $ids = rtrim($ids,',');
     }
 
     return [

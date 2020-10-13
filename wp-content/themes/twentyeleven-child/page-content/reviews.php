@@ -8,7 +8,7 @@ $input = array(
     'post_type' => 'review',
     'orderby' => 'post_date DESC'
 );
-$libros_con_reviews = get_asins($input);
+$libros_con_reviews = get_reviews_asins($input);
 $asins = $libros_con_reviews[0];
 $ids = $libros_con_reviews[1];
 ?>
