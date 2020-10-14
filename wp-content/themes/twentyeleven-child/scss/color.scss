@@ -1,25 +1,26 @@
+@use '_variables' as c;
+
 /* 
 Bootstrap btn primary de otro color 
 @see darker colors from one given: https://www.0to255.com/ffa500
 */
 .btn-primary-orange {
     color: #fff !important;
-    background-color:$color-orange !important;
+    background-color:c.$color-orange !important;
 
     &:hover {
-        background-color: darken($color-orange, 10%) !important;
+        background-color: darken(c.$color-orange, 10%) !important;
     }
 }
 
 .color-yellow{
-	color: $color-yellow;
+	color: c.$color-yellow;
 }
 
 .color-darkorange{
-	color: $color-darkorange;
+	color: c.$color-darkorange;
 }
 
 .color-instagram{
-	color: $color-instagram;
+	color: c.$color-instagram;
 }
-

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.list-inline-bullets {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+}
+.list-inline-bullets li {
+  margin-left: -10px;
+}
+.list-inline-bullets li:first-child {
+  margin-left: 0px;
+}
+.list-inline-bullets li:after {
+  content: "•";
+  margin: 0 5px;
+}
+.list-inline-bullets li:last-child:after {
+  content: "";
+}
+
+.list-inline-pipe {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block;
+}
+.list-inline-pipe li {
+  margin-left: -10px;
+}
+.list-inline-pipe li:first-child {
+  margin-left: 0px;
+}
+.list-inline-pipe li:after {
+  content: "|";
+  margin: 0 5px;
+}
+.list-inline-pipe li:last-child:after {
+  content: "";
+}

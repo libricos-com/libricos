@@ -9,7 +9,7 @@
                     $nombreReview = get_the_title( $idA );
                     ?>
                     <li>
-                        <span class="badge badge-pill btn-secondary">
+                        <span class="badge badge-pill badge-secondary">
                             <i class="fas fa-clock" aria-hidden="true"></i> 
                             <?php echo date('d-m-y', strtotime($review['post_date']));?>
                         </span>

@@ -1,0 +1,65 @@
+.review-summary{
+
+    .summary {
+        font-size: 14px;
+        line-height: 1.5;
+
+        p{
+            margin-bottom: 0;
+            
+
+            &.collapse:not(.show) {
+                height: 42px !important;
+                overflow: hidden;
+            
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;  
+            }
+            
+            &.collapsing {
+                min-height: 42px !important;
+            }
+        }
+        
+        a{
+            &.collapsed:after  {
+                content: '+ Leer más';
+            }
+            
+            &:not(.collapsed):after {
+                content: '- Leer menos';
+            }
+        }
+    }
+
+    .float-right{
+        ul {
+            margin:0;
+            /*
+            li {
+                // adjust leading spacing for each additional item
+                margin-left: -10px;
+            
+                &:first-child {
+            
+                  // no leading spacing for initial item
+                  margin-left: 0px;
+                }
+            
+                &:after {
+                  content: '\2022'; // bullet
+                  margin: 0 5px;
+                }
+            
+                // no bullet on last
+                &:last-child:after {
+                  content: '';
+                }
+              }
+              */
+        }
+    }
+
+}
+

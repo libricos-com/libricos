@@ -1,0 +1,8 @@
+@import "mixins/_list-inline";
+
+.list-inline-bullets {
+    @include list-inline-separator('\2022');
+}
+.list-inline-pipe {
+    @include list-inline-separator('|');
+}

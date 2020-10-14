@@ -1,0 +1,11 @@
+@use '_variables' as c;
+
+ @import "mixins/_badge";
+
+.badge {
+    
+    &.badge-secondary {
+    //   @include badge-variant(c.$color-gris-price-amazon);
+      background-color: c.$color-gris-price-amazon;
+    }
+  }

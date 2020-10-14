@@ -1,0 +1,28 @@
+@mixin list-inline-separator($separator) {
+    @extend .list-inline !optional;
+
+    margin:0 !important;
+    padding: 0 !important;
+    display: inline-block;
+  
+    li {
+      // adjust leading spacing for each additional item
+      margin-left: -10px;
+  
+      &:first-child {
+  
+        // no leading spacing for initial item
+        margin-left: 0px;
+      }
+  
+      &:after {
+        content: $separator; // bullet
+        margin: 0 5px;
+      }
+  
+      // no bullet on last
+      &:last-child:after {
+        content: '';
+      }
+    }
+  }

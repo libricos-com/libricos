@@ -33,12 +33,22 @@ set_libro($this);
     </div>
 
     <div class="aawp-product__content">
-        <a class="aawp-product__title" href="<?php echo $this->get_product_url(); ?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
-            <?php echo $this->get_product_title(); ?>
+    
+        <?php echo view('../partials/review-fecha', ['this2' =>  $this]);?>
+
+        <?php echo view('../partials/chip', ['this2' =>  $this]);?>
+        
+        <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
+            <?php echo $this->get_product_title();?>
         </a>
+        
         <div class="aawp-product__description">
-            <?php echo $this->get_product_description(); ?>
+            <?php //echo $this->get_product_description();?>
+            <?php echo view('../partials/libro-autores', ['this2' =>  $this]);?>
         </div>
+
+        <?php echo view('../partials/review-summary', ['this2' =>  $this]);?>
+
     </div>
 
     <div class="aawp-product__footer">
