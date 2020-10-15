@@ -38,7 +38,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Libros sobre profecías cumplidas</h2>
@@ -63,7 +63,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Categoría Libros</h2>
@@ -82,7 +82,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"] template="my-vertical"');
 ?>
 
 <h2>Novedades Amazon</h2>

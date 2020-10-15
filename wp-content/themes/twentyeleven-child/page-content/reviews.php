@@ -16,7 +16,7 @@ $ids = $libros_con_reviews[1];
 <h1>Reseñas recientes de todos los libros</h1>
 <?php
 if(!empty($asins)){ 
-    echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="horizontal"]');
+    echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="my-horizontal"]');
 }else{
     echo 'No hay reviews';
 }
