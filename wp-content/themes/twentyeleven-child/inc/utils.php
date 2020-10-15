@@ -14,7 +14,7 @@ function get_first_paragraph($content)
    $re = '/<(p|div)[^>]*>([^<].{40,})<\/(p|div)>/m';
    preg_match($re, $content, $matches, PREG_OFFSET_CAPTURE, 0);
    if(!empty($matches[2][0])){
-       return strip_tags($matches[2][0], '<a>');
+       return strip_tags($matches[2][0]);
    }
    return 'No se pudo capturar el resumen.';
 }

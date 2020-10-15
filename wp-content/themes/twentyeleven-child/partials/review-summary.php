@@ -10,8 +10,22 @@
  
     <span class="float-right">
         <ul class="list-inline-bullets">
-            <li class="list-inline-item"><a href="" alt=""><?php echo $this2->num_comments;?> comentarios</a></li>
-            <li class="list-inline-item"><a href="<?php echo $this2->url_review;?>" alt="">Ir a reseña</a></li>
+            <li class="list-inline-item">
+                <i class="far fa-comments"></i> <?php echo $this2->num_comments;?>
+            </li>
+            <li class="list-inline-item">
+                <a href="<?php echo $this2->url_review;?>" alt="">Ver reseña</a>
+            </li>
+            <?php
+            if(!empty($this2->url_goodreads)){
+            ?>
+                <li class="list-inline-item">
+                    <i class="fab fa-goodreads"> 
+                    <a href="<?php echo $this2->url_goodreads;?>" alt="">Hilo Goodreads</i></a>
+                </li>
+            <?php
+            }
+            ?>
         </ul>
     </span>
 </div>

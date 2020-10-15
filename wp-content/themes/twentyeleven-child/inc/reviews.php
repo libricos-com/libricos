@@ -38,6 +38,7 @@ function set_review($this2)
 
         $this2->pod = pods( 'libro', $this2->id_libro );
         // echo aawp_get_field_value($asin, 'price');
+        $this2->autores = $this2->pod->field( 'autores' );
 
         if(!empty( get_post_meta($this2->id_review,'url_goodreads')[0] )){
             $this2->url_goodreads = get_post_meta($this2->id_review,'url_goodreads')[0];
