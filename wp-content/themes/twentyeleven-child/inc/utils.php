@@ -1,4 +1,14 @@
 <?php
+
+function get_fecha_larga($post_id)
+{
+    return get_the_date('d', $post_id).' de '.ucfirst(get_the_date('F', $post_id)).' de '.get_the_date('Y', $post_id);
+}
+function get_fecha_corta($post_id)
+{
+    return get_the_date('d', $post_id).'-'.get_the_date('m', $post_id).'-'.get_the_date('Y', $post_id);
+}
+
 /**
  * Get first paragraph from a WordPress post.
  * - Coge cualquier párrafo o div HTML

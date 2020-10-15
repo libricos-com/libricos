@@ -29,7 +29,7 @@ function set_review($this2)
         
         
         $this2->post_title = get_the_title($this2->id_review);
-        $this2->post_date = get_the_date('d', $this2->id_review).' de '.ucfirst(get_the_date('F', $this2->id_review)).' de '.get_the_date('Y', $this2->id_review);
+        $this2->post_date = get_fecha_larga($this2->id_review);
         // $this2->id_libro1 =  $this2->pod->field( 'libro');
         $this2->id_libro = get_post_meta($this2->id_review,'libro')[0]['ID'];
         $this2->url_libro = esc_url( get_permalink( $this2->id_libro ) );
