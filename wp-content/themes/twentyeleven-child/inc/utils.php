@@ -1,5 +1,25 @@
 <?php
 /**
+ * Get first paragraph from a WordPress post.
+ * - Coge cualquier párrafo o div HTML
+ * - Que tenga más de 40 caracteres
+ * - Cuyo texto no empiece por < (evita párrafos tipo: <p><!-- wp:html --></p>)
+ * - Al final permitimos links
+ * - Probar en https://regex101.com/r/1VNrFI/1
+ *
+ * @return string
+ */
+function get_first_paragraph($content)
+{
+   $re = '/<(p|div)[^>]*>([^<].{40,})<\/(p|div)>/m';
+   preg_match($re, $content, $matches, PREG_OFFSET_CAPTURE, 0);
+   if(!empty($matches[2][0])){
+       return strip_tags($matches[2][0], '<a>');
+   }
+   return 'No se pudo capturar el resumen.';
+}
+
+/**
  * Usada en el template Libros Grid de Pods
  * @see:
  * - https://www.ta-camp.de/news/howto-format-the-post_date-in-a-template 

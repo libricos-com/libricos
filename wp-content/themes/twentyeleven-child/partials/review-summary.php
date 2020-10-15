@@ -1,21 +1,17 @@
 <div class="review-summary">
-    <strong>Jesuserro</strong> dijo: 
+    <strong>Jesuserro</strong> dijo en <a href="<?php echo $this2->url_review;?>" alt=""><?php echo $this2->post_title;?></a>
     <!-- https://codepen.io/joserick/pen/ooVPwR -->
     <span class="summary">
-        <p class="collapse" id="collapseSummary_idreview">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor maximus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-        In hac habitasse platea dictumst. Suspendisse venenatis sollicitudin erat in gravida. Sed eget nisl tristique, commodo lectus sit amet, vulputate sem. 
-        Cras porttitor lorem ipsum, sit amet iaculis massa feugiat vitae. Curabitur sapien odio, ullamcorper tincidunt interdum vitae, vestibulum eu neque. 
-        Nam leo massa, fringilla eget mauris feugiat, auctor suscipit justo.
+        <p class="collapse" id="collapseSummary_idreview_<?php echo $this2->id_review;?>">
+            <?php echo $this2->texto;?>
         </p>
-        <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview" aria-expanded="false" aria-controls="collapseSummary_idreview"></a>
+        <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview_<?php echo $this2->id_review;?>" aria-expanded="false" aria-controls="collapseSummary_idreview_<?php echo $this2->id_review;?>"></a>
     </span> 
  
     <span class="float-right">
         <ul class="list-inline-bullets">
-            <li class="list-inline-item"><a href="" alt="">5 comentarios</a></li>
-            <li class="list-inline-item"><a href="" alt="">Ir a reseña</a></li>
+            <li class="list-inline-item"><a href="" alt=""><?php echo $this2->num_comments;?> comentarios</a></li>
+            <li class="list-inline-item"><a href="<?php echo $this2->url_review;?>" alt="">Ir a reseña</a></li>
         </ul>
     </span>
-
 </div>

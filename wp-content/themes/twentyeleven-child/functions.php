@@ -5,9 +5,9 @@
 if(WP_DEBUG){
     require_once('inc/debug.php'); 
 }
+require_once('inc/utils.php');
 require_once('inc/filters.php');
 require_once('inc/actions.php');
-require_once('inc/template.php');
 require_once('inc/shortcodes.php');
 require_once('inc/libros.php');
 require_once('inc/reviews.php');

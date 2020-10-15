@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
-set_libro($this);
+set_review($this);
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--horizontal'); ?>" <?php $this->the_product_container(); ?>>
