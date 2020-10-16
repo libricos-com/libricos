@@ -30,7 +30,7 @@ set_libro($this);
 
         <div class="aawp-product__meta">
 
-            <?php echo view('../partials/rating', ['this2' =>  $this]);?>
+            <?php //echo view('../partials/rating', ['this2' =>  $this]);?>
 
             <?php if ( $this->get_product_rating() ) { ?>
                 <?php echo $this->get_product_star_rating( array( 'size' => 'small' ) ); ?>
