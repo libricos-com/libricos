@@ -351,7 +351,7 @@ class UpdraftPlus {
 		header('Content-Length: '.(empty($txt) ? '0' : 4+strlen($txt)));
 		header('Connection: close');
 		header('Content-Encoding: none');
-		if (session_id()) session_write_close();
+		if (function_exists('session_id') && session_id()) session_write_close();
 		echo "\r\n\r\n";
 		echo $txt;
 		// These two added - 19-Feb-15 - started being required on local dev machine, for unknown reason (probably some plugin that started an output buffer).
@@ -1471,7 +1471,7 @@ class UpdraftPlus {
 
 			// Some more remains to download - so let's do it
 			// N.B. We use ftell(), which precludes us from using open in append-only ('a') mode - see https://php.net/manual/en/function.fopen.php
-			if (!($fh = fopen($fullpath, 'c+'))) {// phpcs:ignore PHPCompatibility.ParameterValues.NewFopenModes.cplusFound -- Passing "c+" as the $mode to fopen() is not supported in PHP 5.2.5 or lower. Found 'c+'
+			if (!($fh = fopen($fullpath, 'c+'))) {
 				$this->log("Error opening local file: $fullpath");
 				$this->log($file.": ".__("Error", 'updraftplus').": ".__('Error opening local file: Failed to download', 'updraftplus'), 'error');
 				return false;
@@ -1515,7 +1515,7 @@ class UpdraftPlus {
 					} else {
 						$ret = filesize($fullpath);
 						// fseek returns - on success
-						if (false == ($fh = fopen($fullpath, 'c+')) || 0 !== fseek($fh, $ret)) {// phpcs:ignore PHPCompatibility.ParameterValues.NewFopenModes.cplusFound -- Passing "c+" as the $mode to fopen() is not supported in PHP 5.2.5 or lower. Found 'c+'
+						if (false == ($fh = fopen($fullpath, 'c+')) || 0 !== fseek($fh, $ret)) {
 							$this->log("Error opening local file: $fullpath");
 							$this->log($file.": ".__("Error", 'updraftplus').": ".__('Error opening local file: Failed to download', 'updraftplus'), 'error');
 							return false;
@@ -3009,6 +3009,15 @@ class UpdraftPlus {
 		@ignore_user_abort(true);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 		@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 
+		$hosting_company = $this->get_hosting_info();
+		if (!empty($options['incremental']) && in_array('only_one_incremental_per_day', $this->is_hosting_backup_limit_reached())) {
+			$this->log(__("You have reached the daily limit for the number of incremental backups you can create at this time.", 'updraftplus').' '.__(' Your hosting provider only allows you to take one incremental backup per day.', 'updraftplus').' '.sprintf(__('Please contact your hosting company (%s) if you require further support.', 'updraftplus'), $hosting_company['name']));
+			return false;
+		} elseif (empty($options['incremental']) && in_array('only_one_backup_per_month', $this->is_hosting_backup_limit_reached())) {
+			$this->log(__('You have reached the monthly limit for the number of backups you can create at this time.', 'updraftplus').' '.__('Your hosting provider only allows you to take one backup per month.', 'updraftplus').' '.sprintf(__('Please contact your hosting company (%s) if you require further support.', 'updraftplus'), $hosting_company['name']));
+			return false;
+		}
+
 		if (false === $restrict_files_to_override && isset($options['restrict_files_to_override'])) $restrict_files_to_override = $options['restrict_files_to_override'];
 		// Generate backup information
 		$use_nonce = empty($options['use_nonce']) ? false : $options['use_nonce'];
@@ -3675,15 +3684,27 @@ class UpdraftPlus {
 		echo '</ul>';
 	}
 
+	/**
+	 * Save last successful backup information
+	 *
+	 * @param Array $backup_array An array of backup information
+	 */
 	private function save_last_backup($backup_array) {
 		$success = ($this->error_count() == 0) ? 1 : 0;
-		$last_backup = apply_filters('updraftplus_save_last_backup', array(
-			'backup_time' => $this->backup_time,
+		$last_backup = UpdraftPlus_Options::get_updraft_option('updraft_last_backup', array());
+		if ('incremental' === $this->jobdata_get('job_type')) {
+			$last_backup['incremental_backup_time'] = $this->backup_time; // the incremental_backup_time index is used only for storing time of the incremental job type
+		} else {
+			$last_backup['nonincremental_backup_time'] = $this->backup_time; // otherwise the nonincremental_backup_time index is for the backup job type
+		}
+		$last_backup = wp_parse_args(array(
+			'backup_time' => $this->backup_time, // the backup_time index is used for storing either time of backup or incremental job type
 			'backup_array' => $backup_array,
 			'success' => $success,
 			'errors' => $this->errors,
 			'backup_nonce' => $this->nonce
-		));
+		), $last_backup);
+		$last_backup = apply_filters('updraftplus_save_last_backup', $last_backup);
 		UpdraftPlus_Options::update_updraft_option('updraft_last_backup', $last_backup, false);
 	}
 
@@ -4288,8 +4309,9 @@ class UpdraftPlus {
 			UpdraftPlus_Options::update_updraft_option('updraft_dir', $matches[1]);
 			$updraft_dir = WP_CONTENT_DIR.'/'.$matches[1];
 		}
-		$default_backup_dir = WP_CONTENT_DIR.'/updraft';
-		$updraft_dir = ($updraft_dir) ? $updraft_dir : $default_backup_dir;
+
+		// Default
+		if (!$updraft_dir) $updraft_dir = WP_CONTENT_DIR.'/updraft';
 
 		// Do a test for a relative path
 		if ('/' != substr($updraft_dir, 0, 1) && "\\" != substr($updraft_dir, 0, 1) && !preg_match('/^[a-zA-Z]:/', $updraft_dir)) {
@@ -5486,5 +5508,75 @@ class UpdraftPlus {
 		$server_config_filenames[] = ini_get('user_ini.filename'); // phpcs:ignore PHPCompatibility.IniDirectives.NewIniDirectives.user_ini_filenameFound
 		$server_config_filenames = array_unique($server_config_filenames);
 		return $server_config_filenames;
+	}
+
+	/**
+	 * Check what hosting company that this plugin is installed onto and if there appear to be any restriction being applied to it
+	 *
+	 * @return Array An array of information regarding the hosting company or empty array if this method fails to recognise the hosting company
+	 */
+	public function get_hosting_info() {
+
+		$hosting_company = array(
+			'name' => '',
+			'website' => '',
+			'restriction' => array(),
+		);
+
+		if (array_key_exists('KINSTA_CACHE_ZONE', $_SERVER)) {
+			$hosting_company = array(
+				'name' => 'Kinsta',
+				'website' => 'kinsta.com',
+				'restriction' => array(
+					'only_one_backup_per_month',
+					'only_one_incremental_per_day',
+				)
+			);
+		}
+
+		return apply_filters('updraftplus_get_hosting_info', $hosting_company);
+	}
+
+	/**
+	 * Check whether the hosting provider has some restriction
+	 *
+	 * @param String|Array $restriction An array or string of restriction
+	 * @return Boolean True if the hosting provider has the given restriction, false otherwise
+	 */
+	public function is_restricted_hosting($restriction) {
+
+		$restriction = (array) $restriction;
+
+		$hosting_company = $this->get_hosting_info();
+
+		if (empty($hosting_company)) return false;
+
+		foreach ($restriction as $rstc) {
+			if (in_array($rstc, $hosting_company['restriction'])) return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check whether the hosting has a number of backups restrictions that can be created at a particular time and whether that number has reached the limit or the time elapsed has passed the limit
+	 */
+	public function is_hosting_backup_limit_reached() {
+		$res = array();
+		$last_backup = UpdraftPlus_Options::get_updraft_option('updraft_last_backup', array());
+		$current_time = time();
+		if (!empty($last_backup['incremental_backup_time'])) {
+			// $next_day_from_last_backup = strtotime(gmdate('Y-m-d', (int) $last_backup['backup_time'])) + 86400;
+			$next_24hours_from_last_backup = strtotime(gmdate('Y-m-d H:i:s', (int) $last_backup['incremental_backup_time'])) + 86400;
+			// one incremental per day and the time has gone 24 hours past the last incremental backup time
+			if ($this->is_restricted_hosting('only_one_incremental_per_day') && $current_time < $next_24hours_from_last_backup) $res[] = 'only_one_incremental_per_day';
+		}
+		if (!empty($last_backup['nonincremental_backup_time'])) {
+			// $first_day_of_next_month_from_last_backup = strtotime(gmdate('Y-m-t', (int) $last_backup['backup_time']))+86400;
+			$next_thirty_days_from_last_backup = strtotime(gmdate('Y-m-d H:i:s', (int) $last_backup['nonincremental_backup_time'])) + (86400 * 30);
+			// Check whether the hosting provider permits only one backup per month and whether the time has gone 30 days past the last backup time
+			if ($this->is_restricted_hosting('only_one_backup_per_month') && $current_time < $next_thirty_days_from_last_backup) $res[] = 'only_one_backup_per_month';
+		}
+		return $res;
 	}
 }
