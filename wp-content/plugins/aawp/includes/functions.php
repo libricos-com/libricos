@@ -620,8 +620,8 @@ function aawp_get_api_error_message( $error_code ) {
         $text = __( 'The Access Key or security token included in the request is invalid.', 'aawp' );
 
     // Unknown error
-    } elseif ( ! empty( $error_code ) ) {
-        $text = sprintf( esc_html__( 'Unknown error: %s', 'aawp' ), $error_code );
+    //} elseif ( ! empty( $error_code ) ) {
+      //  $text = sprintf( esc_html__( 'Unknown error: %s', 'aawp' ), $error_code );
 
     // Undefined error
     } else {

@@ -252,6 +252,7 @@ if ( ! class_exists( 'AAWP_Settings_License' ) ) {
                             // Delete license data.
                             if ( isset ( $license_info['data'] ) ) {
                                 $input['key'] = '';
+                                $input['server'] = '';
                                 $input['info'] = '';
                             }
                         }

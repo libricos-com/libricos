@@ -294,6 +294,7 @@ class AAWP_License_Handler {
 
         $license_status = ( ! empty ( $license_info['status'] ) ) ? $license_info['status'] : 'inactive';
         $license_error = ( ! empty ( $license_info['error'] ) ) ? $license_info['error'] : null;
+        $license_limit = ( ! empty ( $license_info['data']->license_limit ) ) ? absint ( $license_info['data']->license_limit ) : 0;
 
         //$license_error = array( 'code' => 'no_activations_left', 'message' => 'Your license key has reached its activation limit.' );
 
@@ -308,6 +309,15 @@ class AAWP_License_Handler {
             $license_icon = 'dismiss';
             $license_status_color = 'red';
         }
+
+        /*
+        $license_limit = 1;
+
+        if ( ! is_multisite() && ( ! empty ( $license_limit ) && $license_limit < 3 ) ) {
+            $license_icon = 'warning';
+            $license_status_color = 'orange';
+        }
+        */
 
         // Start output.
         ob_start();

@@ -143,6 +143,7 @@ function aawp_embed_geotargeting_script_data() {
         return;
 
     $default_store = $options_api['country'];
+    //$default_store = 'ca';
 
     $options_functions = aawp_get_options( 'functions' );
     $geotargeting = ( isset ( $options_functions['geotargeting'] ) && $options_functions['geotargeting'] == '1' ) ? 1 : 0;
@@ -156,6 +157,9 @@ function aawp_embed_geotargeting_script_data() {
     // Settings
     $settings = array( 'store' => $default_store, 'mode' => $geotargeting_mode );
 
+    //aawp_debug_log( __FUNCTION__ . ' >> $settings:' );
+    //aawp_debug_log( $settings );
+
     // Collect tracking IDs
     $tracking_ids = array();
 
@@ -168,7 +172,8 @@ function aawp_embed_geotargeting_script_data() {
     if ( sizeof( $tracking_ids ) == 0 )
         return;
 
-    //aawp_debug( $tracking_ids );
+    //aawp_debug_log( __FUNCTION__ . ' >> $tracking_ids:' );
+    //aawp_debug_log( $tracking_ids );
 
     // Build localized stores
     $localized_stores = array();
@@ -177,75 +182,75 @@ function aawp_embed_geotargeting_script_data() {
     // https://ipinfo.io/__IP__/json/
     // http://ontheworldmap.com/world-map-2500.jpg
 
-	if ( ! empty( $tracking_ids['com.au'] ) && 'com.au' != $default_store ) {
+	if ( ! empty( $tracking_ids['com.au'] ) && 'com.au' !== $default_store ) {
 		$localized_stores['au'] = 'com.au'; // Australia
         $localized_stores['nz'] = 'com.au'; // New Zealand
 	}
 
-    if ( ! empty( $tracking_ids['com.br'] ) && 'com.br' != $default_store ) {
+    if ( ! empty( $tracking_ids['com.br'] ) && 'com.br' !== $default_store ) {
         $localized_stores['br'] = 'com.br'; // Brazil
     }
 
-    if ( ! empty( $tracking_ids['ca'] ) && 'ca' != $default_store ) {
+    if ( ! empty( $tracking_ids['ca'] ) && 'ca' !== $default_store ) {
         $localized_stores['ca'] = 'ca'; // Canada
     }
 
-    if ( ! empty( $tracking_ids['cn'] ) && 'cn' != $default_store ) {
+    if ( ! empty( $tracking_ids['cn'] ) && 'cn' !== $default_store ) {
         $localized_stores['cn'] = 'cn'; // China
     }
 
-    if ( ! empty( $tracking_ids['de'] ) && 'de' != $default_store ) {
+    if ( ! empty( $tracking_ids['de'] ) && 'de' !== $default_store ) {
         $localized_stores['de'] = 'de'; // Germany
         $localized_stores['at'] = 'de'; // Austria
         $localized_stores['ch'] = 'de'; // Switzerland
     }
 
-    if ( ! empty( $tracking_ids['es'] ) && 'es' != $default_store ) {
+    if ( ! empty( $tracking_ids['es'] ) && 'es' !== $default_store ) {
         $localized_stores['es'] = 'es'; // Spain
     }
 
-    if ( ! empty( $tracking_ids['fr'] ) && 'fr' != $default_store ) {
+    if ( ! empty( $tracking_ids['fr'] ) && 'fr' !== $default_store ) {
         $localized_stores['fr'] = 'fr'; // France
     }
 
-    if ( ! empty( $tracking_ids['nl'] ) && 'nl' != $default_store ) {
+    if ( ! empty( $tracking_ids['nl'] ) && 'nl' !== $default_store ) {
         $localized_stores['nl'] = 'nl'; // Netherlands
     }
 
-    if ( ! empty( $tracking_ids['in'] ) && 'in' != $default_store ) {
+    if ( ! empty( $tracking_ids['in'] ) && 'in' !== $default_store ) {
         $localized_stores['in'] = 'in'; // India
     }
 
-    if ( ! empty( $tracking_ids['it'] ) && 'it' != $default_store ) {
+    if ( ! empty( $tracking_ids['it'] ) && 'it' !== $default_store ) {
         $localized_stores['it'] = 'it'; // Italy
     }
 
-    if ( ! empty( $tracking_ids['co.jp'] ) && 'co.jp' != $default_store ) {
+    if ( ! empty( $tracking_ids['co.jp'] ) && 'co.jp' !== $default_store ) {
         $localized_stores['jp'] = 'co.jp'; // Japan
     }
 
-    if ( ! empty( $tracking_ids['sa'] ) && 'sa' != $default_store ) {
+    if ( ! empty( $tracking_ids['sa'] ) && 'sa' !== $default_store ) {
         $localized_stores['sa'] = 'sg'; // Saudi Arabia
     }
 
-    if ( ! empty( $tracking_ids['sg'] ) && 'sg' != $default_store ) {
+    if ( ! empty( $tracking_ids['sg'] ) && 'sg' !== $default_store ) {
         $localized_stores['sg'] = 'sg'; // Singapore
     }
 
-    if ( ! empty( $tracking_ids['com.tr'] ) && 'com.tr' != $default_store ) {
+    if ( ! empty( $tracking_ids['com.tr'] ) && 'com.tr' !== $default_store ) {
         $localized_stores['tr'] = 'com.tr'; // Turkey
     }
 
-    if ( ! empty( $tracking_ids['com.mx'] ) && 'com.mx' != $default_store ) {
+    if ( ! empty( $tracking_ids['com.mx'] ) && 'com.mx' !== $default_store ) {
         $localized_stores['mx'] = 'com.mx'; // Mexico
     }
 
-    if ( ! empty( $tracking_ids['co.uk'] ) && 'co.uk' != $default_store ) {
+    if ( ! empty( $tracking_ids['co.uk'] ) && 'co.uk' !== $default_store ) {
         $localized_stores['gb'] = 'co.uk'; // UK
         $localized_stores['ie'] = 'co.uk'; // Ireland
     }
 
-    if ( ! empty( $tracking_ids['com'] ) && 'com' != $default_store ) {
+    if ( ! empty( $tracking_ids['com'] ) && 'com' !== $default_store ) {
         $localized_stores['us'] = 'com'; // USA
         $localized_stores['ar'] = 'com'; // Argentina
         $localized_stores['cl'] = 'com'; // Chile
@@ -257,17 +262,18 @@ function aawp_embed_geotargeting_script_data() {
         $localized_stores['ec'] = 'com'; // Ecuador
 
         // Country fallback
-        if ( empty( $tracking_ids['ca'] ) )
+        if ( empty( $tracking_ids['ca'] ) && ! isset( $localized_stores['ca'] ) && 'ca' !== $default_store )
             $localized_stores['ca'] = 'com'; // Canada
 
-        if ( empty( $tracking_ids['com.mx'] ) && empty( $localized_stores['mx'] ) )
+        if ( empty( $tracking_ids['com.mx'] ) && ! isset( $localized_stores['mx'] ) && 'com.mx' !== $default_store )
             $localized_stores['mx'] = 'com'; // Mexico
 
-	    if ( empty( $tracking_ids['com.au'] ) && empty( $localized_stores['au'] ) )
+	    if ( empty( $tracking_ids['com.au'] ) && ! isset( $localized_stores['au'] ) && 'com.au' !== $default_store )
 		    $localized_stores['au'] = 'com'; // Australia
     }
 
-    //aawp_debug( $localized_stores );
+    //aawp_debug_log( __FUNCTION__ . ' >> $localized_stores:' );
+    //aawp_debug_log( $localized_stores );
 
     ?>
     <script type="text/javascript">

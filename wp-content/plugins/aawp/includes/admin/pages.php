@@ -29,10 +29,12 @@ add_action( 'admin_menu', function() {
 
     $notification_html = ( true === $show_notification ) ? ' <span class="update-plugins count-1"><span class="update-count">!</span></span>' : '';
 
+    $menu_cap = apply_filters( 'aawp_admin_menu_cap', 'edit_pages' );
+
     add_menu_page(
         __( 'AAWP', 'aawp' ),
         __( 'AAWP', 'aawp' ) . $notification_html,
-        'edit_pages',
+        $menu_cap,
         $aawp_menu_slug,
         'aawp_admin_render_settings_page',
         AAWP_PLUGIN_URL . '/public/assets/img/icon-menu.png',
@@ -45,7 +47,7 @@ add_action( 'admin_menu', function() {
         $aawp_menu_slug,
         __( 'AAWP - Settings', 'aawp' ),
         $menu_settings_title,
-        'edit_pages' ,
+        $menu_cap,
         'aawp-settings',
         'aawp_admin_render_settings_page'
     );
@@ -55,7 +57,7 @@ add_action( 'admin_menu', function() {
         $aawp_menu_slug,
         __( 'AAWP - Products', 'aawp' ),
         __( 'Products', 'aawp' ),
-        'edit_pages' ,
+        $menu_cap,
         'edit.php?post_type=aawp_product'
     );
 
@@ -67,7 +69,7 @@ add_action( 'admin_menu', function() {
             $aawp_menu_slug,
             __( 'AAWP - Lists', 'aawp' ),
             __( 'Lists', 'aawp' ),
-            'edit_pages' ,
+            $menu_cap,
             'edit.php?post_type=aawp_list'
         );
     }

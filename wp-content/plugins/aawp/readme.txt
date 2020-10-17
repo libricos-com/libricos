@@ -5,11 +5,16 @@ Tags: amazon, affiliate
 Requires at least: 5.0.0
 Requires PHP: 5.6.0
 Tested up to: 5.5.1
-Stable tag: 3.14.1
+Stable tag: 3.14.2
 
 The best WordPress plugin for Amazon Affiliates.
 
 == Changelog ==
+
+= Version 3.14.2 (16th October 2020) =
+* New: Added filter "aawp_admin_menu_cap" for overwriting the admin menu capability
+* Fix: Geotargeting didn't work as expected when a site's default store was set to Canada
+* Fix: In a specific case, the plugin settings page tab "Amazon API" showed broken HTML output when informing about a connection issue
 
 = Version 3.14.1 (22nd September 2020) =
 * Tweak: Minor adjustments related to the license handling
