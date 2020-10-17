@@ -21,6 +21,9 @@ function set_review($this2)
     $this2->puntuacion = '0.0';
     $this2->rating_percent = 0;
     $this2->hay_reviews = false;
+    $this2->url_goodreads = '';
+    $this2->texto = '';
+
 
     if(!empty($this2->ids[ $this2->index - 1 ])){
 
@@ -50,7 +53,7 @@ function set_review($this2)
 
         if(!empty( get_post_meta($this2->id_review,'puntuacion')[0] )){
             if(is_numeric($this2->puntuacion)){
-                $this2->puntuacion = floatval(get_post_meta($this2->id_libro,'mi_puntuacion')[0]);
+                $this2->puntuacion = floatval(get_post_meta($this2->id_review,'puntuacion')[0]);
                 $this2->rating_percent = $this2->puntuacion*100/5;
             }  
         }

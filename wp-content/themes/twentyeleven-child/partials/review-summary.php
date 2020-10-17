@@ -21,7 +21,7 @@
             ?>
                 <li class="list-inline-item">
                     <i class="fab fa-goodreads"> 
-                    <a href="<?php echo $this2->url_goodreads;?>" alt="">Hilo Goodreads</i></a>
+                    <a href="<?php echo $this2->url_goodreads;?>" alt="">Goodreads review</i></a>
                 </li>
             <?php
             }
