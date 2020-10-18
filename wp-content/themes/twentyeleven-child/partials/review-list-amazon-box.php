@@ -10,10 +10,14 @@
                     ?>
                     <li>
                         <span class="badge badge-secondary">
-                            <i class="fas fa-clock" aria-hidden="true"></i> 
+                            <i class="far fa-calendar-check" aria-hidden="true"></i> 
                         </span>  
-                        <?php echo get_fecha_corta($id_review);?>
-                        <a class="badge badge-danger" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->post_title;?>"><i class="fas fa-clipboard-list"></i> Review <?php echo $i;?></a>
+                        <small><?php echo get_fecha_larga($id_review);?></small>
+                        
+                        <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->post_title;?>">
+                            <i class="fas fa-check"></i>
+                            Reviewed
+                        </a>
                     </li>
                     <?php
                     $i++;
