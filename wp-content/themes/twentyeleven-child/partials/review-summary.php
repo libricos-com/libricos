@@ -11,7 +11,8 @@
     <span class="float-right">
         <ul class="list-inline-bullets">
             <li class="list-inline-item">
-                <i class="far fa-comments"></i> <?php echo $this2->num_comments;?>
+                <i class="far fa-comments"></i> <?php echo $this2->num_comments;?> 
+                <a href="<?php echo the_permalink($this2->id_review);?>#respond" alt="Deja tu comentario">Comenta</a>
             </li>
             <li class="list-inline-item">
                 <a href="<?php echo $this2->url_review;?>" alt="">Ver reseña</a>
