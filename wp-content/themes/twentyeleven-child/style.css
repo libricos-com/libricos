@@ -18,6 +18,7 @@ Text Domain: twentyeleven-child
 /* Heredamos estilos del theme padre */
 @import url("../twentyeleven/style.css");
 /* Inicialización de variables y colores */
+@import url("../twentyeleven-child/css/typography.css");
 @import url("../twentyeleven-child/css/common.css");
 @import url("../twentyeleven-child/css/color.css");
 /* Layout */

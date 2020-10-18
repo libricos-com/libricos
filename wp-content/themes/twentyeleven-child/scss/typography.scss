@@ -1,0 +1,19 @@
+html {
+    /* Define breakpoints and font sizes */
+    @media (min-width: 800px) {
+        $font-size: 1.0625rem;
+        // border: solid 2px red;
+    }
+
+    @media (max-width: 1000px) {
+        $font-size: 1.125rem;
+        // border: solid 2px orange;
+    }
+
+    @media (min-width: 1200px) {
+        $font-size: 1.1875rem;
+        // border: solid 2px green;
+    }
+    font-size: calc($font-size + .4vw);
+  }
+  
