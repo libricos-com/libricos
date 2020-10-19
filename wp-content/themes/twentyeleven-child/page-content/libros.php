@@ -4,9 +4,23 @@ The template for displaying content in the tpl/libros.php template
 @see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 Ancient code before AAWP @see: https://gist.github.com/jesuserro/9d504d06aaa2094d42d6e8e5a498d45b
 */
+
+$args = array(
+    'taxonomy' => 'generos',
+    'hide_empty' => false
+);
+$terms = get_terms($args);
+echo view('../partials/searchform-complete', array(
+    'this2' => (object)[
+        'terms' => $terms,
+        'colors' => ['danger', 'warning', 'success', 'primary', 'info', 'secondary']
+    ])
+);
 ?>
 
-<h2>Libros cristianos/espiritualidad de autoayuda (más vendidos, emocional, ansiedad, autoestima, depresión, imprescindibles)</h2>
+<h2>Libros de autoayuda</h2>
+<p>Selección de libros imprescindibles cristianos sobre espiritualidad, populares, de los más vendidos, 
+emocional, ansiedad, autoestima, depresión, imprescindibles. Libros cristianos a buen precio, español y Kindle.</p>
 <?php 
 // Género psicologia 374 http://192.168.1.44/jesuserro.com/generos/psicologia
 $args = array(
@@ -24,14 +38,11 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
+//echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
-<h2>Libros cristianos gratis, español y Kindle (más vendidos)</h2>
-
-<h2>Libros cristianos para jóvenes, hombres, mujeres, niños</h2>
-
 <h2>Libros de historias y testimonios cristianos.</h2>
+<p>Libros que cuentan historias para jóvenes, hombres, mujeres, niños.</p>
 <?php 
 // Género psicologia 374 http://192.168.1.44/jesuserro.com/generos/psicologia
 $args = array(
@@ -47,7 +58,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
+//echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Libros sobre el sentido del sufrimiento</h2>
@@ -73,7 +84,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
+//echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Libros sobre profecías cumplidas</h2>
@@ -92,7 +103,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
+//echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Libros sobre psicología y amor de pareja</h2>
@@ -113,7 +124,7 @@ $args = array(
 $libros = get_libros_asins($args);
 $asins = $libros[0];
 $ids = $libros[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
+//echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <!-- <h2>Categoría Libros</h2> -->
