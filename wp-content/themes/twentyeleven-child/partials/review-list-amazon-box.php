@@ -9,15 +9,11 @@
                     $nombreReview = get_the_title( $id_review );
                     ?>
                     <li>
-                        <span class="badge badge-secondary">
-                            <i class="far fa-calendar-check" aria-hidden="true"></i> 
-                        </span>  
-                        <small><?php echo get_fecha_larga($id_review);?></small>
-                        
                         <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->post_title;?>">
                             <i class="fas fa-check"></i>
                             Reviewed
-                        </a>
+                        </a> 
+                        <small><?php echo get_fecha_larga($id_review);?></small>   
                     </li>
                     <?php
                     $i++;

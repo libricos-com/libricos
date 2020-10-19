@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             
-            <?php echo view('../searchform', ['this2' =>  (object)['placeholder' => 'Busca tu libro por temática, título, autor, ...'] ]);?>
+            <?php echo view('../searchform', ['this2' => $this2 ]);?>
 
             <h4 class="card-title">Busca por categoría <i class="fas fa-tag"></i></h4>
                 

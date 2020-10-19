@@ -86,7 +86,7 @@ $ids = implode(',', array_unique(explode(',', $ids)));
 
         <?php
         if(!empty($asins)){ 
-            echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3"]');
+            echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
         }
         ?>
 
@@ -100,7 +100,7 @@ $ids = implode(',', array_unique(explode(',', $ids)));
         }
         ?>
 
-        <h2>Otros libros de <?php echo $term->name;?></h2>
+        <h1>Otros libros de <?php echo $term->name;?></h1>
         <?php echo do_shortcode('[amazon bestseller="%'.$term->name.' + cristianismo%"]'); ?>
 
 

@@ -13,7 +13,7 @@ $asins = $libros_con_reviews[0];
 $ids = $libros_con_reviews[1];
 ?>
 
-<h1>Reseñas recientes de todos los libros</h1>
+<h1>Últimas reseñas</h1>
 <?php
 if(!empty($asins)){ 
     echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="my-horizontal"]');
