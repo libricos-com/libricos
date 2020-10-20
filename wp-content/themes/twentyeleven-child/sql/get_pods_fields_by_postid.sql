@@ -1,6 +1,6 @@
--- Review POD resumen completo de mero cristianismo
+-- 8046 mero cristianismo, 13139 regreso a casa
 SELECT * FROM `wp_postmeta` 
 WHERE 
-    post_id = 8046 
-    and meta_key IN ('texto', 'url_goodreads', 'puntuacion', 'entradilla')
+    post_id = 13139 
+    and meta_key IN ('texto', 'url_goodreads', 'puntuacion', 'entradilla', 'estado')
 ORDER BY `meta_key` ASC

@@ -41,6 +41,11 @@ set_libro($this);
 
             <?php $this->the_product_check_prime_logo(); ?>
 
+            <?php if(!$this->hay_reviews && $this->estado){
+                echo view('/../partials/libro-estado', array('this2' => $this));
+            }
+            ?>
+
             <?php if($this->hay_reviews){
                 echo view('/../partials/review-list-amazon-box', array('this2' => $this));
             }?>

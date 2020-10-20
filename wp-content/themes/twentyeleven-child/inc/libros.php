@@ -21,6 +21,12 @@ function set_libro($this2)
     $this2->puntuacion = '0.0';
     $this2->rating_percent = 0;
     $this2->hay_reviews = false;
+    $this2->estado = false;
+    $this2->url_libro = '#';
+    $txt = '';
+
+    $colors = ['danger', 'warning', 'success', 'primary', 'info', 'secondary'];
+    $icon_cls = ['danger', 'warning', 'success', 'primary', 'info', 'secondary'];
 
     if(!empty($this2->ids[ $this2->index - 1 ])){
 
@@ -33,7 +39,8 @@ function set_libro($this2)
         $this2->pod = pods( 'libro', $this2->id_libro );
         $this2->params = array( 
             // 'orderby' => 'post_date DESC'
-        ); 
+        );
+        
         $this2->reviews = $this2->pod->field( 'reviews', $this2->params );
         // $this->puntuacion = $this->pod->field( 'mi_puntuacion');
         if(!empty( get_post_meta($this2->id_libro,'mi_puntuacion')[0] )){
@@ -47,6 +54,86 @@ function set_libro($this2)
             $this2->numReviews = count($this2->reviews);
         }else{
             $this2->numReviews = 0;
+
+            /*
+            0 | Por leer
+            1 | Siguiente
+            2 | Leído
+            3 | Leyendo
+            4 | Cerrado
+            5 | Pausado
+            6 | No interesado
+            7 | Cuarentena
+
+            <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" 
+            title="Ficha del libro <?php echo $this2->post_title;?>">
+                <i class="fas fa-check"></i>
+                Reviewed
+            </a> 
+            */ 
+            $this2->estado = $this2->pod->field( 'estado' );
+            switch ($this2->estado) {
+                case '0':
+                    $color = 'primary';
+                    $icon_cls = 'book';
+                    $txt = 'Por leer';
+                    $tooltip = 'Añadido a la biblioteca';
+                    break;
+                case '1':
+                    $color = 'warning';
+                    $icon_cls = 'fire-alt';
+                    $txt = 'Próximamente';
+                    $tooltip = 'Se leerá en las próximas semanas';
+                    break;
+                case '2':
+                    $color = 'primary';
+                    $icon_cls = 'book';
+                    $txt = 'Leído';
+                    $tooltip = 'Leído en espera de review';
+                    break;
+                case '3':
+                    $color = 'info';
+                    $icon_cls = 'book-reader';
+                    $txt = 'Leyendo ahora';
+                    $tooltip = 'Actualmente leyendo';
+                    break;
+                case '4':
+                    $color = 'secondary';
+                    $icon_cls = 'book';
+                    $txt = 'Cerrado';
+                    $tooltip = 'Pausado para largo tiempo';
+                    break;
+                case '5':
+                    $color = 'secondary';
+                    $icon_cls = 'check';
+                    $txt = 'Pausado';
+                    $tooltip = 'Pausado por corto tiempo';
+                    break;
+                case '6':
+                    $color = 'secondary';
+                    $icon_cls = 'check';
+                    $txt = 'No interesado';
+                    $tooltip = 'No recomendable';
+                    break;
+                case '7':
+                    $color = 'secondary';
+                    $icon_cls = 'check';
+                    $txt = 'Cuarentena';
+                    $tooltip = 'Argumentos puestos en duda';
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+
+            $this2->estado = (object)[
+                'color'     => $color,
+                'url_libro' => $this2->url_libro,
+                'tooltip'   => $tooltip,
+                'icon_cls'  => $icon_cls,
+                'txt'       => $txt,
+                'value'     => $this2->estado
+            ];
         }
         // echo aawp_get_field_value($asin, 'price');
     }
