@@ -2142,7 +2142,7 @@ class UpdraftPlus_Backup {
 				} else {
 					if (true === $start_record) {
 						$min_value = $this->wpdb_obj->get_var('SELECT MIN('.UpdraftPlus_Manipulation_Functions::backquote($primary_key).') FROM '.UpdraftPlus_Manipulation_Functions::backquote($table));
-						$start_record = (is_numeric($min_value) && $min_value) ? (int) $min_value : -1;
+						$start_record = (is_numeric($min_value) && $min_value) ? (int) $min_value - 1 : -1;
 					}
 				}
 			}
