@@ -161,7 +161,7 @@ $this2 = set_libro();
 
         <h2>Similares</h2>
         <div class="text-center p-2">
-            <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($this2->id,'titulo')[0].'"]');?>
+            <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($this2->id_libro,'titulo')[0].'"]');?>
         </div>
 
     </div>	
