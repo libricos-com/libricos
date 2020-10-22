@@ -3,7 +3,12 @@
 The template for displaying content in the single-libro.php template
 @see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 */
-$this2 = set_libro();
+// $this2 = set_libro();
+
+require_once(__DIR__.'/../inc/Libro.php');
+use Jesuserro\Entity\Libro;
+$libro = new Libro();
+$libro = $libro::from_post($post);
 ?>
 
 <article id="post-<?php the_ID();?>" <?php post_class(); ?> >
@@ -26,21 +31,21 @@ $this2 = set_libro();
     <div>
         
         <div class="text-center mb-4">
-            <a href="<?php echo $this2->url;?>"><img src="<?php echo $this2->src[0];?>" alt="Portada del libro <?php echo $this2->titulo;?>" class="img-fluid" /></a>
+            <a href="<?php echo $libro->get_url();?>"><img src="<?php echo $libro->get_portada_src();?>" alt="Portada del libro <?php echo $libro->get_titulo();?>" class="img-fluid" /></a>
             <div><?php // echo get_kkstarring();?></div>
         </div>
 
         <h2>Sinopsis</h2>
-        <p><?php echo $this2->sinopsis;?></p>
+        <p><?php echo $libro->get_sinopsis();?></p>
 
 
         <?php 
-        if ( ! empty( $this2->autores ) ) {
+        if ( ! empty( $libro->get_autores() ) ) {
             ?>
             <h2>Autor/es</h2>
             <ul class="list-group list-group-horizontal-sm mb-4">
             <?php
-            foreach ( $this2->autores as $autor ) { 
+            foreach ( $libro->get_autores() as $autor ) { 
                 //get id for related post and put in ID
                 //for advanced content types use $id = $rel[ 'id' ];
                 $idA = $autor[ 'ID' ];
@@ -62,12 +67,12 @@ $this2 = set_libro();
         ?>
 
         <?php 
-        if ( ! empty( $this2->generos ) ) {
+        if ( ! empty( $libro->get_generos() ) ) {
             ?>
             <h2>Géneros</h2>
             <ul class="d-flex flex-wrap mb-4">
             <?php
-            foreach ( $this2->generos as $genero ) { 
+            foreach ( $libro->get_generos() as $genero ) { 
                 $idA = $genero['term_id'];
                 $nombreGenero = $genero['name'];
                 $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
@@ -86,64 +91,61 @@ $this2 = set_libro();
 
         <h2>Categorías</h2>
         <ul class="d-flex flex-wrap mb-4 list-unstyled">
-            <?php echo $this2->categories;?>
+            <?php echo $libro->get_categorias();?>
         </ul>
 
         <h2>Etiquetas</h2>
         <ul class="d-flex flex-wrap mb-4 list-unstyled">
-            <?php echo $this2->tags;?>
+            <?php echo $libro->get_tags();?>
         </ul>
 
         <h2>Ficha técnica</h2>
         <ul class="list-group mb-4">
-            <li class="list-group-item"><strong>Editorial</strong>: <a href="<?php echo $this2->url_editorial;?>"><?php echo $this2->editorial['post_title'];?></a></li>
-            <li class="list-group-item"><strong>Fecha publicación</strong>: <?php echo $this2->fecha_publicacion;?></li>
-            <li class="list-group-item"><strong>Formato</strong>: <span class="<?php echo $this2->icon_formato;?>"></span> <?php echo $this2->texto_formato;?></li>
-            <li class="list-group-item"><strong>Páginas</strong>: <?php echo $this2->paginas;?></li>
-            <li class="list-group-item"><strong>Idioma</strong>: <span class="flag-icon flag-icon-<?php echo $this2->idioma;?>"></span></li>
-            <li class="list-group-item"><i class="fab fa-goodreads"></i><a href="<?php echo $this2->url_goodreads;?>" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
+            <li class="list-group-item"><strong>Editorial</strong>: <a href="<?php echo $libro->get_editorial_url();?>"><?php echo $libro->get_editorial_nombre();?></a></li>
+            <li class="list-group-item"><strong>Fecha publicación</strong>: <?php echo $libro->get_fecha_publicacion();?></li>
+            <li class="list-group-item"><strong>Formato</strong>: <span class="<?php echo $libro->get_formato_icon();?>"></span> <?php echo $libro->get_formato_texto();?></li>
+            <li class="list-group-item"><strong>Páginas</strong>: <?php echo $libro->get_paginas();?></li>
+            <li class="list-group-item"><strong>Idioma</strong>: <span class="flag-icon flag-icon-<?php echo $libro->get_idioma();?>"></span></li>
+            <li class="list-group-item"><i class="fab fa-goodreads"></i><a href="<?php echo $libro->get_goodreads_url();?>" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
         </ul>
         
         <?php 
-        if ( ! empty( $this2->reviews ) ) {
-            $numReviews = count($this2->reviews);
+        if ( ! empty( $libro->get_reviews() ) ) {
             ?>
-            <h2>Reviews <span class="badge badge-danger"><i class="fas fa-clipboard-list mr-1"></i><span class="badge badge-danger"><?php echo $numReviews;?></span></span></h2>
+            <h2>Reviews <span class="badge badge-danger"><i class="fas fa-clipboard-list mr-1"></i><span class="badge badge-danger"><?php echo count($libro->get_reviews());?></span></span></h2>
             <ul class="list-unstyled">
                 <?php
-                foreach ( $this2->reviews as $review ) { 
+                foreach ( $libro->get_reviews() as $review ) { 
                     $idA = $review[ 'ID' ];
                     $urlReview = esc_url( get_permalink( $idA ) );
                     $nombreReview = get_the_title( $idA );
                     ?>
                     <li>
                         <span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d-m-y', strtotime($review['post_date']));?></span>
-                        <i class="fas fa-clipboard-list"><a href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Esto es una reseña del libro <?php echo $this2->post_title;?>"></i> <?php echo $nombreReview;?></a>
+                        <i class="fas fa-clipboard-list"><a href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Esto es una reseña del libro <?php echo $libro->get_titulo();?>"></i> <?php echo $nombreReview;?></a>
                     </li>
                     <?php
-                } //end of foreach
+                } 
                 ?>
             </ul>
             <?php
-        } //endif ! empty ( $reviews )
+        } 
         ?>
 
 
         <?php 
-        if ( ! empty( $this2->notas ) ) {
-            $numNotas = count($this2->notas);
-            ?>
-            <h2>Notas <span class="badge badge-warning"> <i class="fas fa-pencil-alt mr-1"></i><span class="badge badge-danger"><?php echo $numNotas;?></span></span></h2>
+        if ( ! empty( $libro->get_notas() ) ) { ?>
+            <h2>Notas <span class="badge badge-warning"> <i class="fas fa-pencil-alt mr-1"></i><span class="badge badge-danger"><?php echo count($libro->get_notas());?></span></span></h2>
             <ul class="list-unstyled">
                 <?php
-                foreach ( $this2->notas as $nota ) { 
+                foreach ( $libro->get_notas() as $nota ) { 
                     $idA = $nota[ 'ID' ];
                     $urlNota = esc_url( get_permalink( $idA ) );
                     $nombreNota = get_the_title( $idA );
                     ?>
                     <li>
                         <span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d-m-y', strtotime($nota['post_date']));?></span>
-                        <i class="fas fa-pencil-alt"></i> <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="Esto es una nota del libro <?php echo $this2->post_title;?>"><?php echo $nombreNota;?></a>
+                        <i class="fas fa-pencil-alt"></i> <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="Esto es una nota del libro <?php echo $libro->get_titulo();?>"><?php echo $nombreNota;?></a>
                     </li>
                     <?php
                 } 
@@ -155,13 +157,13 @@ $this2 = set_libro();
 
         <hr />
         <div class="text-center p-2">
-            <?php echo do_shortcode('[amazon box="'.$this2->asin.'"]');?>
+            <?php echo do_shortcode('[amazon box="'.$libro->get_asin().'"]');?>
         </div>
         <hr />
 
         <h2>Similares</h2>
         <div class="text-center p-2">
-            <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($this2->id_libro,'titulo')[0].'"]');?>
+            <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($libro->get_id(),'titulo')[0].'"]');?>
         </div>
 
     </div>	
