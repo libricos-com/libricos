@@ -6,7 +6,6 @@ The template for displaying content in the single-libro.php template
 
 use App\Entity\Libro;
 $libro = new Libro($post);
-$libro = $libro::from_post($post);
 ?>
 
 <article id="post-<?php the_ID();?>" <?php post_class(); ?> >

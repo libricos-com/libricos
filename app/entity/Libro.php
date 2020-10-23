@@ -11,6 +11,13 @@ namespace App\Entity;
 class Libro
 {
     /**
+     * Datos de entrada para el libro 
+     *
+     * @var mixed
+     */
+    private $_source; // AAWP_Template_Handler o WP_POST
+
+    /**
      * The Libro's ID, WordPress post ID.
      *
      * @var integer
@@ -185,72 +192,55 @@ class Libro
      *
      * Partes comunes a todo tipo de entrada
      */
-    public function __construct( $data )
+    public function __construct( $object )
+    {
+        $this->_source = $object;
+       
+        if ($this->_source instanceof \WP_Post) {
+            $this->id = get_the_id();
+            $this->set_commom_parts();
+            return $this->fill_post();
+        }else if( $this->_source instanceof \AAWP_Template_Handler ){
+            $this->id = $this->get_id_from_aawp();
+            $this->set_commom_parts();
+            return $this->fill_aawp();
+        }
+    }
+
+    protected function set_commom_parts()
     {
         $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
-        $this->set_id( $data );
         $this->pod = pods( 'libro', $this->id );
         $this->reviews = $this->pod->field( 'reviews', $this->params );
     }
 
-    protected function set_id( $object )
-    {
-        // Fn get_id_libro();
-        if ($object instanceof \WP_Post) {
-            $this->id = get_the_id(); // id page 81 o id post libro 12298
-        }else if( $object instanceof \AAWP_Template_Handler ){
-            // Venimos de una plantilla AAWP, pasar solo estados y asin
-            $ids = $object->get_template_variable( 'ids', false );
-            $index = $object->item_index;
-            // $variables = $this->get_template_variables();
-            if( !is_array($ids) ){
-                $ids = explode(',', $ids);
-            }
-            if(!empty($ids[ $index - 1 ])){
-                $index = $index - 1;
-                $this->id =  $ids[ $index ];
-            }
-        }
-    }
-
     /**
-     * Creates a new product from a post object.
+     * Devuelve el id del libro puesto en los shortcodes Amazon [tpl_ids="postid1, postid2, ..."]
      *
-     * @param \WP_Post $post
-     *
-     * @return Libro|null
+     * @return integer 
      */
-    public static function from_post( \WP_Post $post)
+    protected function get_id_from_aawp()
     {
-        if ($post instanceof \WP_Post) {
-            $instance = new self( $post );
-            return $instance->fill_post( $post );
+        $ids = $this->_source->get_template_variable( 'ids', false );
+        $index = $this->_source->item_index;
+        // $variables = $this->get_template_variables();
+        if( !is_array($ids) ){
+            $ids = explode(',', $ids);
         }
-    }
-
-    /**
-     * Creates a new product from API data.
-     *
-     * @param \AAWP_Template_Handler $product
-     *
-     * @return Libro|null
-     */
-    public static function from_aawp( \AAWP_Template_Handler $product)
-    {
-        if ($product instanceof \AAWP_Template_Handler) {
-            $instance = new self( $product );
-            return $instance->fill_aawp( $product );
+        if(!empty($ids[ $index - 1 ])){
+            $index = $index - 1;
+            return $ids[ $index ];
         }
+        return false;
     }
 
     /**
      * Undocumented function
      * Fill all properties from an Amazon object template
      * 
-     * @param \AAWP_Template_Handler $product
      * @return void
      */
-    protected function fill_aawp( \AAWP_Template_Handler $product ) 
+    protected function fill_aawp( ) 
     {
         $this->url = esc_url( get_permalink( $this->get_id() ) );
         $this->estado = $this->pod->field( 'estado' );
@@ -348,11 +338,11 @@ class Libro
      * @param \WP_Post $post
      * @return void
      */
-    protected function fill_post( \WP_Post $post ) 
+    protected function fill_post() 
     {
         $this->post_title = get_the_title();
         $this->asin = get_post_meta( $this->id, 'asin', true );
-        $this->url = $this->url = esc_url( get_permalink( $this->id ) );
+        $this->url = esc_url( get_permalink( $this->id ) );
         $this->puntuacion = '0.0';
         $this->rating_percent = 0;
 

@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use App\Entity\Libro;
 $libro = new Libro($this);
-$libro = $libro::from_aawp($this);
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
