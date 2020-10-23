@@ -10,7 +10,7 @@ Ancient code before AAWP @see: https://gist.github.com/jesuserro/9d504d06aaa2094
 <?php
 // taxonomy=category&tag_ID=3&post_type=post
 $args = array(
-    'posts_per_page' => 10,
+    'posts_per_page' => -1,
     'post_type' => 'libro',
     'tax_query' => array(
         array(

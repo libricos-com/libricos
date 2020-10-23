@@ -11,7 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
 
-set_libro($this);
+use App\Entity\Libro;
+$libro = new Libro($this);
+$libro = $libro::from_aawp($this);
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -19,12 +21,12 @@ set_libro($this);
     <?php $this->the_product_ribbons(); ?>
 
     <a class="aawp-product__image--link aawp-product__image"
-       href="<?php echo $this->url_libro;?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
+       href="<?php echo $libro->get_url();?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
         <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
     </a>
 
     <div class="aawp-product__content">
-        <a class="aawp-product__title" href="<?php echo $this->url_libro;?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
+        <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
             <?php echo $this->truncate( $this->get_product_title(), 50 ); ?>
         </a>
 
@@ -41,13 +43,13 @@ set_libro($this);
 
             <?php $this->the_product_check_prime_logo(); ?>
 
-            <?php if(!$this->hay_reviews && $this->estado){
-                echo view('/../partials/libro-estado', array('this2' => $this));
+            <?php if(!$libro->get_reviews() && $libro->get_estado()){
+                echo view('/../partials/libro-estado', array('this2' => $libro));
             }
             ?>
 
-            <?php if($this->hay_reviews){
-                echo view('/../partials/review-list-amazon-box', array('this2' => $this));
+            <?php if($libro->get_reviews()){
+                echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
             }?>
 
         </div>

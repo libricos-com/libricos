@@ -1,15 +1,15 @@
 <div class="review-list-amazon-box">
-    <?php if($this2->reviews){ ?>
+    <?php if( $this2->get_reviews() ){ ?>
         <ul class="list-unstyled">
             <?php
                 $i = 1;
-                foreach ( $this2->reviews as $review ) { 
+                foreach ( $this2->get_reviews() as $review ) { 
                     $id_review = $review[ 'ID' ];
                     $urlReview = esc_url( get_permalink( $id_review ) );
                     $nombreReview = get_the_title( $id_review );
                     ?>
                     <li>
-                        <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->post_title;?>">
+                        <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->get_titulo();?>">
                             <i class="fas fa-check"></i>
                             Reviewed
                         </a> 

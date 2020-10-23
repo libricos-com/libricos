@@ -172,14 +172,45 @@ class Libro
      */
     private $goodreads_url;
 
+    /**
+     * Estado del libro: por leer, leído, siguiente, cerrado, etc.
+     *
+     * @var object
+     */
+    private $estado;
+
  
     /**
      * Constructor.
      *
+     * Partes comunes a todo tipo de entrada
      */
-    public function __construct()
+    public function __construct( $data )
     {
         $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
+        $this->set_id( $data );
+        $this->pod = pods( 'libro', $this->id );
+        $this->reviews = $this->pod->field( 'reviews', $this->params );
+    }
+
+    protected function set_id( $object )
+    {
+        // Fn get_id_libro();
+        if ($object instanceof \WP_Post) {
+            $this->id = get_the_id(); // id page 81 o id post libro 12298
+        }else if( $object instanceof \AAWP_Template_Handler ){
+            // Venimos de una plantilla AAWP, pasar solo estados y asin
+            $ids = $object->get_template_variable( 'ids', false );
+            $index = $object->item_index;
+            // $variables = $this->get_template_variables();
+            if( !is_array($ids) ){
+                $ids = explode(',', $ids);
+            }
+            if(!empty($ids[ $index - 1 ])){
+                $index = $index - 1;
+                $this->id =  $ids[ $index ];
+            }
+        }
     }
 
     /**
@@ -192,7 +223,7 @@ class Libro
     public static function from_post( \WP_Post $post)
     {
         if ($post instanceof \WP_Post) {
-            $instance = new self();
+            $instance = new self( $post );
             return $instance->fill_post( $post );
         }
     }
@@ -206,8 +237,8 @@ class Libro
      */
     public static function from_aawp( \AAWP_Template_Handler $product)
     {
-        if ($object instanceof \AAWP_Template_Handler) {
-            $instance = new self();
+        if ($product instanceof \AAWP_Template_Handler) {
+            $instance = new self( $product );
             return $instance->fill_aawp( $product );
         }
     }
@@ -221,7 +252,93 @@ class Libro
      */
     protected function fill_aawp( \AAWP_Template_Handler $product ) 
     {
+        $this->url = esc_url( get_permalink( $this->get_id() ) );
+        $this->estado = $this->pod->field( 'estado' );
+        $this->titulo = get_post_meta( $this->id, 'titulo', true );
+        // $this->asin = $product->get_product_id();
+        // $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 
+        if(!$this->reviews){
+            /*
+            0 | Por leer
+            1 | Siguiente
+            2 | Leído
+            3 | Leyendo
+            4 | Cerrado
+            5 | Pausado
+            6 | No interesado
+            7 | Cuarentena
+
+            <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" 
+            title="Ficha del libro <?php echo $this2->post_title;?>">
+                <i class="fas fa-check"></i>
+                Reviewed
+            </a> 
+            */ 
+            switch ($this->estado) {
+                case '0':
+                    $color = 'primary';
+                    $icon_cls = 'book';
+                    $txt = 'Por leer';
+                    $tooltip = 'Añadido a la biblioteca';
+                    break;
+                case '1':
+                    $color = 'warning';
+                    $icon_cls = 'fire-alt';
+                    $txt = 'Próximamente';
+                    $tooltip = 'Se leerá en las próximas semanas';
+                    break;
+                case '2':
+                    $color = 'primary';
+                    $icon_cls = 'book';
+                    $txt = 'Leído';
+                    $tooltip = 'Leído en espera de review';
+                    break;
+                case '3':
+                    $color = 'info';
+                    $icon_cls = 'book-reader';
+                    $txt = 'Leyendo ahora';
+                    $tooltip = 'Actualmente leyendo';
+                    break;
+                case '4':
+                    $color = 'secondary';
+                    $icon_cls = 'book';
+                    $txt = 'Cerrado';
+                    $tooltip = 'Pausado para largo tiempo';
+                    break;
+                case '5':
+                    $color = 'secondary';
+                    $icon_cls = 'check';
+                    $txt = 'Pausado';
+                    $tooltip = 'Pausado por corto tiempo';
+                    break;
+                case '6':
+                    $color = 'secondary';
+                    $icon_cls = 'check';
+                    $txt = 'No interesado';
+                    $tooltip = 'No recomendable';
+                    break;
+                case '7':
+                    $color = 'secondary';
+                    $icon_cls = 'check';
+                    $txt = 'Cuarentena';
+                    $tooltip = 'Argumentos puestos en duda';
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+
+            $this->estado = (object)[
+                'color'     => $color,
+                'url_libro' => $this->url,
+                'tooltip'   => $tooltip,
+                'icon_cls'  => $icon_cls,
+                'txt'       => $txt,
+                'value'     => $this->estado
+            ];
+        }
+        return $this;
     }
 
     /**
@@ -233,11 +350,6 @@ class Libro
      */
     protected function fill_post( \WP_Post $post ) 
     {
-        $this->id  = get_the_id();
-        $this->pod = pods( 'libro', $this->id );
-        $this->reviews = $this->pod->field( 'reviews', $this->params );
-
-        $this->titulo = get_post_meta( $this->id, 'titulo', true );
         $this->post_title = get_the_title();
         $this->asin = get_post_meta( $this->id, 'asin', true );
         $this->url = $this->url = esc_url( get_permalink( $this->id ) );
@@ -458,6 +570,11 @@ class Libro
     public function get_reviews()
     {
         return $this->reviews;
+    }
+
+    public function get_estado()
+    {
+        return $this->estado;
     }
 
 }

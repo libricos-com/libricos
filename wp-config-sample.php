@@ -94,5 +94,6 @@ require_once ABSPATH . 'wp-settings.php';
  * Autoload de Composer
  * Usage DEV: composer dumpautoload
  * Usage PROD (optimize opcional, basta con subir vía FTP/GIT el vendor de DEV): composer dumpautoload -o
+ * @see https://anchor.host/composer-autoloading-within-wordpress-plugin/
  */ 
 require __DIR__ . '/vendor/autoload.php';
