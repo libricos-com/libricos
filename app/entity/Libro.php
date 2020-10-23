@@ -1,5 +1,5 @@
 <?php
-namespace Jesuserro\Entity;
+namespace App\Entity;
 /**
  * Libro class
  * 

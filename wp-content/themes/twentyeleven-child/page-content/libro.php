@@ -3,10 +3,8 @@
 The template for displaying content in the single-libro.php template
 @see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 */
-// $this2 = set_libro();
 
-require_once(__DIR__.'/../inc/Libro.php');
-use Jesuserro\Entity\Libro;
+use App\Entity\Libro;
 $libro = new Libro();
 $libro = $libro::from_post($post);
 ?>

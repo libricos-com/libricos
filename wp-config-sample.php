@@ -88,3 +88,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
+
+
+/**
+ * Autoload de Composer
+ * Usage DEV: composer dumpautoload
+ * Usage PROD (optimize opcional, basta con subir vía FTP/GIT el vendor de DEV): composer dumpautoload -o
+ */ 
+require __DIR__ . '/vendor/autoload.php';
