@@ -195,22 +195,23 @@ class Libro
     public function __construct( $object )
     {
         $this->_source = $object;
+        $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
        
         if ($this->_source instanceof \WP_Post) {
             $this->id = get_the_id();
-            $this->set_commom_parts();
+            $this->set_commom_parts_after_id();
             return $this->fill_post();
         }else if( $this->_source instanceof \AAWP_Template_Handler ){
             $this->id = $this->get_id_from_aawp();
-            $this->set_commom_parts();
+            $this->set_commom_parts_after_id();
             return $this->fill_aawp();
         }
     }
 
-    protected function set_commom_parts()
+    protected function set_commom_parts_after_id()
     {
-        $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
         $this->pod = pods( 'libro', $this->id );
+        $this->url = esc_url( get_permalink( $this->id ) );
         $this->reviews = $this->pod->field( 'reviews', $this->params );
     }
 
@@ -242,7 +243,6 @@ class Libro
      */
     protected function fill_aawp( ) 
     {
-        $this->url = esc_url( get_permalink( $this->get_id() ) );
         $this->estado = $this->pod->field( 'estado' );
         $this->titulo = get_post_meta( $this->id, 'titulo', true );
         // $this->asin = $product->get_product_id();
@@ -335,14 +335,12 @@ class Libro
      * Undocumented function
      * Fill all properties from a Wordpress post
      * 
-     * @param \WP_Post $post
      * @return void
      */
     protected function fill_post() 
     {
         $this->post_title = get_the_title();
         $this->asin = get_post_meta( $this->id, 'asin', true );
-        $this->url = esc_url( get_permalink( $this->id ) );
         $this->puntuacion = '0.0';
         $this->rating_percent = 0;
 
