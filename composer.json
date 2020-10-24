@@ -18,7 +18,7 @@
         "wpackagist-theme/twentyeleven":">=3.5",
         "wpackagist-plugin/pods":">=2.7.22",
         "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.0",
-        "wpackagist-plugin/instagram-feed":"2.5.0"
+        "wpackagist-plugin/instagram-feed":">=2.5.1"
     },
     "extra": {
         "installer-paths": {
