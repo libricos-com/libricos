@@ -1,7 +1,29 @@
 {
+    "_comment" : "Versioning: https://getcomposer.org/doc/articles/versions.md",
+    "name": "jesuserro/wordpress-site-about-books",
+    "description": "Another WordPress site",
     "autoload": {
         "psr-4": {
             "App\\": "app/"
+        }
+    },
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org",
+            "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+        }
+    ],
+    "require": {
+        "wpackagist-theme/twentyeleven":">=3.5",
+        "wpackagist-plugin/pods":">=2.7.22",
+        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.0",
+        "wpackagist-plugin/instagram-feed":"2.5.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "wp-content/themes/{$name}/": ["type:wordpress-theme"]
         }
     }
 }
