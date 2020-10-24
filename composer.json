@@ -1,5 +1,8 @@
 {
-    "_comment" : "Versioning: https://getcomposer.org/doc/articles/versions.md",
+    "_comments": [{
+        "versioning": "https://getcomposer.org/doc/articles/versions.md",
+        "sources": "https://wpackagist.org/"
+    }],
     "name": "jesuserro/wordpress-site-about-books",
     "description": "Another WordPress site",
     "autoload": {
