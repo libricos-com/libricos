@@ -20,8 +20,8 @@
     "require": {
         "wpackagist-theme/twentyeleven":">=3.5",
         "wpackagist-plugin/pods":">=2.7.22",
-        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.0",
-        "wpackagist-plugin/instagram-feed":">=2.5.1"
+        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1",
+        "wpackagist-plugin/instagram-feed":">=2.5.2"
     },
     "extra": {
         "installer-paths": {
