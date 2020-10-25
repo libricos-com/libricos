@@ -1,4 +1,3 @@
 html {
-  /* Define breakpoints and font sizes */
   font-size: calc($font-size + .4vw);
 }

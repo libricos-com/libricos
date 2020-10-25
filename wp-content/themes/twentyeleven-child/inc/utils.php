@@ -6,7 +6,7 @@ function get_fecha_larga($post_id)
 }
 function get_fecha_corta($post_id)
 {
-    return get_the_date('d', $post_id).'-'.get_the_date('m', $post_id).'-'.get_the_date('Y', $post_id);
+    return get_the_date('d', $post_id).'-'.get_the_date('m', $post_id).'-'.get_the_date('y', $post_id);
 }
 
 /**
