@@ -5,6 +5,7 @@
 # "themes/twentyeleven-child" directory
 wp-content/*
 !wp-content/themes/twentyeleven-child/
+!wp-content/themes/twentyeleven-child/*
 
 # ignore node dependency directories
 node_modules/
