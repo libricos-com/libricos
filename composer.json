@@ -19,9 +19,12 @@
     ],
     "require": {
         "wpackagist-theme/twentyeleven":">=3.5",
+        
+        "wpackagist-plugin/all-in-one-wp-migration":">=7.28",
+        "wpackagist-plugin/instagram-feed":">=2.5.2",
         "wpackagist-plugin/pods":">=2.7.22",
-        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1",
-        "wpackagist-plugin/instagram-feed":">=2.5.2"
+        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1"
+
     },
     "extra": {
         "installer-paths": {

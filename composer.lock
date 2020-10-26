@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e194943d0027424407c7af6722a8220d",
+    "content-hash": "d21e55d86b981dd0883ce6f05a10e761",
     "packages": [
         {
             "name": "composer/installers",
@@ -144,16 +144,34 @@
             "time": "2020-04-07T06:57:05+00:00"
         },
         {
-            "name": "wpackagist-plugin/instagram-feed",
-            "version": "2.5",
+            "name": "wpackagist-plugin/all-in-one-wp-migration",
+            "version": "7.28",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/instagram-feed/",
-                "reference": "tags/2.5"
+                "url": "https://plugins.svn.wordpress.org/all-in-one-wp-migration/",
+                "reference": "tags/7.28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.28.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/all-in-one-wp-migration/"
+        },
+        {
+            "name": "wpackagist-plugin/instagram-feed",
+            "version": "2.5.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/instagram-feed/",
+                "reference": "tags/2.5.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.2.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -181,15 +199,15 @@
         },
         {
             "name": "wpackagist-plugin/yet-another-related-posts-plugin",
-            "version": "5.10.0",
+            "version": "5.10.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/yet-another-related-posts-plugin/",
-                "reference": "tags/5.10.0"
+                "reference": "tags/5.10.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/yet-another-related-posts-plugin.5.10.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/yet-another-related-posts-plugin.5.10.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
