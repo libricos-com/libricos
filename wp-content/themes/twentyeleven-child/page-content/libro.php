@@ -27,6 +27,8 @@ $libro = new Libro($post);
 
     <div>
         
+        <div><?php echo get_fecha_larga($libro->get_post_date());?></div>
+        
         <div class="text-center mb-4">
             <a href="<?php echo $libro->get_url();?>"><img src="<?php echo $libro->get_portada_src();?>" alt="Portada del libro <?php echo $libro->get_titulo();?>" class="img-fluid" /></a>
             <div><?php // echo get_kkstarring();?></div>

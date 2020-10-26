@@ -186,6 +186,13 @@ class Libro
      */
     private $estado;
 
+    /**
+     * Fecha del post Wordpress de este libro
+     *
+     * @var date
+     */
+    private $post_date;
+
  
     /**
      * Constructor.
@@ -340,6 +347,7 @@ class Libro
     protected function fill_post() 
     {
         $this->post_title = get_the_title();
+        $this->post_date = get_the_date();
         $this->asin = get_post_meta( $this->id, 'asin', true );
         $this->puntuacion = '0.0';
         $this->rating_percent = 0;
@@ -534,6 +542,11 @@ class Libro
     public function get_estado()
     {
         return $this->estado;
+    }
+
+    public function get_post_date()
+    {
+        return $this->post_date;
     }
 
 }
