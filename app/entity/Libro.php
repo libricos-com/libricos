@@ -357,40 +357,11 @@ class Libro
         // @see: https://developer.wordpress.org/reference/functions/wp_list_categories/
         $taxonomy = 'category';
         // Get the term IDs assigned to post.
-        $post_terms = wp_get_object_terms( $this->id, $taxonomy, array( 'fields' => 'ids' ) ); 
-        if ( ! empty( $post_terms ) && ! is_wp_error( $post_terms ) ) {
-            $term_ids = implode( ',' , $post_terms );
-            $args = array(
-                'title_li'   => '',
-                'style'      => 'list',
-                'echo'       => false,
-                'taxonomy'   => $taxonomy,
-                'include'    => $term_ids,
-                'orderby'    => 'name',
-                'show_count' => true
-            );
-            $this->categorias = wp_list_categories( $args );
-            // $this->terms = str_replace('cat-item', 'list-group-item', $terms);
-        }
+        $this->categorias = wp_get_object_terms( $this->id, $taxonomy ); 
 
         // @see: https://developer.wordpress.org/reference/functions/wp_list_categories/
         $taxonomy = 'post_tag';
-        // Get the term IDs assigned to post.
-        $post_terms = wp_get_object_terms( $this->id, $taxonomy, array( 'fields' => 'ids' ) ); 
-        if ( ! empty( $post_terms ) && ! is_wp_error( $post_terms ) ) {
-            $term_ids = implode( ',' , $post_terms );
-            $args = array(
-                'title_li'   => '',
-                'style'      => 'list',
-                'echo'       => false,
-                'taxonomy'   => $taxonomy,
-                'include'    => $term_ids,
-                'orderby'    => 'name',
-                'show_count' => true
-            );
-            $this->tags = wp_list_categories( $args );
-            // $terms = str_replace('cat-item', 'list-group-item', $terms);
-        }
+        $this->tags= wp_get_object_terms( $this->id, $taxonomy ); 
 
 
         $this->editorial = $this->pod->field( 'editorial' );

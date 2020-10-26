@@ -87,13 +87,31 @@ $libro = new Libro($post);
         ?>
 
         <h2>Categorías</h2>
-        <ul class="d-flex flex-wrap mb-4 list-unstyled">
-            <?php echo $libro->get_categorias();?>
+        <ul class="d-flex flex-wrap mb-4">
+        <?php 
+            $categorias = $libro->get_categorias();
+            foreach ($categorias as $cat) { 
+            ?>
+                <li class="list-group-item">
+                    <a href="<?php echo get_tag_link($cat->term_id);?>"><?php echo $cat->name;?></a> (<?php echo $cat->count;?>)
+                </li>
+            <?php
+            }           
+            ?>
         </ul>
 
         <h2>Etiquetas</h2>
-        <ul class="d-flex flex-wrap mb-4 list-unstyled">
-            <?php echo $libro->get_tags();?>
+        <ul class="d-flex flex-wrap mb-4">
+            <?php 
+            $tags = $libro->get_tags();
+            foreach ($tags as $tag) { 
+            ?>
+                <li class="list-group-item">
+                    <a href="<?php echo get_tag_link($tag->term_id);?>"><?php echo $tag->name;?></a> (<?php echo $tag->count;?>)
+                </li>
+            <?php
+            }           
+            ?>
         </ul>
 
         <h2>Ficha técnica</h2>
