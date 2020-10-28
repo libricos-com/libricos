@@ -2,7 +2,7 @@
 function my_get_posts( $query ) 
 {
     if ( is_home() && $query->is_main_query() )
-        $query->set( 'post_type', array( 'post', 'libro', 'review', 'nota', 'autor', 'editorial' ) );
+        $query->set( 'post_type', array( 'post', 'libro', 'review', 'nota', 'autor', 'editorial', 'foto' ) );
 
     return $query;
 }
