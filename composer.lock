@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d21e55d86b981dd0883ce6f05a10e761",
+    "content-hash": "145af67a1cad6dc1445a19167653039b",
     "packages": [
         {
             "name": "composer/installers",
@@ -145,15 +145,15 @@
         },
         {
             "name": "wpackagist-plugin/all-in-one-wp-migration",
-            "version": "7.28",
+            "version": "7.29",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/all-in-one-wp-migration/",
-                "reference": "tags/7.28"
+                "reference": "tags/7.29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.28.zip"
+                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.29.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -163,15 +163,15 @@
         },
         {
             "name": "wpackagist-plugin/instagram-feed",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/instagram-feed/",
-                "reference": "tags/2.5.2"
+                "reference": "tags/2.5.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.3.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -196,6 +196,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/pods/"
+        },
+        {
+            "name": "wpackagist-plugin/updraftplus",
+            "version": "1.16.33",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/updraftplus/",
+                "reference": "tags/1.16.33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/updraftplus.1.16.33.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/updraftplus/"
         },
         {
             "name": "wpackagist-plugin/yet-another-related-posts-plugin",
