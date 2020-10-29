@@ -1,0 +1,66 @@
+/**
+* Ajustes cabecera
+*/
+#page {
+    margin: 0 auto;
+}
+header #searchform {
+	display:none;
+}
+#site-title {
+    padding: 0;
+}
+#site-description {
+    margin-bottom: 2em;
+}
+
+
+
+#primary {
+    width: 73%;
+    margin: 0;
+    // border: solid 1px orange;
+    
+    #content {
+        margin: 0 2%;
+        // border: solid 1px green;
+        padding-top: 0;
+        width:97%;
+
+        
+
+        article{
+            padding-top: 0;
+        
+            header {
+                &.entry-header {
+                    // border: solid 1px blue;
+                    width:100%;
+                }
+                h1{
+                    padding-top: 0;
+                    // border: solid 1px green;
+                    &.entry-title{
+                        padding: 0;
+                    }
+                }
+            }
+
+            .entry-content {
+                // border: solid 1px blue;
+                width:100%;
+            }
+        
+        }
+
+        #respond,
+        footer {
+            width: 95%;
+            // border: solid 1px brown;
+        }
+    }
+}
+
+    
+
+

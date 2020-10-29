@@ -220,6 +220,7 @@ class Libro
         $this->pod = pods( 'libro', $this->id );
         $this->url = esc_url( get_permalink( $this->id ) );
         $this->reviews = $this->pod->field( 'reviews', $this->params );
+        $this->titulo = get_the_title( $this->id );
     }
 
     /**
@@ -251,7 +252,6 @@ class Libro
     protected function fill_aawp( ) 
     {
         $this->estado = $this->pod->field( 'estado' );
-        $this->titulo = get_post_meta( $this->id, 'titulo', true );
         // $this->asin = $product->get_product_id();
         // $this->is_prime = aawp_get_field_value($this->asin, 'prime');
 

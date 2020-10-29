@@ -8,7 +8,7 @@ use App\Entity\Libro;
 $libro = new Libro($post);
 ?>
 
-
+<h1><?php echo $libro->get_titulo();?></h1>
 
 <div><?php echo get_fecha_larga($libro->get_post_date());?></div>
 

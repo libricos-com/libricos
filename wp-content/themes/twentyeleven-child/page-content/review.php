@@ -26,6 +26,7 @@
     $libro_title = get_the_title($libro['ID']);
 ?>
 
+<h1><?php echo $post_title;?></h1>
 
 <strong>Fecha reseña</strong>: <?php echo $fecha;?> 
 
