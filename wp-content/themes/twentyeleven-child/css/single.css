@@ -44,7 +44,8 @@ Corrección cajas PODS
 }
 
 #primary #content {
-  margin: 0;
+  margin-top: 0;
+  padding-top: 0;
 }
 #primary #content article {
   padding-top: 0;

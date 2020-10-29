@@ -27,32 +27,29 @@
 ?>
 
 
+<strong>Fecha reseña</strong>: <?php echo $fecha;?> 
 
-<div class="entry-content">
-    <strong>Fecha reseña</strong>: <?php echo $fecha;?> 
-
-    <div class="text-center mb-4">
-        <a href="<?php echo $libro_link;?>"><img src="<?php echo $src[0];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
-        <div><?php // echo get_kkstarring();?></div>
-    </div>
-
-    <p><?php echo $entradilla;?></p>
-    <p><?php echo $texto;?></p>
-
-    <ul>
-        <li><strong>Mi puntuación</strong>: <?php echo $puntuacion;?></li>
-        <li><a href="<?php echo $url_goodreads;?>">Reseña en Goodreads</a></li>
-    </ul>
-
-    <hr />
-    <div class="text-center p-2">
-        <?php echo do_shortcode('[amazon box="'.$asin.'"]');?>
-    </div>
-    <hr />
-
-    <h2>Similares</h2>
-    <div class="text-center p-2">
-        <?php echo do_shortcode('[amazon bestseller="'.$libro_title.'"]');?>
-    </div>
-
+<div class="text-center mb-4">
+    <a href="<?php echo $libro_link;?>"><img src="<?php echo $src[0];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
+    <div><?php // echo get_kkstarring();?></div>
 </div>
+
+<p><?php echo $entradilla;?></p>
+<p><?php echo $texto;?></p>
+
+<ul>
+    <li><strong>Mi puntuación</strong>: <?php echo $puntuacion;?></li>
+    <li><a href="<?php echo $url_goodreads;?>">Reseña en Goodreads</a></li>
+</ul>
+
+<hr />
+<div class="text-center p-2">
+    <?php echo do_shortcode('[amazon box="'.$asin.'"]');?>
+</div>
+<hr />
+
+<h2>Similares</h2>
+<div class="text-center p-2">
+    <?php echo do_shortcode('[amazon bestseller="'.$libro_title.'"]');?>
+</div>
+

@@ -22,7 +22,7 @@ Corrección cajas blog POSTs
 }
 .single-post .entry-content, .single-post .entry-header
 {
-	width:100%;
+    width:100%;
 }
 
 /**
@@ -46,7 +46,8 @@ Corrección cajas PODS
 
     #content{
 
-        margin:0;
+       margin-top: 0;
+       padding-top: 0;
         // border: solid 1px red;;
 
         article{
