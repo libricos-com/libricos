@@ -1,9 +1,9 @@
 <?php
 
 /**
-Activada carga de Javascript en el fichero js/custom.js
-@see:
-- https://wordpress.stackexchange.com/questions/306604/adding-javascript-to-child-theme
+* Activada carga de Javascript en el fichero js/custom.js
+* @see:
+* - https://wordpress.stackexchange.com/questions/306604/adding-javascript-to-child-theme
 */
 function carga_bootstrap(){
 	$version = '4.5.2';
@@ -43,6 +43,7 @@ Do not use as is, always sanitize data from a form.
 - Let's save another book's data.. Save the same data from above, but for the book with an ID of 4
     $pod->save( $data, null, 4 );
 */
+/*
 function update_pod_campos($id, $pod_name, $data = [])
 {
     if(empty($id) || empty($pod_name) || empty($data)){
@@ -60,3 +61,4 @@ function update_pod_campos($id, $pod_name, $data = [])
 }
 // add_action( 'save_post', 'update_pod_campos', 1000, 2 );
 add_action( 'post_updated', 'update_pod_campos', 10, 3 );
+*/
