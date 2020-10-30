@@ -18,6 +18,10 @@ add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );
 
 
 /* 
+¡¡OJO!! esta función mal usada bloqueaba PODs y el blog. Al guardar datos petaba Wordpress impidiendo añadir nuevos datos o modificar existentes y el blog quedaba estático.
+@see https://github.com/pods-framework/pods/issues/5845
+
+
 @param int $id ID of the post to change, example: get_the_ID()
 @param string $pod_name Nombre del pod a cambiar, example: 'libro'
 @param array $data nuevos datos a introducir, example:
