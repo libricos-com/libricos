@@ -20,16 +20,12 @@ Text Domain: twentyeleven-child
 /* Inicialización de variables y colores */
 @import url("../twentyeleven-child/css/typography.css");
 @import url("../twentyeleven-child/css/common.css");
-@import url("../twentyeleven-child/css/color.css");
 /* Layout */
-@import url("../twentyeleven-child/css/archive.css");
 @import url("../twentyeleven-child/css/layout.css");
 @import url("../twentyeleven-child/css/sidebar.css");
 /* Mixins o cosas de Bootstrap */
-@import url("../twentyeleven-child/css/badge.css");
 /* My components */
 @import url("../twentyeleven-child/css/aawp.css");
-@import url("../twentyeleven-child/css/searchform.css");
 @import url("../twentyeleven-child/css/review-list-amazon-box.css");
 @import url("../twentyeleven-child/css/rating.css");
 @import url("../twentyeleven-child/css/chip.css");

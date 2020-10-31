@@ -1,7 +1,0 @@
-/**
-Sample of mixins organization
-@see: https://martijncuppens.github.io/bootstrap-mixins-documentation/docs/4.1/mixins/#alert-variant
-*/
-.badge.badge-secondary {
-  background-color: #BBBBC1;
-}

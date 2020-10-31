@@ -1,8 +1,8 @@
 // https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
 // https://github.com/twbs/bootstrap/blob/v4.3.1/scss/mixins/_breakpoints.scss
-@import "mixins/_functions";
-@import "mixins/_variables";
-@import "mixins/_breakpoints";
+@import "../../../../vendor/twbs/bootstrap/scss/_functions.scss";
+@import "../../../../vendor/twbs/bootstrap/scss/_variables";
+@import "../../../../vendor/twbs/bootstrap/scss/mixins/_breakpoints"; 
 
 html {
     // Mobile

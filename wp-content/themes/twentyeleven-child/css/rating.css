@@ -8,12 +8,12 @@
 }
 
 .back-stars {
-  color: #BBBBC1;
+  color: #adb5bd;
   position: relative;
 }
 
 .front-stars {
-  color: #FFC107;
+  color: #ffc107;
   overflow: hidden;
   position: absolute;
   top: 0;

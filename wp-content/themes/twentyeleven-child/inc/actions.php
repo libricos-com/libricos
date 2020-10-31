@@ -5,12 +5,14 @@
 * @see:
 * - https://wordpress.stackexchange.com/questions/306604/adding-javascript-to-child-theme
 */
-function carga_bootstrap(){
-	$version = '4.5.2';
-    wp_enqueue_script( 'bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/'.$version.'/js/bootstrap.min.js', array('jquery'), NULL, true );
-    wp_enqueue_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/'.$version.'/css/bootstrap.min.css', false, NULL, 'all' );
+function carga_bootstrap()
+{
+    $path = get_template_directory_uri();
+    wp_enqueue_script( 'bootstrap-js', $path.'../../../../vendor/twbs/bootstrap/dist/js/bootstrap.min.js', array('jquery'), NULL, true );
+    wp_enqueue_style( 'bootstrap-css', $path.'../../../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css', false, NULL, 'all' );
 }
-function my_custom_scripts() {
+function my_custom_scripts() 
+{
 	carga_bootstrap();	
     wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery' ),'',true );
     }
