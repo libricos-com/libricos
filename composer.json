@@ -21,9 +21,9 @@
         "wpackagist-theme/twentyeleven":">=3.5",
         
         "wpackagist-plugin/all-in-one-wp-migration":">=7.29",
-        "wpackagist-plugin/instagram-feed":">=2.5.3",
-        "wpackagist-plugin/pods":">=2.7.22",
-        "wpackagist-plugin/updraftplus":">=1.16.33",
+        "wpackagist-plugin/instagram-feed":">=2.5.4",
+        "wpackagist-plugin/pods":">=2.7.23",
+        "wpackagist-plugin/updraftplus":">=1.16.34",
         "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1"
 
     },

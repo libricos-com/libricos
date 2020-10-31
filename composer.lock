@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "145af67a1cad6dc1445a19167653039b",
+    "content-hash": "5d47fb54c48769b2699ca93b73ab6911",
     "packages": [
         {
             "name": "composer/installers",
@@ -163,15 +163,15 @@
         },
         {
             "name": "wpackagist-plugin/instagram-feed",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/instagram-feed/",
-                "reference": "tags/2.5.3"
+                "reference": "tags/2.5.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.4.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -181,15 +181,15 @@
         },
         {
             "name": "wpackagist-plugin/pods",
-            "version": "2.7.22",
+            "version": "2.7.23",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pods/",
-                "reference": "tags/2.7.22"
+                "reference": "tags/2.7.23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pods.2.7.22.zip"
+                "url": "https://downloads.wordpress.org/plugin/pods.2.7.23.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
