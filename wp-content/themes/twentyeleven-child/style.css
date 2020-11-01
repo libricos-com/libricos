@@ -20,6 +20,7 @@ Text Domain: twentyeleven-child
 /* Inicialización de variables y colores */
 @import url("../twentyeleven-child/css/typography.css");
 @import url("../twentyeleven-child/css/common.css");
+
 /* Layout */
 @import url("../twentyeleven-child/css/layout.css");
 @import url("../twentyeleven-child/css/sidebar.css");
@@ -30,6 +31,8 @@ Text Domain: twentyeleven-child
 @import url("../twentyeleven-child/css/rating.css");
 @import url("../twentyeleven-child/css/chip.css");
 @import url("../twentyeleven-child/css/review-summary.css");
+/* @import url("../twentyeleven-child/css/searchform-complete.css"); */
+
 
 
 /*

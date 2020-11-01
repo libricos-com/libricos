@@ -1,9 +1,45 @@
+/**
+Page Reviews
+*/
 @import "mixins/list-inline";
-
-
 .list-inline-bullets {
     @include list-inline-separator('\2022');
 }
 .list-inline-pipe {
     @include list-inline-separator('|');
+}
+
+
+/**
+Tagcloud del searchform en la Home
+Color de fondo de los géneros de los libros en el searchform complete
+*/
+@import "../../../../vendor/twbs/bootstrap/scss/bootstrap.scss";
+@import "../../../../vendor/twbs/bootstrap/scss/_functions.scss";
+@import "../../../../vendor/twbs/bootstrap/scss/_variables";
+$jei-prefix: btn-;
+$jei-colors: () !default;
+$jei-colors: map-merge(
+  (
+    "danger":     $danger,
+    "warning":    $warning,
+    "success":    $success,
+    "primary":    $primary,
+    "info":       $info,
+    "secondary":  $secondary,
+    "dark":       $dark
+  ),
+  $jei-colors
+);
+        
+@each $name, $value in $jei-colors {
+    $i: index(($jei-colors), ($name $value));
+    $class: str-insert($jei-prefix, $name, -1);
+    ul.jei-tag-cloud {
+        width: 100%; 
+        margin: 0;
+        li:nth-child(#{length($jei-colors)}n+#{$i}) a{  
+            @extend .#{$class}; // .btn-primary
+        }
+    } 
 }

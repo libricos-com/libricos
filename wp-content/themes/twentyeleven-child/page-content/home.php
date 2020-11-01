@@ -17,7 +17,6 @@ $terms = get_terms($args);
 echo view('../partials/searchform-complete', array(
     'this2' => (object)[
         'terms' => $terms,
-        'colors' => ['danger', 'warning', 'success', 'primary', 'info', 'secondary'],
         'placeholder' => 'Busca tu libro por temática, título, autor, ...'
     ])
 );
