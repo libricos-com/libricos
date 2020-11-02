@@ -3,12 +3,12 @@
 ' https://plantuml.com/es/component-diagram
 ' https://plantuml.com/es/ie-diagram
 
-
 @startuml
+
 skinparam Style strictuml
 skinparam SequenceMessageAlignment center
 skinparam backgroundColor #FFFFFF
-skinparam roundcorner 10
+skinparam roundcorner 5
 
 package "Jesuserro.com" #DDDDDD 
 {
@@ -40,6 +40,28 @@ package "Jesuserro.com" #DDDDDD
     
     node "PODs" {
 
+        map formato {
+            1 => Kindle
+            2 => E-book
+            3 => Paperback
+            4 => Hardback
+            5 => Audiobook
+        }
+
+        map estado {
+            0 => Por leer
+            1 => Siguiente
+            2 => Leido
+            3 => Leyendo
+            4 => Cerrado
+            5 => Pausado
+            6 => No interesado
+            7 => Cuarentena
+        }
+
+        
+
+
         class Libro {
             - titulo: string
             - portada
@@ -48,7 +70,7 @@ package "Jesuserro.com" #DDDDDD
             - autores
             - editorial
             - fecha_publicacion: date
-            - formato: array
+            - formato: map
             - sinopsis: string
             - paginas: number
             - idioma: string
@@ -62,7 +84,7 @@ package "Jesuserro.com" #DDDDDD
             - notas
             - recomendaciones
             ..
-            - estado: array
+            - estado: map
             - favorito: boolean 
             --
             - <strike>iframe_compra_amazon</strike> 
@@ -87,6 +109,9 @@ package "Jesuserro.com" #DDDDDD
         Libro "1" ---- "1" n1
         Libro "1" --|| "1" Editorial
         Libro "1" --o{ "*" Genero
+
+        Libro::estado --|| estado : map
+        Libro::formato --|| formato : map
 
         class Review {
             + entradilla
@@ -143,4 +168,5 @@ package "Jesuserro.com" #DDDDDD
         }
     }
 }
+
 @enduml
