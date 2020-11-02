@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b6d2f39cb78376340a23c7c806d00d6",
+    "content-hash": "c3bc658fb578b71328c2d149a07a573f",
     "packages": [
         {
             "name": "composer/installers",
@@ -255,16 +255,34 @@
             "homepage": "https://wordpress.org/plugins/pods/"
         },
         {
-            "name": "wpackagist-plugin/updraftplus",
-            "version": "1.16.33",
+            "name": "wpackagist-plugin/seo-by-rank-math",
+            "version": "1.0.50.1",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/updraftplus/",
-                "reference": "tags/1.16.33"
+                "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
+                "reference": "tags/1.0.50.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/updraftplus.1.16.33.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.50.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/seo-by-rank-math/"
+        },
+        {
+            "name": "wpackagist-plugin/updraftplus",
+            "version": "1.16.34",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/updraftplus/",
+                "reference": "tags/1.16.34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/updraftplus.1.16.34.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
