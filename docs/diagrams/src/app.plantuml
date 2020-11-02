@@ -5,7 +5,7 @@
 
 @startuml
 
-skinparam Style strictuml
+' skinparam Style strictuml
 skinparam SequenceMessageAlignment center
 skinparam backgroundColor #FFFFFF
 skinparam roundcorner 5
@@ -17,8 +17,8 @@ package "Jesuserro.com" #DDDDDD
             class AawpLibro <<Template>>{
                 - asin
                 ==
-                + get_product_id():asin
-                + get_template_variable(ids, false )
+                + get_product_id()
+                + get_template_variable(ids, false)
                 + get_template_variables()
                 + get_product_title()
                 + get_product_url()
@@ -40,6 +40,11 @@ package "Jesuserro.com" #DDDDDD
     
     node "PODs" {
 
+        enum idioma {
+            ES
+            EN
+        }
+
         map formato {
             1 => Kindle
             2 => E-book
@@ -47,7 +52,6 @@ package "Jesuserro.com" #DDDDDD
             4 => Hardback
             5 => Audiobook
         }
-
         map estado {
             0 => Por leer
             1 => Siguiente
@@ -58,9 +62,6 @@ package "Jesuserro.com" #DDDDDD
             6 => No interesado
             7 => Cuarentena
         }
-
-        
-
 
         class Libro {
             - titulo: string
@@ -73,7 +74,7 @@ package "Jesuserro.com" #DDDDDD
             - formato: map
             - sinopsis: string
             - paginas: number
-            - idioma: string
+            - idioma: enum
             - generos_literarios
             ..
             - descripcion
@@ -105,13 +106,15 @@ package "Jesuserro.com" #DDDDDD
         Libro "1" --o{ "*" Review
         Libro "1" --o{ "*" Nota
         Libro "1" --o{ "*" Recomendacion
-        Libro "1" --|{ Autor
-        Libro "1" ---- "1" n1
+        Libro "1" --|{ "1/*" Autor
         Libro "1" --|| "1" Editorial
         Libro "1" --o{ "*" Genero
 
-        Libro::estado --|| estado : map
-        Libro::formato --|| formato : map
+        Libro::estado --left|| estado : map
+        Libro::formato --left|| formato : map
+        Libro::idioma --left|| idioma : enum
+
+        Fotografia -up[hidden]-> n1
 
         class Review {
             + entradilla
