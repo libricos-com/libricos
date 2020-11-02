@@ -1,0 +1,146 @@
+' https://www.codeproject.com/Articles/1278703/UML-Made-Easy-with-PlantUML-VS-Code
+' java -jar ~/.vscode/extensions/jebbs.plantuml-2.13.14/plantuml.jar -verbose *.plantuml ../out/index.plantuml
+' https://plantuml.com/es/component-diagram
+' https://plantuml.com/es/ie-diagram
+
+
+@startuml
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+skinparam backgroundColor #FFFFFF
+skinparam roundcorner 10
+
+package "Jesuserro.com" #DDDDDD 
+{
+    node "API" as n1 {
+        frame Amazon {
+            class AawpLibro <<Template>>{
+                - asin
+                ==
+                + get_product_id():asin
+                + get_template_variable(ids, false )
+                + get_template_variables()
+                + get_product_title()
+                + get_product_url()
+                + get_product_rating()
+                + get_product_reviews()
+            }
+        }
+        frame Wordpress {
+            class Wp_Post <<Post>>{
+                - post_title: string
+                - post_date: Date
+                - content: string
+                + get_the_title()
+                + get_the_date()
+                + get_the_content()
+            }
+        }
+    }
+    
+    node "PODs" {
+
+        class Libro {
+            - titulo: string
+            - portada
+            - isbn:string
+            - asin:string
+            - autores
+            - editorial
+            - fecha_publicacion: date
+            - formato: array
+            - sinopsis: string
+            - paginas: number
+            - idioma: string
+            - generos_literarios
+            ..
+            - descripcion
+            ..
+            - url_goodreads
+            ..
+            - reviews
+            - notas
+            - recomendaciones
+            ..
+            - estado: array
+            - favorito: boolean 
+            --
+            - <strike>iframe_compra_amazon</strike> 
+            - url_compra 
+            - mi_puntuacion 
+            - formatos_disponibles 
+            - expectativas
+            ==
+            + get_titulo() 
+            + get_reviews() 
+        }
+        
+        note right of Libro 
+            There are two types of 
+            Libro: WP_POST and AAWP
+        end note
+
+        Libro "1" --o{ "*" Review
+        Libro "1" --o{ "*" Nota
+        Libro "1" --o{ "*" Recomendacion
+        Libro "1" --|{ Autor
+        Libro "1" ---- "1" n1
+        Libro "1" --|| "1" Editorial
+        Libro "1" --o{ "*" Genero
+
+        class Review {
+            + entradilla
+            + texto
+            + libro
+            + puntuacion
+            + url_goodreads
+        }
+
+        class Nota {
+            + fecha
+            + libro
+        }
+
+        class Recomendacion {
+            + pregunta
+            + autor_pregunta
+            + respuesta
+            + url
+            + libros
+        }
+
+        class Autor{
+            + nombre
+            + apellidos
+            + portada
+            + libros
+            + entradilla
+            + descripcion
+            + bio
+            + url
+            + url_goodreads
+        }
+
+        class Editorial{
+            + url
+            + libros
+        }
+
+        class Genero{
+            
+        }
+    }
+
+    node Fotografia{
+        class Foto{
+            + titulo
+            + foto
+            + fecha_foto
+            + descripcion
+            + instagram_url
+            + googlemaps_url
+            + gps
+        }
+    }
+}
+@enduml

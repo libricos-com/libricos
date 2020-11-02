@@ -1,0 +1,23 @@
+' https://www.codeproject.com/Articles/1278703/UML-Made-Easy-with-PlantUML-VS-Code
+' java -jar ~/.vscode/extensions/jebbs.plantuml-2.13.14/plantuml.jar -verbose ../out/index.plantuml
+' https://plantuml.com/es/component-diagram
+
+
+@startuml
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+skinparam backgroundColor #FFFFFF
+
+
+
+database "MySql" {
+    folder "This is my folder" {
+        
+    }
+    frame "Foo" {
+        
+    }
+}
+    
+@enduml
