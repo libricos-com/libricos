@@ -10,7 +10,7 @@
     $texto = get_post_meta($id,'texto')[0];
     $entradilla = get_post_meta($id,'entradilla')[0];
     $puntuacion = get_post_meta($id,'puntuacion')[0];
-    $url_goodreads = get_post_meta($id,'url_goodreads')[0];
+    $goodreads_url = get_post_meta($id,'goodreads_url')[0];
     
     //get Pods object for current post
     $pod = pods( 'review', $id );
@@ -40,7 +40,7 @@
 
 <ul>
     <li><strong>Mi puntuación</strong>: <?php echo $puntuacion;?></li>
-    <li><a href="<?php echo $url_goodreads;?>">Reseña en Goodreads</a></li>
+    <li><a href="<?php echo $goodreads_url;?>">Reseña en Goodreads</a></li>
 </ul>
 
 <hr />

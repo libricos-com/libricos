@@ -18,11 +18,11 @@
                 <a href="<?php echo $this2->url_review;?>" alt="">Ver reseña</a>
             </li>
             <?php
-            if(!empty($this2->url_goodreads)){
+            if(!empty($this2->goodreads_url)){
             ?>
                 <li class="list-inline-item">
                     <i class="fab fa-goodreads"> 
-                    <a href="<?php echo $this2->url_goodreads;?>" alt="">Goodreads review</i></a>
+                    <a href="<?php echo $this2->goodreads_url;?>" alt="">Goodreads review</i></a>
                 </li>
             <?php
             }

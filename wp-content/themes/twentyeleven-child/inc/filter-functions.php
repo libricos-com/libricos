@@ -147,7 +147,7 @@ function theme_slug_filter_the_content( $content )
     $libroHtml = $contentHtml = $expectativasHtml = '';
     if($postType == 'libro'){
     	$libroHtml = get_post_meta($id,'sinopsis')[0];
-    	$expectativas = trim(get_post_meta($id,'expectativas')[0]);
+    	$expectativas = trim(get_post_meta($id,'descripcion')[0]);
 	    if(!empty($expectativas)){
 	    	$expectativasHtml = $expectativas;
 	    	$libroHtml = $expectativasHtml;

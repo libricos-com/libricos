@@ -2,5 +2,5 @@
 SELECT * FROM `wp_postmeta` 
 WHERE 
     post_id = 13139 
-    and meta_key IN ('texto', 'url_goodreads', 'puntuacion', 'entradilla', 'estado')
+    and meta_key IN ('texto', 'goodreads_url', 'puntuacion', 'entradilla', 'estado')
 ORDER BY `meta_key` ASC

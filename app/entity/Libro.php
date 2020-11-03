@@ -382,8 +382,8 @@ class Libro
         $this->paginas = $this->pod->field( 'paginas' );
         // $this->idioma = get_post_meta($this->id,'idioma')[0];
         $this->idioma = $this->pod->field( 'idioma' );
-        // $this->url_goodreads = get_post_meta($this->id,'url_goodreads')[0];
-        $this->goodreads_url = $this->pod->field( 'url_goodreads' );
+        // $this->goodreads_url = get_post_meta($this->id,'goodreads_url')[0];
+        $this->goodreads_url = $this->pod->field( 'goodreads_url' );
         
         // $this->formato = get_post_meta($this->id,'formato');
         $this->formato = $this->pod->field( 'formato' );

@@ -10,39 +10,12 @@
 skinparam SequenceMessageAlignment center
 skinparam backgroundColor #FFFFFF
 skinparam roundcorner 5
+skinparam wrapWidth 400
+skinparam wrapMessageWidth 400
 
 package "Jesuserro.com" #DDDDDD 
 {
-    node "API" as n1 {
-        frame Amazon {
-            class AAWP_Template_Handler <<AAWP_Template_Handler>>{
-                - asin
-                ==
-                + get_product_id()
-                + get_template_variable(ids, false)
-                + get_template_variables()
-                + get_product_title()
-                + get_product_url()
-                + get_product_rating()
-                + get_product_reviews()
-            }
-        }
-        frame Wordpress {
-            class Wp_Post <<Wp_Post>>{
-                - post_title: string
-                - post_date: Date
-                - content: string
-                + get_the_title()
-                + get_the_date()
-                + get_the_content()
-            }
-        }
-        frame Goodreads {
-            
-        }
-    }
-    
-    node "PODs" {
+    node "PODS" as PODS {
 
         enum idioma {
             ES
@@ -69,6 +42,7 @@ package "Jesuserro.com" #DDDDDD
 
         class Libro {
             - _source: Wp_Post
+            - id: integer
             - titulo: string
             - portada
             - isbn:string
@@ -77,53 +51,25 @@ package "Jesuserro.com" #DDDDDD
             - editorial
             - fecha_publicacion: date
             - formato: map
+            - formatos: map
             - sinopsis: string
             - paginas: number
             - idioma: enum
             - generos_literarios
-            ..
-            - descripcion
-            ..
-            - url_goodreads
-            ..
-            - reviews
-            - notas
-            - recomendaciones
-            ..
             - estado: map
-            - favorito: boolean 
-            --
-            - <strike>iframe_compra_amazon</strike> 
-            - url_compra 
-            - mi_puntuacion 
-            - formatos_disponibles 
-            - expectativas
+            - descripcion: string
+            - contenido: string
+            - notas: map
+            - reviews: map
+            - favorito: boolean
+            - goodreads_url: string
+            - recomendaciones: map
             ==
             + get_titulo() 
             + get_reviews()
             + <b>get_rating()</b> 
         }
         
-        note top of Libro 
-            There are two types of 
-            Libro: WP_POST and AAWP
-        end note
-
-        Libro "1" *-o{ "*" Review
-        Libro "1" *-o{ "*" Nota
-        Libro "1" o-o{ "*" Recomendacion
-        Libro "1" *--down|{ "1/*" Autor
-        Libro "1" *--down|| "1" Editorial
-        Libro "1" o--downo{ "*" Genero
-        Libro::_source "1" *--|| "1" Wp_Post: contains
-        Libro "1" o--o{ "*" AAWP_Template_Handler: contains
-
-        Libro::estado --left|| estado : map
-        Libro::formato --left|| formato : map
-        Libro::idioma --left|| idioma : enum
-
-        Fotografia -up[hidden]-> n1
-
         class Review {
             - <b>titulo</b>
             - <strike>entradilla</strike> <b>descripcion</b>
@@ -131,7 +77,7 @@ package "Jesuserro.com" #DDDDDD
             - <b>fecha</b>
             + libro
             - <strike>puntuacion</strike> <b>rating</b>
-            + url_goodreads
+            + goodreads_url
         }
 
         class Nota {
@@ -159,7 +105,7 @@ package "Jesuserro.com" #DDDDDD
             + descripcion
             + bio
             + url
-            + url_goodreads
+            + goodreads_url
         }
 
         class Editorial{
@@ -168,12 +114,6 @@ package "Jesuserro.com" #DDDDDD
             + libros
         }
 
-        class Genero{
-            
-        }
-    }
-
-    node Fotografia{
         class Foto{
             - titulo
             - foto
@@ -185,5 +125,75 @@ package "Jesuserro.com" #DDDDDD
             + gps
         }
     }
+
+    note top of Libro 
+        There are two types of 
+        Libro: WP_POST and AAWP
+    end note
+    Libro ||-o{ Review
+    Libro ||-o{ Nota
+    Libro ||-o{ Recomendacion
+    Libro ||--down|{ Autor
+    Libro ||--down|| Editorial
+    Libro::estado --left|| estado : map
+    Libro::formato --left|| formato : map
+    Libro::idioma --left|| idioma : enum
+
+    PODS -[hidden] Api_node2
+
+    node "API2" as Api_node2 {
+        frame Wordpress {
+            class Wp_Post <<Wp_Post>>{
+                - post_id: integer
+                - post_title: string
+                - post_date: Date
+                - content: string
+                + get_the_id()
+                + get_the_title()
+                + get_the_date()
+                + get_the_content()
+            }
+        }
+
+        frame Amazon {
+            class AAWP_Template_Handler <<AAWP_Template_Handler>>{
+                - asin
+                ==
+                + get_product_id()
+                + get_template_variable(name, bool)
+                + get_template_variables()
+                + get_product_title()
+                + get_product_url()
+                + get_product_rating()
+                + get_product_reviews()
+            }
+        }
+    }  
+
+    Libro::_source "1" *--|| "1" Wp_Post: contains
+    Libro "1" o--|| "*" AAWP_Template_Handler: contains  
+
+    node "API" as Api_node {
+        frame Goodreads {
+            note top of Jei_Api_Goodreads 
+                GOODREADS = GR
+                goodreads.com/user_status/show/GR_USER_ID?format=xml&key=GR_KEY
+                goodreads.com/review/show/2312483779
+            end note
+            class Jei_Api_Goodreads {
+                + getAuthor(GR_AUTHOR_ID: integer)
+                + getBook(GR_BOOK_ID: integer)
+                + getLatestReads(GR_USER_ID: integer)
+                + getUser(GR_USER_ID: integer)
+                + getUserStatus(GR_USER_ID: integer)
+                + getUserStatuses(GR_USER_ID: integer)
+                + getReview(review_id: integer)
+            }
+        }
+    }
+
+    
+
+
 }
 @enduml
