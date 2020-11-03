@@ -1,9 +1,10 @@
+@startuml
 ' https://www.codeproject.com/Articles/1278703/UML-Made-Easy-with-PlantUML-VS-Code
 ' java -jar ~/.vscode/extensions/jebbs.plantuml-2.13.14/plantuml.jar -verbose *.plantuml ../out/index.plantuml
 ' https://plantuml.com/es/component-diagram
 ' https://plantuml.com/es/ie-diagram
 
-@startuml
+
 
 ' skinparam Style strictuml
 skinparam SequenceMessageAlignment center
@@ -14,7 +15,7 @@ package "Jesuserro.com" #DDDDDD
 {
     node "API" as n1 {
         frame Amazon {
-            class AawpLibro <<Template>>{
+            class AAWP_Template_Handler <<AAWP_Template_Handler>>{
                 - asin
                 ==
                 + get_product_id()
@@ -27,7 +28,7 @@ package "Jesuserro.com" #DDDDDD
             }
         }
         frame Wordpress {
-            class Wp_Post <<Post>>{
+            class Wp_Post <<Wp_Post>>{
                 - post_title: string
                 - post_date: Date
                 - content: string
@@ -35,6 +36,9 @@ package "Jesuserro.com" #DDDDDD
                 + get_the_date()
                 + get_the_content()
             }
+        }
+        frame Goodreads {
+            
         }
     }
     
@@ -64,6 +68,7 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Libro {
+            - _source: Wp_Post
             - titulo: string
             - portada
             - isbn:string
@@ -95,20 +100,23 @@ package "Jesuserro.com" #DDDDDD
             - expectativas
             ==
             + get_titulo() 
-            + get_reviews() 
+            + get_reviews()
+            + <b>get_rating()</b> 
         }
         
-        note right of Libro 
+        note top of Libro 
             There are two types of 
             Libro: WP_POST and AAWP
         end note
 
-        Libro "1" --o{ "*" Review
-        Libro "1" --o{ "*" Nota
-        Libro "1" --o{ "*" Recomendacion
-        Libro "1" --|{ "1/*" Autor
-        Libro "1" --|| "1" Editorial
-        Libro "1" --o{ "*" Genero
+        Libro "1" *-o{ "*" Review
+        Libro "1" *-o{ "*" Nota
+        Libro "1" o-o{ "*" Recomendacion
+        Libro "1" *--down|{ "1/*" Autor
+        Libro "1" *--down|| "1" Editorial
+        Libro "1" o--downo{ "*" Genero
+        Libro::_source "1" *--|| "1" Wp_Post: contains
+        Libro "1" o--o{ "*" AAWP_Template_Handler: contains
 
         Libro::estado --left|| estado : map
         Libro::formato --left|| formato : map
@@ -117,19 +125,23 @@ package "Jesuserro.com" #DDDDDD
         Fotografia -up[hidden]-> n1
 
         class Review {
-            + entradilla
-            + texto
+            - <b>titulo</b>
+            - <strike>entradilla</strike> <b>descripcion</b>
+            - <strike>texto</strike> <b>contenido</b>
+            - <b>fecha</b>
             + libro
-            + puntuacion
+            - <strike>puntuacion</strike> <b>rating</b>
             + url_goodreads
         }
 
         class Nota {
+            - <b>titulo</b>
             + fecha
             + libro
         }
 
         class Recomendacion {
+            - <b>titulo</b>
             + pregunta
             + autor_pregunta
             + respuesta
@@ -138,6 +150,7 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Autor{
+            - <b>titulo</b>
             + nombre
             + apellidos
             + portada
@@ -150,6 +163,7 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Editorial{
+            - <b>titulo</b>
             + url
             + libros
         }
@@ -161,15 +175,15 @@ package "Jesuserro.com" #DDDDDD
 
     node Fotografia{
         class Foto{
-            + titulo
-            + foto
-            + fecha_foto
-            + descripcion
+            - titulo
+            - foto
+            - <strike>fecha_foto</strike> <b>fecha_captura</b>
+            - descripcion
+            - <b>contenido</b>
             + instagram_url
             + googlemaps_url
             + gps
         }
     }
 }
-
 @enduml
