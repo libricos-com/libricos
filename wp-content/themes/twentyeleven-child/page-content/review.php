@@ -7,9 +7,9 @@
     $post_title = get_the_title();
     $url = esc_url( get_permalink( $id ) );
 
-    $texto = get_post_meta($id,'texto')[0];
-    $entradilla = get_post_meta($id,'entradilla')[0];
-    $puntuacion = get_post_meta($id,'puntuacion')[0];
+    $texto = get_post_meta($id,'contenido')[0];
+    $entradilla = get_post_meta($id,'descripcion')[0];
+    $puntuacion = get_post_meta($id,'rating')[0];
     $goodreads_url = get_post_meta($id,'goodreads_url')[0];
     
     //get Pods object for current post

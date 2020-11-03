@@ -4,5 +4,6 @@ FROM wp_posts p, wp_postmeta as pm
 WHERE 
     p.ID = pm.post_id
     AND pm.meta_key IN ('descripcion')
-    AND pm.meta_value <> ""
+    AND pm.meta_value <> "" 
+    AND p.post_type = "review"
 ORDER BY p.ID DESC

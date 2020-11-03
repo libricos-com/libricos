@@ -9,7 +9,7 @@
                     $nombreReview = get_the_title( $id_review );
                     $pod_id = $review['pod_item_id'];
                     $pod = pods('review', $pod_id);
-                    $puntuacion = round($pod->field('puntuacion'), 1);
+                    $puntuacion = round($pod->field('rating'), 1);
                     ?>
                     <li>
                         <small class="align-middle"><?php echo get_fecha_corta($id_review);?></small>

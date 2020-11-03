@@ -157,7 +157,7 @@ function theme_slug_filter_the_content( $content )
         $libro = get_post_meta($id,'libro')[0];
         $portada = get_post_meta($libro['ID'],'portada');
         $htmlImagen = '';
-        $entradilla = get_post_meta($id,'entradilla');
+        $entradilla = get_post_meta($id,'descripcion');
         if( !empty($portada[0]['guid']) ){
             $htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
         }
@@ -165,7 +165,7 @@ function theme_slug_filter_the_content( $content )
             $contentHtml = $entradilla[0];
         }
     }else if($postType == 'autor'){
-        $entradilla = get_post_meta($id,'entradilla');
+        $entradilla = get_post_meta($id,'descripcion');
         if(!empty($entradilla[0])){
             $contentHtml = $entradilla[0];
         } 

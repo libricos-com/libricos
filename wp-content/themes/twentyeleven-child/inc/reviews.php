@@ -46,14 +46,14 @@ function set_review($this2)
         if(!empty( get_post_meta($this2->id_review,'goodreads_url')[0] )){
             $this2->goodreads_url = get_post_meta($this2->id_review,'goodreads_url')[0];
         }
-        if(!empty( get_post_meta($this2->id_review,'texto')[0] )){
-            $this2->texto = get_post_meta($this2->id_review,'texto')[0]; 
+        if(!empty( get_post_meta($this2->id_review,'contenido')[0] )){
+            $this2->texto = get_post_meta($this2->id_review,'contenido')[0]; 
             $this2->texto = get_first_paragraph($this2->texto);
         }
 
-        if(!empty( get_post_meta($this2->id_review,'puntuacion')[0] )){
+        if(!empty( get_post_meta($this2->id_review,'rating')[0] )){
             if(is_numeric($this2->puntuacion)){
-                $this2->puntuacion = floatval(get_post_meta($this2->id_review,'puntuacion')[0]);
+                $this2->puntuacion = floatval(get_post_meta($this2->id_review,'rating')[0]);
                 $this2->rating_percent = $this2->puntuacion*100/5;
             }  
         }

@@ -44,18 +44,18 @@ package "Jesuserro.com" #DDDDDD
             - _source: Wp_Post
             - id: integer
             - titulo: string
-            - portada
+            - portada: binary
             - isbn:string
             - asin:string
-            - autores
-            - editorial
+            - autores: map
+            - editorial: Editorial
             - fecha_publicacion: date
             - formato: map
             - formatos: map
             - sinopsis: string
             - paginas: number
             - idioma: enum
-            - generos_literarios
+            - generos_literarios: map
             - estado: map
             - descripcion: string
             - contenido: string
@@ -71,13 +71,11 @@ package "Jesuserro.com" #DDDDDD
         }
         
         class Review {
-            - <b>titulo</b>
-            - <strike>entradilla</strike> <b>descripcion</b>
-            - <strike>texto</strike> <b>contenido</b>
-            - <b>fecha</b>
-            + libro
-            - <strike>puntuacion</strike> <b>rating</b>
-            + goodreads_url
+            - descripcion: string
+            - contenido: string
+            - libro: Libro
+            - rating: integer
+            - goodreads_url: string
         }
 
         class Nota {
