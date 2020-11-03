@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3bc658fb578b71328c2d149a07a573f",
+    "content-hash": "12a5c9a43f926d74adaf3642d9453aa6",
     "packages": [
         {
             "name": "composer/installers",
@@ -256,15 +256,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.50.1",
+            "version": "1.0.51",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.50.1"
+                "reference": "tags/1.0.51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.50.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.51.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
