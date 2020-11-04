@@ -55,7 +55,7 @@ package "Jesuserro.com" #DDDDDD
             - sinopsis: string
             - paginas: number
             - idioma: enum
-            - generos_literarios: map
+            - generos_literarios: Genero
             - estado: map
             - descripcion: string
             - contenido: string
@@ -94,16 +94,15 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Autor{
-            - <b>titulo</b>
-            + nombre
-            + apellidos
-            + portada
-            + libros
-            + entradilla
-            + descripcion
-            + bio
-            + url
-            + goodreads_url
+            - nombre: string
+            - apellidos: string
+            - portada: binary
+            - libros: map
+            - descripcion: string
+            - contenido: string
+            - bio
+            - url: string
+            - goodreads_url: string
         }
 
         class Editorial{
@@ -122,6 +121,10 @@ package "Jesuserro.com" #DDDDDD
             + googlemaps_url
             + gps
         }
+
+        class Generos{
+
+        }
     }
 
     note top of Libro 
@@ -136,6 +139,7 @@ package "Jesuserro.com" #DDDDDD
     Libro::estado --left|| estado : map
     Libro::formato --left|| formato : map
     Libro::idioma --left|| idioma : enum
+    Libro::generos_literarios ||-o{ Generos
 
     PODS -[hidden] Api_node2
 

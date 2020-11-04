@@ -10,16 +10,18 @@ $urlBase = get_site_url();
 
 <?php 
 $args = array(
-    'taxonomy' => 'generos',
+    'taxonomy' => 'genero',
     'hide_empty' => false
 );
 $terms = get_terms($args);
-echo view('../partials/searchform-complete', array(
-    'this2' => (object)[
-        'terms' => $terms,
-        'placeholder' => 'Busca tu libro por temática, título, autor, ...'
-    ])
-);
+if($terms){
+    echo view('../partials/searchform-complete', array(
+        'this2' => (object)[
+            'terms' => $terms,
+            'placeholder' => 'Busca tu libro por temática, título, autor, ...'
+        ])
+    );
+}
 ?>
 
 <hr />
