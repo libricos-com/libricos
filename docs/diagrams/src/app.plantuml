@@ -100,7 +100,6 @@ package "Jesuserro.com" #DDDDDD
             - libros: map
             - descripcion: string
             - contenido: string
-            - bio
             - url: string
             - goodreads_url: string
         }
