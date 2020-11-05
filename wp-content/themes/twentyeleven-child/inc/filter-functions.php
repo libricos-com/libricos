@@ -84,13 +84,18 @@ function theme_slug_filter_the_content( $content )
  
     $portada = get_post_meta($id,'portada');
     $htmlImagen = '';
-     if( !empty($portada[0]['guid']) ){
+    if( !empty($portada[0]['guid']) ){
         $src = $portada[0]['guid']; 
         if(WP_DEBUG){
             $src = fix_url_domain($src);
         }
-     	$htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$src.'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
-     }
+            $htmlImagen = 
+            '<div class="text-center">'.
+                '<a href="'.esc_url( get_permalink( $id ) ).'">'.
+                    '<img width="400px" class="rounded img-fluid img-thumbnail" src="'.$src.'" alt="Imagen de portada del libro '.$titulo.'">'.
+                '</a>'.
+            '</div>';
+    }
 
 
 
@@ -164,7 +169,7 @@ function theme_slug_filter_the_content( $content )
         if(!empty($entradilla[0])){
             $contentHtml = $entradilla[0];
         }
-    }else if($postType == 'autor'){
+    }else if($postType == 'autor' || $postType == 'foto'){
         $entradilla = get_post_meta($id,'descripcion');
         if(!empty($entradilla[0])){
             $contentHtml = $entradilla[0];

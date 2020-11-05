@@ -79,18 +79,9 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Nota {
-            - <b>titulo</b>
-            + fecha
-            + libro
-        }
-
-        class Recomendacion {
-            - <b>titulo</b>
-            + pregunta
-            + autor_pregunta
-            + respuesta
-            + url
-            + libros
+            - descripcion:string
+            - contenido:string
+            - libro: Libro
         }
 
         class Autor{
@@ -105,20 +96,29 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Editorial{
+            - libros: map
+            - descripcion: string
+            - contenido: string
+            - url: string
+        }
+
+        class Recomendacion {
             - <b>titulo</b>
+            + pregunta
+            + autor_pregunta
+            + respuesta
             + url
             + libros
         }
 
         class Foto{
-            - titulo
-            - foto
-            - <strike>fecha_foto</strike> <b>fecha_captura</b>
-            - descripcion
-            - <b>contenido</b>
-            + instagram_url
-            + googlemaps_url
-            + gps
+            - portada: binary
+            - fecha_captura: datetime
+            - gps: double
+            - descripcion: string
+            - contenido: string
+            - instagram_url
+            - googlemaps_url
         }
 
         class Generos{
