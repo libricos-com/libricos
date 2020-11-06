@@ -57,8 +57,8 @@ package "Jesuserro.com" #DDDDDD
             - idioma: enum
             - generos_literarios: Genero
             - estado: map
-            - descripcion: string
-            - contenido: string
+            - <strike>descripcion: string</strike>
+            - <strike>contenido: string</strike>
             - notas: map
             - reviews: map
             - favorito: boolean
@@ -71,7 +71,7 @@ package "Jesuserro.com" #DDDDDD
         }
         
         class Review {
-            - descripcion: string
+            - <strike>descripcion: string</strike>
             - contenido: string
             - libro: Libro
             - rating: integer
@@ -79,7 +79,7 @@ package "Jesuserro.com" #DDDDDD
         }
 
         class Nota {
-            - descripcion:string
+            - <strike>descripcion:string</strike>
             - contenido:string
             - libro: Libro
         }
@@ -89,7 +89,7 @@ package "Jesuserro.com" #DDDDDD
             - apellidos: string
             - portada: binary
             - libros: map
-            - descripcion: string
+            - <strike>descripcion: string</strike>
             - contenido: string
             - url: string
             - goodreads_url: string
@@ -97,7 +97,7 @@ package "Jesuserro.com" #DDDDDD
 
         class Editorial{
             - libros: map
-            - descripcion: string
+            - <strike>descripcion: string</strike>
             - contenido: string
             - url: string
         }
@@ -115,7 +115,7 @@ package "Jesuserro.com" #DDDDDD
             - portada: binary
             - fecha_captura: datetime
             - gps: double
-            - descripcion: string
+            - <strike>descripcion: string</strike>
             - contenido: string
             - instagram_url
             - googlemaps_url
