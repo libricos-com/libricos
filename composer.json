@@ -24,10 +24,10 @@
         
         "wpackagist-plugin/all-in-one-wp-migration":">=7.29",
         "wpackagist-plugin/instagram-feed":">=2.5.4",
-        "wpackagist-plugin/pods":">=2.7.23",
+        "wpackagist-plugin/pods":">=2.7.24",
         "wpackagist-plugin/updraftplus":">=1.16.34",
         "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1",
-        "wpackagist-plugin/seo-by-rank-math":">=1.0.51.1"
+        "wpackagist-plugin/seo-by-rank-math":">=1.0.51"
     },
     "extra": {
         "installer-paths": {

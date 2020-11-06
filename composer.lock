@@ -238,15 +238,15 @@
         },
         {
             "name": "wpackagist-plugin/pods",
-            "version": "2.7.23",
+            "version": "2.7.24",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pods/",
-                "reference": "tags/2.7.23"
+                "reference": "tags/2.7.24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pods.2.7.23.zip"
+                "url": "https://downloads.wordpress.org/plugin/pods.2.7.24.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
