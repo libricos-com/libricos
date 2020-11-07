@@ -151,29 +151,21 @@ function theme_slug_filter_the_content( $content )
    
     $libroHtml = $contentHtml = $expectativasHtml = '';
     if($postType == 'libro'){
-    	$libroHtml = get_post_meta($id,'sinopsis')[0];
-    	$expectativas = trim(get_post_meta($id,'descripcion')[0]);
-	    if(!empty($expectativas)){
-	    	$expectativasHtml = $expectativas;
-	    	$libroHtml = $expectativasHtml;
-	    }
-	    $contentHtml = $libroHtml;
+        $contentHtml = get_post_meta($id,'sinopsis')[0];
 	}else if($postType == 'review'){
         $libro = get_post_meta($id,'libro')[0];
         $portada = get_post_meta($libro['ID'],'portada');
         $htmlImagen = '';
-        $entradilla = get_post_meta($id,'descripcion');
+        $content2 = get_post_meta($id,'contenido')[0];
+        $contentHtml = get_first_paragraph($content2);
         if( !empty($portada[0]['guid']) ){
             $htmlImagen = '<div class="text-center"><a href="'.esc_url( get_permalink( $id ) ).'"><img src="'.$portada[0]['guid'].'" alt="Imagen de portada del libro '.$titulo.'"></a></div>';
         }
-        if(!empty($entradilla[0])){
-            $contentHtml = $entradilla[0];
-        }
+    
     }else if($postType == 'autor' || $postType == 'foto'){
-        $entradilla = get_post_meta($id,'descripcion');
-        if(!empty($entradilla[0])){
-            $contentHtml = $entradilla[0];
-        } 
+        
+        $content2 = get_post_meta($id,'contenido')[0];
+        $contentHtml = get_first_paragraph($content2);
     }
     $contentHtml = '<p>'.$contentHtml.'</p>';
 
