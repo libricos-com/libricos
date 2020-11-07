@@ -57,8 +57,7 @@ package "Jesuserro.com" #DDDDDD
             - idioma: enum
             - generos_literarios: Genero
             - estado: map
-            - <strike>descripcion: string</strike>
-            - <strike>contenido: string</strike>
+            - <b>descripcion: string</b>
             - notas: map
             - reviews: map
             - favorito: boolean
@@ -71,17 +70,15 @@ package "Jesuserro.com" #DDDDDD
         }
         
         class Review {
-            - <strike>descripcion: string</strike>
-            - contenido: string
+            - <b>contenido: string</b>
             - libro: Libro
             - rating: integer
             - goodreads_url: string
         }
 
         class Nota {
-            - <strike>descripcion:string</strike>
+            - Libro: Libro
             - contenido:string
-            - libro: Libro
         }
 
         class Autor{
@@ -89,34 +86,30 @@ package "Jesuserro.com" #DDDDDD
             - apellidos: string
             - portada: binary
             - libros: map
-            - <strike>descripcion: string</strike>
-            - contenido: string
+            - <b>contenido: string</b>
             - url: string
             - goodreads_url: string
         }
 
         class Editorial{
             - libros: map
-            - <strike>descripcion: string</strike>
-            - contenido: string
+            - <b>contenido: string</b>
             - url: string
         }
 
         class Recomendacion {
-            - <b>titulo</b>
-            + pregunta
-            + autor_pregunta
-            + respuesta
-            + url
-            + libros
+            - pregunta
+            - autor_pregunta
+            - respuesta
+            - url
+            - libros
         }
 
         class Foto{
             - portada: binary
             - fecha_captura: datetime
             - gps: double
-            - <strike>descripcion: string</strike>
-            - contenido: string
+            - <b>contenido: string</b>
             - instagram_url
             - googlemaps_url
         }
@@ -130,15 +123,16 @@ package "Jesuserro.com" #DDDDDD
         There are two types of 
         Libro: WP_POST and AAWP
     end note
-    Libro ||-o{ Review
-    Libro ||-o{ Nota
-    Libro ||-o{ Recomendacion
-    Libro ||--down|{ Autor
-    Libro ||--down|| Editorial
-    Libro::estado --left|| estado : map
-    Libro::formato --left|| formato : map
-    Libro::idioma --left|| idioma : enum
+    Libro ||--o{ Review
+    Libro ||--o{ Nota
+    Libro ||-down|{ Autor
+    Libro ||-down|| Editorial
+    Libro::estado -left|| estado : map
+    Libro::formato -left|| formato : map
+    Libro::idioma -left|| idioma : enum
     Libro::generos_literarios ||-o{ Generos
+    Libro ||--o{ Recomendacion
+    Libro --[hidden] Foto
 
     PODS -[hidden] Api_node2
 
