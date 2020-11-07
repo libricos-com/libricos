@@ -38,6 +38,7 @@ function get_first_paragraph($content)
 /**
  * @param $pathtofile hacia la otra plantilla desde aquí
  * @see https://stackoverflow.com/questions/5629853/creating-a-custom-php-template
+ * Otras formas de hacer templates: https://github.com/roots/sage/issues/1414
  */
 function view($pathtofile, $vars) 
 {
