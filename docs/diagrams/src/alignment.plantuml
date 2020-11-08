@@ -1,0 +1,21 @@
+@startuml
+allow_mixing
+
+frame foo
+frame dummyLeft
+frame dummyRight
+frame dummyUp
+frame dummyDown
+class A
+
+
+foo -left-> dummyLeft 
+foo -right-> dummyRight 
+foo -up-> dummyUp 
+foo -down-> dummyDown
+
+frame foo {
+     
+}
+
+@enduml
