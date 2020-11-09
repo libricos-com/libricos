@@ -1,0 +1,91 @@
+<mxfile host="65bd71144e" modified="2020-11-09T12:10:11.425Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.0 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36" version="13.6.5" etag="uBFwV7mX4ulomteeiaoh">
+    <diagram id="DIdlQhmt8y5lO58EPRMS" name="Page-1">
+        <mxGraphModel dx="734" dy="430" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="16" value="Review" style="shape=umlFrame;whiteSpace=wrap;html=1;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="50" width="340" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Nota" style="shape=umlFrame;whiteSpace=wrap;html=1;fillColor=#e3c800;strokeColor=#B09500;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="50" width="280" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Libro" style="shape=umlFrame;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="50" width="280" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="User" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="100" width="20" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Selected&lt;br&gt;WantToRead" style="shape=umlLifeline;participant=umlControl;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="100" width="40" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Next" style="shape=umlLifeline;participant=umlControl;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="100" width="40" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="set_nota()" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;" vertex="1" parent="6">
+                    <mxGeometry x="20" y="120" width="10" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Leyendo" style="shape=umlLifeline;participant=umlControl;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="100" width="40" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="set_nota()" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;" vertex="1" parent="7">
+                    <mxGeometry x="20" y="160" width="10" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Leído" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="710" y="100" width="50" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Reviewed" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="100" width="40" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="set_contenido()" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;" vertex="1" parent="9">
+                    <mxGeometry x="20" y="80" width="10" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Rated" style="shape=umlLifeline;participant=umlBoundary;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="100" width="50" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Recomendaciones amigos" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="209.5" y="200" as="sourcePoint"/>
+                        <mxPoint x="389.5" y="200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Internet" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="210" y="220" as="sourcePoint"/>
+                        <mxPoint x="390" y="220" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Goodreads" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="60" y="190" as="sourcePoint"/>
+                        <mxPoint x="210" y="190" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="escribir review" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="734.5" y="180" as="sourcePoint"/>
+                        <mxPoint x="909.5" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="escribir expectativas" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="390" y="250" as="sourcePoint"/>
+                        <mxPoint x="559.5" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="escribir notas lectura" style="html=1;verticalAlign=bottom;endArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="564" y="291" as="sourcePoint"/>
+                        <mxPoint x="734" y="291" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="160" width="10" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="set_rating()" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#fa6800;strokeColor=#C73500;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1080" y="200" width="10" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
