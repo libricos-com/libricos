@@ -1,7 +1,8 @@
 {
     "_comments": [{
         "versioning": "https://getcomposer.org/doc/articles/versions.md",
-        "sources": "https://wpackagist.org/"
+        "sources": "https://wpackagist.org/",
+        "wpackagist-plugin/aawp": ">=3.14.2"
     }],
     "name": "jesuserro/wordpress-site-about-books",
     "description": "Another WordPress site",
@@ -27,6 +28,7 @@
         "wpackagist-plugin/pods":">=2.7.24",
         "wpackagist-plugin/updraftplus":">=1.16.34",
         "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1",
+        "wpackagist-plugin/permalink-manager":">=2.2.9.2",
         "wpackagist-plugin/seo-by-rank-math":">=1.0.51"
     },
     "extra": {

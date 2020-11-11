@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12a5c9a43f926d74adaf3642d9453aa6",
+    "content-hash": "e5bc66b65d4a9f46955a8c956418d2e7",
     "packages": [
         {
             "name": "composer/installers",
@@ -237,6 +237,24 @@
             "homepage": "https://wordpress.org/plugins/instagram-feed/"
         },
         {
+            "name": "wpackagist-plugin/permalink-manager",
+            "version": "2.2.9.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/permalink-manager/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/permalink-manager.zip?timestamp=1605004885"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/permalink-manager/"
+        },
+        {
             "name": "wpackagist-plugin/pods",
             "version": "2.7.24",
             "source": {
@@ -256,15 +274,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.51",
+            "version": "1.0.52.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.51"
+                "reference": "tags/1.0.52.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.51.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.52.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
