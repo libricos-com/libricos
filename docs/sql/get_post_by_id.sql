@@ -1,5 +1,4 @@
-#La página de la HOME
-
+-- La página de la HOME
 SELECT *
 FROM `wp_posts` p
 WHERE p.id = 13544
