@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5bc66b65d4a9f46955a8c956418d2e7",
+    "content-hash": "21ec8515bbad91a6bb3bd89a3d04c691",
     "packages": [
         {
             "name": "composer/installers",
@@ -202,15 +202,15 @@
         },
         {
             "name": "wpackagist-plugin/all-in-one-wp-migration",
-            "version": "7.29",
+            "version": "7.30",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/all-in-one-wp-migration/",
-                "reference": "tags/7.29"
+                "reference": "tags/7.30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.29.zip"
+                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.30.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -238,7 +238,7 @@
         },
         {
             "name": "wpackagist-plugin/permalink-manager",
-            "version": "2.2.9.1",
+            "version": "2.2.9.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/permalink-manager/",
@@ -274,15 +274,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.52.1",
+            "version": "1.0.52.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.52.1"
+                "reference": "tags/1.0.52.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.52.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.52.2.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
