@@ -169,6 +169,11 @@ function theme_slug_filter_the_content( $content )
     }
     $contentHtml = '<p>'.$contentHtml.'</p>';
 
-    return $barra.$content.$htmlImagen.$contentHtml;
+    $return = $barra.$content.$htmlImagen.$contentHtml;
+    
+    if($postType != 'post'){
+        $return .='<a href="'.get_permalink().'">'.__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' );
+    }
+    return $return;
     
 }
