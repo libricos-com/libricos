@@ -1,0 +1,12 @@
+// En las páginas de CTPs (libros, reviews, fotos) si pongo un timeline de posts, el body pilla class singular. Singular class establece position absolute descuadrando las fechas de cada artículo. Esta ñapa lo corrige.
+.singular.page-template-fotos .entry-header .entry-meta{
+    position: inherit;
+}
+
+.entry-header h1.entry-title{
+    margin-bottom: 0;
+}
+
+.entry-content{
+    padding-top: 1%;
+}

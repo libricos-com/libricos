@@ -1,0 +1,11 @@
+.singular.page-template-fotos .entry-header .entry-meta {
+  position: inherit;
+}
+
+.entry-header h1.entry-title {
+  margin-bottom: 0;
+}
+
+.entry-content {
+  padding-top: 1%;
+}
