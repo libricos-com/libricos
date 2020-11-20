@@ -5,20 +5,20 @@ The template for displaying content in the tpl/reviews.php template
 */
 $input = array(
     'posts_per_page' => -1,
-    'post_type' => 'review',
+    'post_type' => 'nota',
     'orderby' => 'post_date DESC'
 );
-$libros_con_reviews = get_reviews_asins($input);
-$asins = $libros_con_reviews[0];
-$ids = $libros_con_reviews[1];
+$libros_con_notas = get_reviews_asins($input);
+$asins = $libros_con_notas[0];
+$ids = $libros_con_notas[1];
 ?>
 
-<h1>Últimas reseñas</h1>
+<h1>Últimas notas</h1>
 <?php
 if(!empty($asins)){ 
     echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="my-horizontal"]');
 }else{
-    echo 'No hay reviews';
+    echo 'No hay notas';
 }
 ?>
 
