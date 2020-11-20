@@ -21,6 +21,7 @@
 
     $libro_link = get_permalink($libro['ID']);
     $libro_title = get_the_title($libro['ID']);
+    $titulo_a_secas = get_post_meta($libro['ID'],'titulo')[0];
 ?>
 
 <h1><?php echo $post_title;?></h1>
@@ -41,6 +42,6 @@
 
 <h2>Similares</h2>
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.$libro_title.'"]');?>
+    <?php echo do_shortcode('[amazon bestseller="libro+'.$titulo_a_secas.'"]');?>
 </div>
 
