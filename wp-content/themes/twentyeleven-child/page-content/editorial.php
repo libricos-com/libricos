@@ -8,12 +8,12 @@
     $url = esc_url( get_permalink( $id ) );
 
     $texto = get_post_meta($id,'contenido')[0];
-    $goodreads_url = get_post_meta($id,'goodreads_url')[0];
+    $url = get_post_meta($id,'url')[0];
     
     //get Pods object for current post
-    $pod = pods( 'autor', $id );
-    $portada = $pod->field( 'portada' );
-    $portada = wp_get_attachment_image_src($portada['ID'], 400)[0];
+    $pod = pods( 'editorial', $id );
+    // $portada = $pod->field( 'portada' );
+    // $portada = wp_get_attachment_image_src($portada['ID'], 400)[0];
 
     $libros = $pod->field( 'libros' );
     $asins = $ids = '';
@@ -39,13 +39,10 @@
 ?>
 
 <h1 class="text-center"><?php echo $post_title;?></h1>
-<div class="text-center mb-4">
-    <a href="<?php echo $url;?>"><img src="<?php echo $portada;?>" alt="Portada autor <?php echo $titulo;?>" class="circlex2" /></a>
-</div>
 Publicado el <?php echo $fecha;?> 
 
 <p><?php echo $texto;?></p>
-<div><a href="<?php echo $goodreads_url;?>">Ficha en Goodreads</a></div>
+<div><a href="<?php echo $url;?>">Web de la editorial</a></div>
 
 <hr />
 <h2>Bibliografía</h2>
