@@ -32,7 +32,7 @@ if ( have_posts() ) {
                 <div class="col-sm-4 col-md-4 col-lg-4 text-center">
                     <a href="<?php echo $url;?>"><img class="rounded-circle z-depth-2 circlex" alt="Imagen del autor <?php echo $titulo;?>" src="<?php echo $portada;?>"
                     data-holder-rendered="true"></a>
-                    <strong><?php echo $titulo;?></strong>
+                    <h1 class="h5 mt-2"><?php echo $titulo;?></h1>
                 </div>
             <?php
             $i++;
