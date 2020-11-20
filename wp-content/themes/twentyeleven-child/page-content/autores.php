@@ -14,7 +14,6 @@ if ( have_posts() ) {
     <div class="container">
         <?php
         $i = 0;
-        $numOfCols = 3;
         while(have_posts()){
             the_post(); 
             // the_content();
