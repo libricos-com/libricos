@@ -41,7 +41,14 @@
 <hr />
 
 <h2>Similares</h2>
+<?php 
+$searchkeys = $titulo_a_secas;
+if($id == 8734){ // nota 4 amores, la mejor posicionada
+    // $searchkeys = 'libros+cristianos';
+    // $searchkeys = 'C.S. Lewis';
+}
+?>
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="libro+'.$titulo_a_secas.'"]');?>
+    <?php echo do_shortcode('[amazon bestseller="'.$searchkeys.'" items="12"]');?>
 </div>
 
