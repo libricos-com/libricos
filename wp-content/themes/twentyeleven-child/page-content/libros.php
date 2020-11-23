@@ -8,24 +8,15 @@ Ideas/más buscadas:
 <h2>Libros sobre el sentido del sufrimiento</h2>
 <h2>Libros sobre la palabra de Dios Padre Nuestro (Oración?)</h2>
 */
+use App\Entity\Libro;
+$libro = new Libro(null);
 ?>
 
 <h1>Últimos libros</h1>
 <?php
-// taxonomy=category&tag_ID=3&post_type=post
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'libro',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'category',
-             'terms' => 3
-        )
-    )
-);
-$libros = get_libros_asins($args);
-$asins = $libros[0];
-$ids = $libros[1];
+$libros = $libro->get_books_by_category_id(3);
+$asins = $libro->get_libros_asins($libros)[0];
+$ids = $libro->get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
@@ -33,22 +24,10 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <p>Selección de libros imprescindibles cristianos sobre espiritualidad, populares, de los más vendidos, 
 emocional, ansiedad, autoestima, depresión, imprescindibles. Libros cristianos a buen precio, español y Kindle.</p>
 <?php 
-// Género psicologia 374 http://192.168.1.44/jesuserro.com/generos/psicologia
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'libro',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'genero',
-            // 'field' => 'tag_ID',
-            'terms' => 410
-            // 'slug' => 'autoayuda'
-        )
-    )
-);
-$libros = get_libros_asins($args);
-$asins = $libros[0];
-$ids = $libros[1];
+// Género autoayuda 410 http://192.168.1.44/jesuserro.com/generos/autoayuda
+$libros = $libro->get_books_by_genero_id(410);
+$asins = $libro->get_libros_asins($libros)[0];
+$ids = $libro->get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
@@ -56,19 +35,9 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <p>Libros que cuentan historias para jóvenes, hombres, mujeres, niños.</p>
 <?php 
 // Género testimonios http://192.168.1.44/jesuserro.com/generos/psicologia
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'libro',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'genero',
-            'terms' => 426
-        )
-    )
-);
-$libros = get_libros_asins($args);
-$asins = $libros[0];
-$ids = $libros[1];
+$libros = $libro->get_books_by_genero_id(426);
+$asins = $libro->get_libros_asins($libros)[0];
+$ids = $libro->get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
@@ -79,60 +48,25 @@ Tag oración ID 246
 http://192.168.1.44/jesuserro.com/tag/oracion/
 taxonomy=post_tag&tag_ID=246&post_type=post
 */
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'libro',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'post_tag',
-            'terms' => 246
-        )
-    )
-);
-
-$libros = get_libros_asins($args);
-$asins = $libros[0];
-$ids = $libros[1];
+$libros = $libro->get_books_by_tag_id(246);
+$asins = $libro->get_libros_asins($libros)[0];
+$ids = $libro->get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Libros sobre profecías cumplidas</h2>
 <?php 
-// Género psicologia 374 http://192.168.1.44/jesuserro.com/generos/psicologia
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'libro',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'genero',
-            'terms' => 434
-        )
-    )
-);
-$libros = get_libros_asins($args);
-$asins = $libros[0];
-$ids = $libros[1];
+$libros = $libro->get_books_by_genero_id(434);
+$asins = $libro->get_libros_asins($libros)[0];
+$ids = $libro->get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
 <h2>Libros sobre psicología y amor de pareja</h2>
 <?php 
-// Género psicologia 405 http://192.168.1.44/jesuserro.com/generos/psicologia
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'libro',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'genero',
-            // 'field' => 'tag_ID',
-            'terms' => 405
-            // 'slug' => 'psicologia'
-        )
-    )
-);
-$libros = get_libros_asins($args);
-$asins = $libros[0];
-$ids = $libros[1];
+$libros = $libro->get_books_by_genero_id(405);
+$asins = $libro->get_libros_asins($libros)[0];
+$ids = $libro->get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
