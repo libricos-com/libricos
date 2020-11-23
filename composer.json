@@ -29,7 +29,7 @@
         "wpackagist-plugin/pods":">=2.7.24",
         "wpackagist-plugin/seo-by-rank-math":">=1.0.52",
         "wpackagist-plugin/updraftplus":">=1.16.36",
-        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.1"
+        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.2"
     },
     "extra": {
         "installer-paths": {
