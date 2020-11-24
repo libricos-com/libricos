@@ -193,6 +193,13 @@ class Libro
      */
     private $post_date;
 
+    /**
+     * Mi puntuación del libro basada en una reseña (Observer pattern here)
+     *
+     * @var double
+     */
+    private $_rating;
+
  
     /**
      * Constructor.
@@ -204,6 +211,7 @@ class Libro
         $this->_source = $object;
         $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
        
+        // Factory method here?
         if ($this->_source instanceof \WP_Post) {
             $this->id = get_the_id();
             $this->set_commom_parts_after_id();
@@ -547,6 +555,11 @@ class Libro
     public function get_post_date()
     {
         return $this->post_date;
+    }
+
+    public function get_rating()
+    {
+        return $this->_rating;
     }
 
     public function get_books_by_category_id($term_id)
