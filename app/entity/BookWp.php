@@ -11,341 +11,27 @@ namespace App\Entity;
 class BookWp extends Book
 {
     /**
-     * Datos de entrada para el libro 
-     *
-     * @var mixed
-     */
-    private $_source; // AAWP_Template_Handler o WP_POST
-
-    /**
-     * The Libro's ID, WordPress post ID.
-     *
-     * @var integer
-     */
-    private $id;
- 
-    /**
-     * The ASIN of the product.
-     *
-     * @var string
-     */
-    private $asin;
-
-    /**
-     * The titulo del libro.
-     *
-     * @var string
-     */
-    private $titulo;
- 
-    /**
-     * The type of the post.
-     *
-     * @var string
-     */
-    private $post_type;
-
-    /**
-     * POD correspondiente al libro
-     *
-     * @var object
-     */
-    private $pod;
-
-    /**
-     * Post's reviews
-     *
-     * @var array
-     */
-    private $reviews;
-
-
-    /**
-     * Params sql (order) para capturar datos
-     *
-     * @var array
-     */
-    private $params = [ 'orderby' => 'post_date DESC' ];
-
-    /**
-     * Libro url
-     *
-     * @var string
-     */
-    private $url;
-
-    /**
-     * Libro portada
-     *
-     * @var string
-     */
-    private $portada_src;
-
-    /**
-     * Descripción del libro por la editorial
-     *
-     * @var string
-     */
-    private $sinopsis;
-
-    /**
-     * Autores del libro
-     *
-     * @var array
-     */
-    private $autores;
-
-    /**
-     * Géneros del libro
-     *
-     * @var array
-     */
-    private $generos;
-
-    /**
-     * Notas del libro
-     *
-     * @var array
-     */
-    private $notas;
-
-    /**
-     * Categorías del libro
-     *
-     * @var array
-     */
-    private $categorias;
-
-    /**
-     * Tags del libro
-     *
-     * @var array
-     */
-    private $tags;
-
-    /**
-     * URL de la editorial
-     *
-     * @var string
-     */
-    private $editorial_url;
-
-    /**
-     * Nombre de la editorial
-     *
-     * @var string
-     */
-    private $editorial_nombre;
-
-    /**
-     * Fecha de publicación del libro
-     *
-     * @var date
-     */
-    private $fecha_publicacion;
-
-    /**
-     * Texto del formato del libro
-     *
-     * @var string
-     */
-    private $formato_texto;
-
-    /**
-     * Icono del formato del libro
-     *
-     * @var string
-     */
-    private $formato_icon;
-
-    /**
-     * Número de páginas del libro
-     *
-     * @var integer
-     */
-    private $paginas;
-
-    /**
-     * Idioma
-     *
-     * @var string
-     */
-    private $idioma;
-
-    /**
-     * Goodreads url de la ficha del libro
-     *
-     * @var string
-     */
-    private $goodreads_url;
-
-    /**
-     * Estado del libro: por leer, leído, siguiente, cerrado, etc.
-     *
-     * @var object
-     */
-    private $estado;
-
-    /**
-     * Fecha del post Wordpress de este libro
-     *
-     * @var date
-     */
-    private $post_date;
-
-    /**
-     * Mi puntuación del libro basada en una reseña (Observer pattern here)
-     *
-     * @var double
-     */
-    private $_rating;
-
- 
-    /**
      * Constructor.
      *
      * Partes comunes a todo tipo de entrada
      */
-    public function __construct( $object )
+    public function __construct( \WP_Post $post )
     {
-        $this->_source = $object;
-        $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
-       
         // Factory method here?
-        if ($this->_source instanceof \WP_Post) {
-            $this->id = get_the_id();
-            $this->set_commom_parts_after_id();
-            return $this->fill_post();
-        }else if( $this->_source instanceof \AAWP_Template_Handler ){
-            $this->id = $this->get_id_from_aawp();
-            $this->set_commom_parts_after_id();
-            return $this->fill_aawp();
-        }
+        $this->id = get_the_id();
+        $this->set_commom_parts_after_id();
+        return $this->fill_post();
     }
 
     protected function set_commom_parts_after_id()
     {
         $this->pod = pods( 'libro', $this->id );
         $this->url = esc_url( get_permalink( $this->id ) );
-        $this->reviews = $this->pod->field( 'reviews', $this->params );
+        $this->reviews = $this->pod->field( 'reviews', $this->get_params() );
         $this->titulo = get_the_title( $this->id );
     }
 
-    /**
-     * Devuelve el id del libro puesto en los shortcodes Amazon [tpl_ids="postid1, postid2, ..."]
-     *
-     * @return integer 
-     */
-    protected function get_id_from_aawp()
-    {
-        $ids = $this->_source->get_template_variable( 'ids', false );
-        $index = $this->_source->item_index;
-        // $variables = $this->get_template_variables();
-        if( !is_array($ids) ){
-            $ids = explode(',', $ids);
-        }
-        if(!empty($ids[ $index - 1 ])){
-            $index = $index - 1;
-            return $ids[ $index ];
-        }
-        return false;
-    }
-
-    /**
-     * Undocumented function
-     * Fill all properties from an Amazon object template
-     * 
-     * @return void
-     */
-    protected function fill_aawp( ) 
-    {
-        $this->estado = $this->pod->field( 'estado' );
-        // $this->asin = $product->get_product_id();
-        // $this->is_prime = aawp_get_field_value($this->asin, 'prime');
-
-        if(!$this->reviews){
-            /*
-            0 | Por leer
-            1 | Siguiente
-            2 | Leído
-            3 | Leyendo
-            4 | Cerrado
-            5 | Pausado
-            6 | No interesado
-            7 | Cuarentena
-
-            <a class="badge badge-success" href="<?php echo $urlReview;?>" data-toggle="tooltip" 
-            title="Ficha del libro <?php echo $this2->post_title;?>">
-                <i class="fas fa-check"></i>
-                Reviewed
-            </a> 
-            */ 
-            switch ($this->estado) {
-                case '0':
-                    $color = 'primary';
-                    $icon_cls = 'book';
-                    $txt = 'Por leer';
-                    $tooltip = 'Añadido a la biblioteca';
-                    break;
-                case '1':
-                    $color = 'warning';
-                    $icon_cls = 'fire-alt';
-                    $txt = 'Próximamente';
-                    $tooltip = 'Se leerá en las próximas semanas';
-                    break;
-                case '2':
-                    $color = 'primary';
-                    $icon_cls = 'book';
-                    $txt = 'Leído';
-                    $tooltip = 'Leído en espera de review';
-                    break;
-                case '3':
-                    $color = 'info';
-                    $icon_cls = 'book-reader';
-                    $txt = 'Leyendo ahora';
-                    $tooltip = 'Actualmente leyendo';
-                    break;
-                case '4':
-                    $color = 'secondary';
-                    $icon_cls = 'book';
-                    $txt = 'Cerrado';
-                    $tooltip = 'Pausado para largo tiempo';
-                    break;
-                case '5':
-                    $color = 'secondary';
-                    $icon_cls = 'check';
-                    $txt = 'Pausado';
-                    $tooltip = 'Pausado por corto tiempo';
-                    break;
-                case '6':
-                    $color = 'secondary';
-                    $icon_cls = 'check';
-                    $txt = 'No interesado';
-                    $tooltip = 'No recomendable';
-                    break;
-                case '7':
-                    $color = 'secondary';
-                    $icon_cls = 'check';
-                    $txt = 'Cuarentena';
-                    $tooltip = 'Argumentos puestos en duda';
-                    break;
-                default:
-                    # code...
-                    break;
-            }
-
-            $this->estado = (object)[
-                'color'     => $color,
-                'url_libro' => $this->url,
-                'tooltip'   => $tooltip,
-                'icon_cls'  => $icon_cls,
-                'txt'       => $txt,
-                'value'     => $this->estado
-            ];
-        }
-        return $this;
-    }
-
+    
     /**
      * Undocumented function
      * Fill all properties from a Wordpress post
@@ -367,7 +53,7 @@ class BookWp extends Book
 
         $this->autores = $this->pod->field( 'autores' );
         $this->generos = $this->pod->field( 'generos_literarios' );
-        $this->notas   = $this->pod->field( 'notas', $this->params );
+        $this->notas   = $this->pod->field( 'notas', $this->get_params() );
 
         // Venimos de la Ficha libro
         // @see: https://developer.wordpress.org/reference/functions/wp_list_categories/

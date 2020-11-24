@@ -10,22 +10,10 @@ namespace App\Entity;
  */
 class BookWpFactory extends BookFactory
 {
-
-    public function __construct( $object )
+    public static function create($post): BookWp
     {
-        if ($object instanceof \WP_Post) {
-            $this->_wp = new BookWp($object);
-        }
-
-        $this->createBook($object);
-    }
-
-    protected function createBook($object)
-    {
-        $this->pod = pods( 'libro', $this->id );
-        $this->url = esc_url( get_permalink( $this->id ) );
-        $this->reviews = $this->pod->field( 'reviews', $this->params );
-        $this->titulo = get_the_title( $this->id );
+        parent::set_common($post);
+        return new BookWp($post);
     }
 
 }

@@ -9,15 +9,14 @@ abstract class BookFactory
 {
     // The abstract factory method that the inheritor has to implement.
     // protected abstract Vehicle CreateVehicle();
-    protected abstract function createBook();
+    abstract public static function create($post);
 
-    protected function set_common()
+    public static function set_common($post): void
     {
-        $this->pod = pods( 'libro', $this->id );
-        $this->url = esc_url( get_permalink( $this->id ) );
-        $this->reviews = $this->pod->field( 'reviews', $this->params );
-        $this->titulo = get_the_title( $this->id );
+        $post->pod = pods( 'libro', $post->id );
+        $post->url = esc_url( get_permalink( $post->id ) );
+        $post->reviews = $post->pod->field( 'reviews', [] );
+        $post->titulo = get_the_title( $post->id );
     }
-
 }
 

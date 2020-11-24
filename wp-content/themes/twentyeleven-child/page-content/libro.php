@@ -4,8 +4,8 @@ The template for displaying content in the single-libro.php template
 @see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 */
 
-use App\Entity\Libro;
-$libro = new Libro($post);
+use App\Entity\BookWpFactory;
+$libro = BookWpFactory::create($post);
 ?>
 
 <h1><?php echo $libro->get_titulo();?></h1>
