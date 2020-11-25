@@ -17,20 +17,10 @@ class BookWp extends Book
      */
     public function __construct( \WP_Post $post )
     {
-        parent::__construct($post);
-
         // Factory method here?
         $this->id = get_the_id();
-        $this->set_commom_parts_after_id();
+        parent::__construct($post);
         return $this->fill_post();
-    }
-
-    protected function set_commom_parts_after_id()
-    {
-        $this->pod = pods( 'libro', $this->id );
-        $this->url = esc_url( get_permalink( $this->id ) );
-        $this->setReviews($this->pod->field( 'reviews', $this->get_params() ));
-        $this->setTitulo(get_the_title( $this->id ));
     }
 
     /**

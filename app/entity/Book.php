@@ -210,6 +210,15 @@ abstract class Book
     {
         $this->_source = $object;
         $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
+        $this->set_commom_parts_after_id();
+    }
+
+    protected function set_commom_parts_after_id()
+    {
+        $this->pod = pods( 'libro', $this->id );
+        $this->url = esc_url( get_permalink( $this->id ) );
+        $this->setReviews($this->pod->field( 'reviews', $this->get_params() ));
+        $this->setTitulo(get_the_title( $this->id ));
     }
 
     function __call($method, $params) 
