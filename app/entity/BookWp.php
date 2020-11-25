@@ -17,10 +17,8 @@ class BookWp extends Book
      */
     public function __construct( \WP_Post $post )
     {
-        // Factory method here?
-        $this->id = get_the_id();
         parent::__construct($post);
-        return $this->fill_post();
+        $this->fill_post();
     }
 
     /**

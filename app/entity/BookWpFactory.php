@@ -12,8 +12,13 @@ class BookWpFactory extends BookFactory
 {
     public static function create($post): BookWp
     {
-        // parent::set_common($post);
+        $post->jeiPostId = self::getPostId($post);
         return new BookWp($post);
+    }
+
+    public static function getPostId($post): int
+    {
+        return $post->ID;
     }
 
 }

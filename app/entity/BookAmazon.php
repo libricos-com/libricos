@@ -18,33 +18,8 @@ class BookAmazon extends Book
      */
     public function __construct( \AAWP_Template_Handler $aawp )
     {
-        // Factory method here?
-        $this->_source = $aawp;
-        $this->id = $this->get_id_from_aawp();
         parent::__construct($aawp);
         return $this->fill_aawp();
-    }
-
-    
-
-    /**
-     * Devuelve el id del libro puesto en los shortcodes Amazon [tpl_ids="postid1, postid2, ..."]
-     *
-     * @return integer 
-     */
-    protected function get_id_from_aawp()
-    {
-        $ids = $this->_source->get_template_variable( 'ids', false );
-        $index = $this->_source->item_index;
-        // $variables = $this->get_template_variables();
-        if( !is_array($ids) ){
-            $ids = explode(',', $ids);
-        }
-        if(!empty($ids[ $index - 1 ])){
-            $index = $index - 1;
-            return $ids[ $index ];
-        }
-        return false;
     }
 
     /**

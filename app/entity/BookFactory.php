@@ -7,14 +7,8 @@ namespace App\Entity;
  */
 abstract class BookFactory
 {
-    abstract public static function create($post);
+    abstract public static function create($object);
 
-    public static function set_common($post): void
-    {
-        $post->pod = pods( 'libro', $post->id );
-        $post->url = esc_url( get_permalink( $post->id ) );
-        $post->reviews = $post->pod->field( 'reviews', [] );
-        $post->titulo = get_the_title( $post->id );
-    }
+    abstract public static function getPostId($object):int;
 }
 

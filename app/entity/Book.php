@@ -205,11 +205,11 @@ abstract class Book
      * Constructor.
      *
      * Partes comunes a todo tipo de entrada
-     */
+     */ 
     public function __construct( $object )
     {
-        $this->_source = $object;
-        $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
+        $this->id = $object->jeiPostId;
+        $this->post_type = get_post_type();
         $this->set_commom_parts_after_id();
     }
 
@@ -217,8 +217,8 @@ abstract class Book
     {
         $this->pod = pods( 'libro', $this->id );
         $this->url = esc_url( get_permalink( $this->id ) );
-        $this->setReviews($this->pod->field( 'reviews', $this->get_params() ));
-        $this->setTitulo(get_the_title( $this->id ));
+        $this->reviews = $this->pod->field( 'reviews', $this->get_params() );
+        $this->titulo = get_the_title( $this->id );
     }
 
     function __call($method, $params) 
