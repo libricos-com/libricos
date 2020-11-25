@@ -10,7 +10,7 @@ namespace App\Entity;
  */
 class BookAmazonFactory extends BookFactory
 {
-    public static function create($aawp = null): BookAmazon
+    public static function create($aawp): BookAmazon
     {
         // parent::set_common($aawp);
         return new BookAmazon($aawp);

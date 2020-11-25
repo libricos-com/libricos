@@ -16,15 +16,13 @@ class BookAmazon extends Book
      *
      * Partes comunes a todo tipo de entrada
      */
-    public function __construct( $aawp )
+    public function __construct( \AAWP_Template_Handler $aawp )
     {
-        if(!empty($aawp)){
-            // Factory method here?
-            $this->_source = $aawp;
-            $this->id = $this->get_id_from_aawp();
-            parent::__construct($aawp);
-            return $this->fill_aawp();
-        }
+        // Factory method here?
+        $this->_source = $aawp;
+        $this->id = $this->get_id_from_aawp();
+        parent::__construct($aawp);
+        return $this->fill_aawp();
     }
 
     
