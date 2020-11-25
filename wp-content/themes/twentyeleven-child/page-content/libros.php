@@ -8,8 +8,8 @@ Ideas/más buscadas:
 <h2>Libros sobre el sentido del sufrimiento</h2>
 <h2>Libros sobre la palabra de Dios Padre Nuestro (Oración?)</h2>
 */
-use App\Entity\Libro;
-$libro = new Libro(null);
+use App\Entity\BookAmazonFactory;
+$libro = BookAmazonFactory::create();
 ?>
 
 <h1>Últimos libros</h1>

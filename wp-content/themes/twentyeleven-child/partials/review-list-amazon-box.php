@@ -1,9 +1,9 @@
 <div class="review-list-amazon-box">
-    <?php if( $this2->get_reviews() ){ ?>
+    <?php if( $this2->getReviews() ){ ?>
         <ul class="list-unstyled">
             <?php
                 $i = 1;
-                foreach ( $this2->get_reviews() as $review ) { 
+                foreach ( $this2->getReviews() as $review ) { 
                     $id_review = $review[ 'ID' ];
                     $urlReview = esc_url( get_permalink( $id_review ) );
                     $nombreReview = get_the_title( $id_review );
