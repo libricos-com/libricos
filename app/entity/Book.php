@@ -22,42 +22,42 @@ abstract class Book
      *
      * @var integer
      */
-    private $id;
+    private $_id;
  
     /**
      * The ASIN of the product.
      *
      * @var string
      */
-    private $asin;
+    private $_asin;
 
     /**
      * The titulo del libro.
      *
      * @var string
      */
-    private $titulo;
+    private $_titulo;
  
     /**
      * The type of the post.
      *
      * @var string
      */
-    private $post_type;
+    private $_post_type;
 
     /**
      * POD correspondiente al libro
      *
      * @var object
      */
-    private $pod;
+    private $_pod;
 
     /**
      * Post's reviews
      *
      * @var array
      */
-    private $reviews;
+    private $_reviews;
 
 
     /**
@@ -72,84 +72,84 @@ abstract class Book
      *
      * @var string
      */
-    private $url;
+    private $_url;
 
     /**
      * Libro portada
      *
      * @var string
      */
-    private $portada_src;
+    private $_portada_src;
 
     /**
      * Descripción del libro por la editorial
      *
      * @var string
      */
-    private $sinopsis;
+    private $_sinopsis;
 
     /**
      * Autores del libro
      *
      * @var array
      */
-    private $autores;
+    private $_autores;
 
     /**
      * Géneros del libro
      *
      * @var array
      */
-    private $generos;
+    private $_generos;
 
     /**
      * Notas del libro
      *
      * @var array
      */
-    private $notas;
+    private $_notas;
 
     /**
      * Categorías del libro
      *
      * @var array
      */
-    private $categorias;
+    private $_categorias;
 
     /**
      * Tags del libro
      *
      * @var array
      */
-    private $tags;
+    private $_tags;
 
     /**
      * URL de la editorial
      *
      * @var string
      */
-    private $editorial_url;
+    private $_editorial_url;
 
     /**
      * Nombre de la editorial
      *
      * @var string
      */
-    private $editorial_nombre;
+    private $_editorial_nombre;
 
     /**
      * Fecha de publicación del libro
      *
      * @var date
      */
-    private $fecha_publicacion;
+    private $_fecha_publicacion;
 
     /**
      * Texto del formato del libro
      *
      * @var string
      */
-    private $formato_texto;
+    private $_formato_texto;
 
     /**
      * Icono del formato del libro
@@ -163,35 +163,35 @@ abstract class Book
      *
      * @var integer
      */
-    private $paginas;
+    private $_paginas;
 
     /**
      * Idioma
      *
      * @var string
      */
-    private $idioma;
+    private $_idioma;
 
     /**
      * Goodreads url de la ficha del libro
      *
      * @var string
      */
-    private $goodreads_url;
+    private $_goodreads_url;
 
     /**
      * Estado del libro: por leer, leído, siguiente, cerrado, etc.
      *
      * @var object
      */
-    private $estado;
+    private $_estado;
 
     /**
      * Fecha del post Wordpress de este libro
      *
      * @var date
      */
-    private $post_date;
+    private $_post_date;
 
     /**
      * Mi puntuación del libro basada en una reseña (Observer pattern here)
@@ -212,138 +212,16 @@ abstract class Book
         $this->post_type = get_post_type(); // page (AAWP_Template_Handler) o libro (WP_POST)
     }
 
-
-    /**
-     * Get the actions that Libro hooks to.
-     * Usage: Libro::get_actions();
-     *
-     * @return array
-     */
-    public static function get_actions()
+    function __call($method, $params) 
     {
-        $actions = array('wp_loaded');
-        return $actions;
-    }
-
-
-    public function get_id()
-    {
-        return $this->id;
-    }
-
-    public function get_asin()
-    {
-        return $this->asin;
-    }
-
-    public function get_url()
-    {
-        return $this->url;
-    }
-
-    public function get_portada_src()
-    {
-        return $this->portada_src;
-    }
-
-    public function get_titulo()
-    {
-        return $this->titulo;
-    }
-
-    public function get_sinopsis()
-    {
-        return $this->sinopsis;
-    }
-
-    public function get_autores()
-    {
-        return $this->autores;
-    }
-
-    public function get_generos()
-    {
-        return $this->generos;
-    }
-
-    public function get_notas()
-    {
-        return $this->notas;
-    }
-
-    public function get_categorias()
-    {
-        return $this->categorias;
-    }
-
-    public function get_tags()
-    {
-        return $this->tags;
-    }
-
-    public function get_editorial_url()
-    {
-        return $this->editorial_url;
-    }
-
-    public function get_editorial_nombre()
-    {
-        return $this->editorial_nombre;
-    }
-
-    public function get_fecha_publicacion()
-    {
-        return $this->fecha_publicacion;
-    }
-
-    public function get_formato_icon()
-    {
-        return $this->formato_icon;
-    }
-
-    public function get_formato_texto()
-    {
-        return $this->formato_texto;
-    }
-
-    public function get_paginas()
-    {
-        return $this->paginas;
-    }
-
-    public function get_idioma()
-    {
-        return $this->idioma;
-    }
-
-    public function get_goodreads_url()
-    {
-        return $this->goodreads_url;
-    }
-
-    public function get_reviews()
-    {
-        return $this->reviews;
-    }
-
-    public function get_estado()
-    {
-        return $this->estado;
-    }
-
-    public function get_post_date()
-    {
-        return $this->post_date;
-    }
-
-    public function get_rating()
-    {
-        return $this->_rating;
-    }
-
-    public function get_params()
-    {
-        return $this->_params;
+        $var = lcfirst(substr($method, 3));
+   
+        if (strncasecmp($method, "get", 3) === 0) {
+            return $this->$var;
+        }
+        if (strncasecmp($method, "set", 3) === 0) {
+            $this->$var = $params[0];
+        }
     }
 
     public function get_books_by_category_id($term_id)

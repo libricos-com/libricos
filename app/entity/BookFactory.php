@@ -7,8 +7,6 @@ namespace App\Entity;
  */
 abstract class BookFactory
 {
-    // The abstract factory method that the inheritor has to implement.
-    // protected abstract Vehicle CreateVehicle();
     abstract public static function create($post);
 
     public static function set_common($post): void

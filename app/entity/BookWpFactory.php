@@ -12,7 +12,7 @@ class BookWpFactory extends BookFactory
 {
     public static function create($post): BookWp
     {
-        parent::set_common($post);
+        // parent::set_common($post);
         return new BookWp($post);
     }
 
