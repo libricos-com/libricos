@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
 
-use App\Entity\Libro;
-$libro = new Libro($this);
+use App\Entity\BookAmazonFactory;
+$libro = BookAmazonFactory::create($this);
 ?>
 
 <div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -20,7 +20,7 @@ $libro = new Libro($this);
     <?php $this->the_product_ribbons(); ?>
 
     <a class="aawp-product__image--link aawp-product__image"
-       href="<?php echo $libro->get_url();?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
+       href="<?php echo $libro->getUrl();?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
         <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
     </a>
 
@@ -42,12 +42,12 @@ $libro = new Libro($this);
 
             <?php $this->the_product_check_prime_logo(); ?>
 
-            <?php if(!$libro->get_reviews() && $libro->get_estado()){
+            <?php if(!$libro->getReviews() && $libro->getEstado()){
                 echo view('/../partials/libro-estado', array('this2' => $libro));
             }
             ?>
 
-            <?php if($libro->get_reviews()){
+            <?php if($libro->getReviews()){
                 echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
             }?>
 
