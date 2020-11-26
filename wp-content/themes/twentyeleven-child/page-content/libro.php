@@ -9,7 +9,7 @@ $libro = BookWpFactory::create($post);
 
 <h1><?php echo $libro->getTitulo();?></h1>
 
-<div><?php echo get_fecha_larga($libro->getPost_date());?></div>
+<div class="mb-3">Fecha post: <?php echo $libro->post_date;?></div>
 
 <div class="text-center mb-4">
     <a href="<?php echo $libro->getUrl();?>"><img src="<?php echo $libro->getPortada_src();?>" alt="Portada del libro <?php echo $libro->getTitulo();?>" class="img-fluid" />
