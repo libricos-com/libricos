@@ -12,7 +12,7 @@ Ideas/más buscadas:
 use App\Util\Wp;
 ?>
 
-<h1>Últimos libros</h1>
+<h1>Últimos libros recomendados</h1>
 <?php
 $libros = Wp::get_books_by_category_id(3);
 $asins = Wp::get_libros_asins($libros)[0];
@@ -20,7 +20,7 @@ $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
-<h2>Libros de autoayuda</h2>
+<h2>Libros de autoayuda recomendados</h2>
 <p>Selección de libros imprescindibles cristianos sobre espiritualidad, populares, de los más vendidos, 
 emocional, ansiedad, autoestima, depresión, imprescindibles. Libros cristianos a buen precio, español y Kindle.</p>
 <?php 
@@ -31,7 +31,7 @@ $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
-<h2>Libros de historias y testimonios cristianos.</h2>
+<h2>Libros de historias y testimonios cristianos recomendados</h2>
 <p>Libros que cuentan historias para jóvenes, hombres, mujeres, niños.</p>
 <?php 
 // Género testimonios http://192.168.1.44/jesuserro.com/generos/psicologia
@@ -41,7 +41,7 @@ $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
-<h2>Libros sobre la oración</h2>
+<h2>Libros sobre la oración recomendados</h2>
 <?php 
 /*
 Tag oración ID 246
@@ -54,7 +54,7 @@ $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
-<h2>Libros sobre profecías cumplidas</h2>
+<h2>Libros sobre profecías cumplidas recomendados</h2>
 <?php 
 $libros = Wp::get_books_by_genero_id(434);
 $asins = Wp::get_libros_asins($libros)[0];
@@ -62,7 +62,7 @@ $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="3" template="my-vertical"]');
 ?>
 
-<h2>Libros sobre psicología y amor de pareja</h2>
+<h2>Libros sobre psicología y amor de pareja recomendados</h2>
 <?php 
 $libros = Wp::get_books_by_genero_id(405);
 $asins = Wp::get_libros_asins($libros)[0];

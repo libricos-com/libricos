@@ -18,7 +18,7 @@ if($terms){
     echo view('../partials/searchform-complete', array(
         'this2' => (object)[
             'terms' => $terms,
-            'placeholder' => 'Busca tu libro por temática, título, autor, ...'
+            'placeholder' => 'Busca libro en nuestros recomendados por temática, título, autor, ...'
         ])
     );
 }
@@ -26,7 +26,7 @@ if($terms){
 
 <hr />
 
-<h2>Novedades libros espiritualidad</h2>
+<h2>Novedades Amazon libros espiritualidad</h2>
 <?php echo do_shortcode('[amazon new="libros+cristianos" items="12"]');?>
 
 
