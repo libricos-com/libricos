@@ -6,8 +6,8 @@ wp-content/cusri
 wp-content/languages
 wp-content/plugins
 wp-content/themes/twentyeleven
-wp-content/themes/twentyeleven-child/api/cache
-wp-content/themes/twentyeleven-child/api/config.php
+api/cache
+api/config.php
 wp-content/updraft
 wp-content/upgrade
 wp-content/uploads

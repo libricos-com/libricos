@@ -3,7 +3,7 @@
 @see: https://www.goodreads.com/api/index
 */
 include 'config.php';
-include '../../../../../goodreads-api/GoodReads.php';
+include '../../goodreads-api/GoodReads.php';
 
 $api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/cache');
 
