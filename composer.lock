@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a9b19f0bb2448624bae0ebd21698614",
+    "content-hash": "c26281bf84ede9815e2edbed1e040d70",
     "packages": [
         {
             "name": "composer/installers",
@@ -202,15 +202,15 @@
         },
         {
             "name": "wpackagist-plugin/all-in-one-wp-migration",
-            "version": "7.30",
+            "version": "7.31",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/all-in-one-wp-migration/",
-                "reference": "tags/7.30"
+                "reference": "tags/7.31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.30.zip"
+                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.31.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -292,15 +292,15 @@
         },
         {
             "name": "wpackagist-plugin/updraftplus",
-            "version": "1.16.36",
+            "version": "1.16.41",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/updraftplus/",
-                "reference": "tags/1.16.36"
+                "reference": "tags/1.16.41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/updraftplus.1.16.36.zip"
+                "url": "https://downloads.wordpress.org/plugin/updraftplus.1.16.41.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -310,15 +310,15 @@
         },
         {
             "name": "wpackagist-plugin/yet-another-related-posts-plugin",
-            "version": "5.10.1",
+            "version": "5.10.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/yet-another-related-posts-plugin/",
-                "reference": "tags/5.10.1"
+                "reference": "tags/5.10.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/yet-another-related-posts-plugin.5.10.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/yet-another-related-posts-plugin.5.10.2.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
