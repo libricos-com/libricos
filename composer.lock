@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c26281bf84ede9815e2edbed1e040d70",
+    "content-hash": "1c18c1cb2cf2441b1f2ee45c11030fec",
     "packages": [
         {
             "name": "composer/installers",
@@ -201,24 +201,6 @@
             "time": "2020-10-13T15:38:30+00:00"
         },
         {
-            "name": "wpackagist-plugin/all-in-one-wp-migration",
-            "version": "7.31",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/all-in-one-wp-migration/",
-                "reference": "tags/7.31"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/all-in-one-wp-migration.7.31.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/all-in-one-wp-migration/"
-        },
-        {
             "name": "wpackagist-plugin/instagram-feed",
             "version": "2.5.4",
             "source": {
@@ -274,15 +256,15 @@
         },
         {
             "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.52.3",
+            "version": "1.0.53",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.52.3"
+                "reference": "tags/1.0.53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.52.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.53.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
