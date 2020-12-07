@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c18c1cb2cf2441b1f2ee45c11030fec",
+    "content-hash": "8dad406e584fd6f2aaa8c2d30907510b",
     "packages": [
         {
             "name": "composer/installers",
@@ -131,6 +131,10 @@
                 "zend",
                 "zikula"
             ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/v1.9.0"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -192,6 +196,10 @@
                 "sass",
                 "web"
             ],
+            "support": {
+                "issues": "https://github.com/twbs/bootstrap/issues",
+                "source": "https://github.com/twbs/bootstrap/tree/v4.5.3"
+            },
             "funding": [
                 {
                     "url": "https://opencollective.com/bootstrap",
@@ -202,15 +210,15 @@
         },
         {
             "name": "wpackagist-plugin/instagram-feed",
-            "version": "2.5.4",
+            "version": "2.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/instagram-feed/",
-                "reference": "tags/2.5.4"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/instagram-feed.2.5.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/instagram-feed.zip?timestamp=1607121126"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -228,7 +236,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/permalink-manager.zip?timestamp=1605004885"
+                "url": "https://downloads.wordpress.org/plugin/permalink-manager.zip?timestamp=1606758401"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -253,24 +261,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/pods/"
-        },
-        {
-            "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.53",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.53"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.53.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/seo-by-rank-math/"
         },
         {
             "name": "wpackagist-plugin/updraftplus",
@@ -335,5 +325,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
