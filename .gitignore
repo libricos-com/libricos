@@ -29,5 +29,6 @@ vendor
 .htaccess
 nbproject
 wp-config.php
+wp-config.php.save
 .vscode
 phpmyadmin
