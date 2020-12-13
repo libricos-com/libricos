@@ -32,3 +32,4 @@ wp-config.php
 wp-config.php.save
 .vscode
 phpmyadmin
+composer.lock
