@@ -3,6 +3,7 @@
 */
 body {
   width: 100%;
+  padding: 0 1%;
 }
 
 #page {
@@ -12,8 +13,22 @@ body {
   padding: 0;
 }
 
+#main {
+  padding: 1%;
+}
+
+#branding {
+  background-color: #975a0a;
+}
+#branding hgroup h2 {
+  color: #fff;
+}
+
 header #searchform {
   display: none;
+}
+header nav {
+  background: #232F3E !important;
 }
 
 #site-title {
@@ -51,4 +66,8 @@ header #searchform {
 #primary #content #respond,
 #primary #content footer {
   width: 95%;
+}
+
+footer {
+  background: #232F3E !important;
 }

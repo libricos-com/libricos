@@ -4,6 +4,7 @@
 body{
     width:100%;
     // border: solid 1px red;
+    padding: 0 1%;
 }
 #page {
     width: 100%;
@@ -12,8 +13,25 @@ body{
     padding: 0;
     // border: solid 1px orange;
 }
-header #searchform {
-	display:none;
+#main{
+    padding: 1%;
+}
+#branding{
+    background-color: darken(#F3A847, 30%);
+
+    hgroup {
+        h2 { 
+            color:#fff;
+        }
+    }
+}
+header { 
+    #searchform {
+	    display:none;
+    }
+    nav{
+        background: #232F3E !important;
+    }
 }
 #site-title {
     padding: 0;
@@ -65,4 +83,8 @@ header #searchform {
             // border: solid 1px pink;
         }
     }
+}
+
+footer{
+    background: #232F3E !important;
 }
