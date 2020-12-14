@@ -163,17 +163,20 @@ class Review
     public function get_reviews_asins($input)
     {
         $asins = $ids = '';
-        $reviews = get_posts($input);
-        if( ! empty( $reviews ) ){
-            foreach ( $reviews as $review ){
-                $libro = get_post_meta( $review->ID, 'libro', true );
+        $posts = get_posts($input);
+        if( ! empty( $posts ) ){
+            foreach ( $posts as $post ){
+                $post_id = $post->ID;
+                $libro = get_post_meta( $post_id, 'libro', true );
+                if(empty($libro['ID'])){
+                    continue;
+                }
                 $id = $libro['ID'];
                 $asin = get_post_meta( $id, 'asin', true );
-                $id_review = $review->ID;
                 
                 if(!empty($asin)){
                     $asins .= $asin.',';
-                    $ids .= $id_review.',';
+                    $ids .= $post_id.',';
                 }
             }
 
@@ -203,10 +206,13 @@ class Review
         return $this->_rating_percent;
     }
 
-
-    public function get_all()
+    // TODO: pasarlo a método static
+    public function get_all($params = null)
     {
-        return $this->get_reviews_asins($this->params);
+        if(empty($params)){
+            $params = $this->params;
+        }
+        return $this->get_reviews_asins($params);
     }
 
 

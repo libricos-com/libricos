@@ -8,7 +8,10 @@ $input = array(
     'post_type' => 'nota',
     'orderby' => 'post_date DESC'
 );
-$libros_con_notas = get_reviews_asins($input);
+use App\Entity\Review;
+$review = new Review(null);
+
+$libros_con_notas = $review->get_all($input);
 $asins = $libros_con_notas[0];
 $ids = $libros_con_notas[1];
 ?>
