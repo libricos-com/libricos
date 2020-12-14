@@ -1,8 +1,16 @@
 /**
 * Ajustes cabecera
 */
+body{
+    width:100%;
+    // border: solid 1px red;
+}
 #page {
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    // border: solid 1px orange;
 }
 header #searchform {
 	display:none;
