@@ -1,4 +1,8 @@
 .review-list-amazon-box{
+
+    height: 60px;
+    // border: solid 1px red;
+
     clear:both; 
     // min-height:73px; 
     overflow:hidden;
@@ -6,4 +10,14 @@
     ul{
         margin:0;
     }
+}
+
+.aawp-libro-estado{
+    height: 20px;
+    // border: solid 1px orange;
+}
+
+.aawp .aawp-product--vertical .aawp-product__meta .aawp-check-prime {
+    
+    margin-top: 0 !important;
 }

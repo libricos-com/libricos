@@ -40,16 +40,22 @@ $libro = BookAmazonFactory::create($this);
                 <?php } ?>
             <?php } ?>
 
-            <?php $this->the_product_check_prime_logo(); ?>
+            <div class="aawp-libro-estado">
+                <?php $this->the_product_check_prime_logo(); ?>
+            </div>
 
-            <?php if(!$libro->getReviews() && $libro->getEstado()){
-                echo view('/../partials/libro-estado', array('this2' => $libro));
-            }
+            <div class="aawp-libro-estado"> 
+                <?php if(!$libro->getReviews() && $libro->getEstado()){
+                    echo view('/../partials/libro-estado', array('this2' => $libro));
+                }
             ?>
+            </div>
 
-            <?php if($libro->getReviews()){
-                echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
-            }?>
+            <div class="review-list-amazon-box">
+                <?php if($libro->getReviews()){
+                    echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
+                }?>
+            </div>
 
         </div>
 
@@ -59,10 +65,11 @@ $libro = BookAmazonFactory::create($this);
     <div class="aawp-product__footer">
 
         <div class="aawp-product__pricing">
-
-            <?php if ( $this->get_product_is_sale() && $this->sale_show_old_price() ) { ?>
-                <span class="aawp-product__price aawp-product__price--old"><?php echo $this->get_product_pricing('old'); ?></span>
-            <?php } ?>
+            <div class="aawp-libro-estado">
+                <?php if ( $this->get_product_is_sale() && $this->sale_show_old_price() ) { ?>
+                    <span class="aawp-product__price aawp-product__price--old"><?php echo $this->get_product_pricing('old'); ?></span>
+                <?php } ?>
+            </div>
 
             <?php if ( $this->show_advertised_price() ) { ?>
                 <span class="aawp-product__price aawp-product__price--current"><?php echo $this->get_product_pricing(); ?></span>

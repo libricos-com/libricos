@@ -1,7 +1,16 @@
 .review-list-amazon-box {
+  height: 60px;
   clear: both;
   overflow: hidden;
 }
 .review-list-amazon-box ul {
   margin: 0;
+}
+
+.aawp-libro-estado {
+  height: 20px;
+}
+
+.aawp .aawp-product--vertical .aawp-product__meta .aawp-check-prime {
+  margin-top: 0 !important;
 }
