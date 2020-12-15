@@ -1,6 +1,19 @@
 .aawp .aawp-product--horizontal .aawp-product__title {
   margin-bottom: 0 !important;
 }
-.aawp .aawp-button {
-  font-size: 11px !important;
+.aawp-correccion-altura {
+  height: 18px;
+}
+
+.aawp .aawp-product--vertical .aawp-product__meta .aawp-check-prime {
+  margin-top: 0 !important;
+}
+
+.jei-amz-grd .aawp .aawp-button.aawp-button--icon:before,
+.jei-amz-grd .aawp-button.aawp-button--icon:before {
+  background-position: 2px center !important;
+}
+.jei-amz-grd .aawp .aawp-button,
+.jei-amz-grd .aawp-button {
+  padding: 7px 0 6px 16px !important;
 }

@@ -9,6 +9,30 @@
     }
 
     .aawp-button {
-        font-size: 11px !important;
+        // font-size: 11px !important;
     }
 }
+
+.aawp-correccion-altura{
+    height: 18px;
+    // border: solid 1px orange;
+}
+
+.aawp .aawp-product--vertical .aawp-product__meta .aawp-check-prime {
+    margin-top: 0 !important;
+}
+
+
+// Botón comprar personalizado en los grids verticales
+.jei-amz-grd {
+    .aawp .aawp-button.aawp-button--icon:before, 
+    .aawp-button.aawp-button--icon:before {
+        background-position: 2px center !important;
+    }
+    .aawp .aawp-button, 
+    .aawp-button {
+        padding: 7px 0 6px 16px !important;
+    }
+}
+
+

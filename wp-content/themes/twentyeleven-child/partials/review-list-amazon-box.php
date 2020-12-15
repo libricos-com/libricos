@@ -1,8 +1,10 @@
+<!-- <span class="patatab badge badge-pill badge-success">
+    <i class="fas fa-check fa-4x" aria-hidden="true"></i>
+</span>  -->
 
-<?php if( $this2->getReviews() ){ ?>
+<div class="review-list-amazon-box">
     <ul class="list-unstyled">
         <?php
-            $i = 1;
             foreach ( $this2->getReviews() as $review ) { 
                 $id_review = $review[ 'ID' ];
                 $urlReview = esc_url( get_permalink( $id_review ) );
@@ -12,19 +14,18 @@
                 $puntuacion = round($pod->field('rating'), 1);
                 ?>
                 <li>
-                    <div><small class="align-middle"><?php echo get_fecha_corta($id_review);?></small></div>
-                    <a class="badge badge-success align-middle" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Ficha del libro <?php echo $this2->get_titulo();?>">
-                        <i class="fas fa-check align-middle"></i>
-                        Reviewed
-                    </a>  
-                    <i class="fas fa-star align-middle color-yellow"></i> <h6 class="bold d-inline align-middle"><span class="text-success"><?php echo $puntuacion;?></span><small>/5</small></h6>   
+                    <a class="nounderline" href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Reseña: <?php echo $nombreReview;?>">
+                        <div class="number-circle bg-success">                         
+                            <span class="text-light"><?php echo $puntuacion;?></span><small class="mismall">/5</small>       
+                        </div>
+                    </a>
                 </li>
                 <?php
-                $i++;
             }
         ?>
     </ul>
-<?php } ?>
+</div>
+
 
 
         

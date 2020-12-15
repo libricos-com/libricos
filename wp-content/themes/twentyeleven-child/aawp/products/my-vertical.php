@@ -15,12 +15,16 @@ use App\Entity\BookAmazonFactory;
 $libro = BookAmazonFactory::create($this);
 ?>
 
-<div class="<?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
+<div class="jei-amz-grd <?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
 
+    <?php if($libro->getReviews()){
+        echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
+    }?>
+    
     <?php $this->the_product_ribbons(); ?>
 
     <a class="aawp-product__image--link aawp-product__image"
-       href="<?php echo $libro->getUrl();?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
+       href="<?php echo $libro->getUrl();?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
         <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
     </a>
 
@@ -40,22 +44,16 @@ $libro = BookAmazonFactory::create($this);
                 <?php } ?>
             <?php } ?>
 
-            <div class="aawp-libro-estado">
+            <div class="aawp-correccion-altura">
                 <?php $this->the_product_check_prime_logo(); ?>
             </div>
 
-            <div class="aawp-libro-estado"> 
-                <?php if(!$libro->getReviews() && $libro->getEstado()){
-                    echo view('/../partials/libro-estado', array('this2' => $libro));
-                }
+            
+            <?php if(!$libro->getReviews() && $libro->getEstado()){
+                // echo view('/../partials/libro-estado', array('this2' => $libro));
+            }
             ?>
-            </div>
-
-            <div class="review-list-amazon-box">
-                <?php if($libro->getReviews()){
-                    echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
-                }?>
-            </div>
+            
 
         </div>
 
@@ -65,7 +63,7 @@ $libro = BookAmazonFactory::create($this);
     <div class="aawp-product__footer">
 
         <div class="aawp-product__pricing">
-            <div class="aawp-libro-estado">
+            <div class="aawp-correccion-altura">
                 <?php if ( $this->get_product_is_sale() && $this->sale_show_old_price() ) { ?>
                     <span class="aawp-product__price aawp-product__price--old"><?php echo $this->get_product_pricing('old'); ?></span>
                 <?php } ?>
