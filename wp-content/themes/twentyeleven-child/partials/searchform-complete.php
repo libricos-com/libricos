@@ -4,7 +4,7 @@
         
         <?php echo view('../searchform', ['this2' => $this2 ]);?>
 
-        <h4 class="card-title">Busca por categoría <i class="fas fa-tag"></i></h4>
+        <h4 class="card-title">Busca por género literario <i class="fas fa-tag"></i></h4>
 
         <ul class="jei-tag-cloud list-unstyled">  
             <?php 

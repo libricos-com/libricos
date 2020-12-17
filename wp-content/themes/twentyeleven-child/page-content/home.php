@@ -24,7 +24,7 @@ if($terms){
     echo view('../partials/searchform-complete', array(
         'this2' => (object)[
             'terms' => $terms,
-            'placeholder' => 'Busca libro en nuestros recomendados por temática, título, autor, ...'
+            'placeholder' => 'Busca libricos por temática, título, autor, ...'
         ])
     );
 }
