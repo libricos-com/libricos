@@ -85,6 +85,6 @@ header {
     }
 }
 
-footer{
+footer:not(.blockquote-footer){
     background: #232F3E !important;
 }

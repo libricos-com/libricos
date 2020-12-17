@@ -3,7 +3,7 @@
 */
 body {
   width: 100%;
-  padding: 0 1%;
+  padding: 0;
 }
 
 #page {
@@ -68,6 +68,6 @@ header nav {
   width: 95%;
 }
 
-footer {
+footer:not(.blockquote-footer) {
   background: #232F3E !important;
 }
