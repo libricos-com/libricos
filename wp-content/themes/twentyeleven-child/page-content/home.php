@@ -1,5 +1,5 @@
 <blockquote class="blockquote text-center">
-    <p class="mb-0">Un libro que deja huella, deja de ser un libro - forma parte de ti - se convierte en un librico.</p>
+    <p class="mb-0">Un libro que deja huella, deja de ser un libro - forma parte de ti - se convierte en tu librico.</p>
     <footer class="blockquote-footer">Cuando amas un <cite title="Source Title">libro</cite></footer>
 </blockquote>
 
