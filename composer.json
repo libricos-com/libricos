@@ -26,6 +26,7 @@
 
         "wpackagist-theme/twentyeleven":">=3.5",
         
+        "wpackagist-plugin/contact-form-7":">=5.3.1",
         "wpackagist-plugin/instagram-feed":">=2.6.2",
         "wpackagist-plugin/permalink-manager":">=2.2.9.2",
         "wpackagist-plugin/pods":">=2.7.24",
