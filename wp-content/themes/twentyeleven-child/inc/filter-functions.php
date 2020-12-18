@@ -1,10 +1,24 @@
-<?php 
+<?php
+/**
+ * my_get_posts
+ *
+ * @param [type] $query
+ * @return void
+ * 
+ * @see: Tag templates https://codex.wordpress.org/Tag_Templates
+ */ 
 function my_get_posts( $query ) 
 {
-    if ( is_home() && $query->is_main_query() )
-        $query->set( 'post_type', array( 'post', 'libro', 'review', 'nota', 'autor', 'foto' ) );
-
-    return $query;
+    if(is_category() || is_tag()) {
+        $post_type = get_query_var('post_type');
+        if($post_type){
+            $post_type = $post_type;
+        }else{
+            $post_type = array( 'post', 'libro', 'review', 'nota', 'autor', 'foto' );
+        }
+        $query->set('post_type', $post_type);
+        return $query;
+    } 
 }
 
 function str_replace_first($from, $to, $content)
