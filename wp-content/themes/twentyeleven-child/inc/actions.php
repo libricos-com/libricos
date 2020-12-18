@@ -75,14 +75,6 @@ add_action('wp_head', 'wpb_add_googleanalytics');
 function wpb_add_googleanalytics() 
 {
     // Paste your Google Analytics tracking code from Step 4 here
-    echo '<!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9REYZSJYQS"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag(\'js\', new Date());
-
-    gtag(\'config\', \'G-9REYZSJYQS\');
-    </script>';
+    echo getenv('LBR_GOOGLE_ANALYTICS_CODE');
  
 } 
