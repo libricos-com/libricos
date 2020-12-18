@@ -5,11 +5,14 @@
  * @param [type] $query
  * @return void
  * 
- * @see: Tag templates https://codex.wordpress.org/Tag_Templates
+ * @see: 
+ * - Tag templates https://codex.wordpress.org/Tag_Templates
+ * - https://wordpress.stackexchange.com/questions/142439/main-menu-not-appearing-on-category-pages
  */ 
 function my_get_posts( $query ) 
 {
-    if(is_category() || is_tag()) {
+    if( is_archive() && (is_category() || is_tag()) && empty( $query->query_vars['suppress_filters'] ) ) {
+    // if(is_category() || is_tag()) {
         $post_type = get_query_var('post_type');
         if($post_type){
             $post_type = $post_type;
