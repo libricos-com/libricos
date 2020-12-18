@@ -1,3 +1,9 @@
+// https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
+// https://github.com/twbs/bootstrap/blob/v4.3.1/scss/mixins/_breakpoints.scss
+@import "../../../../vendor/twbs/bootstrap/scss/_functions.scss";
+@import "../../../../vendor/twbs/bootstrap/scss/_variables";
+@import "../../../../vendor/twbs/bootstrap/scss/mixins/_breakpoints"; 
+
 /**
 * Ajustes cabecera
 */
@@ -40,13 +46,36 @@ header {
     margin-bottom: 2em;
 }
 
-
-
 #primary {
-    width: 73%;
+    // Mobile
+    @include media-breakpoint-up(xs) {
+        width: 100%;
+        // border: solid 2px red;
+    }
+    // Tablet vertical
+    @include media-breakpoint-up(sm) {
+        width: 100%;
+        // border: solid 2px orange;
+    }
+    // Tablet vertical
+    @include media-breakpoint-up(md) {
+        width: 73%;
+        // border: solid 2px yellow;
+    }
+    // Tablet horizontal
+    @include media-breakpoint-up(lg) {
+        width: 73%;
+        // border: solid 2px green;
+    }
+    // Desktop
+    @include media-breakpoint-up(xl) {
+        width: 73%;
+        // border: solid 2px blue;
+    }
+
     margin: 0;
     // border: solid 1px red;
-    
+
     #content {
         margin: 0 2%;
         // border: solid 1px orange;
@@ -83,6 +112,7 @@ header {
             // border: solid 1px pink;
         }
     }
+
 }
 
 footer:not(.blockquote-footer){

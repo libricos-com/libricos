@@ -3,7 +3,7 @@
 */
 body {
   width: 100%;
-  padding: 0;
+  padding: 0 1%;
 }
 
 #page {
@@ -40,8 +40,28 @@ header nav {
 }
 
 #primary {
-  width: 73%;
+  width: 100%;
   margin: 0;
+}
+@media (min-width: 576px) {
+  #primary {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  #primary {
+    width: 73%;
+  }
+}
+@media (min-width: 992px) {
+  #primary {
+    width: 73%;
+  }
+}
+@media (min-width: 1200px) {
+  #primary {
+    width: 73%;
+  }
 }
 #primary #content {
   margin: 0 2%;

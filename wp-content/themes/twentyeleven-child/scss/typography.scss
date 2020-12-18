@@ -10,15 +10,17 @@ html {
         $font-size: 1.0625rem;
         // border: solid 2px red;
     }
-    // Table up
+      // Tablet vertical
     @include media-breakpoint-up(sm) {
         $font-size: 1.125rem;
         // border: solid 2px orange;
     }
+    // Tablet vertical
     @include media-breakpoint-up(md) {
         $font-size: 1.125rem;
         // border: solid 2px yellow;
     }
+    // Tablet horizontal
     @include media-breakpoint-up(lg) {
         $font-size: 1.1875rem;
         // border: solid 2px green;
