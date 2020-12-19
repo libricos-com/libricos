@@ -24,6 +24,9 @@ while ( have_posts() ) : the_post();
         $asin = get_post_meta( $id, 'asin', true );
     }else{
         $libro = get_post_meta( $id, 'libro', true );
+        if(empty($libro['ID'])){
+            continue;
+        }
         $id = $libro['ID'];
         $asin = get_post_meta( $id, 'asin', true );
     }
