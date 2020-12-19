@@ -20,6 +20,7 @@ function my_get_posts( $query )
             $post_type = array( 'post', 'libro', 'review', 'nota', 'autor', 'foto' );
         }
         $query->set('post_type', $post_type);
+        $query->set( 'posts_per_page', -1 );
         return $query;
     } 
 }
