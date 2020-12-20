@@ -32,6 +32,7 @@
         "wpackagist-plugin/pods":">=2.7.24",
         "wpackagist-plugin/shortcodes-ultimate":">=5.9.6",
         "wpackagist-plugin/updraftplus":">=1.16.42",
+        "wpackagist-plugin/wp-optimize":">=3.1.6",
         "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.2"
     },
     "extra": {
