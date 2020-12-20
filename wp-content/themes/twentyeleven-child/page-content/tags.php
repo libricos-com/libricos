@@ -46,9 +46,9 @@ endwhile;
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
 
-<h2>Novedades Amazon sobre <?php echo $term->name;?></h2>
-<?php echo do_shortcode('[amazon new="libros+'.$term->name.'" grid="'.$tamano_grid.'"]'); ?>
-
 <h2>Otros libros sobre <?php echo $term->name;?></h2>
 <?php echo do_shortcode('[amazon bestseller="%'.$term->name.'%"]'); ?>
+
+<h2>Novedades Amazon sobre <?php echo $term->name;?></h2>
+<?php echo do_shortcode('[amazon new="libros+'.$term->name.'" grid="'.$tamano_grid.'"]'); ?>
 
