@@ -14,10 +14,10 @@
 				"server": "localhost",
 				"port": 3306,
 				"driver": "MariaDB",
-				"name": "Jesuserro.com - Localhost",
-				"database": "jesuserro.com",
-				"username": "demo",
-				"password": "demo"
+				"name": "Libricos - Localhost",
+				"database": "libricos",
+				"username": "root",
+				"password": "root"
 			}
 		]
 	}
