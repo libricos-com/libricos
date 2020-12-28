@@ -6,8 +6,9 @@ wp-content/cusri
 wp-content/languages
 wp-content/plugins
 wp-content/themes/twentyeleven
-api/cache
+api/cache/*
 api/config.php
+api/logfile
 wp-content/updraft
 wp-content/upgrade
 wp-content/uploads
