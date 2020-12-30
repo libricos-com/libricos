@@ -1,4 +1,55 @@
-<?php
+<?php 
+/**
+ * templateRedirect
+ *
+ * @return void
+ * @see: https://www.codeforest.net/custom-template-redirect-in-wordpress
+ * @see: https://wordpress.stackexchange.com/questions/268589/how-to-override-a-query-and-display-specific-page-by-id
+ */
+function templateRedirect() 
+{
+	global $wp;
+	global $wp_query;
+	
+	// TODO: Mis pruebas
+	$isTag = is_tag();
+	$isSingle = is_single();
+	$isMainQuery = $wp_query->is_main_query();
+	$tagName = get_query_var('name'); // Psicología
+
+	if ( $wp_query->is_404
+		// $wp_query->is_404 && !$isSingle
+	) {
+
+		// if we have a 404 status, set status of 404 to false
+		$wp_query->is_404 = false;
+		$wp_query->is_archive = true;
+	
+		$term = $wp_query->get_queried_object();
+
+		
+		
+		if ($wp->request == $tagName) {
+
+			$original_query = $wp_query;
+			$wp_query = null;
+			$args = array(
+				'posts_per_page' => -1, 
+				'tag'            => $tagName,
+				'post_type'      => array( 'post', 'libro', 'review', 'nota', 'autor', 'foto' )
+			);
+			$wp_query = new WP_Query( $args );
+
+			// change the header to 200 OK
+			header("HTTP/1.1 200 OK");
+			// loadWordPressTemplate(TEMPLATEPATH . '/super-custom-template.php');
+			echo view('../layout/base', ['page' =>  'tags']);
+		}
+			
+    }
+}
+add_action( 'template_redirect', 'templateRedirect' );
+
 /**
  * my_get_posts
  *
