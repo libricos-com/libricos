@@ -1,6 +1,7 @@
 <?php 
 /**
  * templateRedirect
+ * En Admin Wp -> Settings -> Permalinks -> add . to category and tag base. 
  *
  * @return void
  * @see: https://www.codeforest.net/custom-template-redirect-in-wordpress
