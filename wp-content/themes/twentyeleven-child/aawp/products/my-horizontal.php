@@ -36,14 +36,12 @@ $review = new Review($this);
 
     <div class="aawp-product__content">
     
-        <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
-
         <?php echo view('../partials/chip', ['this2' =>  $review]);?>
         
         <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
             <?php echo $this->get_product_title();?>
         </a>
-        
+
         <div class="aawp-product__description">
             <?php //echo $review->get_product_description();?>
             <?php echo view('../partials/libro-autores', ['this2' =>  $review]);?>
