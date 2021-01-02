@@ -28,6 +28,7 @@ Text Domain: twentyeleven-child
 /* Mixins o cosas de Bootstrap */
 /* My components */
 @import url("../twentyeleven-child/css/aawp.css");
+@import url("../twentyeleven-child/css/aawp-horizontal.css");
 @import url("../twentyeleven-child/css/review-list-amazon-box.css");
 @import url("../twentyeleven-child/css/rating.css");
 @import url("../twentyeleven-child/css/chip.css");

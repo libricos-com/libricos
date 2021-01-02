@@ -19,7 +19,8 @@
 				"username": "root",
 				"password": "root"
 			}
-		]
+		],
+		"compile-hero.disable-compile-files-on-did-save-code": false
 	},
 	"launch": {
 		"version": "0.2.0",
