@@ -1,3 +1,27 @@
+<h2>Últimos artículos</h2>
+<ul>
+<?php
+$posts = wp_get_recent_posts(
+    array(
+        'post_type'      => array('libro', 'review', 'nota', 'autor', 'editorial'),
+        'post_status'    => 'publish',
+        'posts_per_page' => 4
+    )
+);
+foreach( $posts as $post ){
+    // echo '<li><a href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a></li> ';
+    echo view('../partials/home-item', array(
+        'this2' => $post)
+    );
+}
+?>
+</ul>
+<hr />
+
+
+
+
+
 <blockquote class="blockquote text-center">
     <p class="mb-0">Un libro que deja huella, deja de ser un libro - forma parte de ti - se convierte en tu librico.</p>
     <footer class="blockquote-footer">Cuando amas un <cite title="Source Title">libro</cite></footer>
