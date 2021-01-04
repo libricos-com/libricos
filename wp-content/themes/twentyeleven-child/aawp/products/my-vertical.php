@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use App\Entity\BookAmazonFactory;
 $libro = BookAmazonFactory::create($this);
+$url = $libro->getUrl();
+$url = $this->get_product_url();
 ?>
 
 <div class="jei-amz-grd <?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -24,7 +26,7 @@ $libro = BookAmazonFactory::create($this);
     <?php $this->the_product_ribbons(); ?>
 
     <a class="aawp-product__image--link aawp-product__image"
-       href="<?php echo $libro->getUrl();?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
+       href="<?php echo $url;?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
         <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
     </a>
 
