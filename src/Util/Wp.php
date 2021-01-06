@@ -7,10 +7,10 @@ namespace App\Util;
 abstract class Wp
 {
  
-    public static function get_books_by_category_id($term_id)
+    public static function get_books_by_category_id($term_id, $limit = -1)
     {
         $args = array(
-            'posts_per_page' => -1,
+            'posts_per_page' => $limit,
             'post_type' => 'libro',
             'tax_query' => array(
                 array(
@@ -22,10 +22,10 @@ abstract class Wp
         return get_posts($args);
     }
 
-    public static function get_books_by_genero_id($term_id)
+    public static function get_books_by_genero_id($term_id, $limit = -1)
     {
         $args = array(
-            'posts_per_page' => -1,
+            'posts_per_page' => $limit,
             'post_type' => 'libro',
             'tax_query' => array(
                 array(
@@ -37,10 +37,10 @@ abstract class Wp
         return get_posts($args);
     }
 
-    public static function get_books_by_tag_id($term_id)
+    public static function get_books_by_tag_id($term_id, $limit = -1)
     {
         $args = array(
-            'posts_per_page' => -1,
+            'posts_per_page' => $limit,
             'post_type' => 'libro',
             'tax_query' => array(
                 array(

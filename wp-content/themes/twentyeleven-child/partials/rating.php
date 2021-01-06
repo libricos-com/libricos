@@ -13,5 +13,5 @@
             <i class="fa fa-star" aria-hidden="true"></i>
         </div>
     </div>
-    <span class="badge badge-warning" data-toggle="tooltip" title="Valoración Jesuserro.com"><?php echo $this2->puntuacion;?></span>
+    <span class="badge badge-warning ml-1" data-toggle="tooltip" title="Valoración Libricos.com"><?php echo $this2->puntuacion;?></span>
 </div>

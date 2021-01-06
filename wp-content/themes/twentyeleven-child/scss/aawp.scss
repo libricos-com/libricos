@@ -1,3 +1,5 @@
+$amz-dark-list-items: #232F3E;
+
 .aawp {
     
     .aawp-product--horizontal {
@@ -10,6 +12,22 @@
 
     .aawp-button {
         // font-size: 11px !important;
+    }
+
+    .aawp-product {
+        background-color: $amz-dark-list-items !important;
+        border: none !important;
+
+        a{
+            color: #BABABA;
+            text-decoration: none !important;
+        }
+        span{
+            color: white;
+        }
+        a:hover{
+            color: invert($amz-dark-list-items);
+        }
     }
 }
 

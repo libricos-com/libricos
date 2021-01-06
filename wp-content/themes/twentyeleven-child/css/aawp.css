@@ -1,6 +1,21 @@
 .aawp .aawp-product--horizontal .aawp-product__title {
   margin-bottom: 0 !important;
 }
+.aawp .aawp-product {
+  background-color: #232F3E !important;
+  border: none !important;
+}
+.aawp .aawp-product a {
+  color: #BABABA;
+  text-decoration: none !important;
+}
+.aawp .aawp-product span {
+  color: white;
+}
+.aawp .aawp-product a:hover {
+  color: #dcd0c1;
+}
+
 .aawp-correccion-altura {
   height: 18px;
 }

@@ -1,3 +1,7 @@
+.lbc-search-complete {
+  background: #232F3E !important;
+}
+
 input::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: lightgray !important;

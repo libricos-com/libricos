@@ -2,3 +2,23 @@
     text-align: right;
     float: right;
 }
+
+.lbc-home-item{
+    background-color: $amz-dark-list-items !important;
+    border: none !important;
+
+    a.h3{
+        line-height: 80%;
+    }
+
+    .chip{
+        background: lighten( $amz-dark-list-items, 75%) !important;
+    }
+
+    .aawp-product__description{
+        margin-top: 1% !important;
+    }
+    .review-summary{
+        margin-top: 2%;
+    }
+}

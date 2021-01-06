@@ -1,5 +1,5 @@
 
-<div class="card">
+<div class="lbc-search-complete card">
     <div class="card-body">
         
         <?php echo view('../searchform', ['this2' => $this2 ]);?>
