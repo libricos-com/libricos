@@ -1,11 +1,11 @@
-<h6 class="text-right">Últimos artículos</h6>
+<h6 class="text-right">Último artículo</h6>
 <?php
 use App\Util\Wp;
 $tamano_grid = 4;
 
 $posts = wp_get_recent_posts(
     array(
-        'post_type'      => array('review', 'nota'),
+        'post_type'      => array('post'),
         'post_status'    => 'publish',
         'posts_per_page' => 1
     )
@@ -39,6 +39,8 @@ foreach( $posts as $post ){
     $post['firstParagraph'] = $contenido;
     if($post['post_type'] == 'review' || $post['post_type'] == 'nota'){
         $post['firstParagraph'] = get_first_paragraph($contenido);
+    }elseif($post['post_type'] == 'post'){
+        $post['firstParagraph'] = get_first_paragraph($post['post_content']);
     }
     
     echo view('../partials/home-item', array('this2' => $post));
