@@ -16,8 +16,6 @@ $posts = get_posts(
 foreach( $posts as $post ){
 
     $id = $post->ID;
-
-    $pod = pods( $post->post_type, $id );
     
     $post->pic = get_the_post_thumbnail_url($id,'full'); // large, thumbnail
     
