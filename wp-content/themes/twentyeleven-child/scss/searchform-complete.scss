@@ -1,3 +1,8 @@
+$amz-dark-list-items: #232F3E;
+.lbc-search-complete{
+    background: $amz-dark-list-items !important;
+}
+
 input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: lightgray !important;
     opacity: 1; /* Firefox */

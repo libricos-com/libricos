@@ -2,3 +2,20 @@
   text-align: right;
   float: right;
 }
+
+.lbc-home-item {
+  background-color: #232F3E !important;
+  border: none !important;
+}
+.lbc-home-item a.h3 {
+  line-height: 80%;
+}
+.lbc-home-item .chip {
+  background: #eceff4 !important;
+}
+.lbc-home-item .aawp-product__description {
+  margin-top: 1% !important;
+}
+.lbc-home-item .review-summary {
+  margin-top: 2%;
+}

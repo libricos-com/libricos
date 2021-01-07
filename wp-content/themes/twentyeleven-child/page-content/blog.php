@@ -1,4 +1,4 @@
-<h6 class="text-right">Último artículo</h6>
+<h6 class="text-right">Últimos artículos</h6>
 <?php
 use App\Util\Wp;
 $tamano_grid = 4;
@@ -7,7 +7,7 @@ $posts = get_posts(
     array(
         'post_type'      => array('post'),
         'post_status'    => 'publish',
-        'posts_per_page' => 1
+        'posts_per_page' => -1
     )
 );
 ?>
@@ -16,7 +16,7 @@ $posts = get_posts(
 foreach( $posts as $post ){
 
     $id = $post->ID;
-
+    
     $post->pic = get_the_post_thumbnail_url($id,'full'); // large, thumbnail
     
     $post->fecha = get_fecha_larga($id);
@@ -29,21 +29,6 @@ foreach( $posts as $post ){
 }
 ?>
 </div>
-
-<hr />
-
-<h6>Novedades</h6>
-<?php
-$libros = Wp::get_books_by_category_id(3);
-$asins = Wp::get_libros_asins($libros)[0];
-$ids = Wp::get_libros_asins($libros)[1];
-echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
-?>
-
-<hr />
-
-<h6>Novedades Amazon</h6>
-<?php echo do_shortcode('[amazon new="mejores libros" items="12"]');?>
 
 
 

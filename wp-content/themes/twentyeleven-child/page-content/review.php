@@ -17,7 +17,8 @@
     $libro = $pod->field( 'libro' );
     $asin = get_post_meta($libro['ID'],'asin')[0];
     $portada = get_post_meta($libro['ID'],'portada');
-    $src = wp_get_attachment_image_src($portada[0]['ID'], 400);
+
+    $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
 
     $fecha = get_the_date('d F Y');
 
@@ -25,14 +26,20 @@
     $libro_title = get_the_title($libro['ID']);
 ?>
 
-<h1><?php echo $post_title;?></h1>
+<h1 class="lbc-h1"><?php echo $post_title;?></h1>
 
-<strong>Fecha reseña</strong>: <?php echo $fecha;?> 
+<?php echo view('../partials/publish-info', array('fechaPublicacion' => $fecha));?>
 
-<div class="text-center mb-4">
-    <a href="<?php echo $libro_link;?>"><img src="<?php echo $src[0];?>" alt="Portada del libro <?php echo $titulo;?>" class="img-fluid" /></a>
-    <div><?php // echo get_kkstarring();?></div>
+<div>
+    <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
 </div>
+
+<hr />
+
+<div class="float-right w-30 p-3">
+    <?php echo do_shortcode('[amazon box="'.$asin.'" template="vertical"]');?>
+</div>
+
 
 <?php echo $texto;?>
 
