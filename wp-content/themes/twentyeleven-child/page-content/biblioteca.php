@@ -63,7 +63,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 
 <h2>Libros recomendados sobre profecías cumplidas</h2>
 <?php 
-$libros = Wp::get_books_by_genero_id(434, 8);
+$libros = Wp::get_books_by_tag_id(275, 8);
 $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
