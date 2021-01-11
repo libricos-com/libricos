@@ -166,7 +166,24 @@ footer:not(.blockquote-footer){
 }
 
 
-.lbc-review-item-h h2{
-    display: inline-block;
-    margin-bottom: 1%;
+.lbc-review-item-h {
+    h2, h3 {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+    h3 {
+        all: initial;
+
+        display: inline-block;
+        font-family: sans-serif;
+
+        margin: 2% 0 0;
+        font-size: 18px;
+        font-weight: bold; 
+    }
+
+    .review-summary{
+        margin-top: 2%;
+    }
 }

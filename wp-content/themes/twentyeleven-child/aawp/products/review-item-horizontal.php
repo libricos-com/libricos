@@ -50,12 +50,11 @@ $url = $this->get_product_url();
             <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
         </div>
         
-                    
-
-
-        <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
-            <?php echo $this->get_product_title();?>
-        </a>
+        <h3>
+            <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
+                <?php echo $this->get_product_title();?>
+            </a>
+        </h3>
 
         <div class="aawp-product__description">
             <?php //echo $review->get_product_description();?>
