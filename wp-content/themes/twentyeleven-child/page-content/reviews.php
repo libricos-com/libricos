@@ -11,10 +11,9 @@ $asins = $reviews[0];
 $ids = $reviews[1];
 ?>
 
-<h1>Últimas reseñas</h1>
 <?php
-if(!empty($asins)){ 
-    echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="my-horizontal"]');
+if(!empty($asins)){  
+    echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="review-item-horizontal"]');
 }else{
     echo 'No hay reviews';
 }

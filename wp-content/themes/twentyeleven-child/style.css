@@ -23,7 +23,6 @@ Text Domain: twentyeleven-child
 
 /* Layout */
 @import url("../twentyeleven-child/css/layout.css");
-@import url("../twentyeleven-child/css/sidebar.css");
 @import url("../twentyeleven-child/css/index.css");
 /* Mixins o cosas de Bootstrap */
 /* My components */
