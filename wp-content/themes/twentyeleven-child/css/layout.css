@@ -91,3 +91,32 @@ header nav {
 footer:not(.blockquote-footer) {
   background: #232F3E !important;
 }
+
+#secondary.jei-sidebar {
+  margin-right: 0;
+  width: 26% !important;
+}
+@media (min-width: 768px) {
+  #secondary.jei-sidebar {
+    margin: 0 !important;
+    float: right !important;
+  }
+}
+#secondary.jei-sidebar aside .wp-tag-cloud {
+  text-align: center;
+}
+#secondary.jei-sidebar aside ul:not(.wp-tag-cloud) {
+  padding-left: 7%;
+}
+#secondary.jei-sidebar aside div#gr_custom_widget_1590433898 > div,
+#secondary.jei-sidebar aside div#gr_custom_widget_1590432677 > div {
+  width: 100% !important;
+}
+#secondary.jei-sidebar aside#tag_cloud-1 h3 {
+  text-align: center !important;
+}
+
+.lbc-review-item-h h2 {
+  display: inline-block;
+  margin-bottom: 1%;
+}

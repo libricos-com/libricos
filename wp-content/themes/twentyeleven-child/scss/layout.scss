@@ -56,8 +56,12 @@ header {
     @include media-breakpoint-up(sm) {
         width: 100%;
         // border: solid 2px orange;
+
+        .aawp-product--horizontal .aawp-product__image{
+            // float: left;
+        }
     }
-    // Tablet vertical
+    // Tablet vertical (desktop-like version)
     @include media-breakpoint-up(md) {
         width: 73%;
         // border: solid 2px yellow;
@@ -117,4 +121,52 @@ header {
 
 footer:not(.blockquote-footer){
     background: #232F3E !important;
+}
+
+
+
+#secondary.jei-sidebar {
+    // border: solid 1px green;
+
+    margin-right: 0;
+    width: 26% !important;
+
+    // Tablet vertical (desktop-like version)
+    @include media-breakpoint-up(md) {
+        // border: solid 2px yellow;
+        margin: 0 !important;
+        float: right !important;
+    }
+    
+    aside {
+        // border: solid   1px blue;
+
+        .wp-tag-cloud{
+            text-align: center;
+        }
+
+        ul:not(.wp-tag-cloud) {
+            // border: solid 1px red;
+            padding-left: 7%;
+        }
+        
+        div#gr_custom_widget_1590433898 > div, // Goodreads leyendo ahora
+        div#gr_custom_widget_1590432677 > div  // Goodreads siguientes
+        {
+            // border: solid 1px red;
+            width: 100% !important;
+        }
+        &#tag_cloud-1{
+            h3 {
+                text-align: center !important;
+            }
+        }
+    }
+    
+}
+
+
+.lbc-review-item-h h2{
+    display: inline-block;
+    margin-bottom: 1%;
 }
