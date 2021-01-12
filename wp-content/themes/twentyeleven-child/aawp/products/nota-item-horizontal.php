@@ -25,7 +25,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
     <div class="aawp-product__thumb">
         <a class="aawp-product__image-link"
-           href="<?php echo $url;?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank">
+           href="<?php echo $review->url_review;?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank">
             <img class="aawp-product__image" src="<?php echo $img;?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
         </a>
 
@@ -57,7 +57,9 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
         
 
         <div class="row mt-2 ml-1">
-            <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
+            <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
+                <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
+            </a>
             <div class="col-md-10">
                 <h3>
                     <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
