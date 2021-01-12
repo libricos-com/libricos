@@ -47,10 +47,10 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
         <div>
             Por 
             <div class="chip align-bottom">
-                <a href="<?php echo get_site_url();?>/about/" target="blank" alt="Autor Jesús Erro">
-                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Autor de la nota: Jesús Erro" title="Jesús Erro">
+                <a href="<?php echo get_site_url();?>/about/" target="blank" alt="Autor Libricos.com">
+                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Autor Libricos.com" title="Por Libricos.com">
                 </a>
-            </div>
+            </div> Libricos.com
 
             <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
         </div>
@@ -58,7 +58,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
         <div class="row mt-2 ml-1">
             <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
-            <div class="ml-3">
+            <div class="col-md-10">
                 <h3>
                     <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
                         <?php echo $this->get_product_title();?>
