@@ -2,7 +2,7 @@
 if(!empty($this2->autores)){
 ?>    
     <div class="book-authors">
-        By 
+        Por 
         <ul class="list-inline-pipe">
         <?php
         foreach($this2->autores as $autor){

@@ -14,7 +14,7 @@ $review = new Review($this);
 $url = $review->url_libro;
 $url = $this->get_product_url();
 
-// $img = $this->get_product_image();
+$imgProduct = $this->get_product_image();
 $idNota = $review->id_review; 
 $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_thumbnail, medium  
 ?>
@@ -45,24 +45,30 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
         <h2 class="h4"><a href="<?php echo $review->url_review;?>" alt=""><?php echo $review->post_title;?></a></h2>
             
         <div>
+            Por 
             <div class="chip align-bottom">
                 <a href="<?php echo get_site_url();?>/about/" target="blank" alt="El autor del sitio hace una reseña">
                     <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Contact Person">
                 </a>
-            </div> ha escrito una nota sobre el libro:
+            </div>
 
             <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
         </div>
         
-        <h3>
-            <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
-                <?php echo $this->get_product_title();?>
-            </a>
-        </h3>
 
-        <div class="aawp-product__description">
-            <?php //echo $review->get_product_description();?>
-            <?php echo view('../partials/libro-autores', ['this2' =>  $review]);?>
+        <div class="row mt-2 ml-1">
+            <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="" width="60" height="100">
+            <div class="ml-3">
+                <h3>
+                    <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
+                        <?php echo $this->get_product_title();?>
+                    </a>
+                </h3>
+                <div class="aawp-product__description">
+                    <?php //echo $review->get_product_description();?>
+                    <?php echo view('../partials/libro-autores', ['this2' =>  $review]);?>
+                </div>
+            </div>
         </div>
 
         <div class="review-summary">
@@ -73,7 +79,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
                 <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview_<?php echo $review->id_review;?>" aria-expanded="false" aria-controls="collapseSummary_idreview_<?php echo $review->id_review;?>"></a>
             </span> 
         
-            <span class="float-right">
+            <span class="row float-right">
                 <ul class="list-inline-bullets">
                     <li class="list-inline-item">
                         <i class="far fa-comments"></i> <?php echo $review->num_comments;?> 
