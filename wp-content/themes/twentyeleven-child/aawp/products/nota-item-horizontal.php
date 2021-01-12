@@ -25,7 +25,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
     <div class="aawp-product__thumb">
         <a class="aawp-product__image-link"
-           href="<?php echo $url; ?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank">
+           href="<?php echo $url;?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank">
             <img class="aawp-product__image" src="<?php echo $img;?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
         </a>
 
@@ -42,13 +42,13 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
     <div class="aawp-product__content">
      
-        <h2 class="h4"><a href="<?php echo $review->url_review;?>" alt=""><?php echo $review->post_title;?></a></h2>
+        <h2 class="h4"><a href="<?php echo $review->url_review;?>" alt="<?php echo $review->post_title;?>"><?php echo $review->post_title;?></a></h2>
             
         <div>
             Por 
             <div class="chip align-bottom">
-                <a href="<?php echo get_site_url();?>/about/" target="blank" alt="El autor del sitio hace una reseña">
-                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Contact Person">
+                <a href="<?php echo get_site_url();?>/about/" target="blank" alt="Autor Jesús Erro">
+                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Autor de la nota: Jesús Erro" title="Jesús Erro">
                 </a>
             </div>
 
@@ -57,10 +57,10 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
         
 
         <div class="row mt-2 ml-1">
-            <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="" width="60" height="100">
+            <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
             <div class="ml-3">
                 <h3>
-                    <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
+                    <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
                         <?php echo $this->get_product_title();?>
                     </a>
                 </h3>
