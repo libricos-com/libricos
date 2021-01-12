@@ -1,6 +1,6 @@
-# Jesuserro.com
+# Libricos.com
 
-Personal site blog based on Wordpress. It´s about books, reviews and recommendations.
+Bookstore based on Wordpress. It´s about books, reviews and recommendations.
 
 ## Getting Started
 
@@ -85,7 +85,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ### v0.0.1
 
-* Wordpress 5.4.1
+* Wordpress 5.6.0
 * Permalinks: 
   * Custom: category/postname
   * Category base: a dot
