@@ -14,12 +14,9 @@ $review = new Review(null);
 $libros_con_notas = $review->get_all($input);
 $asins = $libros_con_notas[0];
 $ids = $libros_con_notas[1];
-?>
 
-<h1>Últimas notas</h1>
-<?php
 if(!empty($asins)){ 
-    echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="my-horizontal"]');
+    echo do_shortcode('[amazon box="'.$asins.'" tpl_ids="'.$ids.'" template="nota-item-horizontal"]');
 }else{
     echo 'No hay notas';
 }
