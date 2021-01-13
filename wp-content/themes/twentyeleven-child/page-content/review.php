@@ -4,27 +4,33 @@
     $review = new Review($post);
 ?>
 
-<h1 class="lbc-h1"><?php echo $review->post_title;?></h1>
+<div class="lbc-file">
 
-<?php echo view('../partials/publish-info', ['this2' => $review]);?>
+    <h1 class="lbc-h1"><?php echo $review->post_title;?></h1>
 
-<div class="mt-3">
-    <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
+    <?php echo view('../partials/publish-info', ['this2' => $review]);?>
+
+    <div class="mt-3">
+        <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
+    </div>
+
+    <hr />
+
+    <div>
+        <div class="d-flex justify-content-end float-right col-md-4">
+            <?php echo do_shortcode(' [amazon box="'.$review->asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
+        </div>
+        <div class="lbc-contenido">
+            <?php echo $review->contenido;?>
+        </div>  
+    </div>
+
+    <ul>
+        <li><strong>Mi puntuación</strong>: <?php echo $review->get_rating();?></li>
+        <li><a href="<?php echo $review->getGoodreadsUrl();?>">Reseña en Goodreads</a></li>
+    </ul>
+
 </div>
-
-<hr />
-
-<div class="float-right w-30 p-3">
-    <?php echo do_shortcode('[amazon box="'.$review->asin.'" template="vertical"]');?>
-</div>
-
-
-<?php echo $review->contenido;?>
-
-<ul>
-    <li><strong>Mi puntuación</strong>: <?php echo $review->get_rating();?></li>
-    <li><a href="<?php echo $review->getGoodreadsUrl();?>">Reseña en Goodreads</a></li>
-</ul>
 
 <hr />
 <div class="text-center p-2">

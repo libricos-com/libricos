@@ -92,20 +92,21 @@ class Review
      */
     public function __construct( $object = null )
     {
-        if($object instanceof \AAWP_Template_Handler){
-            $this->_aawp = $object;
-            $this->_reviewId = $this->getReviewId();
-            $this->asin = $this->_aawp->get_product_id();
-            $this->fillAawp();
-        }elseif($object instanceof \WP_Post){
-            $this->_post = $object;
-            $this->_reviewId = $object->ID;
-            
-        }  
         if(!is_null($object)){
+            if($object instanceof \AAWP_Template_Handler){
+                $this->_aawp = $object;
+                $this->_reviewId = $this->getReviewId();
+                $this->asin = $this->_aawp->get_product_id();
+                $this->fillAawp();
+            }elseif($object instanceof \WP_Post){
+                $this->_post = $object;
+                $this->_reviewId = $object->ID;
+                
+            }  
             $this->fill();
         }
         
+        // Sólo para determinados listados
         return $this;
     }
 
