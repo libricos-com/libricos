@@ -11,6 +11,13 @@ namespace App\Entity;
 class Review
 {
     /**
+     * Id de la review en Wordpress
+     *
+     * @var integer
+     */
+    private $_reviewId; //  Libro de la reseña
+
+    /**
      * Datos de entrada para la reseña 
      *
      * @var mixed
@@ -87,62 +94,78 @@ class Review
     {
         if($object instanceof \AAWP_Template_Handler){
             $this->_aawp = $object;
-            $this->fill_aawp();
-        }                                            
+            $this->_reviewId = $this->getReviewId();
+            $this->asin = $this->_aawp->get_product_id();
+            $this->fillAawp();
+        }elseif($object instanceof \WP_Post){
+            $this->_post = $object;
+            $this->_reviewId = $object->ID;
+            
+        }  
+        if(!is_null($object)){
+            $this->fill();
+        }
+        
         return $this;
     }
 
-    public function fill_aawp()
+
+    protected function getReviewId()
     {
-        $this->asin = $this->_aawp->get_product_id();
         $this->ids = $this->_aawp->get_template_variable( 'ids', false );
         $this->index = $this->_aawp->item_index;
+        
         // $variables = $this->get_template_variables();
         if( !is_array($this->ids) ){
             $this->ids = explode(',', $this->ids);
         }
 
-        // $url1 = $this->get_product_image_link();
-        $this->url_libro  = $this->_aawp->get_product_url();
+        if(!empty($this->ids[ $this->index - 1 ])){
+            $index = $this->index - 1;
+            return $this->ids[ $index ];
+        }
+        return false;
+    }
 
-        $this->_rating = '0.0';
-        $this->_rating_percent = 0;
+
+    public function fill()
+    {
+        $post_id = $this->_reviewId;
         $this->_goodreads_url = '';
         $this->texto = '';
 
+        $this->post_title = get_the_title($post_id);
+        $this->_post_date = get_fecha_larga($post_id);
+        // $this->id_libro1 =  $this->pod->field( 'libro');
+        $this->id_libro = get_post_meta($post_id,'libro')[0]['ID'];
+        $this->url_libro = esc_url( get_permalink( $this->id_libro ) );
+        $this->url_review = esc_url( get_permalink( $post_id ) );
+        $this->num_comments = get_comments_number( $post_id );
+        $this->contenido = get_post_meta($post_id,'contenido')[0];
+        // $this->portadaLibro = get_post_meta($this->id_libro,'portada');
+        // $this->src = get_the_post_thumbnail_url( $post_id, 'post_thumbnail' );
+        $this->libroTitle = get_the_title($this->id_libro);
 
-        if(!empty($this->ids[ $this->index - 1 ])){
+        $this->_pod = pods( 'libro', $this->id_libro );
+        $this->asin = get_post_meta($this->id_libro,'asin')[0];
+        // echo aawp_get_field_value($asin, 'price');
+        $this->autores = $this->_pod->field( 'autores' );
 
-            $index = $this->index - 1;
-            $this->id_review =  $this->ids[ $index ];
-            
-            $this->post_title = get_the_title($this->id_review);
-            $this->_post_date = get_fecha_larga($this->id_review);
-            // $this->id_libro1 =  $this->pod->field( 'libro');
-            $this->id_libro = get_post_meta($this->id_review,'libro')[0]['ID'];
-            $this->url_libro = esc_url( get_permalink( $this->id_libro ) );
-            $this->url_review = esc_url( get_permalink( $this->id_review ) );
-            $this->num_comments = get_comments_number( $this->id_review );
-
-            $this->_pod = pods( 'libro', $this->id_libro );
-            // echo aawp_get_field_value($asin, 'price');
-            $this->autores = $this->_pod->field( 'autores' );
-
-            if(!empty( get_post_meta($this->id_review,'goodreads_url')[0] )){
-                $this->_goodreads_url = get_post_meta($this->id_review,'goodreads_url')[0];
-            }
-            if(!empty( get_post_meta($this->id_review,'contenido')[0] )){
-                $this->texto = get_post_meta($this->id_review,'contenido')[0]; 
-                $this->texto = get_first_paragraph($this->texto);
-            }
-
-            if(!empty( get_post_meta($this->id_review,'rating')[0] )){
-                if(is_numeric($this->_rating)){
-                    $this->_rating = floatval(get_post_meta($this->id_review,'rating')[0]);
-                    $this->_rating_percent = $this->_rating*100/5;
-                }  
-            }
+        if(!empty( get_post_meta($this->_reviewId,'goodreads_url')[0] )){
+            $this->_goodreads_url = get_post_meta($this->_reviewId,'goodreads_url')[0];
         }
+        if(!empty( get_post_meta($this->_reviewId,'contenido')[0] )){
+            $this->texto = get_post_meta($this->_reviewId,'contenido')[0]; 
+            $this->texto = get_first_paragraph($this->texto);
+        }
+
+        $this->calculateRating($this->_reviewId);
+    }
+
+    public function fillAawp()
+    {
+        // $url1 = $this->get_product_image_link();
+        $this->url_libro  = $this->_aawp->get_product_url();
 
         // @see: https://getaawp.com/docs/article/fields-single-product-data/
         $this->is_prime = aawp_get_field_value($this->asin, 'prime');
@@ -152,6 +175,21 @@ class Review
         // $this->star_rating = do_shortcode('[amazon fields="'.$this->asin.'" value="star_rating"]');
         // $this->star_rating = do_shortcode('[amazon box="'.$this->asin.'" rating="4.5"]');                   
     }
+
+
+    public function calculateRating($post_id)
+    {
+        $this->_rating = '0.0';
+        $this->_rating_percent = 0;
+
+        if(!empty( get_post_meta($post_id,'rating')[0] )){
+            if(is_numeric( get_post_meta($post_id,'rating')[0] )){
+                $this->_rating = floatval(get_post_meta($post_id,'rating')[0]);
+                $this->_rating_percent = $this->_rating*100/5;
+            }  
+        }
+    }
+
 
     /**
      * Caja Amazon class Reviews
@@ -191,9 +229,19 @@ class Review
         ];
     }
 
+    public function getReviewIdWp()
+    {
+        return $this->_reviewId;
+    }
+
     public function get_post_date()
     {
         return $this->_post_date;
+    }
+
+    public function getGoodreadsUrl()
+    {
+        return $this->_goodreads_url;
     }
 
     public function get_rating()

@@ -27,9 +27,9 @@
 
 <h1 class="lbc-h1"><?php echo $post_title;?></h1>
 
-<?php echo view('../partials/publish-info', array('fechaPublicacion' => $fecha));?>
+<?php echo view('../partials/publish-info', ['this2' => $post]);?>
 
-<div>
+<div class="mt-3">
     <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
 </div>
 

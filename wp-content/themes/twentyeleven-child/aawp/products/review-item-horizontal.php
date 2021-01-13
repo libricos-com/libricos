@@ -39,17 +39,9 @@ $url = $this->get_product_url();
     <div class="aawp-product__content">
      
         <h2 class="h4"><a href="<?php echo $review->url_review;?>" alt=""><?php echo $review->post_title;?></a></h2>
-            
-        <div>
-            <div class="chip align-bottom">
-                <a href="<?php echo get_site_url();?>/about/" target="blank" alt="El autor del sitio hace una reseña">
-                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Contact Person">
-                </a>
-            </div> ha reseñado <?php echo view('../partials/rating', ['this2' =>   (object) ['puntuacion' => $review->get_rating(), 'rating_percent' => $review->get_rating_percent()] ] );?>
 
-            <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
-        </div>
-        
+        <?php echo view('../partials/publish-info', ['this2' => $review]);?>
+            
         <h3>
             <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
                 <?php echo $this->get_product_title();?>
@@ -63,17 +55,17 @@ $url = $this->get_product_url();
 
         <div class="review-summary">
             <span class="summary">
-                <p class="collapse font-italic" id="collapseSummary_idreview_<?php echo $review->id_review;?>">
+                <p class="collapse font-italic" id="collapseSummary_idreview_<?php echo $review->getReviewIdWp();?>">
                     <?php echo $review->texto;?>
                 </p>
-                <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview_<?php echo $review->id_review;?>" aria-expanded="false" aria-controls="collapseSummary_idreview_<?php echo $review->id_review;?>"></a>
+                <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview_<?php echo $review->getReviewIdWp();?>" aria-expanded="false" aria-controls="collapseSummary_idreview_<?php echo $review->getReviewIdWp();?>"></a>
             </span> 
         
             <span class="float-right">
                 <ul class="list-inline-bullets">
                     <li class="list-inline-item">
                         <i class="far fa-comments"></i> <?php echo $review->num_comments;?> 
-                        <a href="<?php echo the_permalink($review->id_review);?>#respond" alt="Deja tu comentario">Comenta</a>
+                        <a href="<?php echo the_permalink($review->getReviewIdWp());?>#respond" alt="Deja tu comentario">Comenta</a>
                     </li>
                     <li class="list-inline-item">
                         <a href="<?php echo $review->url_review;?>" alt="">Ver reseña</a>

@@ -15,7 +15,7 @@ $url = $review->url_libro;
 $url = $this->get_product_url();
 
 $imgProduct = $this->get_product_image();
-$idNota = $review->id_review; 
+$idNota = $review->getReviewIdWp(); 
 $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_thumbnail, medium  
 ?>
 
