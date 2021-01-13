@@ -1,7 +1,12 @@
 <?php 
-    global $post;
-    use App\Entity\Review;
-    $review = new Review($post);
+global $post;
+use App\Entity\Review;
+$review = new Review($post);
+
+$keywords = $review->libroTitle;
+if($review->getReviewIdWp()== 8246){
+    $keywords = 'amor psicología';
+}
 ?>
 
 <div class="lbc-file">
@@ -17,7 +22,7 @@
     <hr />
 
     <div>
-        <div class="d-flex justify-content-end float-right col-md-4">
+        <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
             <?php echo do_shortcode(' [amazon box="'.$review->asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
         </div>
         <div class="lbc-contenido">
@@ -38,8 +43,9 @@
 </div>
 <hr />
 
-<h2>Similares</h2>
+<h2>Similares a <?php echo $review->libroTitle;?></h2>
+
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.$review->libroTitle.'"]');?>
+    <?php echo do_shortcode('[amazon bestseller="'.$keywords.'"]');?>
 </div>
 
