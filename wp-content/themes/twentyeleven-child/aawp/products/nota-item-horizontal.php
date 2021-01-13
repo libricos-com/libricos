@@ -75,17 +75,17 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
         <div class="review-summary">
             <span class="summary">
-                <p class="collapse font-italic" id="collapseSummary_idreview_<?php echo $review->id_review;?>">
+                <p class="collapse font-italic" id="collapseSummary_idreview_<?php echo $idNota;?>">
                     <?php echo $review->texto;?>
                 </p>
-                <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview_<?php echo $review->id_review;?>" aria-expanded="false" aria-controls="collapseSummary_idreview_<?php echo $review->id_review;?>"></a>
+                <a class="collapsed" data-toggle="collapse" href="#collapseSummary_idreview_<?php echo $idNota;?>" aria-expanded="false" aria-controls="collapseSummary_idreview_<?php echo $idNota;?>"></a>
             </span> 
         
             <span class="row float-right">
                 <ul class="list-inline-bullets">
                     <li class="list-inline-item">
                         <i class="far fa-comments"></i> <?php echo $review->num_comments;?> 
-                        <a href="<?php echo the_permalink($review->id_review);?>#respond" alt="Deja tu comentario">Comenta</a>
+                        <a href="<?php echo the_permalink($idNota);?>#respond" alt="Deja tu comentario">Comenta</a>
                     </li>
                     <li class="list-inline-item">
                         <a href="<?php echo $review->url_review;?>" alt="">Ver nota</a>
