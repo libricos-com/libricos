@@ -23,28 +23,42 @@
     $libro_link = get_permalink($libro['ID']);
     $libro_title = get_the_title($libro['ID']);
     $titulo_a_secas = get_post_meta($libro['ID'],'titulo')[0];
+
+    $keywords = $titulo_a_secas;
+    // TODO: pasarlo a bbdd? 
+    // Apuntes los 4 amores
+    if($id== 8734){
+        $keywords = 'amor psicología';
+    }
 ?>
+<div class="lbc-file">
+    <h1 class="lbc-h1"><?php echo $post_title;?></h1>
 
-<h1 class="lbc-h1"><?php echo $post_title;?></h1>
+    <?php echo view('../partials/publish-info', ['this2' => $post]);?>
 
-<?php echo view('../partials/publish-info', ['this2' => $post]);?>
-
-<div class="mt-3">
-    <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
-</div>
-
-<hr />
-
-<div class="text-center mb-4">
-    <a href="<?php echo $libro_link;?>">
-        <img src="<?php echo $src;?>" alt="<?php echo $titulo;?>" class="img-fluid" />
-    </a>
-    <div class="float-right w-30 p-3">
-        <?php echo do_shortcode('[amazon box="'.$asin.'" template="vertical"]');?>
+    <div class="mt-3">
+        <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
     </div>
+
+    <hr />
+
+    <div class="text-center mb-4">
+        <a href="<?php echo $libro_link;?>">
+            <img src="<?php echo $src;?>" alt="<?php echo $titulo;?>" class="img-fluid rounded" />
+        </a>
+    </div>
+
+    <div>
+        <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
+            <?php echo do_shortcode(' [amazon box="'.$asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
+        </div>
+        <div class="lbc-contenido">
+            <?php echo $texto;?>
+        </div>  
+    </div>
+    
 </div>
 
-<?php echo $texto;?>
 
 <hr />
 <div class="text-center p-2">
@@ -53,17 +67,7 @@
 <hr />
 
 <h2>Libros similares a <?php echo $titulo_a_secas;?></h2>
-<?php 
-$searchkeys = $titulo_a_secas;
-if($id == 8734){ // nota 4 amores, la mejor posicionada
-    // $searchkeys = 'libros+cristianos';
-    // $searchkeys = 'C.S. Lewis';
-}
-?>
-
-<hr />
-
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.$searchkeys.'" items="12"]');?>
+    <?php echo do_shortcode('[amazon bestseller="'.$keywords.'" items="12"]');?>
 </div>
 
