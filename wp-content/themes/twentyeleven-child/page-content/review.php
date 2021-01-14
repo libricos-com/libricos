@@ -4,8 +4,12 @@ use App\Entity\Review;
 $review = new Review($post);
 
 $keywords = $review->libroTitle;
+// TODO: pasarlo a bbdd? 
+// Review 5 lenguajes del amor
 if($review->getReviewIdWp()== 8246){
     $keywords = 'amor psicología';
+}elseif($review->getReviewIdWp()== 7454){
+    $keywords = 'liseux espiritualidad';
 }
 ?>
 
@@ -43,7 +47,7 @@ if($review->getReviewIdWp()== 8246){
 </div>
 <hr />
 
-<h2>Similares a <?php echo $review->libroTitle;?></h2>
+<h2>Libros similares a <?php echo $review->libroTitle;?></h2>
 
 <div class="text-center p-2">
     <?php echo do_shortcode('[amazon bestseller="'.$keywords.'"]');?>
