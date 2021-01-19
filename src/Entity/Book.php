@@ -25,6 +25,13 @@ abstract class Book
     private $_id;
  
     /**
+     * The ISBN of the product.
+     *
+     * @var string
+     */
+    private $_isbn;
+
+    /**
      * The ASIN of the product.
      *
      * @var string

@@ -103,6 +103,8 @@ if ( ! empty( $libro->getGeneros() ) ) {
 
 <h2>Ficha técnica</h2>
 <ul class="list-group mb-4">
+    <li class="list-group-item"><strong>ISBN</strong>: <a href="<?php echo $libro->getGoodreads_url();?>"><?php echo $libro->getIsbn();?></a></li>
+    <li class="list-group-item"><strong>ASIN</strong>: <a href="<?php echo $libro->getGoodreads_url();?>"><?php echo $libro->getAsin();?></a></li>
     <li class="list-group-item"><strong>Editorial</strong>: <a href="<?php echo $libro->getEditorial_url();?>"><?php echo $libro->getEditorial_nombre();?></a></li>
     <li class="list-group-item"><strong>Fecha publicación</strong>: <?php echo $libro->getFecha_publicacion();?></li>
     <li class="list-group-item"><strong>Formato</strong>: <span class="<?php echo $libro->getFormato_icon();?>"></span> <?php echo $libro->getFormato_texto();?></li>

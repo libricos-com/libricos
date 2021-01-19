@@ -31,6 +31,7 @@ class BookWp extends Book
     {
         $this->post_title = get_the_title();
         $this->post_date = get_the_date();
+        $this->isbn = get_post_meta( $this->id, 'isbn', true );
         $this->asin = get_post_meta( $this->id, 'asin', true );
         $this->puntuacion = '0.0';
         $this->rating_percent = 0;
@@ -58,8 +59,12 @@ class BookWp extends Book
 
 
         $this->editorial = $this->pod->field( 'editorial' );
-        $this->editorial_url = esc_url( get_permalink( $this->editorial['ID'] ) );
-        $this->editorial_nombre = $this->editorial['post_title'];
+        $this->editorial_url = $this->editorial_nombre = '';
+        if(!empty($this->editorial['ID'])){
+            $this->editorial_url = esc_url( get_permalink( $this->editorial['ID'] ) );
+            $this->editorial_nombre = $this->editorial['post_title'];
+        }
+        
 
         // $this->fecha_publicacion = get_post_meta($this->id,'fecha_publicacion')[0];
         $this->fecha_publicacion = $this->pod->field( 'fecha_publicacion' );
