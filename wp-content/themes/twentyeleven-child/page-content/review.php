@@ -4,12 +4,16 @@ use App\Entity\Review;
 $review = new Review($post);
 
 $keywords = $review->libroTitle;
+if(!empty($review->autores[0]['post_title'])){
+    $keywords = $review->autores[0]['post_title'];
+}
 // TODO: pasarlo a bbdd? 
 // Review 5 lenguajes del amor
-if($review->getReviewIdWp()== 8246){
-    $keywords = 'amor psicología';
-}elseif($review->getReviewIdWp()== 7454){
-    $keywords = 'liseux espiritualidad';
+$id = $review->getReviewIdWp();
+if($id == 10215){
+    $keywords = 'peregrino ruso';
+}elseif($id == 383){
+    $keywords = 'apariciones fatima';
 }
 ?>
 
@@ -34,14 +38,10 @@ if($review->getReviewIdWp()== 8246){
         </div>  
     </div>
 
-    <ul>
-        <li><strong>Mi puntuación</strong>: <?php echo $review->get_rating();?></li>
-        <li><a href="<?php echo $review->getGoodreadsUrl();?>">Reseña en Goodreads</a></li>
-    </ul>
-
 </div>
 
-<hr />
+
+<h2>El libro en Amazon España</h2>
 <div class="text-center p-2">
     <?php echo do_shortcode('[amazon box="'.$review->asin.'"]');?>
 </div>
