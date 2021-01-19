@@ -16,8 +16,11 @@ $libro = BookWpFactory::create($post);
     </a>
 </div>
 
-<h2>Sinopsis</h2>
+<h2>Sinopsis del libro <?php echo $libro->getTitulo();?></h2>
 <p><?php echo $libro->getSinopsis();?></p>
+
+<h2>Índice del libro <?php echo $libro->getTitulo();?></h2>
+<p><?php echo $libro->getTableOfContents();?></p>
 
 
 <?php 
@@ -160,7 +163,7 @@ if ( ! empty( $libro->getNotas() ) ) { ?>
 </div>
 <hr />
 
-<h2>Similares</h2>
+<h2>Libros similares a <?php echo $libro->getTitulo();?></h2>
 <div class="text-center p-2">
     <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($libro->getId(),'titulo')[0].'"]');?>
 </div>	

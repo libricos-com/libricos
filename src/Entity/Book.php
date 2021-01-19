@@ -32,11 +32,18 @@ abstract class Book
     private $_asin;
 
     /**
-     * The titulo del libro.
+     * The titulo del libro con autor.
      *
      * @var string
      */
     private $_titulo;
+
+    /**
+     * The titulo del libro in autor.
+     *
+     * @var string
+     */
+    private $_shortTitle;
  
     /**
      * The type of the post.
@@ -199,6 +206,13 @@ abstract class Book
      * @var double
      */
     private $_rating;
+
+    /**
+     * Índice del libro
+     *
+     * @var string
+     */
+    private $_tableOfContents;
 
  
     /**

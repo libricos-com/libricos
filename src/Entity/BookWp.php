@@ -36,6 +36,7 @@ class BookWp extends Book
         $this->rating_percent = 0;
 
         // $this->portada = get_post_meta($this->id,'portada');
+        $this->shortTitle = $this->pod->field( 'titulo' );
         $this->portada = $this->pod->field( 'portada' );
         $this->portada_src = wp_get_attachment_image_src($this->portada['ID'], 400)[0];
         $this->sinopsis = $this->pod->field( 'sinopsis' );
@@ -43,6 +44,7 @@ class BookWp extends Book
         $this->autores=$this->pod->field( 'autores' );
         $this->generos = $this->pod->field( 'generos_literarios' );
         $this->notas = $this->pod->field( 'notas', $this->get_params() );
+        $this->tableOfContents = $this->pod->field( 'table_of_contents' );
 
         // Venimos de la Ficha libro
         // @see: https://developer.wordpress.org/reference/functions/wp_list_categories/
