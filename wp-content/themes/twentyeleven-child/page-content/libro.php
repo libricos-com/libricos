@@ -28,9 +28,11 @@ $notas = $libro->getNotas();
             <a href="<?php echo $libro->getEditorial_url();?>" title="Editorial"><?php echo $libro->getEditorial_nombre();?></a> (<?php echo substr($libro->getFecha_publicacion(), 0, 4);?>)
         </li>
         <li class="list-inline-item">
-            <a href="<?php echo $libro->getGoodreads_url();?>" target="blank" rel="noopener noreferrer" title="Ficha del libro en Goodreads"><i class="fab fa-goodreads fa-2x"></i>
+            <a href="<?php echo $libro->getGoodreads_url();?>" title="Ficha del libro en Goodreads"><i class="fab fa-goodreads fa-2x"></i>
             </a>
         </li>
+        <li class="list-inline-item">ISBN <?php echo $libro->getIsbn();?></li>
+        <li class="list-inline-item">ASIN <?php echo $libro->getAsin();?></li>
     </ul>
 
 
@@ -44,7 +46,7 @@ $notas = $libro->getNotas();
 
             <?php 
             if ( ! empty( $notas ) ) { ?>
-                <div class="d-flex justify-content-start top-left flex-row-reverse">
+                <div class="d-flex flex-wrap justify-content-start top-left flex-row-reverse pr-2">
                     <?php
                     foreach ( $notas as $nota ) { 
                         $idA = $nota[ 'ID' ];
@@ -67,9 +69,7 @@ $notas = $libro->getNotas();
             <div class="bottom-right"><?php echo $libro->getPaginas();?> páginas</div>
             <div class="centered">Centered</div>
 
-            <div class="d-flex justify-content-start bottom-left">
-                <div>ISBN <?php echo $libro->getIsbn();?></div>&nbsp;|&nbsp; 
-                <div>ASIN <?php echo $libro->getAsin();?></div>&nbsp;|&nbsp; 
+            <div class="d-flex justify-content-start bottom-left"> 
                 <div>
                     <span class="<?php echo $libro->getFormato_icon();?>"></span>
                     <?php echo $libro->getFormato_texto();?>&nbsp;<span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span>
