@@ -1,8 +1,16 @@
 <?php
 // TODO: pasar esta lógica a un nivel mayor:
 if( method_exists($this2, 'get_rating') ){
-
-    $rating = '<span>&nbsp;ha reseñado ';
+    $link = 'ha reseñado ';
+    $categories = get_the_category();
+    if(!empty($categories[0])){
+        $referer = $categories[0]->slug;
+        if( $referer == 'libros' ) {
+            $link = '<a href="'.$this2->url_review.'">ha reseñado</a> ';
+        }
+    }
+    
+    $rating = '<span>&nbsp;'.$link;
 
     $rating .= view('../partials/rating', ['this2' => (object) ['puntuacion' => $this2->get_rating(), 'rating_percent' => $this2->get_rating_percent()] ] );
 

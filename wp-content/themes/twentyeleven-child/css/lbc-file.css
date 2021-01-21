@@ -4,3 +4,6 @@
 .lbc-file .lbc-contenido p:first-of-type {
   font-size: 1.4em;
 }
+.lbc-file i {
+  vertical-align: middle;
+}

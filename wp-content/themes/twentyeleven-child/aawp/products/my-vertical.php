@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use App\Entity\BookAmazonFactory;
 $libro = BookAmazonFactory::create($this);
-$url = $libro->getUrl();
-$url = $this->get_product_url();
+$urlLibro = $libro->getUrl();
+// $urlProducto = $this->get_product_url();
 ?>
 
 <div class="jei-amz-grd <?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
@@ -26,12 +26,12 @@ $url = $this->get_product_url();
     <?php $this->the_product_ribbons(); ?>
 
     <a class="aawp-product__image--link aawp-product__image"
-       href="<?php echo $url;?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
+       href="<?php echo $urlLibro;?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
         <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
     </a>
 
     <div class="aawp-product__content">
-        <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
+        <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
             <?php echo $this->truncate( $this->get_product_title(), 50 ); ?>
         </a>
 

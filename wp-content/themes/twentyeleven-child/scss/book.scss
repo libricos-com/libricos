@@ -1,0 +1,59 @@
+.overlay{
+    background-color: rgba(0,0,0,0.5);
+    padding: 1%;
+}
+
+.figure{
+    position: relative;
+    text-align: center;
+    color: white;
+
+    img {
+        width:100%;
+    }
+}
+  
+  /* Bottom left text */
+  .bottom-left {
+    @extend .overlay;
+    position: absolute;
+    left: 16px;
+    bottom: 6%;
+  }
+  
+  /* Top left text */
+  .top-left {
+    position: absolute;
+    top: -.4%;
+    left: 1%;
+  }
+
+  
+  /* Top right text */
+  .top-right {
+    @extend .overlay;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  
+  /* Bottom right text */
+  .bottom-right {
+    @extend .overlay;
+    position: absolute;
+    bottom: 6%;
+    right: 0;
+  }
+  
+  /* Centered text */
+  .centered {
+    @extend .overlay;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .book-authors {
+    display: inline-block;
+  }

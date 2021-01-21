@@ -1,0 +1,53 @@
+.overlay, .centered, .bottom-right, .top-right, .bottom-left {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1%;
+}
+
+.figure {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.figure img {
+  width: 100%;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  left: 16px;
+  bottom: 6%;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: -0.4%;
+  left: 1%;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 6%;
+  right: 0;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.book-authors {
+  display: inline-block;
+}
