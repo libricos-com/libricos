@@ -13,6 +13,7 @@ if(empty($reviews[0])){
     $firstReview = (object)$reviews[0];
     $object = new Review($firstReview);
 }
+$notas = $libro->getNotas();
 ?>
 
 <div class="lbc-file">
@@ -42,10 +43,10 @@ if(empty($reviews[0])){
             <figcaption class="figure-caption text-right">Portada del libro <?php echo $libro->getTitulo();?></figcaption>
 
             <?php 
-            if ( ! empty( $libro->getNotas() ) ) { ?>
+            if ( ! empty( $notas ) ) { ?>
                 <div class="d-flex justify-content-start top-left flex-row-reverse">
                     <?php
-                    foreach ( $libro->getNotas() as $nota ) { 
+                    foreach ( $notas as $nota ) { 
                         $idA = $nota[ 'ID' ];
                         $urlNota = esc_url( get_permalink( $idA ) );
                         $nombreNota = get_the_title( $idA );
@@ -58,10 +59,11 @@ if(empty($reviews[0])){
                     } 
                     ?>
                 </div>
+                <span class="fa-layers-counter fa-4x" style="background:Tomato"><?php echo count($notas);?> notas</span>
                 <?php
             } 
             ?>
-            
+        
             <div class="bottom-right"><?php echo $libro->getPaginas();?> páginas</div>
             <div class="centered">Centered</div>
 
