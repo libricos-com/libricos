@@ -88,30 +88,32 @@ $notas = $libro->getNotas();
     <h2>Índice del libro <?php echo $libro->getTitulo();?></h2>
     <p><?php echo $libro->getTableOfContents();?></p>
 
-
+    
     <?php 
     if ( ! empty( $libro->getGeneros() ) ) {
     ?>
-        <h2>Géneros literarios</h2>
-       
-        <ul class="jei-tag-cloud list-unstyled">  
-            <?php 
-            foreach ( $libro->getGeneros() as $genero ) { 
-                $idA = $genero['term_id'];
-                $nombreGenero = $genero['name'];
-                $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
-                $numPosts = $genero['count'];
-            ?>
-                <li class="d-inline">
-                    <a href="<?php echo $urlGenero;?>" class="btn btn-sm"><?php echo $nombreGenero;?>
-                        <span class="badge badge-light"><?php echo $numPosts;?></span>
-                    </a>  
-                </li>
-            <?php 
-            }
-            ?>
-        </ul>
-
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h2>Géneros literarios</h2>
+                <ul class="jei-tag-cloud list-unstyled">  
+                    <?php 
+                    foreach ( $libro->getGeneros() as $genero ) { 
+                        $idA = $genero['term_id'];
+                        $nombreGenero = $genero['name'];
+                        $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
+                        $numPosts = $genero['count'];
+                    ?>
+                        <li class="d-inline">
+                            <a href="<?php echo $urlGenero;?>" class="btn btn-sm"><?php echo $nombreGenero;?>
+                                <span class="badge badge-light"><?php echo $numPosts;?></span>
+                            </a>  
+                        </li>
+                    <?php 
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
         <?php
     } 
     ?>
@@ -119,21 +121,25 @@ $notas = $libro->getNotas();
     <?php 
     if ( ! empty( $libro->getTags() ) ) {
     ?>
-    <h2>Etiquetas</h2>
-    <ul class="jei-tag-cloud list-unstyled">
-        <?php 
-        $tags = $libro->getTags();
-        foreach ($tags as $tag) { 
-        ?>
-            <li class="d-inline">
-                <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm"><?php echo $tag->name;?>
-                    <span class="badge badge-light"><?php echo $tag->count;?></span>
-                </a>
-            </li>
-        <?php
-        }           
-        ?>
-    </ul>
+    <div class="card text-white bg-dark">
+        <div class="card-body">
+            <h2>Temáticas</h2>
+            <ul class="jei-tag-cloud list-unstyled">
+                <?php 
+                $tags = $libro->getTags();
+                foreach ($tags as $tag) { 
+                ?>
+                    <li class="d-inline">
+                        <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm"><?php echo $tag->name;?>
+                            <span class="badge badge-light"><?php echo $tag->count;?></span>
+                        </a>
+                    </li>
+                <?php
+                }           
+                ?>
+            </ul>
+        </div>
+    </div>
     <?php
     } 
     ?>
