@@ -37,7 +37,7 @@ $jei-colors: map-merge(
 @each $name, $value in $jei-colors {
     $i: index(($jei-colors), ($name $value));
     $class: str-insert($jei-prefix, $name, -1);
-    ul.jei-tag-cloud {
+    .jei-tag-cloud {
         width: 100%; 
         margin: 0;
         li:nth-child(#{length($jei-colors)}n+#{$i}) a{  

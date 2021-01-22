@@ -38,6 +38,10 @@ $notas = $libro->getNotas();
 
     <?php echo view('../partials/publish-info', ['this2' => $object]);?>
 
+    <div class="mt-3">
+        <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
+    </div>
+
     <!-- https://www.w3schools.com/howto/howto_css_image_text.asp -->
     <div class="container text-center mt-4">
         <figure class="figure">
@@ -87,40 +91,53 @@ $notas = $libro->getNotas();
 
     <?php 
     if ( ! empty( $libro->getGeneros() ) ) {
-        ?>
-        <h2>Géneros</h2>
-        <ul class="d-flex flex-wrap mb-4">
-        <?php
-        foreach ( $libro->getGeneros() as $genero ) { 
-            $idA = $genero['term_id'];
-            $nombreGenero = $genero['name'];
-            $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
-            $numPosts = $genero['count'];
+    ?>
+        <h2>Géneros literarios</h2>
+       
+        <ul class="jei-tag-cloud list-unstyled">  
+            <?php 
+            foreach ( $libro->getGeneros() as $genero ) { 
+                $idA = $genero['term_id'];
+                $nombreGenero = $genero['name'];
+                $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
+                $numPosts = $genero['count'];
             ?>
-            <li class="list-group-item">
-                <a href="<?php echo $urlGenero;?>"><?php echo $nombreGenero;?></a> (<?php echo $numPosts;?>)
-            </li>
-            <?php
-        } //end of foreach
-        ?>
+                <li class="d-inline">
+                    <a href="<?php echo $urlGenero;?>" class="btn"><?php echo $nombreGenero;?>
+                        <span class="badge badge-light"><?php echo $numPosts;?></span>
+                    </a>  
+                </li>
+            <?php 
+            }
+            ?>
         </ul>
+
         <?php
-    } //endif ! empty ( $generos )
+    } 
     ?>
 
+    <?php 
+    if ( ! empty( $libro->getTags() ) ) {
+    ?>
     <h2>Etiquetas</h2>
-    <ul class="d-flex flex-wrap mb-4">
+    <ul class="jei-tag-cloud list-unstyled">
         <?php 
         $tags = $libro->getTags();
         foreach ($tags as $tag) { 
         ?>
-            <li class="list-group-item">
-                <a href="<?php echo get_tag_link($tag->term_id);?>"><?php echo $tag->name;?></a> (<?php echo $tag->count;?>)
+            <li class="d-inline">
+                <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn"><?php echo $tag->name;?>
+                    <span class="badge badge-light"><?php echo $tag->count;?></span>
+                </a>
             </li>
         <?php
         }           
         ?>
     </ul>
+    <?php
+    } 
+    ?>
+
 </div>
 
 <hr />
