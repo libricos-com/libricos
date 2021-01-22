@@ -103,7 +103,7 @@ $notas = $libro->getNotas();
                 $numPosts = $genero['count'];
             ?>
                 <li class="d-inline">
-                    <a href="<?php echo $urlGenero;?>" class="btn"><?php echo $nombreGenero;?>
+                    <a href="<?php echo $urlGenero;?>" class="btn btn-sm"><?php echo $nombreGenero;?>
                         <span class="badge badge-light"><?php echo $numPosts;?></span>
                     </a>  
                 </li>
@@ -126,7 +126,7 @@ $notas = $libro->getNotas();
         foreach ($tags as $tag) { 
         ?>
             <li class="d-inline">
-                <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn"><?php echo $tag->name;?>
+                <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm"><?php echo $tag->name;?>
                     <span class="badge badge-light"><?php echo $tag->count;?></span>
                 </a>
             </li>
