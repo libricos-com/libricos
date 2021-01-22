@@ -35,60 +35,25 @@ $notas = $libro->getNotas();
         <li class="list-inline-item">ASIN <?php echo $libro->getAsin();?></li>
     </ul>
 
-
     <?php echo view('../partials/publish-info', ['this2' => $object]);?>
 
-    <div class="mt-3">
+    <div class="mt-3 mb-3">
         <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
     </div>
 
-    <!-- https://www.w3schools.com/howto/howto_css_image_text.asp -->
-    <div class="container text-center mt-4">
-        <figure class="figure">
-            <img src="<?php echo $libro->getPortada_src();?>" class="figure-img img-fluid rounded" alt="Portada del libro <?php echo $libro->getTitulo();?>">
-            <figcaption class="figure-caption text-right">Portada del libro <?php echo $libro->getTitulo();?></figcaption>
-
-            <?php 
-            if ( ! empty( $notas ) ) { ?>
-                <div class="d-flex flex-wrap justify-content-start top-left flex-row-reverse pr-2">
-                    <?php
-                    foreach ( $notas as $nota ) { 
-                        $idA = $nota[ 'ID' ];
-                        $urlNota = esc_url( get_permalink( $idA ) );
-                        $nombreNota = get_the_title( $idA );
-                        // $fechaNota = date('d-m-y', strtotime($nota['post_date']));
-                        ?>
-                        <div class="pl-2">
-                            <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="<?php echo $nombreNota;?>"><i class="fas fa-bookmark fa-4x text-primary"></i></a>
-                        </div>
-                        <?php
-                    } 
-                    ?>
-                </div>
-                <span class="fa-layers-counter fa-4x" style="background:Tomato"><?php echo count($notas);?> notas</span>
-                <?php
-            } 
-            ?>
-        
-            <div class="bottom-right"><?php echo $libro->getPaginas();?> páginas</div>
-            <div class="centered">Centered</div>
-
-            <div class="d-flex justify-content-start bottom-left"> 
-                <div>
-                    <span class="<?php echo $libro->getFormato_icon();?>"></span>
-                    <?php echo $libro->getFormato_texto();?>&nbsp;<span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span>
-                </div>
-            </div>
-        </figure>
+    <div class="row">
+        <div class="col-md-4">
+            <?php echo do_shortcode(' [amazon box="'.$libro->getAsin().'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
+        </div> 
+        <div class="lbc-contenido2 col-md-8">
+            <h2>Sinopsis</h2>
+            <p><?php echo $libro->getSinopsis();?></p>
+        </div> 
     </div>
 
-    <h2>Sinopsis del libro <?php echo $libro->getTitulo();?></h2>
-    <p><?php echo $libro->getSinopsis();?></p>
-
-    <h2>Índice del libro <?php echo $libro->getTitulo();?></h2>
+    <h2>Índice</h2>
     <p><?php echo $libro->getTableOfContents();?></p>
 
-    
     <?php 
     if ( ! empty( $libro->getGeneros() ) ) {
     ?>
@@ -143,6 +108,48 @@ $notas = $libro->getNotas();
     <?php
     } 
     ?>
+
+
+    <!-- https://www.w3schools.com/howto/howto_css_image_text.asp -->
+    <div class="container text-center mt-4">
+        <figure class="figure">
+            <img src="<?php echo $libro->getPortada_src();?>" class="figure-img img-fluid rounded" alt="Portada del libro <?php echo $libro->getTitulo();?>">
+            <figcaption class="figure-caption text-right">Portada del libro <?php echo $libro->getTitulo();?></figcaption>
+
+            <?php 
+            if ( ! empty( $notas ) ) { ?>
+                <div class="d-flex flex-wrap justify-content-start top-left flex-row-reverse pr-2">
+                    <?php
+                    foreach ( $notas as $nota ) { 
+                        $idA = $nota[ 'ID' ];
+                        $urlNota = esc_url( get_permalink( $idA ) );
+                        $nombreNota = get_the_title( $idA );
+                        // $fechaNota = date('d-m-y', strtotime($nota['post_date']));
+                        ?>
+                        <div class="pl-2">
+                            <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="<?php echo $nombreNota;?>"><i class="fas fa-bookmark fa-4x text-primary"></i></a>
+                        </div>
+                        <?php
+                    } 
+                    ?>
+                </div>
+                <span class="fa-layers-counter fa-4x" style="background:Tomato"><?php echo count($notas);?> notas</span>
+                <?php
+            } 
+            ?>
+        
+            <div class="bottom-right"><?php echo $libro->getPaginas();?> páginas</div>
+            <div class="centered">Centered</div>
+
+            <div class="d-flex justify-content-start bottom-left"> 
+                <div>
+                    <span class="<?php echo $libro->getFormato_icon();?>"></span>
+                    <?php echo $libro->getFormato_texto();?>&nbsp;<span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span>
+                </div>
+            </div>
+        </figure>
+    </div>
+
 
 </div>
 
