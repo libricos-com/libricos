@@ -1,6 +1,24 @@
-.overlay, .centered, .bottom-right, .top-right, .bottom-left {
+.overlay, .centered, .bottom-right, .top-right, .bottom-left, .lbc-aawp-book .bottom-right, .lbc-aawp-book .bottom-left {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1%;
+}
+
+.lbc-aawp-book {
+  /* Bottom left text */
+  /* Bottom right text */
+}
+.lbc-aawp-book .aawp-product__image {
+  position: relative;
+}
+.lbc-aawp-book .bottom-left {
+  position: absolute;
+  left: 1%;
+  bottom: 2%;
+}
+.lbc-aawp-book .bottom-right {
+  position: absolute;
+  bottom: 2%;
+  right: 20%;
 }
 
 .figure {

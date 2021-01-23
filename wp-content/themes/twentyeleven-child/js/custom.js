@@ -8,4 +8,11 @@ window.onload = function(){
 		nodes[1].remove();
 	}
 	*/
+	// alert("onload");
+	
 };
+
+
+
+
+

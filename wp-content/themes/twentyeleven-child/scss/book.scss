@@ -3,6 +3,31 @@
     padding: 1%;
 }
 
+
+.lbc-aawp-book {
+  .aawp-product__image {
+    position: relative;
+  }
+
+  /* Bottom left text */
+  .bottom-left {
+    @extend .overlay;
+    position: absolute;
+    left: 1%;
+    bottom: 2%;
+  }
+
+  /* Bottom right text */
+  .bottom-right {
+    @extend .overlay;
+    position: absolute;
+    bottom: 2%;
+    right: 20%;
+  }
+}
+
+
+
 .figure{
     position: relative;
     text-align: center;

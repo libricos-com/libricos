@@ -7,3 +7,9 @@
 .lbc-file i {
   vertical-align: middle;
 }
+.lbc-file .card-img-top {
+  width: 100%;
+  height: 10vw;
+  object-fit: cover;
+  padding: 0 5%;
+}
