@@ -35,16 +35,26 @@ Text Domain: twentyeleven-child
 @import url("../twentyeleven-child/css/review-summary.css");
 @import url("../twentyeleven-child/css/autores.css");
 @import url("../twentyeleven-child/css/searchform-complete.css");
+@import url("../twentyeleven-child/css/book.css");
 
 
 
 /*
+Font Awesome:
+https://cdnjs.com/libraries/font-awesome
+
 Added icons:
 https://glyphsearch.com/?query=amazon
 */
 /*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
-@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
-/*@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.css");*/
-@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/brands.min.css");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/brands.min.css");
+/* @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/regular.min.css"); */
+/* @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/solid.min.css"); */
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/svg-with-js.min.css");
 
+/*@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/font-awesome.css");*/
 @import url("//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css");
+
+/* @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"); */
+/* @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/brands.min.js"); */

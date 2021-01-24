@@ -13,11 +13,11 @@ if(!empty($this2->autores)){
         ?>
             <li class="list-inline-item">
                 <div class="chip align-bottom">
-                    <a href="<?php echo esc_url( get_permalink( $autor['ID'] ) );?>" target="blank" alt="<?php echo $autor['post_title'];?>">
-                        <img src="<?php echo $img;?>" alt="<?php echo $autor['post_title'];?>" title="<?php echo $autor['post_title'];?>">
+                    <a href="<?php echo esc_url( get_permalink( $autor['ID'] ) );?>" target="blank" title="Autor <?php echo $autor['post_title'];?>">
+                        <img src="<?php echo $img;?>" alt="<?php echo $autor['post_title'];?>" title="Autor <?php echo $autor['post_title'];?>">
                     </a> 
                 </div>
-                <a href="<?php echo esc_url( get_permalink( $autor['ID'] ) );?>" alt=""><?php echo $autor['post_title'];?></a>
+                <a href="<?php echo esc_url( get_permalink( $autor['ID'] ) );?>" title="Autor"><?php echo $autor['post_title'];?></a>
             </li>
 
             <?php

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use App\Entity\Review;
 $review = new Review($this);
-$url = $review->url_libro;
+$urlLibro = $review->url_libro;
 $url = $this->get_product_url();
 
 $imgProduct = $this->get_product_image();
@@ -57,12 +57,12 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
         
 
         <div class="row mt-2 ml-1">
-            <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
+            <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
                 <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
             </a>
             <div class="col-md-10">
                 <h3>
-                    <a class="aawp-product__title" href="<?php echo $this->get_product_url();?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
+                    <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" rel="nofollow" target="_blank">
                         <?php echo $this->get_product_title();?>
                     </a>
                 </h3>

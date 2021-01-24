@@ -170,7 +170,7 @@ abstract class Book
      *
      * @var string
      */
-    private $formato_icon;
+    private $_formato_icon;
 
     /**
      * Número de páginas del libro

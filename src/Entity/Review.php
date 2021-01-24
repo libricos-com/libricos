@@ -84,6 +84,14 @@ class Review
      */
     private $_post_date;
 
+
+    /**
+     * Tipo de post
+     *
+     * @var string
+     */
+    private $_post_type;
+
  
     /**
      * Constructor.
@@ -98,7 +106,7 @@ class Review
                 $this->_reviewId = $this->getReviewId();
                 $this->asin = $this->_aawp->get_product_id();
                 $this->fillAawp();
-            }elseif($object instanceof \WP_Post){
+            }elseif(is_object($object) || $object instanceof \WP_Post){
                 $this->_post = $object;
                 $this->_reviewId = $object->ID;
                 
@@ -137,6 +145,7 @@ class Review
 
         $this->post_title = get_the_title($post_id);
         $this->_post_date = get_fecha_larga($post_id);
+        $this->_post_type = 'review';
         // $this->id_libro1 =  $this->pod->field( 'libro');
         $this->id_libro = get_post_meta($post_id,'libro')[0]['ID'];
         $this->url_libro = esc_url( get_permalink( $this->id_libro ) );
@@ -238,6 +247,11 @@ class Review
     public function get_post_date()
     {
         return $this->_post_date;
+    }
+
+    public function getPostType()
+    {
+        return $this->_post_type;
     }
 
     public function getGoodreadsUrl()

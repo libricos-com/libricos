@@ -9,11 +9,11 @@ function carga_bootstrap()
 {
     $path = get_template_directory_uri();
     wp_enqueue_script( 'bootstrap-js', $path.'../../../../vendor/twbs/bootstrap/dist/js/bootstrap.min.js', array('jquery'), NULL, true );
-    wp_enqueue_style( 'bootstrap-css', $path.'../../../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css', false, NULL, 'all' );
+    // wp_enqueue_style( 'bootstrap-css', $path.'../../../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css', false, NULL, 'all' );
 }
 function my_custom_scripts() 
 {
-	carga_bootstrap();	
+	// carga_bootstrap();	
     wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery' ),'',true );
     }
 add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );

@@ -1,0 +1,71 @@
+.overlay, .centered, .bottom-right, .top-right, .bottom-left, .lbc-aawp-book .bottom-right, .lbc-aawp-book .bottom-left {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1%;
+}
+
+.lbc-aawp-book {
+  /* Bottom left text */
+  /* Bottom right text */
+}
+.lbc-aawp-book .aawp-product__image {
+  position: relative;
+}
+.lbc-aawp-book .bottom-left {
+  position: absolute;
+  left: 1%;
+  bottom: 2%;
+}
+.lbc-aawp-book .bottom-right {
+  position: absolute;
+  bottom: 2%;
+  right: 20%;
+}
+
+.figure {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.figure img {
+  width: 100%;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  left: 16px;
+  bottom: 6%;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: -0.4%;
+  left: 1%;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 6%;
+  right: 2%;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.book-authors {
+  display: inline-block;
+}

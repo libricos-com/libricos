@@ -4,170 +4,184 @@ The template for displaying content in the single-libro.php template
 @see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 */
 use App\Entity\BookWpFactory;
+use App\Entity\Review;
 $libro = BookWpFactory::create($post);
+$reviews = $libro->getReviews();
+if(empty($reviews[0])){
+    $object = $libro;
+}else{
+    $firstReview = (object)$reviews[0];
+    $object = new Review($firstReview);
+}
+$notas = $libro->getNotas();
 ?>
 
-<h1><?php echo $libro->getTitulo();?></h1>
+<div class="lbc-file">
 
-<div class="mb-3">Fecha post: <?php echo $libro->post_date;?></div>
+    <h1 class="lbc-h1"><?php echo $libro->getTitulo();?></h1>
 
-<div class="text-center mb-4">
-    <a href="<?php echo $libro->getUrl();?>"><img src="<?php echo $libro->getPortada_src();?>" alt="Portada del libro <?php echo $libro->getTitulo();?>" class="img-fluid" />
-    </a>
-</div>
-
-<h2>Sinopsis del libro <?php echo $libro->getTitulo();?></h2>
-<p><?php echo $libro->getSinopsis();?></p>
-
-<h2>Índice del libro <?php echo $libro->getTitulo();?></h2>
-<p><?php echo $libro->getTableOfContents();?></p>
-
-
-<?php 
-if ( ! empty( $libro->getAutores() ) ) {
-    ?>
-    <h2>Autor/es</h2>
-    <ul class="list-group list-group-horizontal-sm mb-4">
-    <?php
-    foreach ( $libro->getAutores() as $autor ) { 
-        //get id for related post and put in ID
-        //for advanced content types use $id = $rel[ 'id' ];
-        $idA = $autor[ 'ID' ];
-        //show the related post name as link
-        $urlAutor = esc_url( get_permalink( $idA ) );
-        $nombreAutor = get_the_title( $idA );
-        //get the value for some_field in related post and echo it
-        // $someField = get_post_meta( $idA, 'post_title', true );
-        ?>
-        <li class="list-group-item">
-            <a href="<?php echo $urlAutor;?>"><?php echo $nombreAutor;?></a>
+    <ul class="list-inline-bullets">
+        <li class="list-inline-item">
+            <?php echo view('../partials/libro-autores', ['this2' =>  $object]);?>
         </li>
-        <?php
-    } //end of foreach
-    ?>
+        <li class="list-inline-item">ISBN <?php echo $libro->getIsbn();?></li>
+        <li class="list-inline-item">ASIN <?php echo $libro->getAsin();?></li>
+        <li class="list-inline-item">
+            <a href="<?php echo $libro->getEditorial_url();?>" title="Editorial"><?php echo $libro->getEditorial_nombre();?></a> (<?php echo substr($libro->getFecha_publicacion(), 0, 4);?>)
+        </li>
+
+        <li class="list-inline-item"> 
+            <span class="<?php echo $libro->getFormato_icon();?>"></span>
+            <?php echo $libro->getFormato_texto();?>&nbsp;<span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span>  
+        </li>
+
+
+        <li class="list-inline-item">
+            <a href="<?php echo $libro->getGoodreads_url();?>" title="Ficha del libro en Goodreads"><i class="fab fa-goodreads fa-2x"></i>
+            </a>
+        </li>
+
+
+
+        
     </ul>
-    <?php
-} //endif ! empty ( $autores )
-?>
 
-<?php 
-if ( ! empty( $libro->getGeneros() ) ) {
-    ?>
-    <h2>Géneros</h2>
-    <ul class="d-flex flex-wrap mb-4">
-    <?php
-    foreach ( $libro->getGeneros() as $genero ) { 
-        $idA = $genero['term_id'];
-        $nombreGenero = $genero['name'];
-        $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
-        $numPosts = $genero['count'];
-        ?>
-        <li class="list-group-item">
-            <a href="<?php echo $urlGenero;?>"><?php echo $nombreGenero;?></a> (<?php echo $numPosts;?>)
-        </li>
-        <?php
-    } //end of foreach
-    ?>
-    </ul>
-    <?php
-} //endif ! empty ( $generos )
-?>
+    <?php echo view('../partials/publish-info', ['this2' => $object]);?>
 
-<h2>Categorías</h2>
-<ul class="d-flex flex-wrap mb-4">
-<?php 
-    $categorias = $libro->getCategorias();
-    foreach ($categorias as $cat) { 
-    ?>
-        <li class="list-group-item">
-            <a href="<?php echo get_tag_link($cat->term_id);?>"><?php echo $cat->name;?></a> (<?php echo $cat->count;?>)
-        </li>
-    <?php
-    }           
-    ?>
-</ul>
+    <div class="mt-3 mb-3">
+        <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
+    </div>
 
-<h2>Etiquetas</h2>
-<ul class="d-flex flex-wrap mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
+                
+                tpl_pages="'.$libro->getPaginas().'"
+            
+            ] ');?>
+        </div> 
+        <div class="lbc-contenido2 col-md-8">
+            <h2>Resumen del libro</h2>
+            <p><?php echo $libro->getSinopsis();?></p>
+        </div> 
+    </div>
+
+    <h2>Índice</h2>
+    <p><?php echo $libro->getTableOfContents();?></p>
+
     <?php 
-    $tags = $libro->getTags();
-    foreach ($tags as $tag) { 
+    if ( ! empty( $libro->getGeneros() ) ) {
     ?>
-        <li class="list-group-item">
-            <a href="<?php echo get_tag_link($tag->term_id);?>"><?php echo $tag->name;?></a> (<?php echo $tag->count;?>)
-        </li>
-    <?php
-    }           
-    ?>
-</ul>
-
-<h2>Ficha técnica</h2>
-<ul class="list-group mb-4">
-    <li class="list-group-item"><strong>ISBN</strong>: <a href="<?php echo $libro->getGoodreads_url();?>"><?php echo $libro->getIsbn();?></a></li>
-    <li class="list-group-item"><strong>ASIN</strong>: <a href="<?php echo $libro->getGoodreads_url();?>"><?php echo $libro->getAsin();?></a></li>
-    <li class="list-group-item"><strong>Editorial</strong>: <a href="<?php echo $libro->getEditorial_url();?>"><?php echo $libro->getEditorial_nombre();?></a></li>
-    <li class="list-group-item"><strong>Fecha publicación</strong>: <?php echo $libro->getFecha_publicacion();?></li>
-    <li class="list-group-item"><strong>Formato</strong>: <span class="<?php echo $libro->getFormato_icon();?>"></span> <?php echo $libro->getFormato_texto();?></li>
-    <li class="list-group-item"><strong>Páginas</strong>: <?php echo $libro->getPaginas();?></li>
-    <li class="list-group-item"><strong>Idioma</strong>: <span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span></li>
-    <li class="list-group-item"><i class="fab fa-goodreads"></i><a href="<?php echo $libro->getGoodreads_url();?>" target="blank" rel="noopener noreferrer"> Ficha Goodreads</a></li>
-</ul>
-
-<?php 
-if ( ! empty( $libro->getReviews() ) ) {
-    ?>
-    <h2>Reviews <span class="badge badge-danger"><i class="fas fa-clipboard-list mr-1"></i><span class="badge badge-danger"><?php echo count($libro->getReviews());?></span></span></h2>
-    <ul class="list-unstyled">
+        <hr />
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h2>Géneros literarios</h2>
+                <ul class="jei-tag-cloud list-unstyled">  
+                    <?php 
+                    foreach ( $libro->getGeneros() as $genero ) { 
+                        $idA = $genero['term_id'];
+                        $nombreGenero = $genero['name'];
+                        $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
+                        $numPosts = $genero['count'];
+                    ?>
+                        <li class="d-inline">
+                            <a href="<?php echo $urlGenero;?>" class="btn btn-sm"><?php echo $nombreGenero;?>
+                                <span class="badge badge-light"><?php echo $numPosts;?></span>
+                            </a>  
+                        </li>
+                    <?php 
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
         <?php
-        foreach ( $libro->getReviews() as $review ) { 
-            $idA = $review[ 'ID' ];
-            $urlReview = esc_url( get_permalink( $idA ) );
-            $nombreReview = get_the_title( $idA );
-            ?>
-            <li>
-                <span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d-m-y', strtotime($review['post_date']));?></span>
-                <i class="fas fa-clipboard-list"><a href="<?php echo $urlReview;?>" data-toggle="tooltip" title="Esto es una reseña del libro <?php echo $libro->getTitulo();?>"></i> <?php echo $nombreReview;?></a>
-            </li>
-            <?php
-        } 
-        ?>
-    </ul>
+    } 
+    ?>
+
+    <?php 
+    if ( ! empty( $libro->getTags() ) ) {
+    ?>
+    <div class="card text-white bg-dark">
+        <div class="card-body">
+            <h2>Temáticas</h2>
+            <ul class="jei-tag-cloud list-unstyled">
+                <?php 
+                $tags = $libro->getTags();
+                foreach ($tags as $tag) { 
+                ?>
+                    <li class="d-inline">
+                        <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm"><?php echo $tag->name;?>
+                            <span class="badge badge-light"><?php echo $tag->count;?></span>
+                        </a>
+                    </li>
+                <?php
+                }           
+                ?>
+            </ul>
+        </div>
+    </div>
+    <hr />
     <?php
-} 
-?>
+    } 
+    ?>
 
 
-<?php 
-if ( ! empty( $libro->getNotas() ) ) { ?>
-    <h2>Notas <span class="badge badge-warning"> <i class="fas fa-pencil-alt mr-1"></i><span class="badge badge-danger"><?php echo count($libro->getNotas());?></span></span></h2>
-    <ul class="list-unstyled">
+
+    <?php 
+    if ( ! empty( $notas ) ) { ?>
+        <div class="container card-group bg-dark mt-4 rounded">
+            <h2>Notas</h2>
+            <div class="row">
+                <?php
+                $i = 1;
+                foreach ( $notas as $nota ) { 
+                    $id = $nota[ 'ID' ];
+                    $urlNota = esc_url( get_permalink( $id ) );
+                    $nombreNota = get_the_title( $id );
+                    $fecha = date('d-m-y', strtotime($nota['post_date']));
+                    $tituloLibro = $libro->getTitulo();
+                    $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
+                    ?>
+                    
+                    <div class="col-md-4 d-flex align-items-stretch mb-4">
+                        
+                        <div class="card bg-secondary border-secondary text-white">
+                            <div class="card-header">
+                                <i class="fas fa-bookmark text-primary"></i>
+                                <?php echo $fecha;?>
+                            </div>
+                            <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="<?php echo $nombreNota;?>"><img class="card-img-top rounded" src="<?php echo $src;?>" alt="<?php echo $nombreNota;?>"></a>
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text"><?php echo $nombreNota;?></p>    
+                            </div>
+                        
+                        </div>
+                        
+                    </div>
+
+                <?php
+                $i++;
+                } 
+                ?>
+            </div>
+        </div>
         <?php
-        foreach ( $libro->getNotas() as $nota ) { 
-            $idA = $nota[ 'ID' ];
-            $urlNota = esc_url( get_permalink( $idA ) );
-            $nombreNota = get_the_title( $idA );
-            ?>
-            <li>
-                <span class="badge badge-pill btn-secondary"><i class="fas fa-clock" aria-hidden="true"></i> <?php echo date('d-m-y', strtotime($nota['post_date']));?></span>
-                <i class="fas fa-pencil-alt"></i> <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="Esto es una nota del libro <?php echo $libro->getTitulo();?>"><?php echo $nombreNota;?></a>
-            </li>
-            <?php
-        } 
-        ?>
-    </ul>
-    <?php
-} 
-?>
+    } 
+    ?>
 
-<hr />
-<div class="text-center p-2">
-    <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'"]');?>
 </div>
+
 <hr />
+
 
 <h2>Libros similares a <?php echo $libro->getTitulo();?></h2>
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($libro->getId(),'titulo')[0].'"]');?>
+    <?php 
+    echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.	get_post_meta($libro->getId(),'titulo')[0].'"]');
+    // echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+    ?>
 </div>	
 
 
