@@ -72,6 +72,7 @@ $notas = $libro->getNotas();
     <?php 
     if ( ! empty( $libro->getGeneros() ) ) {
     ?>
+        <hr />
         <div class="card text-white bg-dark mb-3">
             <div class="card-body">
                 <h2>Géneros literarios</h2>
@@ -120,6 +121,7 @@ $notas = $libro->getNotas();
             </ul>
         </div>
     </div>
+    <hr />
     <?php
     } 
     ?>
@@ -128,8 +130,8 @@ $notas = $libro->getNotas();
 
     <?php 
     if ( ! empty( $notas ) ) { ?>
-        <div class="container">
-            <h2>Notas <span class="badge badge-warning"> <i class="fas fa-pencil-alt mr-1"></i><span class="badge badge-danger"><?php echo count($libro->getNotas());?></span></span></h2>
+        <div class="container card-group bg-dark mt-4 rounded">
+            <h2>Notas</h2>
             <div class="row">
                 <?php
                 $i = 1;
@@ -144,7 +146,7 @@ $notas = $libro->getNotas();
                     
                     <div class="col-md-4 d-flex align-items-stretch mb-4">
                         
-                        <div class="card bg-dark">
+                        <div class="card bg-secondary border-secondary text-white">
                             <div class="card-header">
                                 <i class="fas fa-bookmark text-primary"></i>
                                 <?php echo $fecha;?>
@@ -169,19 +171,17 @@ $notas = $libro->getNotas();
     } 
     ?>
 
-
-
 </div>
 
 <hr />
-<div class="text-center p-2">
-    <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'"]');?>
-</div>
-<hr />
+
 
 <h2>Libros similares a <?php echo $libro->getTitulo();?></h2>
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.	get_post_meta($libro->getId(),'titulo')[0].'"]');?>
+    <?php 
+    echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.	get_post_meta($libro->getId(),'titulo')[0].'"]');
+    // echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+    ?>
 </div>	
 
 
