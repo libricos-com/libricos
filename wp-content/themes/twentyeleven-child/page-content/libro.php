@@ -2,6 +2,9 @@
 /*
 The template for displaying content in the single-libro.php template
 @see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
+FIXME: ejemplo de corrección o mejora que debería hacerse
+BUG: ejemplo de fallo gordo o error que afecta al sistema
+TEST: ejemplo tag test
 */
 use App\Entity\BookWpFactory;
 use App\Entity\Review;
@@ -61,7 +64,7 @@ $notas = $libro->getNotas();
             ] ');?>
         </div> 
         <div class="lbc-contenido2 col-md-8">
-            <h2>Resumen del libro</h2>
+            <h2>Sinopsis</h2>
             <p><?php echo $libro->getSinopsis();?></p>
         </div> 
     </div>
