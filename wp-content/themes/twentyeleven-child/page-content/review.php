@@ -7,7 +7,7 @@ $keywords = $review->libroTitle;
 if(!empty($review->autores[0]['post_title'])){
     $keywords = $review->autores[0]['post_title'];
 }
-// TODO: pasarlo a bbdd? 
+// TODO: review pasar keywords a bbdd? 
 // Review 5 lenguajes del amor
 $id = $review->getReviewIdWp();
 if($id == 10215){

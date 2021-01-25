@@ -25,7 +25,7 @@
     $titulo_a_secas = get_post_meta($libro['ID'],'titulo')[0];
 
     $keywords = $titulo_a_secas;
-    // TODO: pasarlo a bbdd? 
+    // TODO: notas, pasar keywords a bbdd? 
     // Apuntes los 4 amores
     if($id== 8734){
         $keywords = 'amor psicología';

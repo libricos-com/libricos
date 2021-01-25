@@ -269,7 +269,7 @@ class Review
         return $this->_rating_percent;
     }
 
-    // TODO: pasarlo a método static
+    // TODO: review.getAll() pasarlo a método static
     public function get_all($params = null)
     {
         if(empty($params)){

@@ -1,5 +1,5 @@
 <?php
-// TODO: pasar esta lógica a un nivel mayor:
+// TODO: pasar lógica partial publish-info a un nivel mayor
 if( method_exists($this2, 'get_rating') ){
     $link = 'ha reseñado ';
     $categories = get_the_category();
