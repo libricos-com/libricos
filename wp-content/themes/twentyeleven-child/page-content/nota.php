@@ -42,12 +42,6 @@
 
     <hr />
 
-    <div class="text-center mb-4">
-        <a href="<?php echo $libro_link;?>">
-            <img src="<?php echo $src;?>" alt="<?php echo $titulo;?>" class="img-fluid rounded" />
-        </a>
-    </div>
-
     <div>
         <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
             <?php echo do_shortcode(' [amazon box="'.$asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
