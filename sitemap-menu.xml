@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://libricos.com/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://libricos.com/biblioteca/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://libricos.com/reviews/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.95</priority>
+</url>
+<url>
+  <loc>https://libricos.com/notas/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.95</priority>
+</url>
+<url>
+  <loc>https://libricos.com/autores/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://libricos.com/editoriales/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://libricos.com/contacto/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://libricos.com/about/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://libricos.com/politica-privacidad/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://libricos.com/author/jesuserro/</loc>
+  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <priority>0.5</priority>
+</url>
+
+</urlset>
