@@ -6,6 +6,36 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
+  <loc>https://libricos.com/generos/memorias/</loc>
+  <lastmod>2021-01-27T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/generos/series/</loc>
+  <lastmod>2021-01-27T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/generos/devocional/</loc>
+  <lastmod>2021-01-27T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/generos/catolicismo/</loc>
+  <lastmod>2021-01-27T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/generos/teologia/</loc>
+  <lastmod>2021-01-27T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/generos/religion/</loc>
+  <lastmod>2021-01-27T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
   <loc>https://libricos.com/generos/cristianismo/</loc>
   <lastmod>2021-01-27T09:10:00+00:00</lastmod>
   <priority>0.70</priority>
@@ -77,11 +107,6 @@
 </url>
 <url>
   <loc>https://libricos.com/generos/psicologia/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
-<url>
-  <loc>https://libricos.com/generos/testimonios/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
 </url>

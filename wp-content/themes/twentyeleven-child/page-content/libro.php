@@ -56,14 +56,14 @@ $notas = $libro->getNotas();
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-4 col-md-4">
             <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
                 
                 tpl_pages="'.$libro->getPaginas().'"
             
             ] ');?>
         </div> 
-        <div class="lbc-contenido2 col-md-8">
+        <div class="lbc-contenido2 col-sm-8 col-md-8">
             <h2>Sinopsis</h2>
             <p><?php echo $libro->getSinopsis();?></p>
         </div> 
@@ -88,7 +88,7 @@ $notas = $libro->getNotas();
                         $numPosts = $genero['count'];
                     ?>
                         <li class="d-inline">
-                            <a href="<?php echo $urlGenero;?>" class="btn btn-sm"><?php echo $nombreGenero;?>
+                            <a href="<?php echo $urlGenero;?>" class="btn btn-sm mb-2"><?php echo $nombreGenero;?>
                                 <span class="badge badge-light"><?php echo $numPosts;?></span>
                             </a>  
                         </li>
@@ -114,7 +114,7 @@ $notas = $libro->getNotas();
                 foreach ($tags as $tag) { 
                 ?>
                     <li class="d-inline">
-                        <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm"><?php echo $tag->name;?>
+                        <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm mb-2"><?php echo $tag->name;?>
                             <span class="badge badge-light"><?php echo $tag->count;?></span>
                         </a>
                     </li>
@@ -133,7 +133,7 @@ $notas = $libro->getNotas();
 
     <?php 
     if ( ! empty( $notas ) ) { ?>
-        <div class="container card-group bg-dark mt-4 rounded">
+        <div class="container-fluid card-group bg-dark mt-4 rounded">
             <h2>Notas</h2>
             <div class="row">
                 <?php
@@ -147,7 +147,7 @@ $notas = $libro->getNotas();
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
-                    <div class="col-md-4 d-flex align-items-stretch mb-4">
+                    <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">
                         
                         <div class="card bg-secondary border-secondary text-white">
                             <div class="card-header">

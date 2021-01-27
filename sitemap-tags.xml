@@ -5,6 +5,138 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+
+
+<url>
+  <loc>https://libricos.com/temas/espiritu-santo/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/paz/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/pecado/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/temor/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/miedo/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/meditaciones/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/paciencia/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/salmos/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/semana-santa/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/muerte/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/cuaresma/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/jesucristo/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/familia/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/monjes/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/testimonios/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/antiguo-testamento/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/limites/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/identidad/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/autoestima/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/metaforas/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/virtudes/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/rusia/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/caridad/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/afectividad/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/amistad/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/paganismo/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
 <url>
   <loc>https://libricos.com/temas/enamoramiento/</loc>
   <lastmod>2021-01-27T09:12:58+00:00</lastmod>
@@ -152,11 +284,6 @@
 </url>
 <url>
   <loc>https://libricos.com/temas/profecias/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
-<url>
-  <loc>https://libricos.com/temas/psicologia/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
 </url>
