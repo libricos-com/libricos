@@ -29,6 +29,40 @@
     // Apuntes los 4 amores
     if($id== 8734){
         $keywords = 'amor psicología';
+    }elseif($id==5042){ // 'benedicto 16'
+        $keywords = 'benedicto 16';
+    }elseif($id==5046){ // 'bautismo'
+        $keywords = 'bautismo cristo';
+    }elseif($id==5027){ // 'tentaciones'
+        $keywords = 'tentaciones cristo';
+    }elseif($id==5049){ // 'bienaventuranzas'
+        $keywords = 'bienaventuranzas';
+    }elseif($id==5875){ // 'imagenes evangelio juan'
+        $keywords = 'san juan';
+    }elseif($id==5995){ // 'confesión san pedro'
+        $keywords = 'san pedro';
+    }elseif($id==6161){ // 'nombres jesús'
+        $keywords = 'jesucristo';
+    }elseif($id==6070){ // 'transfiguración'
+        $keywords = 'transfiguración cristo';
+    }elseif($id==6293){ // 'discípulos'
+        $keywords = 'apostoles cristo';
+    }elseif($id==6319){ // 'torá'
+        $keywords = 'cristo judaismo';
+    }elseif($id==6573){ // 'domingo ramos'
+        $keywords = 'cristo pascua';
+    }elseif($id==6658){ // 'última cena'
+        $keywords = 'última cena cristo';
+    }elseif($id==6747){ // 'getsemaní'
+        $keywords = 'jerusalen';
+    }elseif($id==7173){ // 'ascensión'
+        $keywords = 'ascensión cristo';
+    }elseif($id==7089){ // 'resurrección'
+        $keywords = 'resurrección cristo';
+    }elseif($id==6941){ // 'crucifixión y sepultura'
+        $keywords = 'pasión cristo';
+    }elseif($id==6883){ // 'juicio a cristo'
+        $keywords = 'libros cuaresma';
     }
 ?>
 <div class="lbc-file">
@@ -60,8 +94,12 @@
 </div>
 <hr />
 
-<h2>Libros similares a <?php echo $titulo_a_secas;?></h2>
+<h2>Libros similares</h2>
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.$keywords.'" items="12"]');?>
+    <?php 
+    echo do_shortcode('[amazon bestseller="'.$keywords.'" template="vertical" grid="3" items="12"]');
+    ?>
 </div>
+
+
 

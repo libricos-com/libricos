@@ -2,7 +2,7 @@
 
 
     <div class="aawp-product__thumb">
-        <a class="aawp-product__image-link" href="<?php echo $this2->urlArticulo; ?>" title="<?php echo $this2->post_title; ?>" rel="nofollow" target="_blank">
+        <a class="aawp-product__image-link" href="<?php echo $this2->urlArticulo; ?>" title="<?php echo $this2->post_title; ?>" target="_blank">
             <img class="aawp-product__image" src="<?php echo $this2->pic; ?>" alt="<?php echo $this2->post_title; ?>">
         </a>
     </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <a class="h3" href="<?php echo $this2->urlArticulo; ?>" title="<?php echo $this2->post_title;?>" rel="nofollow" target="_blank">
+        <a class="h3" href="<?php echo $this2->urlArticulo; ?>" title="<?php echo $this2->post_title;?>" target="_blank">
         <?php echo $this2->post_title;?></a>
         
 

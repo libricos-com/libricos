@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use App\Entity\Review;
 $review = new Review($this);
-$url = $review->url_libro;
+// $url = $review->url_libro;
 $url = $this->get_product_url();
 ?>
 

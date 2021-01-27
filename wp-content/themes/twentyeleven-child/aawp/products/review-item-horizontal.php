@@ -21,7 +21,7 @@ $url = $this->get_product_url();
 
     <div class="aawp-product__thumb">
         <a class="aawp-product__image-link"
-           href="<?php echo $urlLibro; ?>" title="<?php echo $this->get_product_image_link_title(); ?>" rel="nofollow" target="_blank">
+           href="<?php echo $urlLibro; ?>" title="<?php echo $this->get_product_image_link_title(); ?>" target="_blank">
             <img class="aawp-product__image" src="<?php echo $this->get_product_image(); ?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
         </a>
 
