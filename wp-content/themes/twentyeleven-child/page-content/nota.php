@@ -25,10 +25,16 @@
     $titulo_a_secas = get_post_meta($libro['ID'],'titulo')[0];
 
     $keywords = $titulo_a_secas;
-    // TODO: notas, pasar keywords a bbdd? 
+    // TODO: notas, pasar keywords a bbdd. Debería buscar una cadena buena en los datos ya existentes (autor, título libro) y comprobar que Amazon devuelve buenos resultados. Si no hay resultados con la primera búsqueda, meter estos keywords.
     // Apuntes los 4 amores
     if($id== 8734){
         $keywords = 'amor psicología';
+    }elseif($id==4595){ // 'padrenuestro'
+        $keywords = 'padrenuestro jesus';
+    }elseif($id==4962){ // 'parábolas'
+        $keywords = 'parábolas jesus';
+    }elseif($id==5052){ // 'reino de dios'
+        $keywords = 'evangelio jesus';
     }elseif($id==5042){ // 'benedicto 16'
         $keywords = 'benedicto 16';
     }elseif($id==5046){ // 'bautismo'
