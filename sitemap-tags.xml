@@ -6,6 +6,21 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
+  <loc>https://libricos.com/temas/enamoramiento/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/lenguajes/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/temas/palabras/</loc>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
   <loc>https://libricos.com/temas/abandono/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
@@ -51,11 +66,6 @@
   <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://libricos.com/temas/clasicos/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
-<url>
   <loc>https://libricos.com/temas/crisis/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
@@ -77,11 +87,6 @@
 </url>
 <url>
   <loc>https://libricos.com/temas/esperanza/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
-<url>
-  <loc>https://libricos.com/temas/espiritualidad/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
 </url>
@@ -132,7 +137,7 @@
 </url>
 <url>
   <loc>https://libricos.com/temas/pareja/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
+  <lastmod>2021-01-27T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
 </url>
 <url>
@@ -171,11 +176,6 @@
   <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://libricos.com/temas/religion/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
-<url>
   <loc>https://libricos.com/temas/resurreccion/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
@@ -207,11 +207,6 @@
 </url>
 <url>
   <loc>https://libricos.com/temas/superacion/</loc>
-  <lastmod>2021-01-25T09:12:58+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
-<url>
-  <loc>https://libricos.com/temas/teologia/</loc>
   <lastmod>2021-01-25T09:12:58+00:00</lastmod>
   <priority>0.70</priority>
 </url>
