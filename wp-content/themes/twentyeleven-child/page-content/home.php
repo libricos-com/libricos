@@ -43,7 +43,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 <h6>Novedades Amazon</h6>
-<?php echo do_shortcode('[amazon new="mejores libros" items="12"]');?>
+<?php echo do_shortcode('[amazon template="vertical" grid="3" new="mejores libros" items="12"]');?>
 
 
 
