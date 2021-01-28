@@ -41,6 +41,7 @@ class BookWp extends Book
         $this->portada = $this->pod->field( 'portada' );
         $this->portada_src = wp_get_attachment_image_src($this->portada['ID'], 400)[0];
         $this->sinopsis = $this->pod->field( 'sinopsis' );
+        $this->mapa = $this->pod->field( 'mapa' );
 
         $this->autores=$this->pod->field( 'autores' );
         $this->generos = $this->pod->field( 'generos_literarios' );

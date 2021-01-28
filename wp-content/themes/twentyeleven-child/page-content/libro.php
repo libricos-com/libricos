@@ -17,6 +17,13 @@ if(empty($reviews[0])){
     $object = new Review($firstReview);
 }
 $notas = $libro->getNotas();
+$id = $libro->getId();
+$keywords = get_post_meta($id,'titulo')[0];
+if($id == 12883){ 
+    $keywords = 'scott hahn';
+}elseif($id == 13117){ 
+    $keywords = 'kibeho';
+}
 ?>
 
 <div class="lbc-file">
@@ -174,6 +181,14 @@ $notas = $libro->getNotas();
     } 
     ?>
 
+
+    <?php if ( ! empty( $libro->getMapa() ) ) { ?>
+        <div class="container-fluid bg-dark rounded">
+            <h2>Marco geográfico</h2>
+            <?php echo $libro->getMapa();?>
+        </div> 
+    <?php } ?>
+
 </div>
 
 <hr />
@@ -182,7 +197,7 @@ $notas = $libro->getNotas();
 <h2>Libros similares a <?php echo $libro->getTitulo();?></h2>
 <div class="text-center p-2">
     <?php 
-    echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.	get_post_meta($libro->getId(),'titulo')[0].'"]');
+    echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.$keywords.'"]');
     // echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
     ?>
 </div>	

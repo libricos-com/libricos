@@ -50,6 +50,6 @@ if($id == 10215){
 <h2>Libros similares a <?php echo $review->libroTitle;?></h2>
 
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon bestseller="'.$keywords.'"]');?>
+    <?php echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.$keywords.'"]');?>
 </div>
 

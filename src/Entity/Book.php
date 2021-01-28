@@ -221,6 +221,13 @@ abstract class Book
      */
     private $_tableOfContents;
 
+    /**
+     * Mapa del libro
+     *
+     * @var string
+     */
+    private $_mapa;
+
  
     /**
      * Constructor.
