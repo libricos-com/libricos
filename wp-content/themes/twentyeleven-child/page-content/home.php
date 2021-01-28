@@ -32,9 +32,50 @@ foreach( $posts as $post ){
 
 <hr />
 
-<h6>Novedades</h6>
-<?php
-$libros = Wp::get_books_by_category_id(3);
+<h2>Libros de autoayuda recomendados</h2>
+<p>Selección de libros imprescindibles sobre espiritualidad, populares, de los más vendidos, 
+emocional, ansiedad, autoestima, depresión, imprescindibles. Libros a buen precio, español y Kindle.</p>
+<?php 
+// Género autoayuda 410 http://192.168.1.44/jesuserro.com/generos/autoayuda
+$libros = Wp::get_books_by_genero_id(410, 4);
+$asins = Wp::get_libros_asins($libros)[0];
+$ids = Wp::get_libros_asins($libros)[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+?>
+
+<h2>Libros sobre psicología y amor de pareja recomendados</h2>
+<?php 
+$libros = Wp::get_books_by_genero_id(405, 4);
+$asins = Wp::get_libros_asins($libros)[0];
+$ids = Wp::get_libros_asins($libros)[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+?>
+
+<h2>Libros recomendados sobre profecías cumplidas</h2>
+<?php 
+$libros = Wp::get_books_by_tag_id(275, 4);
+$asins = Wp::get_libros_asins($libros)[0];
+$ids = Wp::get_libros_asins($libros)[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+?>
+
+<h2>Libros recomendados sobre historias y testimonios</h2>
+<p>Libros que cuentan historias de cambio para jóvenes, hombres, mujeres, niños.</p>
+<?php 
+$libros = Wp::get_books_by_tag_id(344, 4);
+$asins = Wp::get_libros_asins($libros)[0];
+$ids = Wp::get_libros_asins($libros)[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+?>
+
+<h2>Libros recomendados sobre oración</h2>
+<?php 
+/*
+Tag oración ID 246
+http://192.168.1.44/jesuserro.com/tag/oracion/
+taxonomy=post_tag&tag_ID=246&post_type=post
+*/
+$libros = Wp::get_books_by_tag_id(246, 4);
 $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
