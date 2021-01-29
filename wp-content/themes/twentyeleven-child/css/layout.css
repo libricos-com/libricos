@@ -131,3 +131,7 @@ footer:not(.blockquote-footer) {
 .lbc-review-item-h .review-summary {
   margin-top: 2%;
 }
+.lbc-review-item-h .aawp-product__price {
+  font-size: 20px;
+  font-weight: bold;
+}

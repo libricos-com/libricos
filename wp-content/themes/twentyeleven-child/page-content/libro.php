@@ -183,7 +183,7 @@ if($id == 12883){
 
 
     <?php if ( ! empty( $libro->getMapa() ) ) { ?>
-        <div class="container-fluid bg-dark rounded">
+        <div class="container-fluid bg-dark rounded mt-4">
             <h2>Marco geográfico</h2>
             <?php echo $libro->getMapa();?>
         </div> 
