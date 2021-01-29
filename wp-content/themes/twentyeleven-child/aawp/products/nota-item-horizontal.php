@@ -24,7 +24,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
     <div class="row">
         <?php $this->the_product_ribbons();?>
 
-        <div class="col-md-2 aawp-product__thumb">
+        <div class="col-sm-2 col-md-2 aawp-product__thumb">
             <a class="aawp-product__image-link"
             href="<?php echo $review->url_review;?>" title="<?php echo $this->get_product_image_link_title(); ?>" target="_blank">
                 <img class="aawp-product__image rounded" src="<?php echo $img;?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
@@ -41,7 +41,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
             <?php } ?>
         </div>
 
-        <div class="col-md-10 aawp-product__content">
+        <div class="col-sm-10 col-md-10 aawp-product__content">
         
             <h2 class="h4"><a href="<?php echo $review->url_review;?>" alt="<?php echo $review->post_title;?>"><?php echo $review->post_title;?></a></h2>
                 
@@ -57,11 +57,13 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
             </div>
             
 
-            <div class="row mt-2 ml-1">
-                <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" target="_blank">
-                    <img src="<?php echo $imgProduct;?>" class="float-left img-thumbnail" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
-                </a>
-                <div class="col-md-10">
+            <div class="row mt-2">
+                <div class="col-sm-2 col-md-2">
+                    <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" target="_blank">
+                        <img src="<?php echo $imgProduct;?>" class="img-fluid rounded" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
+                    </a>
+                </div>
+                <div class="col-sm-10 col-md-10">
                     <h3>
                         <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" target="_blank">
                             <?php echo $this->get_product_title();?>
@@ -107,7 +109,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
         </div>
 
-        <div class="col-md-12 aawp-product__footer text-right">
+        <div class="col-sm-12 col-md-12 aawp-product__footer text-right">
 
             <div class="aawp-product__pricing">
                 <?php if ( $this->product_is_on_sale() ) { ?>
