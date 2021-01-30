@@ -43,15 +43,15 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
 
         <div class="col-sm-10 col-md-10 aawp-product__content">
         
-            <h2 class="h4"><a href="<?php echo $review->url_review;?>" alt="<?php echo $review->post_title;?>"><?php echo $review->post_title;?></a></h2>
+            <h2 class="h4"><a href="<?php echo $review->url_review;?>" title="<?php echo $review->post_title;?>"><?php echo $review->post_title;?></a></h2>
                 
-            <div>
-                Por 
+            <div> 
+                Nota creada por
                 <div class="chip align-bottom">
-                    <a href="<?php echo get_site_url();?>/about/" target="blank" alt="Autor Libricos.com">
-                        <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Autor Libricos.com" title="Por Libricos.com">
+                    <a href="<?php echo get_site_url();?>/about/" target="blank" title="Libricos">
+                        <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Autor Libricos">
                     </a>
-                </div> Libricos.com
+                </div>
 
                 <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
             </div>
