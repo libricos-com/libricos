@@ -58,12 +58,12 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
             
 
             <div class="row mt-2">
-                <div class="col-sm-2 col-md-2">
+                <div class="col-sm-1 col-md-1 pr-0 mr-0">
                     <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" target="_blank">
                         <img src="<?php echo $imgProduct;?>" class="img-fluid rounded" alt="<?php echo $this->get_product_link_title();?>" title="<?php echo $this->get_product_link_title();?>" width="60" height="100">
                     </a>
                 </div>
-                <div class="col-sm-10 col-md-10">
+                <div class="col-sm-11 col-md-11">
                     <h3>
                         <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title();?>" target="_blank">
                             <?php echo $this->get_product_title();?>
