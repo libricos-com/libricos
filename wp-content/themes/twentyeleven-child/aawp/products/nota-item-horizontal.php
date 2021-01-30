@@ -51,7 +51,7 @@ $img = get_the_post_thumbnail_url($idNota, 'medium'); // large, thumbnail, post_
                     <a href="<?php echo get_site_url();?>/about/" target="blank" title="Libricos">
                         <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Autor Libricos">
                     </a>
-                </div>
+                </div> sobre el libro:
 
                 <?php echo view('../partials/review-fecha', ['this2' =>  $review]);?>
             </div>
