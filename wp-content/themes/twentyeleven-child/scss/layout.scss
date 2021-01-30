@@ -187,8 +187,17 @@ footer:not(.blockquote-footer){
         margin-top: 2%;
     }
 
-    .aawp-product__price{
+    .aawp-product__price--current{
         font-size: 20px;
         font-weight: bold;
+    }
+
+    .aawp-product__price--saved{
+        font-size: 15px;
+        color:#27AE60 !important;
+    }
+
+    .aawp-product__price--old{
+        text-decoration:line-through;
     }
 }

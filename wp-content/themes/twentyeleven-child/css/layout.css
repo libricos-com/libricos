@@ -131,7 +131,14 @@ footer:not(.blockquote-footer) {
 .lbc-review-item-h .review-summary {
   margin-top: 2%;
 }
-.lbc-review-item-h .aawp-product__price {
+.lbc-review-item-h .aawp-product__price--current {
   font-size: 20px;
   font-weight: bold;
+}
+.lbc-review-item-h .aawp-product__price--saved {
+  font-size: 15px;
+  color: #27AE60 !important;
+}
+.lbc-review-item-h .aawp-product__price--old {
+  text-decoration: line-through;
 }
