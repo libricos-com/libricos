@@ -35,7 +35,8 @@ $rating .= view('../partials/rating', ['this2' => (object) ['puntuacion' => $val
 
 $rating .= '</span>';
 
-if($referer == 'notas' && empty($review)){
+
+if($valor == 0 && empty($review)){
     $rating = ''; 
 }
 ?>
