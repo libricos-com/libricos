@@ -1,4 +1,7 @@
 <?php 
+    use App\Entity\BookWpFactory;
+    use App\Entity\Review;
+
     global $post;
     $postType = get_post_type();
     $id = get_the_id();
@@ -13,6 +16,8 @@
     $pod = pods( 'nota', $id );
 
     $libro = $pod->field( 'libro' );
+    $postLibro = get_post($libro['ID']);
+    $libroObj = BookWpFactory::create($postLibro);
     $asin = get_post_meta($libro['ID'],'asin')[0];
     $portada = get_post_meta($libro['ID'],'portada');
     
@@ -20,10 +25,22 @@
 
     $fecha = get_the_date('d F Y');
 
+    // TODO: desde la nota crear un getLibro() y getReview()
+    $reviews = $libroObj->getReviews();
+    $review = null;
+    if($reviews){
+        $numReviews = count($reviews);
+        if($numReviews > 0){
+            $firstReview = $reviews[0];
+            $postReview = get_post($firstReview['ID']);
+            $review = new Review($postReview);
+        }
+    }
     $libro_link = get_permalink($libro['ID']);
     $libro_title = get_the_title($libro['ID']);
     $titulo_a_secas = get_post_meta($libro['ID'],'titulo')[0];
 
+    
     $keywords = $titulo_a_secas;
     // TODO: notas, pasar keywords a bbdd. Debería buscar una cadena buena en los datos ya existentes (autor, título libro) y comprobar que Amazon devuelve buenos resultados. Si no hay resultados con la primera búsqueda, meter estos keywords.
     // Apuntes los 4 amores
@@ -74,7 +91,7 @@
 <div class="lbc-file">
     <h1 class="lbc-h1"><?php echo $post_title;?></h1>
 
-    <?php echo view('../partials/publish-info', ['this2' => $post]);?>
+    <?php echo view('../partials/publish-info', ['this2' => $post, 'review' => $review]);?>
 
     <div class="mt-3">
         <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
