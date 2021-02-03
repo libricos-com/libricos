@@ -2,6 +2,30 @@
 
 -- Book Id,Title,Author,Author l-f,Additional Authors,ISBN,ISBN13,My Rating,Average Rating,Publisher,Binding,Number of Pages,Year Published,Original Publication Year,Date Read,Date Added,Bookshelves,Bookshelves with positions,Exclusive Shelf,My Review,Spoiler,Private Notes,Read Count,Recommended For,Recommended By,Owned Copies,Original Purchase Date,Original Purchase Location,Condition,Condition Description,BCID
 
+
+['authors'] => array
+(
+    ['author'] => array
+        (
+            ['id'] => 44326,
+            ['name'] => 'Hildegard von Bingen',
+            ['role'] => array
+                (
+                ),
+
+            ['image_url'] => 'https://images.gr-assets.com/authors/1248027000p5/44326.jpg',
+
+            ['small_image_url'] => 'https://images.gr-assets.com/authors/1248027000p2/44326.jpg',
+
+            ['link'] => 'https://www.goodreads.com/author/show/44326.Hildegard_von_Bingen',
+            ['average_rating'] => 4.00,
+            ['ratings_count'] => 1539,
+            ['text_reviews_count'] => 129
+        )
+),
+
+
+
 CREATE TABLE `gr_books` (
 	`id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
 	`gr_id` BIGINT(12) unsigned NOT NULL,
