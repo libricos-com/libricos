@@ -2,25 +2,12 @@
 /* 
 @see: https://www.goodreads.com/api/index
 */
-include 'config.php';
-include './goodreads/GoodReads.php';
+include '../config.php';
+include '../goodreads/GoodReads.php';
 
-$api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/cache');
+$api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/../cache');
 
-// $data = $api->getAuthor(JEI_GOODREADS_AUTHOR_ID);
-// $data = $api->getBook(20513179);
-// $data = $api->getLatestReads(JEI_GOODREADS_USER_1);
-// $data = $api->getUser(JEI_GOODREADS_USER_1);
-
-// https://www.goodreads.com/user_status/show/JEI_GOODREADS_USER_1?format=xml&key=JEI_GOODREADS_KEY
-// $data = $api->getUserStatus(JEI_GOODREADS_USER_1);
-// $data = $api->getUserStatuses(JEI_GOODREADS_USER_1);
-
-// https://www.goodreads.com/review/show/2312483779
-// $data = $api->getReview(2312483779);
-
-// $data = $api->getShelf( JEI_GOODREADS_USER_1, '000-next', 'position', 10, 1 );
-$data = $api->getShelf( JEI_GOODREADS_USER_1, 'want-to-read', 'date_added', 25, 1 );
+$data = $api->getShelf( JEI_GOODREADS_USER_1, 'want-to-read', 'date_added', 100, 1 );
 
 $mbd = new PDO('mysql:host=localhost;dbname=libricos20210128', 'root', 'root');
 if (!$mbd) {
@@ -76,20 +63,6 @@ function cleanBook($book)
     return $book;
 }
 
-function cleanBookExtended($bookExtended)
-{
-    if(is_array($bookExtended['asin'])){
-        $bookExtended['asin'] = null;
-    }
-    if(is_array($bookExtended['language_code'])){
-        $bookExtended['language_code'] = null;
-    }
-    if(is_array($bookExtended['kindle_asin'])){
-        $bookExtended['kindle_asin'] = null;
-    }
-    return $bookExtended;
-}
-
 /**
  * Undocumented function
  *
@@ -139,19 +112,9 @@ foreach($reviews as $review){
     $book = cleanBook($book);
 
 
-    // NOTE: getting ASIN
-    $bookExtended          = getBookData( $book['gr_id'], $api );
-    $bookExtended          = cleanBookExtended($bookExtended);
-    $book['asin']          = $bookExtended['asin'];
-    $book['language_code'] = $bookExtended['language_code'];
-    $book['is_ebook'] = 0;
-    if($bookExtended['is_ebook']){
-        $book['is_ebook']  = 1;
-    }
+    $book['last_user'] = 'jesus';
+    $book['last_mod'] = date("Y-m-d H:i:s");
     
-
-
-
     // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
     $keys = array_keys($book);
     $fields = '`'.implode('`, `',$keys).'`';
@@ -180,4 +143,4 @@ foreach($reviews as $review){
 
 
 // print("<pre>".print_r($review, true)."</pre>");
-print("<pre>".print_r($bookExtended, true)."</pre>");
+// print("<pre>".print_r($book, true)."</pre>");

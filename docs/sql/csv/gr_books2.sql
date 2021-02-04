@@ -8,6 +8,9 @@ CREATE TABLE `gr_books` (
     `isbn` VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `isbn13` VARCHAR(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `asin` VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `kindle_asin` VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `is_ebook` BOOLEAN DEFAULT NULL,
+    `language_code` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `text_reviews_count` MEDIUMINT(7) unsigned DEFAULT NULL,
     `uri` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `title` VARCHAR(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -19,8 +22,6 @@ CREATE TABLE `gr_books` (
     `link` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `num_pages` SMALLINT(5) unsigned DEFAULT NULL,
     `format` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-    `language_code` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-    `is_ebook` BOOLEAN DEFAULT NULL,
     `publisher` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `publication_day` TINYINT(2) unsigned DEFAULT NULL,
     `publication_year` YEAR(4) DEFAULT NULL,
@@ -30,5 +31,7 @@ CREATE TABLE `gr_books` (
     `description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `published` YEAR(4) DEFAULT NULL,
     `date_added` DATETIME DEFAULT NULL,
+    `last_mod` DATETIME DEFAULT NULL,
+    `last_user` VARCHAR(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
