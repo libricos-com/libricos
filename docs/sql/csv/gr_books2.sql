@@ -19,6 +19,8 @@ CREATE TABLE `gr_books` (
     `link` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `num_pages` SMALLINT(5) unsigned DEFAULT NULL,
     `format` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `language_code` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `is_ebook` BOOLEAN DEFAULT NULL,
     `publisher` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `publication_day` TINYINT(2) unsigned DEFAULT NULL,
     `publication_year` YEAR(4) DEFAULT NULL,

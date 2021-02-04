@@ -20,7 +20,7 @@ $api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/cache');
 // $data = $api->getReview(2312483779);
 
 // $data = $api->getShelf( JEI_GOODREADS_USER_1, '000-next', 'position', 10, 1 );
-$data = $api->getShelf( JEI_GOODREADS_USER_1, 'want-to-read', 'date_added', 100, 1 );
+$data = $api->getShelf( JEI_GOODREADS_USER_1, 'want-to-read', 'date_added', 25, 1 );
 
 $mbd = new PDO('mysql:host=localhost;dbname=libricos20210128', 'root', 'root');
 if (!$mbd) {
@@ -101,6 +101,12 @@ function cleanSmt($smt)
     return $smt;
 }
 
+function getBookData($grId, $api)
+{
+    $book = $api->getBook( $grId );
+    return $book['book'];
+}
+
 
 $i = 1;
 $reviews = $data['reviews']['review'];
@@ -117,6 +123,25 @@ foreach($reviews as $review){
     $book['date_added'] = date("Y-m-d H:i:s", $dateAdded);
     
     $book = cleanBook($book);
+
+
+    // NOTE: getting ASIN
+    $bookExtended          = getBookData( $book['gr_id'], $api );
+    if(is_array($bookExtended['asin'])){
+        $bookExtended['asin'] = null;
+    }
+    if(is_array($bookExtended['language_code'])){
+        $bookExtended['language_code'] = null;
+    }
+    $book['asin']          = $bookExtended['asin'];
+    $book['language_code'] = $bookExtended['language_code'];
+    $book['is_ebook'] = 0;
+    if($bookExtended['is_ebook']){
+        $book['is_ebook']  = 1;
+    }
+    
+
+
 
     // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
     $keys = array_keys($book);
@@ -145,5 +170,5 @@ foreach($reviews as $review){
 }
 
 
-print("<pre>".print_r($review, true)."</pre>");
-// print("<pre>".print_r($book, true)."</pre>");
+// print("<pre>".print_r($review, true)."</pre>");
+print("<pre>".print_r($bookExtended, true)."</pre>");
