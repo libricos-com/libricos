@@ -7,7 +7,8 @@ include '../goodreads/GoodReads.php';
 
 $api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/../cache');
 
-$data = $api->getShelf( JEI_GOODREADS_USER_1, 'want-to-read', 'date_added', 100, 1 );
+$shelves = ['want-to-read', 'read'];
+$data = $api->getShelf( JEI_GOODREADS_USER_1, $shelves[1], 'date_added', 100, 1 );
 
 $mbd = new PDO('mysql:host=localhost;dbname=libricos20210128', 'root', 'root');
 if (!$mbd) {
@@ -88,13 +89,6 @@ function cleanSmt($smt)
     return $smt;
 }
 
-function getBookData($grId, $api)
-{
-    $book = $api->getBook( $grId );
-    return $book['book'];
-}
-
-
 $i = 1;
 $reviews = $data['reviews']['review'];
 foreach($reviews as $review){
@@ -105,16 +99,35 @@ foreach($reviews as $review){
     unset($book['id']);
 
 
-    $dateAdded = $review['date_added'];
-    $dateAdded = strtotime($dateAdded);
-    $book['date_added'] = date("Y-m-d H:i:s", $dateAdded);
+    
     
     $book = cleanBook($book);
 
+    // NOTE: Pasando datos de mi review al libro
+    $dateAdded = $review['date_added'];
+    $dateAdded = strtotime($dateAdded);
+    $book['date_added'] = date("Y-m-d H:i:s", $dateAdded);
+    /*
+    rating
+    votes
+    spoiler_flag
+    recommended_for
+    recommended_by
+    started_at
+    read_at
+    date_updated
+    read_count
+    body
+    comments_count
+    url
+    owned
+    */
 
+    // NOTE: datos sobre el guardado en la bbdd
     $book['last_user'] = 'jesus';
     $book['last_mod'] = date("Y-m-d H:i:s");
-    
+
+    // NOTE: Guardando en la BBDD
     // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
     $keys = array_keys($book);
     $fields = '`'.implode('`, `',$keys).'`';
@@ -127,6 +140,7 @@ foreach($reviews as $review){
     // $smt = cleanSmt($smt);
 
     try{
+        // print("<pre>".print_r($review, true)."</pre>");die;
         $response = $smt->execute(array_values($book));
         if($response){
             echo "Libro $i added: ".$book['title'].'<br />';
@@ -141,6 +155,3 @@ foreach($reviews as $review){
     $i++;
 }
 
-
-// print("<pre>".print_r($review, true)."</pre>");
-// print("<pre>".print_r($book, true)."</pre>");

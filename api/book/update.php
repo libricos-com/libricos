@@ -22,7 +22,7 @@ $i = 1;
 
 foreach($books as $book){
 
-    $grId = $book['gr_id'] ;
+    $grId = $book['gr_id'];
     
     // NOTE: getting ASIN
     $bookApi = $api->getBook( $grId );
