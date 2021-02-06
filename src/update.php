@@ -2,25 +2,31 @@
 /* 
 @see: https://www.goodreads.com/api/index
 */
-include '../config.php';
-include '../goodreads/GoodReads.php';
-
-$api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/../cache');
-
-$pdo = new PDO('mysql:host=localhost;dbname=libricos20210128', 'root', 'root');
-if (!$pdo) {
-    die('No pudo conectarse: ' . mysql_error());
-}
-echo 'Conectado satisfactoriamente<br /><br />';
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require __DIR__ . '/../vendor/autoload.php';
 
 
-$books = $pdo->query('SELECT gr_id, title FROM gr_books LIMIT 100', PDO::FETCH_ASSOC);
+use App\Util\Pdo;
+use App\Entity\BookJeiFactory;
+
+include '../api/config.php';
+include '../api/goodreads/GoodReads.php';
+$api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/../api/cache');
+
+
+$pdo = Pdo::create();
+$bookClass = BookJeiFactory::create($pdo);
+
+
+$books = $pdo->query('SELECT gr_id, title FROM jei_books LIMIT 100', \PDO::FETCH_ASSOC);
 
 
 $i = 1;
 
 foreach($books as $book){
+
+    if(empty($book['gr_id'])){
+        continue;
+    }
 
     $grId = $book['gr_id'];
     
@@ -55,29 +61,11 @@ foreach($books as $book){
         'last_mod'      => $last_mod,
         'gr_id'         => $grId
     ];
-    $sql = "UPDATE gr_books SET 
-            asin=:asin, 
-            kindle_asin=:kindle_asin, 
-            language_code=:language_code, 
-            is_ebook=:is_ebook, 
-            last_user=:last_user,
-            last_mod=:last_mod 
-        WHERE gr_id=:gr_id";
-    $stmt= $pdo->prepare($sql);
-    
-    try{
-        $response = $stmt->execute($data);
-        if($response){
-            echo "Libro $i updated: ".$book['title'].'<br />';
-        }else{
-            echo "FAIL! $i updated: ".$book['title'].'<br />';
-        }
-    }catch(Exception $e){
-        echo $e->getMessage();
-    }
-    // sleep(1);
 
-    $i++;
+    $bookClass::update($data);
+
+
+    
 }
 
 

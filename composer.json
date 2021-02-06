@@ -4,7 +4,7 @@
         "sources": "https://wpackagist.org/",
         "wpackagist-plugin/aawp": ">=3.14.2"
     }],
-    "name": "jesuserro/wordpress-site-about-books",
+    "name": "libricos/wordpress-site-about-books",
     "description": "Another WordPress site",
     "autoload": {
         "psr-4": {

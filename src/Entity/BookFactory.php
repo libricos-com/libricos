@@ -10,5 +10,6 @@ abstract class BookFactory
     abstract public static function create($object);
 
     abstract public static function getPostId($object):int;
+
 }
 

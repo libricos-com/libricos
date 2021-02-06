@@ -2,7 +2,7 @@
 
 -- Book Id,Title,Author,Author l-f,Additional Authors,ISBN,ISBN13,My Rating,Average Rating,Publisher,Binding,Number of Pages,Year Published,Original Publication Year,Date Read,Date Added,Bookshelves,Bookshelves with positions,Exclusive Shelf,My Review,Spoiler,Private Notes,Read Count,Recommended For,Recommended By,Owned Copies,Original Purchase Date,Original Purchase Location,Condition,Condition Description,BCID
 
-CREATE TABLE `gr_books` (
+CREATE TABLE `jei_books` (
     `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
     `gr_id` BIGINT(12) unsigned NOT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',
     `post_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Artículo Wordpress correspondiente al libro',
@@ -22,7 +22,6 @@ CREATE TABLE `gr_books` (
     `large_image_url` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `link` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `num_pages` SMALLINT(5) unsigned DEFAULT NULL,
-    `rating` FLOAT(3,2) unsigned DEFAULT NULL COMMENT 'Mi rating',
     `average_rating` FLOAT(3,2) unsigned DEFAULT NULL,
     `ratings_count` INT(10) unsigned DEFAULT NULL,
     `format` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
