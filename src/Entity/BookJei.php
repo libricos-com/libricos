@@ -216,5 +216,33 @@ class BookJei extends Book
         }
     }
 
+
+    public static function updateBookTableContentsByPostid() 
+    {
+        $response = false;
+
+        $sql = "UPDATE
+            wp_postmeta m, wp_posts p, jei_books j
+        SET j.table_contents = m.meta_value
+        WHERE
+            p.ID = m.post_id 
+            AND m.post_id = j.post_id
+            AND p.post_type = 'libro'
+            AND m.meta_key IN ('table_of_contents')
+        LIMIT 100";
+        $stmt= self::$_pdo->prepare($sql);
+        
+        try{
+            $response = $stmt->execute();
+            if($response){
+                echo "updateBookTableContentsByPostid updated <br />";
+            }else{
+                echo "FAIL! updateBookTableContentsByPostid updated: <br />";
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
 

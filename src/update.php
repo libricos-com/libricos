@@ -67,16 +67,18 @@ foreach($books as $book){
     sleep(.2);
 }
 
-sleep(1);
 
 // NOTE: Rellenamos los post_id vacíos en jei_books
+sleep(1);
 $bookClass::updateBookPostidsByAsin();
 
+// NOTE: Rellenamos los post_id vacíos restantes a través de la url de goodreads
 sleep(1);
 $bookClass::updateBookPostidsByGoodreadsUrl();
 
-// Rellenar los índices de los libros
-
+// NOTE: Rellenar los índices de los libros
+sleep(1);
+$bookClass::updateBookTableContentsByPostid();
 
 // print("<pre>".print_r($review, true)."</pre>");
 // print("<pre>".print_r($bookExtended, true)."</pre>");
