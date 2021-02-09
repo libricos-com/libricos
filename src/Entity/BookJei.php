@@ -159,8 +159,61 @@ class BookJei extends Book
         }catch(Exception $e){
             echo $e->getMessage();
         }
-        // sleep(1);
+    }
 
+    public static function updateBookPostidsByAsin() 
+    {
+        $response = false;
+
+        $sql = "UPDATE
+            wp_postmeta m, wp_posts p, jei_books j
+        SET j.post_id = p.ID
+        WHERE
+            p.ID = m.post_id 
+            AND m.meta_value = j.asin
+            AND p.post_type = 'libro'
+            AND j.post_id IS NULL
+        LIMIT 100";
+        $stmt= self::$_pdo->prepare($sql);
+        
+        try{
+            $response = $stmt->execute();
+            if($response){
+                echo "Postids updated <br />";
+            }else{
+                echo "FAIL! Postids updated: <br />";
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+    }
+
+
+    public static function updateBookPostidsByGoodreadsUrl() 
+    {
+        $response = false;
+
+        $sql = "UPDATE
+            wp_postmeta m, wp_posts p, jei_books j
+        SET j.post_id = p.ID
+        WHERE
+            p.ID = m.post_id 
+            AND m.meta_value = j.link
+            AND p.post_type = 'libro'
+            AND j.post_id IS NULL
+        LIMIT 100";
+        $stmt= self::$_pdo->prepare($sql);
+        
+        try{
+            $response = $stmt->execute();
+            if($response){
+                echo "updateBookPostidsByGoodreadsUrl updated <br />";
+            }else{
+                echo "FAIL! updateBookPostidsByGoodreadsUrl updated: <br />";
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
     }
 
 }

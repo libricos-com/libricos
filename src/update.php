@@ -22,6 +22,7 @@ $books = $pdo->query('SELECT gr_id, title FROM jei_books LIMIT 100', \PDO::FETCH
 
 $i = 1;
 
+// NOTE: completamos datos del primer insert llamado a la api de cada libro (getting ASIN)
 foreach($books as $book){
 
     if(empty($book['gr_id'])){
@@ -30,7 +31,6 @@ foreach($books as $book){
 
     $grId = $book['gr_id'];
     
-    // NOTE: getting ASIN
     $bookApi = $api->getBook( $grId );
 
     sleep(0.2);
@@ -62,11 +62,20 @@ foreach($books as $book){
         'gr_id'         => $grId
     ];
 
-    $bookClass::update($data);
+    $bookClass::update($data); 
 
-
-    
+    sleep(.2);
 }
+
+sleep(1);
+
+// NOTE: Rellenamos los post_id vacíos en jei_books
+$bookClass::updateBookPostidsByAsin();
+
+sleep(1);
+$bookClass::updateBookPostidsByGoodreadsUrl();
+
+// Rellenar los índices de los libros
 
 
 // print("<pre>".print_r($review, true)."</pre>");
