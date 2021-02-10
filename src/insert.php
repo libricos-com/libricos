@@ -21,7 +21,12 @@ $bookClass = BookJeiFactory::create($pdo);
 
 $reviews = $data['reviews']['review'];
 foreach($reviews as $review){
-    $bookClass::insert($review);
+    $lastInsertId = $bookClass::insert($review);
     sleep(.2);
+
+    if(empty($lastInsertId)){
+        continue;
+    }
+    // $bookClass::addReview($review);
 }
 

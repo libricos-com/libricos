@@ -17,7 +17,7 @@ $pdo = Pdo::create();
 $bookClass = BookJeiFactory::create($pdo);
 
 
-$books = $pdo->query('SELECT gr_id, title FROM jei_books LIMIT 100', \PDO::FETCH_ASSOC);
+$books = $pdo->query('SELECT id, gr_id, title FROM jei_books LIMIT 100', \PDO::FETCH_ASSOC);
 
 
 $i = 1;
@@ -25,7 +25,7 @@ $i = 1;
 // NOTE: completamos datos del primer insert llamado a la api de cada libro (getting ASIN)
 foreach($books as $book){
 
-    if(empty($book['gr_id'])){
+    if(empty($book['id'])){
         continue;
     }
 
@@ -36,7 +36,7 @@ foreach($books as $book){
     sleep(0.2);
 
     if(empty($bookApi['book'])){
-        return false;
+        continue;
     }
     $bookApi = $bookApi['book'];
 
@@ -53,13 +53,14 @@ foreach($books as $book){
     $last_mod = date("Y-m-d H:i:s");
 
     $data = [
+        'id'            => $book['id'],
         'asin'          => $asin,
         'kindle_asin'   => $kindle_asin,
         'language_code' => $language_code,
         'is_ebook'      => $is_ebook,
         'last_user'     => $last_user,
-        'last_mod'      => $last_mod,
-        'gr_id'         => $grId
+        'last_mod'      => $last_mod
+        // ,'gr_id'         => $grId
     ];
 
     $bookClass::update($data); 
@@ -69,7 +70,6 @@ foreach($books as $book){
 
 
 // NOTE: Rellenamos los post_id vacíos en jei_books
-sleep(1);
 $bookClass::updateBookPostidsByAsin();
 
 // NOTE: Rellenamos los post_id vacíos restantes a través de la url de goodreads

@@ -30,8 +30,6 @@ class BookJei extends Book
      */
     public static function insert($review) 
     {
-        $response = false;
-
         $book = $review['book'];
 
         $book['gr_id'] = $book['id'];
@@ -42,7 +40,7 @@ class BookJei extends Book
         // NOTE: Pasando datos de mi review al libro
         $dateAdded = $review['date_added'];
         $dateAdded = strtotime($dateAdded);
-        $book['date_added'] = date("Y-m-d H:i:s", $dateAdded);
+        $book['date_added'] = date('Y-m-d H:i:s', $dateAdded);
         /*
         rating
         votes
@@ -71,19 +69,21 @@ class BookJei extends Book
 
         // print("<pre>".print_r($book, true)."</pre>");
 
-        $smt = self::$_pdo->prepare("INSERT INTO libricos20210128.jei_books ($fields) VALUES($placeholder)");
+        $smt = self::$_pdo->prepare("INSERT INTO jei_books ($fields) VALUES($placeholder)");
 
 
         try{
             // print("<pre>".print_r($review, true)."</pre>");die;
+            self::$_pdo->beginTransaction();
             $response = $smt->execute(array_values($book));
-            if($response){
-                echo "Libro added: ".$book['title'].'<br />';
-            }else{
-                echo "FAIL! added: ".$book['title'].'<br />';
-            }
+            $lastInsertId = self::$_pdo->lastInsertId();
+            self::$_pdo->commit();
+            echo "Libro $lastInsertId added: ".$book['title'].'<br />';
+            return $lastInsertId;
         }catch(Exception $e){
             echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
         }
         
     }
@@ -137,6 +137,32 @@ class BookJei extends Book
 
     public static function update($data) 
     {
+        $sql = "UPDATE jei_books SET 
+            asin=:asin, 
+            kindle_asin=:kindle_asin, 
+            language_code=:language_code, 
+            is_ebook=:is_ebook, 
+            last_user=:last_user,
+            last_mod=:last_mod 
+        WHERE id=:id";
+        $stmt= self::$_pdo->prepare($sql);
+        try{
+            self::$_pdo->beginTransaction();
+            $response = $stmt->execute($data);
+            $modified = $stmt->rowCount(); 
+            self::$_pdo->commit();
+            echo "$modified row modified at id: ".$data['id'].'<br />';
+            return $data['id'];
+        }catch(Exception $e){
+            echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
+        }
+    }
+
+
+    public static function addReview($data) 
+    {
         $response = false;
 
         $sql = "UPDATE jei_books SET 
@@ -177,14 +203,16 @@ class BookJei extends Book
         $stmt= self::$_pdo->prepare($sql);
         
         try{
+            self::$_pdo->beginTransaction();
             $response = $stmt->execute();
-            if($response){
-                echo "Postids updated <br />";
-            }else{
-                echo "FAIL! Postids updated: <br />";
-            }
+            $modified = $stmt->rowCount(); 
+            self::$_pdo->commit();
+            echo "$modified row modified for updateBookPostidsByAsin()<br />";
+            return $response;
         }catch(Exception $e){
             echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
         }
     }
 
@@ -205,14 +233,16 @@ class BookJei extends Book
         $stmt= self::$_pdo->prepare($sql);
         
         try{
+            self::$_pdo->beginTransaction();
             $response = $stmt->execute();
-            if($response){
-                echo "updateBookPostidsByGoodreadsUrl updated <br />";
-            }else{
-                echo "FAIL! updateBookPostidsByGoodreadsUrl updated: <br />";
-            }
+            $modified = $stmt->rowCount(); 
+            self::$_pdo->commit();
+            echo "$modified row modified for updateBookPostidsByGoodreadsUrl()<br />";
+            return $response;
         }catch(Exception $e){
             echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
         }
     }
 
@@ -233,14 +263,16 @@ class BookJei extends Book
         $stmt= self::$_pdo->prepare($sql);
         
         try{
+            self::$_pdo->beginTransaction();
             $response = $stmt->execute();
-            if($response){
-                echo "updateBookTableContentsByPostid updated <br />";
-            }else{
-                echo "FAIL! updateBookTableContentsByPostid updated: <br />";
-            }
+            $modified = $stmt->rowCount(); 
+            self::$_pdo->commit();
+            echo "$modified row modified for updateBookTableContentsByPostid()<br />";
+            return $response;
         }catch(Exception $e){
             echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
         }
     }
 
