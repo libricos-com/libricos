@@ -1,27 +1,33 @@
 -- https://wtools.io/generate-sql-create-table
 /*
-rating
-votes
-spoiler_flag
-recommended_for
-recommended_by
-started_at
-read_at
-date_updated
-read_count
-body
-comments_count
-url
-owned
+`rating`, 
+`votes`, 
+`spoiler_flag`, 
+`recommended_for`, 
+`recommended_by`, 
+`started_at`, 
+`read_at`, 
+`date_added`, 
+`date_updated`, 
+`read_count`, 
+`body`, 
+`comments_count`, 
+`url`, 
+`link`, 
+`owned`, 
+`gr_id`, 
+`jei_book_id`, 
+`last_user`, 
+`last_mod`
 */
 CREATE TABLE `jei_reviews` (
     `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
-    `jei_book_id` BIGINT(12) unsigned NOT NULL COMMENT 'jei id del libro reseñado',
-    `gr_id` BIGINT(12) unsigned NOT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',
-    `post_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Artículo Wordpress correspondiente a la reseña',
+    `jei_book_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'jei id del libro reseñado',
+    `gr_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'Valor único para evitar duplicados',
+    `post_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'Artículo Wordpress correspondiente a la reseña',
     `rating` FLOAT(3,2) unsigned DEFAULT NULL,
     `votes` MEDIUMINT(7) unsigned DEFAULT NULL,
-    `uri` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    `url` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `link` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `body` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `recommended_for` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,

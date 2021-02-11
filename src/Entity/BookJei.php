@@ -37,29 +37,14 @@ class BookJei extends Book
 
         $book = self::cleanBook($book);
 
-        // NOTE: Pasando datos de mi review al libro
-        $dateAdded = $review['date_added'];
-        $dateAdded = strtotime($dateAdded);
-        $book['date_added'] = date('Y-m-d H:i:s', $dateAdded);
-        /*
-        rating
-        votes
-        spoiler_flag
-        recommended_for
-        recommended_by
-        started_at
-        read_at
-        date_updated
-        read_count
-        body
-        comments_count
-        url
-        owned
-        */
-
         // NOTE: datos sobre el guardado en la bbdd
+        if(is_array($rewiew['date_added'])){
+            $book['date_added'] = $myNull;
+        }else{
+            $book['date_added'] = date('Y-m-d H:i:s', strtotime( $review['date_added'] ) );
+        }
         $book['last_user'] = 'jesus';
-        $book['last_mod'] = date("Y-m-d H:i:s");
+        $book['last_mod'] = date('Y-m-d H:i:s');
 
         // NOTE: Guardando en la BBDD
         // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
@@ -70,7 +55,6 @@ class BookJei extends Book
         // print("<pre>".print_r($book, true)."</pre>");
 
         $smt = self::$_pdo->prepare("INSERT INTO jei_books ($fields) VALUES($placeholder)");
-
 
         try{
             // print("<pre>".print_r($review, true)."</pre>");die;
@@ -135,6 +119,50 @@ class BookJei extends Book
         return $book;
     }
 
+
+    protected static function cleanReview($review)
+    {
+        unset($review['book']);
+        unset($review['shelves']);
+        unset($review['id']);
+        unset($review['spoilers_state']);
+
+        $myNull = null;
+
+        if(is_array($review['recommended_for'])){
+            $review['recommended_for'] = $myNull;
+        }
+        if(is_array($review['recommended_by'])){
+            $review['recommended_by'] = $myNull;
+        }
+        if(is_array($review['body'])){
+            $review['body'] = $myNull;
+        }
+
+
+        if(is_array($review['date_added'])){
+            $review['date_added'] = $myNull;
+        }else{
+            $review['date_added'] = date('Y-m-d H:i:s', strtotime( $review['date_added'] ) );
+        }
+        if(is_array($review['started_at'])){
+            $review['started_at'] = $myNull;
+        }else{
+            $review['started_at'] = date('Y-m-d H:i:s', strtotime( $review['started_at'] ) );
+        }
+        if(is_array($review['read_at'])){
+            $review['read_at'] = $myNull;
+        }else{
+            $review['read_at'] = date('Y-m-d H:i:s', strtotime( $review['read_at'] ) );
+        }
+        if(is_array($review['date_updated'])){
+            $review['date_updated'] = $myNull;
+        }else{
+            $review['date_updated'] = date('Y-m-d H:i:s', strtotime( $review['date_updated'] ) );
+        }
+        return $review;
+    }
+
     public static function update($data) 
     {
         $sql = "UPDATE jei_books SET 
@@ -161,29 +189,52 @@ class BookJei extends Book
     }
 
 
-    public static function addReview($data) 
+    public static function addReview($review) 
     {
-        $response = false;
+        // print("<pre>".print_r($review, true)."</pre>");die;
 
-        $sql = "UPDATE jei_books SET 
-            asin=:asin, 
-            kindle_asin=:kindle_asin, 
-            language_code=:language_code, 
-            is_ebook=:is_ebook, 
-            last_user=:last_user,
-            last_mod=:last_mod 
-        WHERE gr_id=:gr_id";
-        $stmt= self::$_pdo->prepare($sql);
+        // NOTE: datos sobre el guardado en la bbdd
+        $review['gr_id'] = $review['id'];
+        $review['jei_book_id'] = null;
+
+        // NOTE: preparación campos
+        $spoiler_flag = 0;
+        if($review['spoiler_flag']){
+            $review['spoiler_flag'] = 1;
+        }else{
+            $review['spoiler_flag'] = 0;
+        }
+
+        $review = self::cleanReview($review);
+
+        // NOTE: Datos finales
+        $review['last_user'] = 'jesus';
+        $review['last_mod'] = date("Y-m-d H:i:s");
+
+        
+
+        // NOTE: Guardando en la BBDD
+        // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
+        $keys = array_keys($review);
+        $fields = '`'.implode('`, `',$keys).'`';
+        $placeholder = substr(str_repeat('?,',count($keys)),0,-1);
+
+        $sql = "INSERT INTO jei_reviews ($fields) VALUES ($placeholder)";
+        $smt = self::$_pdo->prepare($sql);
+
+        // print("<pre>".print_r($review, true)."</pre>");die;
         
         try{
-            $response = $stmt->execute($data);
-            if($response){
-                echo "Libro updated: ".$data['gr_id'].'<br />';
-            }else{
-                echo "FAIL! updated: ".$data['gr_id'].'<br />';
-            }
+            self::$_pdo->beginTransaction();
+            $response = $smt->execute(array_values($review));
+            $lastInsertId = self::$_pdo->lastInsertId();
+            self::$_pdo->commit();
+            echo "Review $lastInsertId added<br />";
+            return $lastInsertId;
         }catch(Exception $e){
             echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
         }
     }
 
