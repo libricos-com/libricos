@@ -38,7 +38,7 @@ class BookJei extends Book
         $book = self::cleanBook($book);
 
         // NOTE: datos sobre el guardado en la bbdd
-        if(is_array($rewiew['date_added'])){
+        if(is_array($review['date_added'])){
             $book['date_added'] = $myNull;
         }else{
             $book['date_added'] = date('Y-m-d H:i:s', strtotime( $review['date_added'] ) );
