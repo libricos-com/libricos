@@ -1,9 +1,4 @@
 {
-    "_comments": [{
-        "versioning": "https://getcomposer.org/doc/articles/versions.md",
-        "sources": "https://wpackagist.org/",
-        "wpackagist-plugin/aawp": ">=3.15 manually from: https://getaawp.com/dashboard/"
-    }],
     "name": "libricos/wordpress-site-about-books",
     "description": "Another WordPress site",
     "autoload": {
