@@ -23,7 +23,7 @@
 CREATE TABLE `jei_reviews` (
     `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
     `jei_book_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'jei id del libro reseñado',
-    `gr_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'Valor único para evitar duplicados',
+    `gr_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',
     `post_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'Artículo Wordpress correspondiente a la reseña',
     `rating` FLOAT(3,2) unsigned DEFAULT NULL,
     `votes` MEDIUMINT(7) unsigned DEFAULT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE `jei_reviews` (
 
 CREATE TABLE `jei_books` (
     `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
-    `gr_id` BIGINT(12) unsigned NOT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',
+    `gr_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',
     `post_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Artículo Wordpress correspondiente al libro',
     `title` VARCHAR(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     `isbn` VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,

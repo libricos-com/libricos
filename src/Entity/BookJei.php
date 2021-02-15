@@ -240,8 +240,6 @@ class BookJei extends Book
 
     public static function updateBookPostidsByAsin() 
     {
-        $response = false;
-
         $sql = "UPDATE
             wp_postmeta m, wp_posts p, jei_books j
         SET j.post_id = p.ID
@@ -268,10 +266,36 @@ class BookJei extends Book
     }
 
 
+    public static function updateReviewPostidsByGoodreadsUrl() 
+    {
+        $sql = "UPDATE
+            wp_postmeta m, wp_posts p, jei_reviews r
+        SET r.post_id = p.ID
+        WHERE
+            p.ID = m.post_id 
+            AND m.meta_value = r.link
+            AND p.post_type = 'review'
+            AND r.post_id IS NULL
+        LIMIT 100";
+        $stmt= self::$_pdo->prepare($sql);
+        
+        try{
+            self::$_pdo->beginTransaction();
+            $response = $stmt->execute();
+            $modified = $stmt->rowCount(); 
+            self::$_pdo->commit();
+            echo "$modified row modified for updateReviewPostidsByGoodreadsUrl()<br />";
+            return $response;
+        }catch(Exception $e){
+            echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
+        }
+    }
+
+
     public static function updateBookPostidsByGoodreadsUrl() 
     {
-        $response = false;
-
         $sql = "UPDATE
             wp_postmeta m, wp_posts p, jei_books j
         SET j.post_id = p.ID

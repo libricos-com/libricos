@@ -20,13 +20,15 @@ abstract class Pdo
      */
     public static function create ( $object = null )
     {
-        $pdo = new \PDO('mysql:host=localhost;dbname=libricos20210128', 'root', 'root');
-        if (!$pdo) {
-            die('No pudo conectarse: ' . mysql_error());
-        }
-        echo 'Conectado satisfactoriamente<br /><br />';
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        return $pdo;
+        try{
+            $pdo = new \PDO('mysql:host=localhost;dbname=libricos20210128', 'root', 'root');
+            echo 'Conectado satisfactoriamente<br /><br />';
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $pdo; 
+        }catch(Exception $e){
+            echo $e->getMessage();
+            return false;
+        } 
     }
 
 }
