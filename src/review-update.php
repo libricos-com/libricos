@@ -21,3 +21,6 @@ $bookClass = BookJeiFactory::create($pdo);
 
 $bookClass::updateReviewPostidsByGoodreadsUrl();
 
+sleep(.5);
+$bookClass::updateReviewJeiBookIdByPodRel();
+

@@ -17,7 +17,11 @@ $pdo = Pdo::create();
 $bookClass = BookJeiFactory::create($pdo);
 
 
-$books = $pdo->query('SELECT id, gr_id, title FROM jei_books LIMIT 100', \PDO::FETCH_ASSOC);
+$books = $pdo->query('SELECT id, gr_id, title 
+    FROM jei_books 
+    WHERE asin IS NULL 
+    ORDER BY date_added DESC
+    ', \PDO::FETCH_ASSOC);
 
 
 $i = 1;

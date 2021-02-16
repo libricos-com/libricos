@@ -1,25 +1,4 @@
 -- https://wtools.io/generate-sql-create-table
-/*
-`rating`, 
-`votes`, 
-`spoiler_flag`, 
-`recommended_for`, 
-`recommended_by`, 
-`started_at`, 
-`read_at`, 
-`date_added`, 
-`date_updated`, 
-`read_count`, 
-`body`, 
-`comments_count`, 
-`url`, 
-`link`, 
-`owned`, 
-`gr_id`, 
-`jei_book_id`, 
-`last_user`, 
-`last_mod`
-*/
 CREATE TABLE `jei_reviews` (
     `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
     `jei_book_id` BIGINT(12) unsigned DEFAULT NULL COMMENT 'jei id del libro reseñado',
@@ -47,7 +26,6 @@ CREATE TABLE `jei_reviews` (
 
 
 -- Book Id,Title,Author,Author l-f,Additional Authors,ISBN,ISBN13,My Rating,Average Rating,Publisher,Binding,Number of Pages,Year Published,Original Publication Year,Date Read,Date Added,Bookshelves,Bookshelves with positions,Exclusive Shelf,My Review,Spoiler,Private Notes,Read Count,Recommended For,Recommended By,Owned Copies,Original Purchase Date,Original Purchase Location,Condition,Condition Description,BCID
-
 CREATE TABLE `jei_books` (
     `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
     `gr_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',

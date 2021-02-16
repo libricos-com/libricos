@@ -293,6 +293,32 @@ class BookJei extends Book
         }
     }
 
+    public static function updateReviewJeiBookIdByPodRel() 
+    {
+        $sql = "UPDATE
+             wp_podsrel rel, jei_reviews r, jei_books b
+        SET r.jei_book_id = rel.related_item_id
+        WHERE
+            r.post_id = rel.item_id
+            AND b.post_id = rel.related_item_id
+            AND r.jei_book_id IS NULL
+        LIMIT 100";
+        $stmt= self::$_pdo->prepare($sql);
+        
+        try{
+            self::$_pdo->beginTransaction();
+            $response = $stmt->execute();
+            $modified = $stmt->rowCount(); 
+            self::$_pdo->commit();
+            echo "$modified row modified for updateReviewJeiBookIdByPodRel()<br />";
+            return $response;
+        }catch(Exception $e){
+            echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
+        }
+    }
+
 
     public static function updateBookPostidsByGoodreadsUrl() 
     {
