@@ -1,6 +1,6 @@
 <?php
 /* 
-@see: https://www.goodreads.com/api/index
+NOTE: https://www.goodreads.com/api/index
 */
 include 'config.php';
 include './goodreads/GoodReads.php';
@@ -8,7 +8,7 @@ include './goodreads/GoodReads.php';
 $api = new GoodReads(JEI_GOODREADS_KEY, __DIR__.'/cache');
 
 // $data = $api->getAuthor(JEI_GOODREADS_AUTHOR_ID);
-$data = $api->getBook(20513179);
+// $data = $api->getBook(57045397);
 // $data = $api->getLatestReads(JEI_GOODREADS_USER_1);
 // $data = $api->getUser(JEI_GOODREADS_USER_1);
 
@@ -17,9 +17,11 @@ $data = $api->getBook(20513179);
 // $data = $api->getUserStatuses(JEI_GOODREADS_USER_1);
 
 // https://www.goodreads.com/review/show/2312483779
-// $data = $api->getReview(2312483779);
+$data = $api->getReview(2312483779);
 
 // $data = $api->getShelf( JEI_GOODREADS_USER_1, '000-next', 'position', 10, 1 );
+
+// $data = $api->getShelvesByUserId(JEI_GOODREADS_USER_1);
 
 
 print("<pre>".print_r($data,true)."</pre>");

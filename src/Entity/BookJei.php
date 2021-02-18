@@ -71,6 +71,45 @@ class BookJei extends Book
         }
         
     }
+    /**
+     * Undocumented function
+     * Fill all properties from a Wordpress post
+     * 
+     * @return void
+     */
+    public static function insertShelf($shelf) 
+    {
+        $shelf['gr_id'] = $shelf['id'];
+        unset($shelf['id']);
+
+        $shelf['last_user'] = 'jesus';
+        $shelf['last_mod'] = date('Y-m-d H:i:s');
+
+        // NOTE: Guardando en la BBDD
+        // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
+        $keys = array_keys($shelf);
+        $fields = '`'.implode('`, `',$keys).'`';
+        $placeholder = substr(str_repeat('?,',count($keys)),0,-1);
+
+        // print("<pre>".print_r($book, true)."</pre>");
+
+        $smt = self::$_pdo->prepare("INSERT INTO jei_shelves ($fields) VALUES($placeholder)");
+
+        try{
+            // print("<pre>".print_r($review, true)."</pre>");die;
+            self::$_pdo->beginTransaction();
+            $response = $smt->execute(array_values($shelf));
+            $lastInsertId = self::$_pdo->lastInsertId();
+            self::$_pdo->commit();
+            echo "Shelf $lastInsertId added: ".$book['title'].'<br />';
+            return $lastInsertId;
+        }catch(Exception $e){
+            echo $e->getMessage();
+            self::$_pdo->rollback();
+            return false;
+        }
+        
+    }
 
     protected static function cleanBook($book)
     {

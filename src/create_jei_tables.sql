@@ -61,3 +61,14 @@ CREATE TABLE `jei_books` (
     `last_user` VARCHAR(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `jei_shelves` (
+    `id` BIGINT(12) unsigned NOT NULL AUTO_INCREMENT,
+    `gr_id` BIGINT(12) unsigned DEFAULT NULL UNIQUE COMMENT 'Valor único para evitar duplicados',
+    `name` VARCHAR(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `date_added` DATETIME DEFAULT NULL,
+    `last_mod` DATETIME DEFAULT NULL,
+    `last_user` VARCHAR(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -97,6 +97,26 @@ class GoodReads
         );
     }
 
+
+    /**
+     * Get shelves by a given author.
+     *
+     * @param  integer $userId
+     * @param  integer $page     Optional page offset, 1-N
+     * @return array
+     */
+    public function getShelvesByUserId($userId, $page = 1)
+    {
+        return $this->request(
+            'shelf/list',
+            array(
+                'key' => $this->apiKey,
+                'id' => (int)$userId,
+                'page' => (int)$page
+            )
+        );
+    }
+
     /**
      * Get details for a given book.
      *
