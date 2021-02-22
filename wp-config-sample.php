@@ -20,13 +20,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'libricos_dev' );
+define( 'DB_NAME', 'database_name_here' );
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'username_here' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'password_here' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
@@ -78,11 +78,6 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
-putenv('LBR_GOOGLE_ANALYTICS_CODE=');
-
-
-
-
 
 /* That's all, stop editing! Happy publishing. */
 
@@ -93,12 +88,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
-
-
-/**
- * Autoload de Composer
- * Usage DEV: composer dumpautoload
- * Usage PROD (optimize opcional, basta con subir vía FTP/GIT el vendor de DEV): composer dumpautoload -o
- * @see https://anchor.host/composer-autoloading-within-wordpress-plugin/
- */ 
-require __DIR__ . '/vendor/autoload.php';

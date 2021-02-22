@@ -1,41 +1,32 @@
 {
-    "name": "libricos/wordpress-site-about-books",
-    "description": "Another WordPress site",
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "repositories":[
-        {
-            "type":"composer",
-            "url":"https://wpackagist.org",
-            "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
-        }
-    ],
-    "require": {
-        "johnpbloch/wordpress-core-installer": "^2.0",
-        "johnpbloch/wordpress-core": "^5.6",
-        
-        "twbs/bootstrap": ">=4.5.3",
-
-        "wpackagist-theme/twentyeleven":">=3.5",
-        
-        "wpackagist-plugin/addthis":">=6.2.6",
-        "wpackagist-plugin/contact-form-7":">=5.3.1",
-        "wpackagist-plugin/cookie-notice":">=2.0.0",
-        "wpackagist-plugin/instagram-feed":">=2.6.2",
-        "wpackagist-plugin/permalink-manager":">=2.2.9.2",
-        "wpackagist-plugin/pods":">=2.7.24",
-        "wpackagist-plugin/shortcodes-ultimate":">=5.9.6",
-        "wpackagist-plugin/updraftplus":">=1.16.42",
-        "wpackagist-plugin/wp-optimize":">=3.1.6",
-        "wpackagist-plugin/yet-another-related-posts-plugin":">=5.10.2"
-    },
-    "extra": {
-        "installer-paths": {
-            "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "wp-content/themes/{$name}/": ["type:wordpress-theme"]
-        }
+  "name": "johnpbloch/wordpress-core",
+  "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.",
+  "keywords": [
+    "wordpress",
+    "blog",
+    "cms"
+  ],
+  "type": "wordpress-core",
+  "homepage": "https://wordpress.org/",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "WordPress Community",
+      "homepage": "https://wordpress.org/about/"
     }
+  ],
+  "support": {
+    "issues": "https://core.trac.wordpress.org/",
+    "forum": "https://wordpress.org/support/",
+    "wiki": "https://codex.wordpress.org/",
+    "irc": "irc://irc.freenode.net/wordpress",
+    "source": "https://core.trac.wordpress.org/browser"
+  },
+  "require": {
+    "php": ">=5.6.20",
+    "ext-json": "*"
+  },
+  "provide": {
+    "wordpress/core-implementation": "5.6.2"
+  }
 }
