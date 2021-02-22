@@ -79,11 +79,18 @@ class BookJei extends Book
      */
     public static function insertShelf($shelf) 
     {
-        $shelf['gr_id'] = $shelf['id'];
+        // $shelf['gr_id'] = $shelf['id'];
+        unset($shelf['exclusive']);
         unset($shelf['id']);
+        unset($shelf['sortable']);
+        unset($shelf['review_shelf_id']);
 
         $shelf['last_user'] = 'jesus';
         $shelf['last_mod'] = date('Y-m-d H:i:s');
+
+        if(empty($shelf['review_shelf_id'])){
+            $shelf['review_shelf_id'] = null;
+        }
 
         // NOTE: Guardando en la BBDD
         // NOTE: https://www.php.net/manual/es/pdostatement.execute.php
@@ -101,13 +108,25 @@ class BookJei extends Book
             $response = $smt->execute(array_values($shelf));
             $lastInsertId = self::$_pdo->lastInsertId();
             self::$_pdo->commit();
-            echo "Shelf $lastInsertId added: ".$book['title'].'<br />';
+            echo "Shelf $lastInsertId added <br />";
             return $lastInsertId;
-        }catch(Exception $e){
+        } catch ( \Exception $e) {
+            // throw $e;
+            echo $e->getCode()." aaaaa dupes here ".$e->getMessage()."<br />";
+            self::$_pdo->rollback();
+            if ($e->getCode() == 1062) {
+               // duplicate entry, do something else
+               echo "uuuuuuh dupes here<br />";
+               die;
+            }       
+        }
+        /*
+        catch(Throwable $e){
             echo $e->getMessage();
             self::$_pdo->rollback();
             return false;
         }
+        */
         
     }
 
