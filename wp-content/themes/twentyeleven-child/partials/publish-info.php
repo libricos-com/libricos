@@ -3,7 +3,10 @@ $rating = $linkHtml = $textoLink = '';
 $valor = $valorPercent = 0;
 
 $textoLink = 'ha reseñado';
-$urlReview = $this2->url_review;
+$urlReview = '';
+if(!empty($this2->url_review)){
+    $urlReview = $this2->url_review;
+}
 if(!empty($review)){
     // Venimos desde nota.php (review)
     $valor = $review->get_rating();
@@ -11,8 +14,10 @@ if(!empty($review)){
     $textoLink = 'reseñó';
     $urlReview = $review->url_review;
 }
-
 $linkHtml = '<a href="'.$urlReview.'" title="Libro reseñado">'.$textoLink.'</a> ';
+if(empty($url_review)){
+    $linkHtml = $textoLink;
+}
 
 $categories = get_the_category();
 if(!empty($categories[0])){

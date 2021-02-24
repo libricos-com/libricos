@@ -228,6 +228,13 @@ abstract class Book
      */
     private $_mapa;
 
+    /**
+     * Palabras de búsqueda
+     *
+     * @var string
+     */
+    private $_amazon_search_keywords;
+
  
     /**
      * Constructor.

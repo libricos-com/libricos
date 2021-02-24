@@ -101,7 +101,10 @@ class BookAmazon extends Book
                     $tooltip = 'Argumentos puestos en duda';
                     break;
                 default:
-                    # code...
+                    $color = 'primary';
+                    $icon_cls = 'book';
+                    $txt = 'Por leer';
+                    $tooltip = 'Añadido a la biblioteca';
                     break;
             }
 

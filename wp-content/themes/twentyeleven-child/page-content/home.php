@@ -32,6 +32,14 @@ foreach( $posts as $post ){
 
 <hr />
 
+<h2>Libros de cocina</h2>
+<?php 
+$libros = Wp::get_books_by_tag_id(470, 4);
+$asins = Wp::get_libros_asins($libros)[0];
+$ids = Wp::get_libros_asins($libros)[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+?>
+
 <h2>Libros de autoayuda recomendados</h2>
 <p>Selección de libros imprescindibles sobre espiritualidad, populares, de los más vendidos, 
 emocional, ansiedad, autoestima, depresión, imprescindibles. Libros a buen precio, español y Kindle.</p>

@@ -19,6 +19,9 @@ if(empty($reviews[0])){
 $notas = $libro->getNotas();
 $id = $libro->getId();
 $keywords = get_post_meta($id,'titulo')[0];
+if( !empty($libro->getAmazon_search_keywords() ) ){
+    $keywords = $libro->getAmazon_search_keywords();
+}
 if($id == 12883){ 
     $keywords = 'scott hahn';
 }elseif($id == 13117){ 
@@ -76,8 +79,14 @@ if($id == 12883){
         </div> 
     </div>
 
-    <h2>Índice</h2>
-    <p><?php echo $libro->getTableOfContents();?></p>
+    <?php 
+    if ( ! empty( $libro->getTableOfContents() ) ) {
+    ?>
+        <h2>Índice</h2>
+        <p><?php echo $libro->getTableOfContents();?></p>
+    <?php 
+    }
+    ?>
 
     <?php 
     if ( ! empty( $libro->getGeneros() ) ) {
