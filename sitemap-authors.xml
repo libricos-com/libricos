@@ -6,6 +6,21 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
+  <loc>https://libricos.com/autores/gabriele-amorth/</loc>
+  <lastmod>2021-02-27T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://libricos.com/autores/angela-musolesi/</loc>
+  <lastmod>2021-02-27T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://libricos.com/autores/jordanbpeterson/</loc>
+  <lastmod>2021-02-27T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://libricos.com/autores/alexandra-greeley/</loc>
   <lastmod>2021-02-24T09:12:58+00:00</lastmod>
   <priority>0.80</priority>
