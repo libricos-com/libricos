@@ -27,6 +27,11 @@ if($id == 12883){
 }elseif($id == 13117){ 
     $keywords = 'kibeho';
 }
+
+$paginas = '';
+if(!empty($libro->getPaginas())){
+    $paginas = $libro->getPaginas();    
+}
 ?>
 
 <div class="lbc-file">
@@ -69,7 +74,7 @@ if($id == 12883){
         <div class="col-sm-4 col-md-4">
             <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
                 
-                tpl_pages="'.$libro->getPaginas().'"
+                tpl_pages="'.$paginas.'"
             
             ] ');?>
         </div> 

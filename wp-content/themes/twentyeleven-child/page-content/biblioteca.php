@@ -1,4 +1,4 @@
-<h2>Últimos libros</h2>
+<h2>Todos los libros recomendados</h2>
 <?php
 use App\Util\Wp;
 $tamano_grid = 3;
