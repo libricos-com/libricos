@@ -14,33 +14,29 @@ $posts = get_posts(
 <div class="aawp">
 <?php
 foreach( $posts as $post ){
-
     $id = $post->ID;
-
     $post->pic = get_the_post_thumbnail_url($id,'full'); // large, thumbnail
-    
     $post->fecha = get_fecha_larga($id);
-
     $post->urlArticulo = esc_url( get_permalink( $id ) );
-
     $post->firstParagraph = get_first_paragraph($post->post_content);
-    
     echo view('../partials/home-item', array('this2' => $post));
 }
 ?>
 </div>
-
 <hr />
 
-<h2>Libros de cocina</h2>
+
+<h2><a href="<?php echo get_tag_link(470);?>">Libros de cocina</a></h2>
 <?php 
 $libros = Wp::get_books_by_tag_id(470, 4);
 $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
+<hr />
 
-<h2>Libros de autoayuda recomendados</h2>
+
+<h2><a href="<?php echo get_term_link(410, 'genero');?>">Libros de autoayuda recomendados</a></h2>
 <p>Selección de libros imprescindibles sobre espiritualidad, populares, de los más vendidos, 
 emocional, ansiedad, autoestima, depresión, imprescindibles. Libros a buen precio, español y Kindle.</p>
 <?php 
@@ -50,24 +46,30 @@ $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
+<hr />
 
-<h2>Libros sobre psicología y amor de pareja recomendados</h2>
+
+<h2><a href="<?php echo get_term_link(405, 'genero');?>">Libros sobre psicología y amor de pareja recomendados</a></h2>
 <?php 
 $libros = Wp::get_books_by_genero_id(405, 4);
 $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
+<hr />
 
-<h2>Libros recomendados sobre profecías cumplidas</h2>
+
+<h2><a href="<?php echo get_tag_link(275);?>">Libros recomendados sobre profecías cumplidas</a></h2>
 <?php 
 $libros = Wp::get_books_by_tag_id(275, 4);
 $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
+<hr />
 
-<h2>Libros recomendados sobre historias y testimonios</h2>
+
+<h2><a href="<?php echo get_tag_link(344);?>">Libros recomendados sobre historias y testimonios</a></h2>
 <p>Libros que cuentan historias de cambio para jóvenes, hombres, mujeres, niños.</p>
 <?php 
 $libros = Wp::get_books_by_tag_id(344, 4);
@@ -75,8 +77,10 @@ $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
+<hr />
 
-<h2>Libros recomendados sobre oración</h2>
+
+<h2><a href="<?php echo get_tag_link(246);?>">Libros recomendados sobre oración</a></h2>
 <?php 
 /*
 Tag oración ID 246
@@ -88,10 +92,9 @@ $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
 echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
 ?>
-
 <hr />
 
-<h6>Novedades Amazon</h6>
+<h2>Novedades Amazon</h2>
 <?php echo do_shortcode('[amazon template="vertical" grid="3" new="mejores libros" items="12"]');?>
 
 
