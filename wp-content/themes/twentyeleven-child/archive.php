@@ -14,42 +14,59 @@
 
 $term = get_queried_object(); // object "clásicos"
 $asins = $ids = '';
+$args = array(
+    'posts_per_page' => -1,
+    // 'orderby' => 'rand',
+    'tax_query' => array (
+        array (
+        'taxonomy' => $term->taxonomy,
+        'field' => 'id',
+        'terms' => $term->term_id,
+    //    using a slug is also possible
+    //    'field' => 'slug', 
+    //    'terms' => $qobj->name
+        )
+    )
+);
 
-while ( have_posts() ) : the_post();
-    /*
-    * Include the Post-Format-specific template for the content.
-    * If you want to overload this in a child theme then include a file
-    * called content-___.php (where ___ is the Post Format name) and that
-    * will be used instead.
-    */
-    $post = get_post();
-    $post_type = $post->post_type;
-    $id = $post->ID;
-    switch ($post_type) {
-        case 'libro':
-            $asin = get_post_meta( $id, 'asin', true );
-            break;
-        case 'review':
-            $libro = get_post_meta( $id, 'libro', true );
-            $id = $libro['ID'];
-            $asin = get_post_meta( $id, 'asin', true );
-            break;
-        case 'nota':
-            $libro = get_post_meta( $id, 'libro', true );
-            $id = $libro['ID'];
-            $asin = get_post_meta( $id, 'asin', true );
-            break;
-        default:
-            
-            break;
-    }
-    $asins .= $asin.',';
-    $ids .= $id.',';
-endwhile; 
+$query = new WP_Query( $args );
+if ($query->have_posts()) {
+    while ( $query->have_posts() ) : $query->the_post();
+        /*
+        * Include the Post-Format-specific template for the content.
+        * If you want to overload this in a child theme then include a file
+        * called content-___.php (where ___ is the Post Format name) and that
+        * will be used instead.
+        */
+        $post = get_post();
+        $post_type = $post->post_type;
+        $id = $post->ID;
+        switch ($post_type) {
+            case 'libro':
+                $asin = get_post_meta( $id, 'asin', true );
+                break;
+            case 'review':
+                $libro = get_post_meta( $id, 'libro', true );
+                $id = $libro['ID'];
+                $asin = get_post_meta( $id, 'asin', true );
+                break;
+            case 'nota':
+                $libro = get_post_meta( $id, 'libro', true );
+                $id = $libro['ID'];
+                $asin = get_post_meta( $id, 'asin', true );
+                break;
+            default:
+                
+                break;
+        }
+        $asins .= $asin.',';
+        $ids .= $id.',';
+    endwhile; 
 
-// Remove duplicate ids
-$asins = implode(',', array_unique(explode(',', $asins)));
-$ids = implode(',', array_unique(explode(',', $ids)));
+    // Remove duplicate ids
+    $asins = implode(',', array_unique(explode(',', $asins)));
+    $ids = implode(',', array_unique(explode(',', $ids)));
+}
 ?>
 
 <?php get_header();?>
