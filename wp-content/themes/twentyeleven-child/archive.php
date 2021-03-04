@@ -76,7 +76,7 @@ $ids = implode(',', array_unique(explode(',', $ids)));
                         _e( 'Blog Archives', 'twentyeleven' );
                     }   
                 }else{
-                    echo 'Libros sobre '.$term->name;
+                    echo 'Libros de '.$term->name;
                 }
                 ?>
             </h1>
@@ -101,7 +101,7 @@ $ids = implode(',', array_unique(explode(',', $ids)));
         ?>
 
         <h1>Otros libros de <?php echo $term->name;?></h1>
-        <?php echo do_shortcode('[amazon bestseller="%'.$term->name.' + cristianismo%"]'); ?>
+        <?php echo do_shortcode('[amazon template="vertical" grid="3" items="12" bestseller="%'.$term->name.' + cristianismo%"]'); ?>
 
 
         <?php twentyeleven_content_nav( 'nav-below' ); ?>
