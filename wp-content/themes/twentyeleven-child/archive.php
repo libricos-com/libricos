@@ -118,7 +118,7 @@ if ($query->have_posts()) {
         ?>
 
         <h1>Otros libros de <?php echo $term->name;?></h1>
-        <?php echo do_shortcode('[amazon template="vertical" grid="3" items="12" bestseller="%'.$term->name.' + cristianismo%"]'); ?>
+        <?php echo do_shortcode('[amazon template="vertical" grid="3" items="12" bestseller="%'.$term->name.'%"]'); ?>
 
 
         <?php twentyeleven_content_nav( 'nav-below' ); ?>
