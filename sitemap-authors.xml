@@ -6,6 +6,21 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
+  <loc>https://libricos.com/autores/jon-krakauer/</loc>
+  <lastmod>2021-03-06T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://libricos.com/autores/alex-honnold/</loc>
+  <lastmod>2021-03-06T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://libricos.com/autores/michael-mosley/</loc>
+  <lastmod>2021-03-06T09:12:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://libricos.com/autores/jason-fung/</loc>
   <lastmod>2021-03-05T09:12:58+00:00</lastmod>
   <priority>0.80</priority>
