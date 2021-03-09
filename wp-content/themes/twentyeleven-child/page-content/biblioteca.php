@@ -1,7 +1,7 @@
 <h2>Todos los libros recomendados</h2>
 <?php
 use App\Util\Wp;
-$tamano_grid = 3;
+$tamano_grid = 4;
 $libros = Wp::get_books_by_category_id(3);
 $asins = Wp::get_libros_asins($libros)[0];
 $ids = Wp::get_libros_asins($libros)[1];
