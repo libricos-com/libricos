@@ -25,6 +25,14 @@ foreach( $posts as $post ){
 </div>
 <hr />
 
+<h2><a href="./biblioteca">Últimas recomendaciones</a></h2>
+<?php
+$libros = Wp::get_books_by_category_id(3, 4);
+$asins = Wp::get_libros_asins($libros)[0];
+$ids = Wp::get_libros_asins($libros)[1];
+echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
+?>
+
 
 <h2><a href="<?php echo get_tag_link(470);?>">Libros de cocina</a></h2>
 <?php 
@@ -38,7 +46,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 
 <h2><a href="<?php echo get_term_link(410, 'genero');?>">Libros de autoayuda recomendados</a></h2>
 <p>Selección de libros imprescindibles sobre espiritualidad, populares, de los más vendidos, 
-emocional, ansiedad, autoestima, depresión, imprescindibles. Libros a buen precio, español y Kindle.</p>
+emocional, ansiedad, autoestima, depresión, imprescindibles.</p>
 <?php 
 // Género autoayuda 410 http://192.168.1.44/jesuserro.com/generos/autoayuda
 $libros = Wp::get_books_by_genero_id(410, 4);
