@@ -44,7 +44,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 
-<h2><a href="<?php echo get_term_link(410, 'genero');?>">Libros de autoayuda recomendados</a></h2>
+<h2><a href="<?php echo get_term_link(410, 'genero');?>">Libros de autoayuda</a></h2>
 <p>Selección de libros imprescindibles sobre espiritualidad, populares, de los más vendidos, 
 emocional, ansiedad, autoestima, depresión, imprescindibles.</p>
 <?php 
@@ -57,7 +57,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 
-<h2><a href="<?php echo get_term_link(405, 'genero');?>">Libros sobre psicología y amor de pareja recomendados</a></h2>
+<h2><a href="<?php echo get_term_link(405, 'genero');?>">Libros sobre psicología y amor de pareja</a></h2>
 <?php 
 $libros = Wp::get_books_by_genero_id(405, 4);
 $asins = Wp::get_libros_asins($libros)[0];
@@ -67,7 +67,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 
-<h2><a href="<?php echo get_tag_link(275);?>">Libros recomendados sobre profecías cumplidas</a></h2>
+<h2><a href="<?php echo get_tag_link(275);?>">Libros sobre profecías cumplidas</a></h2>
 <?php 
 $libros = Wp::get_books_by_tag_id(275, 4);
 $asins = Wp::get_libros_asins($libros)[0];
@@ -77,7 +77,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 
-<h2><a href="<?php echo get_tag_link(344);?>">Libros recomendados sobre historias y testimonios</a></h2>
+<h2><a href="<?php echo get_tag_link(344);?>">Libros sobre historias y testimonios</a></h2>
 <p>Libros que cuentan historias de cambio para jóvenes, hombres, mujeres, niños.</p>
 <?php 
 $libros = Wp::get_books_by_tag_id(344, 4);
@@ -88,7 +88,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 
-<h2><a href="<?php echo get_tag_link(246);?>">Libros recomendados sobre oración</a></h2>
+<h2><a href="<?php echo get_tag_link(246);?>">Libros sobre oración</a></h2>
 <?php 
 /*
 Tag oración ID 246
