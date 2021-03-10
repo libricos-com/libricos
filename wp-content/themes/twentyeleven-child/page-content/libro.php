@@ -80,7 +80,7 @@ if(!empty($libro->getPaginas())){
         </div> 
         <div class="lbc-contenido2 col-sm-8 col-md-8">
             <h2>Sinopsis</h2>
-            <p><?php echo $libro->getSinopsis();?></p>
+            <?php echo $libro->getSinopsis();?>
         </div> 
     </div>
 
@@ -88,7 +88,7 @@ if(!empty($libro->getPaginas())){
     if ( ! empty( $libro->getTableOfContents() ) ) {
     ?>
         <h2>Índice</h2>
-        <p><?php echo $libro->getTableOfContents();?></p>
+        <?php echo $libro->getTableOfContents();?>
     <?php 
     }
     ?>
