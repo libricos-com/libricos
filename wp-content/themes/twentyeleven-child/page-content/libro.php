@@ -211,7 +211,7 @@ if(!empty($libro->getPaginas())){
 <h2>Libros similares a <?php echo $libro->getTitulo();?></h2>
 <div class="text-center p-2">
     <?php 
-    echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.$keywords.'"]');
+    echo do_shortcode('[amazon template="vertical" grid="4" bestseller="'.$keywords.'"]');
     // echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
     ?>
 </div>	
