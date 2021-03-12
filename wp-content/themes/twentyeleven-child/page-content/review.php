@@ -31,7 +31,7 @@ if($id == 10215){
 
     <div>
         <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
-            <?php echo do_shortcode(' [amazon box="'.$review->asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
+            <?php echo do_shortcode('[amazon box="'.$review->asin.'" template="vertical" style="dark" value="thumb" image_size="large"]');?>
         </div>
         <div class="lbc-contenido">
             <?php echo $review->contenido;?>
@@ -40,6 +40,7 @@ if($id == 10215){
 
 </div>
 
+<hr />
 
 <h2>Libros similares a <?php echo $review->libroTitle;?></h2>
 

@@ -101,7 +101,7 @@
 
     <div>
         <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
-            <?php echo do_shortcode(' [amazon box="'.$asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
+            <?php echo do_shortcode('[amazon box="'.$asin.'" template="vertical" style="dark" value="thumb" image_size="large"]');?>
         </div>
         <div class="lbc-contenido">
             <?php echo $texto;?>
@@ -112,15 +112,11 @@
 
 
 <hr />
-<div class="text-center p-2">
-    <?php echo do_shortcode('[amazon box="'.$asin.'"]');?>
-</div>
-<hr />
 
 <h2>Libros similares</h2>
 <div class="text-center p-2">
     <?php 
-    echo do_shortcode('[amazon bestseller="'.$keywords.'" template="vertical" grid="3" items="12"]');
+    echo do_shortcode('[amazon bestseller="'.$keywords.'" template="vertical" grid="4" items="12"]');
     ?>
 </div>
 
