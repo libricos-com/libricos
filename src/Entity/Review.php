@@ -147,25 +147,25 @@ class Review
         $this->_post_date = get_fecha_larga($post_id);
         $this->_post_type = 'review';
         // $this->id_libro1 =  $this->pod->field( 'libro');
-        $this->id_libro = get_post_meta($post_id,'libro')[0]['ID'];
+        $this->id_libro = get_post_meta($post_id,'libro', true)['ID'];
         $this->url_libro = esc_url( get_permalink( $this->id_libro ) );
         $this->url_review = esc_url( get_permalink( $post_id ) );
         $this->num_comments = get_comments_number( $post_id );
-        $this->contenido = get_post_meta($post_id,'contenido')[0];
+        $this->contenido = get_post_meta($post_id,'contenido', true);
         // $this->portadaLibro = get_post_meta($this->id_libro,'portada');
         // $this->src = get_the_post_thumbnail_url( $post_id, 'post_thumbnail' );
         $this->libroTitle = get_the_title($this->id_libro);
 
         $this->_pod = pods( 'libro', $this->id_libro );
-        $this->asin = get_post_meta($this->id_libro,'asin')[0];
+        $this->asin = get_post_meta($this->id_libro,'asin', true);
         // echo aawp_get_field_value($asin, 'price');
         $this->autores = $this->_pod->field( 'autores' );
 
-        if(!empty( get_post_meta($this->_reviewId,'goodreads_url')[0] )){
-            $this->_goodreads_url = get_post_meta($this->_reviewId,'goodreads_url')[0];
+        if(!empty( get_post_meta($this->_reviewId,'goodreads_url', true) )){
+            $this->_goodreads_url = get_post_meta($this->_reviewId,'goodreads_url', true);
         }
-        if(!empty( get_post_meta($this->_reviewId,'contenido')[0] )){
-            $this->texto = get_post_meta($this->_reviewId,'contenido')[0]; 
+        if(!empty( get_post_meta($this->_reviewId,'contenido', true) )){
+            $this->texto = get_post_meta($this->_reviewId,'contenido', true); 
             $this->texto = get_first_paragraph($this->texto);
         }
 
@@ -192,9 +192,9 @@ class Review
         $this->_rating = '0.0';
         $this->_rating_percent = 0;
 
-        if(!empty( get_post_meta($post_id,'rating')[0] )){
-            if(is_numeric( get_post_meta($post_id,'rating')[0] )){
-                $this->_rating = floatval(get_post_meta($post_id,'rating')[0]);
+        if(!empty( get_post_meta($post_id,'rating', true) )){
+            if(is_numeric( get_post_meta($post_id,'rating', true) )){
+                $this->_rating = floatval(get_post_meta($post_id,'rating', true));
                 $this->_rating_percent = $this->_rating*100/5;
             }  
         }
