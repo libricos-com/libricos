@@ -41,15 +41,9 @@ if($id == 10215){
 </div>
 
 
-<h2>El libro en Amazon España</h2>
-<div class="text-center p-2">
-    <?php echo do_shortcode('[amazon box="'.$review->asin.'"]');?>
-</div>
-<hr />
-
 <h2>Libros similares a <?php echo $review->libroTitle;?></h2>
 
 <div class="text-center p-2">
-    <?php echo do_shortcode('[amazon template="vertical" grid="3" bestseller="'.$keywords.'"]');?>
+    <?php echo do_shortcode('[amazon template="vertical" grid="4" bestseller="'.$keywords.'"]');?>
 </div>
 
