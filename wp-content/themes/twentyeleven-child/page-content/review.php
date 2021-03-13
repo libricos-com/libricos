@@ -33,10 +33,6 @@ if($id == 10215){
         <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
             <?php 
             echo do_shortcode('[amazon box="'.$review->asin.'" template="vertical-book" style="dark" value="thumb" image_size="large" tpl_urllibro="'.$review->url_libro.'"]');
-
-            // echo do_shortcode('[amazon box="'.$review->asin.'" template="vertical" style="dark" value="thumb" image_size="large"]');
-            
-            // echo do_shortcode('[amazon box="'.rtrim($review->asin,',').'" tpl_ids="'.rtrim($review->id_libro,',').'" template="my-vertical" style="dark" value="thumb" image_size="large"]');
             ?>
         </div>
         <div class="lbc-contenido">

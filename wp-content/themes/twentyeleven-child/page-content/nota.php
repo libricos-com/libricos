@@ -101,7 +101,9 @@
 
     <div>
         <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
-            <?php echo do_shortcode('[amazon box="'.$asin.'" template="vertical" style="dark" value="thumb" image_size="large"]');?>
+            <?php 
+            echo do_shortcode('[amazon box="'.$asin.'" template="vertical-book" style="dark" value="thumb" image_size="large" tpl_urllibro="'.$libro_link.'"]');
+            ?>
         </div>
         <div class="lbc-contenido">
             <?php echo $texto;?>
