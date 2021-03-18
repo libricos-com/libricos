@@ -22,15 +22,15 @@
       "wpackagist-theme/twentyeleven":">=3.7",
       
       "wpackagist-plugin/addthis":">=6.2.6",
-      "wpackagist-plugin/contact-form-7":">=5.3.1",
-      "wpackagist-plugin/cookie-notice":">=2.0.0",
+      "wpackagist-plugin/contact-form-7":">=5.4",
+      "wpackagist-plugin/cookie-notice":">=2.0.3",
       "wpackagist-plugin/instagram-feed":">=2.6.2",
-      "wpackagist-plugin/permalink-manager":">=2.2.9.2",
-      "wpackagist-plugin/pods":">=2.7.24",
-      "wpackagist-plugin/shortcodes-ultimate":">=5.9.6",
-      "wpackagist-plugin/updraftplus":">=1.16.48",
-      "wpackagist-plugin/wp-optimize":">=3.1.6",
-      "wpackagist-plugin/yet-another-related-posts-plugin":">=5.14.0"
+      "wpackagist-plugin/permalink-manager":">=2.2.9.7",
+      "wpackagist-plugin/pods":">=2.7.26",
+      "wpackagist-plugin/shortcodes-ultimate":">=5.9.8",
+      "wpackagist-plugin/updraftplus":">=1.16.50",
+      "wpackagist-plugin/wp-optimize":">=3.1.8",
+      "wpackagist-plugin/yet-another-related-posts-plugin":">=5.15.3"
   },
   "extra": {
       "installer-paths": {
