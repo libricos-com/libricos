@@ -38,7 +38,7 @@ if($notas){
 
     <?php if($numNotas > 0){ ?>
         <div class="d-flex flex-wrap justify-content-start top-right flex-row-reverse">
-            <a href="<?php echo $urlLibro;?>#notas" data-toggle="tooltip" title="Nombre nota"><i class="fas fa-bookmark fa-2x text-primary"> <?php echo $numNotas;?></i>
+            <a href="<?php echo $urlLibro;?>#notas" data-toggle="tooltip" title="Ver notas del libro <?php echo $this->get_product_image_link_title();?>"><i class="fas fa-bookmark fa-2x text-primary"> <?php echo $numNotas;?></i>
             </a>
         </div>
     <?php }?>
