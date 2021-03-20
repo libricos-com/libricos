@@ -56,10 +56,10 @@
   
   /* Top right text */
   .top-right {
-    @extend .overlay;
+    // @extend .overlay;
     position: absolute;
-    top: 8px;
-    right: 16px;
+    top: -.5%;
+    right: 3%;
   }
   
   /* Bottom right text */

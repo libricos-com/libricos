@@ -116,7 +116,7 @@
 <hr />
 
 <h2>Libros similares</h2>
-<div class="text-center p-2">
+<div class="jei-amz-grd text-center p-2">
     <?php 
     echo do_shortcode('[amazon bestseller="'.$keywords.'" template="vertical" grid="4" items="12"]');
     ?>

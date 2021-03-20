@@ -15,9 +15,15 @@ use App\Entity\BookAmazonFactory;
 $libro = BookAmazonFactory::create($this);
 $urlLibro = $libro->getUrl();
 // $urlProducto = $this->get_product_url();
+
+$numNotas = 0;
+$notas = $libro->getNotas();
+if($notas){
+    $numNotas = count($notas);
+}
 ?>
 
-<div class="jei-amz-grd <?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical'); ?>" <?php $this->the_product_container(); ?>>
+<div class="jei-amz-grd <?php echo $this->get_product_container_classes('aawp-product aawp-product--vertical');?>" <?php $this->the_product_container(); ?>>
 
     <?php if($libro->getReviews()){
         echo view('/../partials/review-list-amazon-box', array('this2' => $libro));
@@ -29,6 +35,13 @@ $urlLibro = $libro->getUrl();
        href="<?php echo $urlLibro;?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
         <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
     </a>
+
+    <?php if($numNotas > 0){ ?>
+        <div class="d-flex flex-wrap justify-content-start top-right flex-row-reverse">
+            <a href="<?php echo $urlLibro;?>#notas" data-toggle="tooltip" title="Nombre nota"><i class="fas fa-bookmark fa-2x text-primary"> <?php echo $numNotas;?></i>
+            </a>
+        </div>
+    <?php }?>
 
     <div class="aawp-product__content">
         <a class="aawp-product__title" href="<?php echo $urlLibro;?>" title="<?php echo $this->get_product_link_title(); ?>" target="_blank">

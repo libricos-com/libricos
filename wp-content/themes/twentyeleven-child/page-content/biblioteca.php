@@ -54,8 +54,12 @@ Ideas/más buscadas:
 
 
 <h2>Novedades Amazon sobre espiritualidad</h2>
-<?php echo do_shortcode('[amazon template="vertical" new="libros+catolicos" grid="'.$tamano_grid.'"]'); ?>
+<div class="jei-amz-grd">
+    <?php echo do_shortcode('[amazon template="vertical" new="libros+catolicos" grid="'.$tamano_grid.'"]'); ?>
+</div>
 
 <h2>Otros libros</h2>
-<?php echo do_shortcode('[amazon template="vertical" grid="3" bestseller="libros %psicología% cristiana"]'); ?>
+<div class="jei-amz-grd">
+    <?php echo do_shortcode('[amazon template="vertical" grid="'.$tamano_grid.'" bestseller="libros %psicología% cristiana"]'); ?>
+</div>
 

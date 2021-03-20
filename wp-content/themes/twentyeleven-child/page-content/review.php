@@ -45,8 +45,7 @@ if($id == 10215){
 <hr />
 
 <h2>Libros similares a <?php echo $review->libroTitle;?></h2>
-
-<div class="text-center p-2">
+<div class="jei-amz-grd text-center p-2">
     <?php echo do_shortcode('[amazon template="vertical" grid="4" bestseller="'.$keywords.'"]');?>
 </div>
 

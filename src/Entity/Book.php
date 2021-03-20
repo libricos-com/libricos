@@ -253,6 +253,7 @@ abstract class Book
         $this->pod = pods( 'libro', $this->id );
         $this->url = esc_url( get_permalink( $this->id ) );
         $this->reviews = $this->pod->field( 'reviews', $this->get_params() );
+        $this->notas = $this->pod->field( 'notas', $this->get_params() );
         $this->titulo = get_the_title( $this->id );
     }
 

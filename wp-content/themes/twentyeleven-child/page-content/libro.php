@@ -154,7 +154,7 @@ if(!empty($libro->getPaginas())){
 
     <?php 
     if ( ! empty( $notas ) ) { ?>
-        <div class="container-fluid card-group bg-dark mt-4 rounded">
+        <div id="notas" class="container-fluid card-group bg-dark mt-4 rounded">
             <h2>Notas</h2>
             <div class="row">
                 <?php

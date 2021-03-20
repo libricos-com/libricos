@@ -1,4 +1,4 @@
-.overlay, .centered, .bottom-right, .top-right, .bottom-left, .lbc-aawp-book .bottom-right, .lbc-aawp-book .bottom-left {
+.overlay, .centered, .bottom-right, .bottom-left, .lbc-aawp-book .bottom-right, .lbc-aawp-book .bottom-left {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1%;
 }
@@ -47,8 +47,8 @@
 /* Top right text */
 .top-right {
   position: absolute;
-  top: 8px;
-  right: 16px;
+  top: -0.5%;
+  right: 3%;
 }
 
 /* Bottom right text */

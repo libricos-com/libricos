@@ -102,7 +102,9 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 <hr />
 
 <h2>Novedades Amazon</h2>
-<?php echo do_shortcode('[amazon template="vertical" grid="'.$tamano_grid.'" new="mejores libros" items="24"]');?>
+<div class="jei-amz-grd">
+    <?php echo do_shortcode('[amazon template="vertical" grid="'.$tamano_grid.'" new="mejores libros" items="24"]');?>
+</div>
 
 
 
