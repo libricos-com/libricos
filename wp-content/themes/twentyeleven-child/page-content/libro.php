@@ -150,11 +150,9 @@ if(!empty($libro->getPaginas())){
     } 
     ?>
 
-
-
     <?php 
     if ( ! empty( $notas ) ) { ?>
-        <div id="notas" class="container-fluid card-group bg-dark mt-4 rounded">
+        <div id="notas" class="container-fluid bg-dark mt-4 rounded">
             <h2>Notas</h2>
             <div class="row">
                 <?php
@@ -168,8 +166,7 @@ if(!empty($libro->getPaginas())){
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
-                    <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">
-                        
+                    <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">    
                         <div class="card bg-secondary border-secondary text-white">
                             <div class="card-header">
                                 <i class="fas fa-bookmark text-primary"></i>
@@ -179,17 +176,15 @@ if(!empty($libro->getPaginas())){
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text"><?php echo $nombreNota;?></p>    
-                            </div>
-                        
-                        </div>
-                        
+                            </div>                 
+                        </div>   
                     </div>
-
                 <?php
                 $i++;
+                if($i % 4 == 0) echo '</div><div class="row">';
                 } 
                 ?>
-            </div>
+            
         </div>
         <?php
     } 
