@@ -153,7 +153,7 @@ if(!empty($libro->getPaginas())){
     <?php 
     if ( ! empty( $notas ) ) { ?>
         <div id="notas" class="container-fluid bg-dark mt-4 rounded">
-            <h2>Notas</h2>
+            <h2 class="pt-3">Notas</h2>
             <div class="row">
                 <?php
                 $i = 1;
