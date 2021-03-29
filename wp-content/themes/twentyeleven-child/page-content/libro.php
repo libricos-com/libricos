@@ -71,14 +71,14 @@ if(!empty($libro->getPaginas())){
     </div>
 
     <div class="row">
-        <div class="col-sm-4 col-md-4">
+        <div class="col-sm-3 col-md-3">
             <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
                 
                 tpl_pages="'.$paginas.'"
             
             ] ');?>
         </div> 
-        <div class="lbc-contenido2 col-sm-8 col-md-8">
+        <div class="lbc-contenido2 col-sm-9 col-md-9">
             <h2>Sinopsis</h2>
             <?php echo $libro->getSinopsis();?>
         </div> 
@@ -156,7 +156,7 @@ if(!empty($libro->getPaginas())){
             <h2 class="pt-3">Notas</h2>
             <div class="row">
                 <?php
-                $i = 1;
+                $i = 0;
                 foreach ( $notas as $nota ) { 
                     $id = $nota[ 'ID' ];
                     $urlNota = esc_url( get_permalink( $id ) );
@@ -166,7 +166,7 @@ if(!empty($libro->getPaginas())){
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
-                    <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">    
+                    <div class="col-sm-3 col-md-3 col-lg-3 d-flex align-items-stretch mb-4">    
                         <div class="card bg-secondary border-secondary text-white">
                             <div class="card-header">
                                 <i class="fas fa-bookmark text-primary"></i>

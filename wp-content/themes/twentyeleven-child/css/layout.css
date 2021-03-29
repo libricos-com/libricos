@@ -1,3 +1,7 @@
+.one-column #page {
+  max-width: 100%;
+}
+
 /**
 * Ajustes cabecera
 */
@@ -50,23 +54,23 @@ header nav {
 }
 @media (min-width: 768px) {
   #primary {
-    width: 73%;
+    width: 100%;
   }
 }
 @media (min-width: 992px) {
   #primary {
-    width: 73%;
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {
   #primary {
-    width: 73%;
+    width: 100%;
   }
 }
 #primary #content {
-  margin: 0 2%;
+  margin: 0;
   padding-top: 0;
-  width: 97%;
+  width: 100%;
 }
 #primary #content article {
   padding-top: 0;
@@ -85,7 +89,7 @@ header nav {
 }
 #primary #content #respond,
 #primary #content footer {
-  width: 95%;
+  width: 100%;
 }
 
 footer:not(.blockquote-footer) {

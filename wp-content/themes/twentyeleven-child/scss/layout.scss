@@ -4,6 +4,12 @@
 @import "../../../../vendor/twbs/bootstrap/scss/_variables";
 @import "../../../../vendor/twbs/bootstrap/scss/mixins/_breakpoints"; 
 
+
+.one-column #page {
+    max-width: 100%;
+}
+
+
 /**
 * Ajustes cabecera
 */
@@ -63,17 +69,17 @@ header {
     }
     // Tablet vertical (desktop-like version)
     @include media-breakpoint-up(md) {
-        width: 73%;
+        width: 100%;
         // border: solid 2px yellow;
     }
     // Tablet horizontal
     @include media-breakpoint-up(lg) {
-        width: 73%;
+        width: 100%;
         // border: solid 2px green;
     }
     // Desktop
     @include media-breakpoint-up(xl) {
-        width: 73%;
+        width: 100%;
         // border: solid 2px blue;
     }
 
@@ -81,10 +87,10 @@ header {
     // border: solid 1px red;
 
     #content {
-        margin: 0 2%;
+        margin: 0;
         // border: solid 1px orange;
         padding-top: 0;
-        width:97%;
+        width:100%;
 
         article{
             padding-top: 0;
@@ -112,7 +118,7 @@ header {
 
         #respond,
         footer {
-            width: 95%;
+            width: 100%;
             // border: solid 1px pink;
         }
     }
