@@ -154,7 +154,7 @@ if(!empty($libro->getPaginas())){
             ?>
 
             <?php if ( ! empty( $libro->getMapa() ) ) { ?>
-                <div class="container-fluid bg-dark rounded mt-4">
+                <div class="container-fluid bg-dark rounded mt-4 pb-2">
                     <h2 class="pt-3">Marco geográfico</h2>
                     <?php echo $libro->getMapa();?>
                 </div> 
