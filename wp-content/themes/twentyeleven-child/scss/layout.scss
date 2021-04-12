@@ -207,3 +207,13 @@ footer:not(.blockquote-footer){
         text-decoration:line-through;
     }
 }
+
+
+// Sidebar: recent comments box
+span.comment-avatar {
+    display: contents;
+}
+
+span.comment-excerpt {
+    font-style: italic;
+}

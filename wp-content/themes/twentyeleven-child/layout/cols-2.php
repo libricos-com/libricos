@@ -24,6 +24,16 @@ get_header();
 
                         <div class="col-sm-3 col-md-3">
                                 <?php
+                                echo do_shortcode('[better_recent_comments number="10" date_format="M j Y, H:i"
+                                format="{avatar} {author} en {post}: “{comment}” {date}" avatar_size="25" 
+                                post_status="publish" excerpts="true"]'); 
+                                ?>
+
+                                <?php
+                                echo do_shortcode('[wpb_popular_tags]'); 
+                                ?>
+
+                                <?php
                                 $args = array(
                                 'taxonomy' => 'genero',
                                 'hide_empty' => false

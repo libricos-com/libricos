@@ -146,3 +146,11 @@ footer:not(.blockquote-footer) {
 .lbc-review-item-h .aawp-product__price--old {
   text-decoration: line-through;
 }
+
+span.comment-avatar {
+  display: contents;
+}
+
+span.comment-excerpt {
+  font-style: italic;
+}
