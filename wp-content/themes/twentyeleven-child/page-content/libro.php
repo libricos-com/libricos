@@ -34,7 +34,7 @@ if(!empty($libro->getPaginas())){
 }
 ?>
 
-<div class="lbc-file">
+<div class="lbc-file container-fluid">
 
     <div class="row pl-3 pr-3">
         <h1 class="lbc-h1"><?php echo $libro->getTitulo();?></h1>
@@ -66,22 +66,9 @@ if(!empty($libro->getPaginas())){
         <div class="mt-3 mb-3">
             <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
         </div>
-    </div>
 
 
-    <div class="row">
-        <div class="col-sm-3 col-md-3">
-            <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
-                
-                tpl_pages="'.$paginas.'"
-            
-            ] ');?>
-        </div> 
-        <div class="lbc-contenido2 col-sm-6 col-md-6">
-            <h2>Sinopsis</h2>
-            <?php echo $libro->getSinopsis();?>
-        </div> 
-        <div class="col-sm-3 col-md-3">
+        <div class="row">
             <?php 
             if ( ! empty( $libro->getGeneros() ) ) {
             ?>
@@ -110,7 +97,23 @@ if(!empty($libro->getPaginas())){
                 <?php
             } 
             ?>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+            <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
+                
+                tpl_pages="'.$paginas.'"
+            
+            ] ');?>
         </div> 
+        <div class="lbc-contenido2 col-sm-8 col-md-8">
+            <h2>Sinopsis</h2>
+            <?php echo $libro->getSinopsis();?>
+        </div>  
     </div>
 
 
@@ -170,7 +173,7 @@ if(!empty($libro->getPaginas())){
             <h2 class="pt-3">Notas</h2>
             <div class="row">
                 <?php
-                $i = 0;
+                $i = 1;
                 foreach ( $notas as $nota ) { 
                     $id = $nota[ 'ID' ];
                     $urlNota = esc_url( get_permalink( $id ) );
@@ -194,11 +197,13 @@ if(!empty($libro->getPaginas())){
                         </div>   
                     </div>
                 <?php
-                $i++;
-                if($i % 4 == 0) echo '</div><div class="row">';
+                    
+                    if($i % 4 == 0) echo '</div><div class="row">';
+                    $i++;
                 } 
                 ?>
             
+            </div>
         </div>
         <?php
     } 
