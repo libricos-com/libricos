@@ -1,5 +1,30 @@
 <?php
 /**
+ * Tag cloud sidebar
+ *
+ * @return string
+ */
+function wpb_tag_cloud() { 
+    $tags = get_tags();
+    $args = array(
+        'smallest'                  => 12, 
+        'largest'                   => 20,
+        'unit'                      => 'pt', 
+        'number'                    => 40,  
+        'format'                    => 'flat',
+        'separator'                 => "\n",
+        'orderby'                   => 'count', 
+        'order'                     => 'DESC',
+        'show_count'                => 1,
+        'echo'                      => true,
+        'show_count'                => 1
+    ); 
+    $tag_string = wp_tag_cloud( $args );
+    return $tag_string; 
+}
+
+
+/**
  * my_get_posts
  *
  * @param [type] $query

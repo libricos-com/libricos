@@ -12,3 +12,6 @@ Para el índice de posts en el blog
 @see: https://wordpress.stackexchange.com/questions/39918/wordpress-hooks-filters-insert-before-content-or-after-title
 */
 add_filter( 'the_content', 'theme_slug_filter_the_content' );
+
+// Tagcloud sidebar: enable shortcode execution in text widget
+add_filter ('widget_text', 'do_shortcode');
