@@ -23,31 +23,7 @@ get_header();
                         </div>
 
                         <div class="col-sm-3 col-md-3">
-                                <?php
-                                echo do_shortcode('[better_recent_comments number="10" date_format="M j Y, H:i"
-                                format="{avatar} {author} en {post}: “{comment}” {date}" avatar_size="25" 
-                                post_status="publish" excerpts="true"]'); 
-                                ?>
-
-                                <?php
-                                echo do_shortcode('[wpb_popular_tags]'); 
-                                ?>
-
-                                <?php
-                                $args = array(
-                                'taxonomy' => 'genero',
-                                'hide_empty' => false
-                                );
-                                $terms = get_terms($args);
-                                if($terms){
-                                echo view('../partials/searchform-complete', array(
-                                'this2' => (object)[
-                                'terms' => $terms,
-                                'placeholder' => 'Busca libricos por temática, título, autor, ...'
-                                ])
-                                );
-                                }
-                                ?>
+                                <?php require_once('sidebar.php');?>
                         </div>
                         
                 </div>    
