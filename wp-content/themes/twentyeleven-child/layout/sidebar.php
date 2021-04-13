@@ -3,6 +3,7 @@
 </div>
 
 <div class="mb-4">
+    <h4>Últimos comentarios</h4>
     <?php
     echo do_shortcode('[better_recent_comments number="10" date_format="M j Y, H:i"
         format="{avatar} {author} en {post}: “{comment}” {date}" avatar_size="25" 
@@ -15,19 +16,9 @@
 </div>
 
 <div class="mb-4">
-    <?php
-    $args = array(
-    'taxonomy' => 'genero',
-    'hide_empty' => false
-    );
-    $terms = get_terms($args);
-    if($terms){
-        echo view('../partials/searchform-complete', array(
-            'this2' => (object)[
-            'terms' => $terms,
-            'placeholder' => 'Busca libricos por temática, título, autor, ...'
-            ])
-        );
-    }
-    ?>
+    <?php require_once('sidebar/reading-now.php');?>
+</div>
+
+<div class="mb-4">
+    <?php require_once('sidebar/reading-next.php');?>
 </div>

@@ -67,40 +67,7 @@ if(!empty($libro->getPaginas())){
             <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
         </div>
 
-
-        <div class="row">
-            <?php 
-            if ( ! empty( $libro->getGeneros() ) ) {
-            ?>
-                <div class="card text-white bg-dark mb-3">
-                    <div class="card-body">
-                        <h2>Géneros</h2>
-                        <ul class="jei-tag-cloud list-unstyled">  
-                            <?php 
-                            foreach ( $libro->getGeneros() as $genero ) { 
-                                $idA = $genero['term_id'];
-                                $nombreGenero = $genero['name'];
-                                $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
-                                $numPosts = $genero['count'];
-                            ?>
-                                <li class="d-inline">
-                                    <a href="<?php echo $urlGenero;?>" class="btn btn-sm mb-2"><?php echo $nombreGenero;?>
-                                        <span class="badge badge-light"><?php echo $numPosts;?></span>
-                                    </a>  
-                                </li>
-                            <?php 
-                            }
-                            ?>
-                        </ul>
-                    </div>
-                </div>
-                <?php
-            } 
-            ?>
-        </div>
-
     </div>
-
 
     <div class="row">
         <div class="col-sm-4 col-md-4">
@@ -119,7 +86,15 @@ if(!empty($libro->getPaginas())){
 
 
     <div class="row pl-3 pr-3">
-        <div class="col-sm-6 col-md-6">
+        <div class="col-sm-4 col-md-4">
+            <?php if ( ! empty( $libro->getMapa() ) ) { ?>
+                <div class="container-fluid bg-dark rounded mt-4 pb-2">
+                    <h2 class="pt-3">Marco geográfico</h2>
+                    <?php echo $libro->getMapa();?>
+                </div> 
+            <?php } ?>
+        </div>
+        <div class="col-sm-8 col-md-8">
             <?php 
             if ( ! empty( $libro->getTableOfContents() ) ) {
             ?>
@@ -129,43 +104,7 @@ if(!empty($libro->getPaginas())){
             }
             ?>
         </div>
-        <div class="col-sm-6 col-md-6">
-            <?php 
-            if ( ! empty( $libro->getTags() ) ) {
-            ?>
-            <div class="card text-white bg-dark">
-                <div class="card-body">
-                    <h2>Temáticas</h2>
-                    <ul class="jei-tag-cloud list-unstyled">
-                        <?php 
-                        $tags = $libro->getTags();
-                        foreach ($tags as $tag) { 
-                        ?>
-                            <li class="d-inline">
-                                <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm mb-2"><?php echo $tag->name;?>
-                                    <span class="badge badge-light"><?php echo $tag->count;?></span>
-                                </a>
-                            </li>
-                        <?php
-                        }           
-                        ?>
-                    </ul>
-                </div>
-            </div>
-            <?php
-            } 
-            ?>
-
-            <?php if ( ! empty( $libro->getMapa() ) ) { ?>
-                <div class="container-fluid bg-dark rounded mt-4 pb-2">
-                    <h2 class="pt-3">Marco geográfico</h2>
-                    <?php echo $libro->getMapa();?>
-                </div> 
-            <?php } ?>
-        </div>
     </div>
-
-
 
     <?php 
     if ( ! empty( $notas ) ) { ?>
@@ -206,6 +145,67 @@ if(!empty($libro->getPaginas())){
             </div>
         </div>
         <?php
+    } 
+    ?>
+</div>
+
+<hr />
+
+<div class="row">
+    <?php 
+    if ( ! empty( $libro->getGeneros() ) ) {
+    ?>
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h2>Géneros</h2>
+                <ul class="jei-tag-cloud list-unstyled"> 
+                    <?php 
+                    foreach ( $libro->getGeneros() as $genero ) { 
+                        $idA = $genero['term_id'];
+                        $nombreGenero = $genero['name'];
+                        $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
+                        $numPosts = $genero['count'];
+                    ?>
+                        <li class="d-inline">
+                            <a href="<?php echo $urlGenero;?>" class="btn btn-sm mb-2"><?php echo $nombreGenero;?>
+                                <span class="badge badge-light"><?php echo $numPosts;?></span>
+                            </a>  
+                        </li>
+                    <?php 
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <?php
+    } 
+    ?>
+</div>
+
+<div class="row">
+    <?php 
+    if ( ! empty( $libro->getTags() ) ) {
+    ?>
+    <div class="card text-white bg-dark">
+        <div class="card-body">
+            <h2>Temáticas</h2>
+            <ul class="jei-tag-cloud list-unstyled">
+                <?php 
+                $tags = $libro->getTags();
+                foreach ($tags as $tag) { 
+                ?>
+                    <li class="d-inline">
+                        <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm mb-2"><?php echo $tag->name;?>
+                            <span class="badge badge-light"><?php echo $tag->count;?></span>
+                        </a>
+                    </li>
+                <?php
+                }           
+                ?>
+            </ul>
+        </div>
+    </div>
+    <?php
     } 
     ?>
 </div>
