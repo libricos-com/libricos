@@ -22,6 +22,7 @@
       "wpackagist-theme/twentyeleven":">=3.7",
       
       "wpackagist-plugin/addthis":">=6.2.6",
+      "wpackagist-plugin/better-recent-comments":">=1.1.4",
       "wpackagist-plugin/contact-form-7":">=5.4",
       "wpackagist-plugin/cookie-notice":">=2.0.3",
       "wpackagist-plugin/instagram-feed":">=2.6.2",

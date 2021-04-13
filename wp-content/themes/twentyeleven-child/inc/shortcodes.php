@@ -11,3 +11,7 @@ add_shortcode( 'get_amazon_grid_shortcode_beta', 'get_amazon_grid_shortcode_beta
 
 /* Grid de reviews en la página ppal de reviews */
 add_shortcode( 'get_grid_reviews_shortcode', 'get_grid_reviews_shortcode' );
+
+// Add a shortcode so that we can use it in widgets, posts, and pages
+add_shortcode('wpb_popular_tags', 'wpb_tag_cloud'); 
+

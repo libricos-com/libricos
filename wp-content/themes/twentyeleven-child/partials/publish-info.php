@@ -46,7 +46,7 @@ if($valor == 0 && empty($review)){
 }
 ?>
 
-<div class="d-flex flex-row">
+<div class="d-flex flex-row w-100">
     <div class="chip">
         <a href="<?php echo get_site_url();?>/about/" title="Post by Libricos">
             <img src="<?php echo get_site_url();?>/wp-content/uploads/2019/10/cropped-20160915_202651-02-01.jpeg" alt="Post by Libricos">

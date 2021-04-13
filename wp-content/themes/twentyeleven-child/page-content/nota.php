@@ -100,7 +100,7 @@
     <hr />
 
     <div>
-        <div class="d-flex justify-content-end float-right col-sm-6 col-md-4">
+        <div class="d-flex justify-content-end float-right col-sm-5 col-md-3">
             <?php 
             echo do_shortcode('[amazon box="'.$asin.'" template="vertical-book" style="dark" value="thumb" image_size="large" tpl_urllibro="'.$libro_link.'"]');
             ?>

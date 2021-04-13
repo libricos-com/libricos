@@ -34,40 +34,39 @@ if(!empty($libro->getPaginas())){
 }
 ?>
 
-<div class="lbc-file">
+<div class="lbc-file container-fluid">
 
-    <h1 class="lbc-h1"><?php echo $libro->getTitulo();?></h1>
+    <div class="row pl-3 pr-3">
+        <h1 class="lbc-h1"><?php echo $libro->getTitulo();?></h1>
 
-    <ul class="list-inline-bullets">
-        <li class="list-inline-item">
-            <?php echo view('../partials/libro-autores', ['this2' =>  $object]);?>
-        </li>
-        <li class="list-inline-item">ISBN <?php echo $libro->getIsbn();?></li>
-        <li class="list-inline-item">ASIN <?php echo $libro->getAsin();?></li>
-        <li class="list-inline-item">
-            <a href="<?php echo $libro->getEditorial_url();?>" title="Editorial"><?php echo $libro->getEditorial_nombre();?></a> (<?php echo substr($libro->getFecha_publicacion(), 0, 4);?>)
-        </li>
+        <ul class="list-inline-bullets">
+            <li class="list-inline-item">
+                <?php echo view('../partials/libro-autores', ['this2' =>  $object]);?>
+            </li>
+            <li class="list-inline-item">ISBN <?php echo $libro->getIsbn();?></li>
+            <li class="list-inline-item">ASIN <?php echo $libro->getAsin();?></li>
+            <li class="list-inline-item">
+                <a href="<?php echo $libro->getEditorial_url();?>" title="Editorial"><?php echo $libro->getEditorial_nombre();?></a> (<?php echo substr($libro->getFecha_publicacion(), 0, 4);?>)
+            </li>
 
-        <li class="list-inline-item"> 
-            <span class="<?php echo $libro->getFormato_icon();?>"></span>
-            <?php echo $libro->getFormato_texto();?>&nbsp;<span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span>  
-        </li>
-
-
-        <li class="list-inline-item">
-            <a href="<?php echo $libro->getGoodreads_url();?>" title="Ficha del libro en Goodreads"><i class="fab fa-goodreads fa-2x"></i>
-            </a>
-        </li>
+            <li class="list-inline-item"> 
+                <span class="<?php echo $libro->getFormato_icon();?>"></span>
+                <?php echo $libro->getFormato_texto();?>&nbsp;<span class="flag-icon flag-icon-<?php echo $libro->getIdioma();?>"></span>  
+            </li>
 
 
+            <li class="list-inline-item">
+                <a href="<?php echo $libro->getGoodreads_url();?>" title="Ficha del libro en Goodreads"><i class="fab fa-goodreads fa-2x"></i>
+                </a>
+            </li>  
+        </ul>
 
-        
-    </ul>
+        <?php echo view('../partials/publish-info', ['this2' => $object]);?>
+    
+        <div class="mt-3 mb-3">
+            <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
+        </div>
 
-    <?php echo view('../partials/publish-info', ['this2' => $object]);?>
-
-    <div class="mt-3 mb-3">
-        <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
     </div>
 
     <div class="row">
@@ -81,26 +80,82 @@ if(!empty($libro->getPaginas())){
         <div class="lbc-contenido2 col-sm-8 col-md-8">
             <h2>Sinopsis</h2>
             <?php echo $libro->getSinopsis();?>
-        </div> 
+        </div>  
+    </div>
+
+
+
+    <div class="row pl-3 pr-3">
+        <div class="col-sm-4 col-md-4">
+            <?php if ( ! empty( $libro->getMapa() ) ) { ?>
+                <iframe src="https://www.google.com/maps/d/embed?mid=<?php echo $libro->getMapa();?>" width="100%" height="300"></iframe>
+            <?php } ?>
+        </div>
+        <div class="col-sm-8 col-md-8">
+            <?php 
+            if ( ! empty( $libro->getTableOfContents() ) ) {
+            ?>
+                <h2>Índice</h2>
+                <?php echo $libro->getTableOfContents();?>
+            <?php 
+            }
+            ?>
+        </div>
     </div>
 
     <?php 
-    if ( ! empty( $libro->getTableOfContents() ) ) {
+    if ( ! empty( $notas ) ) { ?>
+        <div id="notas" class="container-fluid bg-dark mt-4 rounded">
+            <h2 class="pt-3">Notas</h2>
+            <div class="row">
+                <?php
+                $i = 1;
+                foreach ( $notas as $nota ) { 
+                    $id = $nota[ 'ID' ];
+                    $urlNota = esc_url( get_permalink( $id ) );
+                    $nombreNota = get_the_title( $id );
+                    $fecha = date('d-m-y', strtotime($nota['post_date']));
+                    $tituloLibro = $libro->getTitulo();
+                    $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
+                    ?>
+                    
+                    <div class="col-sm-3 col-md-3 col-lg-3 d-flex align-items-stretch mb-4">    
+                        <div class="card bg-secondary border-secondary text-white">
+                            <div class="card-header">
+                                <i class="fas fa-bookmark text-primary"></i>
+                                <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="<?php echo $nombreNota;?>" class="text-white"><?php echo $nombreNota;?></a> 
+                            </div>
+                            <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="<?php echo $nombreNota;?>"><img class="card-img-top rounded" src="<?php echo $src;?>" alt="<?php echo $nombreNota;?>"></a>
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text"><?php echo $fecha;?></p>    
+                            </div>                 
+                        </div>   
+                    </div>
+                <?php
+                    
+                    if($i % 4 == 0) echo '</div><div class="row">';
+                    $i++;
+                } 
+                ?>
+            
+            </div>
+        </div>
+        <?php
+    } 
     ?>
-        <h2>Índice</h2>
-        <?php echo $libro->getTableOfContents();?>
-    <?php 
-    }
-    ?>
+</div>
 
+<hr />
+
+<div class="row">
     <?php 
     if ( ! empty( $libro->getGeneros() ) ) {
     ?>
-        <hr />
         <div class="card text-white bg-dark mb-3">
             <div class="card-body">
-                <h2>Géneros literarios</h2>
-                <ul class="jei-tag-cloud list-unstyled">  
+                <h2>Géneros</h2>
+                <ul class="jei-tag-cloud list-unstyled"> 
                     <?php 
                     foreach ( $libro->getGeneros() as $genero ) { 
                         $idA = $genero['term_id'];
@@ -122,7 +177,9 @@ if(!empty($libro->getPaginas())){
         <?php
     } 
     ?>
+</div>
 
+<div class="row">
     <?php 
     if ( ! empty( $libro->getTags() ) ) {
     ?>
@@ -145,59 +202,9 @@ if(!empty($libro->getPaginas())){
             </ul>
         </div>
     </div>
-    <hr />
     <?php
     } 
     ?>
-
-    <?php 
-    if ( ! empty( $notas ) ) { ?>
-        <div id="notas" class="container-fluid bg-dark mt-4 rounded">
-            <h2 class="pt-3">Notas</h2>
-            <div class="row">
-                <?php
-                $i = 1;
-                foreach ( $notas as $nota ) { 
-                    $id = $nota[ 'ID' ];
-                    $urlNota = esc_url( get_permalink( $id ) );
-                    $nombreNota = get_the_title( $id );
-                    $fecha = date('d-m-y', strtotime($nota['post_date']));
-                    $tituloLibro = $libro->getTitulo();
-                    $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
-                    ?>
-                    
-                    <div class="col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">    
-                        <div class="card bg-secondary border-secondary text-white">
-                            <div class="card-header">
-                                <i class="fas fa-bookmark text-primary"></i>
-                                <?php echo $fecha;?>
-                            </div>
-                            <a href="<?php echo $urlNota;?>" data-toggle="tooltip" title="<?php echo $nombreNota;?>"><img class="card-img-top rounded" src="<?php echo $src;?>" alt="<?php echo $nombreNota;?>"></a>
-                            <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text"><?php echo $nombreNota;?></p>    
-                            </div>                 
-                        </div>   
-                    </div>
-                <?php
-                $i++;
-                if($i % 4 == 0) echo '</div><div class="row">';
-                } 
-                ?>
-            
-        </div>
-        <?php
-    } 
-    ?>
-
-
-    <?php if ( ! empty( $libro->getMapa() ) ) { ?>
-        <div class="container-fluid bg-dark rounded mt-4">
-            <h2>Marco geográfico</h2>
-            <?php echo $libro->getMapa();?>
-        </div> 
-    <?php } ?>
-
 </div>
 
 <hr />
