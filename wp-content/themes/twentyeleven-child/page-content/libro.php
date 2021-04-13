@@ -88,10 +88,7 @@ if(!empty($libro->getPaginas())){
     <div class="row pl-3 pr-3">
         <div class="col-sm-4 col-md-4">
             <?php if ( ! empty( $libro->getMapa() ) ) { ?>
-                <div class="container-fluid bg-dark rounded mt-4 pb-2">
-                    <h2 class="pt-3">Marco geográfico</h2>
-                    <?php echo $libro->getMapa();?>
-                </div> 
+                <iframe src="https://www.google.com/maps/d/embed?mid=<?php echo $libro->getMapa();?>" width="100%" height="300"></iframe>
             <?php } ?>
         </div>
         <div class="col-sm-8 col-md-8">

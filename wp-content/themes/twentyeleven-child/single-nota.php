@@ -6,4 +6,4 @@ Template Name: JEI nota detail page
 - https://wordpress.org/support/topic/providing-templates-with-php/
 - https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
 */
-echo view('../layout/base', ['page' =>  'nota']);
+echo view('../layout/cols-2', ['page' =>  'nota']);

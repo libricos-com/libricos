@@ -7,4 +7,4 @@ Template Name: JEI Reviews Page
 - https://developer.wordpress.org/themes/basics/template-hierarchy/
 - https://wordpress.org/support/topic/providing-templates-with-php/
 */
-echo view('../layout/base', ['page' =>  'reviews']);
+echo view('../layout/cols-2', ['page' =>  'reviews']);

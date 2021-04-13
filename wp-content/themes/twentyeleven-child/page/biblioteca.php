@@ -7,4 +7,4 @@ Template Name: JEI Biblioteca Page
 - https://developer.wordpress.org/themes/basics/template-hierarchy/
 - https://wordpress.org/support/topic/providing-templates-with-php/
 */
-echo view('../layout/base', ['page' =>  'biblioteca']);
+echo view('../layout/cols-2', ['page' =>  'biblioteca']);

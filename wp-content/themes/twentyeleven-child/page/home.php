@@ -7,5 +7,5 @@ Template Name: JEI Home Page
 - https://developer.wordpress.org/themes/basics/template-hierarchy/
 - https://wordpress.org/support/topic/providing-templates-with-php/
 */
-echo view('../layout/base', ['page' =>  'home']);
+echo view('../layout/cols-2', ['page' =>  'home']);
 
