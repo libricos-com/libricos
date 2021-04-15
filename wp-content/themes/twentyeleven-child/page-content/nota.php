@@ -93,6 +93,11 @@
 
     <?php echo view('../partials/publish-info', ['this2' => $post, 'review' => $review]);?>
 
+    <div>
+        <i class="fa fa-book"></i> <a href="<?php echo $libro_link;?>" title="Índice y sinopsis del libro" style="background-color:transparent;">Ficha técnica del libro
+        </a>
+    </div>
+
     <div class="mt-3">
         <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
     </div>
