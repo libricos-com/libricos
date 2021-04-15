@@ -15,7 +15,7 @@
   ],
   "require": {
       "johnpbloch/wordpress-core-installer": "^2.0",
-      "johnpbloch/wordpress-core": "^5.7",
+      "johnpbloch/wordpress-core": "^5.7.1",
       
       "twbs/bootstrap": ">=4.5.3",
 
@@ -29,9 +29,9 @@
       "wpackagist-plugin/permalink-manager":">=2.2.9.7",
       "wpackagist-plugin/pods":">=2.7.26",
       "wpackagist-plugin/shortcodes-ultimate":">=5.9.8",
-      "wpackagist-plugin/updraftplus":">=1.16.50",
+      "wpackagist-plugin/updraftplus":">=1.16.53",
       "wpackagist-plugin/wp-optimize":">=3.1.8",
-      "wpackagist-plugin/yet-another-related-posts-plugin":">=5.15.3"
+      "wpackagist-plugin/yet-another-related-posts-plugin":">=5.17.0"
   },
   "extra": {
       "installer-paths": {
