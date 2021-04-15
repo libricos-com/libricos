@@ -23,6 +23,9 @@ if($id == 10215){
 
     <?php echo view('../partials/publish-info', ['this2' => $review]);?>
 
+    <i class="fa fa-book"></i> <a href="<?php echo $review->url_libro;?>" title="Índice y sinopsis del libro" style="background-color:transparent;">Ficha técnica del libro
+    </a>
+
     <div class="mt-3">
         <?php echo do_shortcode("[addthis tool='addthis_inline_share_toolbox_qzzu']");?>
     </div>

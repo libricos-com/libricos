@@ -25,12 +25,6 @@ $urlLibro = $this->get_template_variable( 'urllibro', 0 );
         <a class="aawp-product__title" href="<?php echo $this->get_product_url(); ?>" title="<?php echo $this->get_product_link_title(); ?>" rel="nofollow" target="_blank">
             <?php echo $this->truncate( $this->get_product_title(), 50 ); ?>
         </a>
-
- 
-        <a href="<?php echo $urlLibro;?>" title="Índice y sinopsis del libro" style="background-color:transparent;">
-            <i class="fa fa-book"></i> Ficha técnica: Índice | Sinopsis
-        </a>
-        
         
         <div class="aawp-product__meta">
             <?php if ( $this->get_product_rating() ) { ?>
