@@ -19,5 +19,7 @@ if(!empty($asins)){
 }
 ?>
 
-<h2>Bestsellers espiritualidad</h2>
-<?php echo do_shortcode('[amazon template="vertical" grid="4" bestseller="%novedades + cristianismo%"]'); ?>
+<div class="jei-amz-grd">
+    <h2>Bestsellers espiritualidad</h2>
+    <?php echo do_shortcode('[amazon template="vertical" grid="4" bestseller="%novedades + cristianismo%"]'); ?>
+</div>
