@@ -53,7 +53,10 @@ if($valor == 0 && empty($review)){
         </a>
     </div> 
     
-    <?php echo $rating;?>
+    <?php echo $rating;?> 
+    <?php if(!empty($urlReview) && get_post_type() !== 'review'){ ?>
+        &nbsp; <a href="<?php echo $urlReview;?>">Ver reseña</a>
+    <?php } ?>
 
     <div class="ml-auto">
         <?php echo view('../partials/review-fecha', ['this2' =>  $this2]);?>
