@@ -147,28 +147,6 @@ $citas = $libro->getCitas();
     } 
     ?>
 
-
-<?php 
-    if ( ! empty( $citas ) ) { ?>
-        <div id="citas" class="container-fluid bg-dark mt-4 rounded">
-            <h2 class="pt-3">Citas</h2>
-            <div class="row">
-                <?php
-                var_dump($citas);
-                foreach ( $citas as $id ) { 
-                    $cita = get_post_meta( $id, 'cita', true );
-                    
-                    // echo $cita;
-                    
-                } 
-                ?>
-            
-            </div>
-        </div>
-        <?php
-    } 
-    ?>
-
 </div>
 
 <hr />
@@ -231,6 +209,31 @@ $citas = $libro->getCitas();
     } 
     ?>
 </div>
+
+
+
+
+<?php 
+if ( ! empty( $citas ) ) { ?>
+    <div id="citas" class="row pl-3 pr-3">
+        <h2 class="pt-3">Citas</h2>
+        <?php
+        foreach ( $citas as $cita ) { 
+            $cita = get_post_meta( $cita['ID'], 'cita', true );
+            ?>
+            <blockquote class="blockquote mb-5">
+                <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
+                <p class="mb-0"><?php echo $cita;?></p>
+                <footer class="blockquote-footer">Erich Fromm en <cite title="El Arte de Amar">El Arte de Amar</cite></footer>
+            </blockquote>
+            <?php 
+        } 
+        ?> 
+    </div>
+    <?php
+} 
+?>
+
 
 <hr />
 
