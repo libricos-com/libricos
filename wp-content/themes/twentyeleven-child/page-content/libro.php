@@ -32,6 +32,8 @@ $paginas = '';
 if(!empty($libro->getPaginas())){
     $paginas = $libro->getPaginas();    
 }
+
+$citas = $libro->getCitas();
 ?>
 
 <div class="lbc-file container-fluid">
@@ -144,6 +146,29 @@ if(!empty($libro->getPaginas())){
         <?php
     } 
     ?>
+
+
+<?php 
+    if ( ! empty( $citas ) ) { ?>
+        <div id="citas" class="container-fluid bg-dark mt-4 rounded">
+            <h2 class="pt-3">Citas</h2>
+            <div class="row">
+                <?php
+                var_dump($citas);
+                foreach ( $citas as $id ) { 
+                    $cita = get_post_meta( $id, 'cita', true );
+                    
+                    // echo $cita;
+                    
+                } 
+                ?>
+            
+            </div>
+        </div>
+        <?php
+    } 
+    ?>
+
 </div>
 
 <hr />

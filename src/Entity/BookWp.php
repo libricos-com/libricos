@@ -47,6 +47,7 @@ class BookWp extends Book
         $this->autores=$this->pod->field( 'autores' );
         $this->generos = $this->pod->field( 'generos_literarios' );
         $this->notas = $this->pod->field( 'notas', $this->get_params() );
+        $this->citas = $this->pod->field( 'citas', $this->get_params() );
         $this->tableOfContents = $this->pod->field( 'table_of_contents' );
 
         // Venimos de la Ficha libro

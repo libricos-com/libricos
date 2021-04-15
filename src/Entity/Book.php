@@ -124,6 +124,13 @@ abstract class Book
     private $_notas;
 
     /**
+     * Citas del libro
+     *
+     * @var array
+     */
+    private $_citas;
+
+    /**
      * Categorías del libro
      *
      * @var array
@@ -254,6 +261,7 @@ abstract class Book
         $this->url = esc_url( get_permalink( $this->id ) );
         $this->reviews = $this->pod->field( 'reviews', $this->get_params() );
         $this->notas = $this->pod->field( 'notas', $this->get_params() );
+        $this->citas = $this->pod->field( 'citas', $this->get_params() );
         $this->titulo = get_the_title( $this->id );
     }
 
