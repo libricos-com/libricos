@@ -119,7 +119,7 @@ if(!empty($libro->getPaginas())){
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
-                    <div class="col-sm-3 col-md-3 col-lg-3 d-flex align-items-stretch mb-4">    
+                    <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">    
                         <div class="card bg-secondary border-secondary text-white">
                             <div class="card-header">
                                 <i class="fas fa-bookmark text-primary"></i>
@@ -134,7 +134,7 @@ if(!empty($libro->getPaginas())){
                     </div>
                 <?php
                     
-                    if($i % 4 == 0) echo '</div><div class="row">';
+                    if($i % 3 == 0) echo '</div><div class="row">';
                     $i++;
                 } 
                 ?>
