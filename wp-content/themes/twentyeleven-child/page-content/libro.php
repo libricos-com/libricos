@@ -165,10 +165,10 @@ $citas = $libro->getCitas();
                     <ul class="jei-tag-cloud list-unstyled"> 
                         <?php 
                         foreach ( $libro->getGeneros() as $genero ) { 
-                            $idA = $genero['term_id'];
-                            $nombreGenero = $genero['name'];
-                            $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
-                            $numPosts = $genero['count'];
+                            $idA = $genero->term_id;
+                            $nombreGenero = $genero->name;
+                            $urlGenero = get_term_link($genero->term_id);
+                            $numPosts = $genero->count;
                         ?>
                             <li class="d-inline">
                                 <a href="<?php echo $urlGenero;?>" class="btn btn-sm mb-2"><?php echo $nombreGenero;?>
@@ -224,32 +224,30 @@ if ( ! empty( $citas ) ) { ?>
         foreach ( $citas as $cita ) { 
             $idCita = $cita['ID'];
             $cita = get_post_meta( $idCita, 'cita', true );
-            $citaTags = get_the_tags( $idCita );
+            $citatags = get_the_terms( $idCita, 'citatag' );
             ?>
             <div class="mb-3">
-                <blockquote class="col-sm-12 blockquote mb-1">
+                <blockquote class="col-sm-12 blockquote mb-0">
                     <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
                     <p class=""><?php echo $cita;?></p>
                     <footer class="text-right blockquote-footer">
                         <?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite>
                     </footer>
                 </blockquote>
-                
-                <ul class="pl-3 ml-3 jei-tag-cloud list-unstyled">  
-                    <?php 
-                    foreach ( $citaTags as $term ) {
-                    ?>
-                        <li class="d-inline">
-                            <a href="<?php echo get_term_link($term->term_id);?>" class="btn btn-sm mb-1">
-                                <?php echo $term->name;?> 
-                                <span class="badge badge-light"><?php echo $term->count;?></span>
-                            </a>
-                        </li>
-                    <?php 
-                    }
-                    ?>
-                </ul>
-
+                <?php if(!empty($citatags)){ ?>
+                    <ul class="ml-3 list-unstyled">  
+                        <?php 
+                        foreach ( $citatags as $term ) {
+                        ?>
+                            <li class="d-inline">
+                                <a href="<?php echo get_term_link($term->term_id);?>" class="">
+                                    <?php echo $term->name;?></a>
+                            </li>
+                        <?php 
+                        }
+                        ?>
+                    </ul>
+                <?php } ?>
             </div>
             <?php 
         } 

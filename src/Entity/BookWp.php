@@ -45,7 +45,8 @@ class BookWp extends Book
         $this->amazon_search_keywords = $this->pod->field( 'amazon_search_keywords' );
 
         $this->autores=$this->pod->field( 'autores' );
-        $this->generos = $this->pod->field( 'generos_literarios' );
+        // $this->generos = $this->pod->field( 'generos_literarios' ); // Eliminar pod libro "generos_literarios"
+        $this->generos = get_the_terms( $this->id, 'genero' );
         $this->notas = $this->pod->field( 'notas', $this->get_params() );
         $this->citas = $this->pod->field( 'citas', $this->get_params() );
         $this->tableOfContents = $this->pod->field( 'table_of_contents' );
