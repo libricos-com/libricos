@@ -8,8 +8,12 @@ TEST: ejemplo tag test
 */
 use App\Entity\BookWpFactory;
 use App\Entity\Review;
-$libro = BookWpFactory::create($post);
-$reviews = $libro->getReviews();
+$libro       = BookWpFactory::create($post);
+$tituloLibro = $libro->getTitulo();
+$shortTitle  = $libro->getShortTitle();
+$reviews     = $libro->getReviews();
+$autorName   = $libro->getFirstAuthorName();
+
 if(empty($reviews[0])){
     $object = $libro;
 }else{
@@ -117,7 +121,6 @@ $citas = $libro->getCitas();
                     $urlNota = esc_url( get_permalink( $id ) );
                     $nombreNota = get_the_title( $id );
                     $fecha = date('d-m-y', strtotime($nota['post_date']));
-                    $tituloLibro = $libro->getTitulo();
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
@@ -224,7 +227,7 @@ if ( ! empty( $citas ) ) { ?>
             <blockquote class="blockquote mb-5">
                 <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
                 <p class="mb-0"><?php echo $cita;?></p>
-                <footer class="blockquote-footer">Erich Fromm en <cite title="El Arte de Amar">El Arte de Amar</cite></footer>
+                <footer class="blockquote-footer"><?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite></footer>
             </blockquote>
             <?php 
         } 
