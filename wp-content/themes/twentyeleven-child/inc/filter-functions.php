@@ -42,7 +42,7 @@ function my_get_posts( $query )
         if($post_type){
             $post_type = $post_type;
         }else{
-            $post_type = array( 'post', 'libro', 'review', 'nota', 'autor', 'foto' );
+            $post_type = array( 'post', 'libro', 'review', 'nota', 'cita', 'autor', 'foto' );
         }
         $query->set('post_type', $post_type);
         $query->set( 'posts_per_page', -1 );

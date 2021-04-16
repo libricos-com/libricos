@@ -225,8 +225,6 @@ if ( ! empty( $citas ) ) { ?>
             $idCita = $cita['ID'];
             $cita = get_post_meta( $idCita, 'cita', true );
             $citaTags = get_the_tags( $idCita );
-            $arrNombres = array_column($citaTags, 'name');
-            $tags = implode(', ', $arrNombres);
             ?>
             <div class="mb-3">
                 <blockquote class="col-sm-12 blockquote mb-1">
@@ -236,7 +234,22 @@ if ( ! empty( $citas ) ) { ?>
                         <?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite>
                     </footer>
                 </blockquote>
-                <p class="pl-3 text-muted small"><?php echo $tags;?></p>
+                
+                <ul class="pl-3 ml-3 jei-tag-cloud list-unstyled">  
+                    <?php 
+                    foreach ( $citaTags as $term ) {
+                    ?>
+                        <li class="d-inline">
+                            <a href="<?php echo get_term_link($term->term_id);?>" class="btn btn-sm mb-1">
+                                <?php echo $term->name;?> 
+                                <span class="badge badge-light"><?php echo $term->count;?></span>
+                            </a>
+                        </li>
+                    <?php 
+                    }
+                    ?>
+                </ul>
+
             </div>
             <?php 
         } 
