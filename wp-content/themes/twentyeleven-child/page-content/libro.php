@@ -222,13 +222,22 @@ if ( ! empty( $citas ) ) { ?>
         <h2 class="pt-3">Citas</h2>
         <?php
         foreach ( $citas as $cita ) { 
-            $cita = get_post_meta( $cita['ID'], 'cita', true );
+            $idCita = $cita['ID'];
+            $cita = get_post_meta( $idCita, 'cita', true );
+            $citaTags = get_the_tags( $idCita );
+            $arrNombres = array_column($citaTags, 'name');
+            $tags = implode(', ', $arrNombres);
             ?>
-            <blockquote class="blockquote mb-5">
-                <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
-                <p class="mb-0"><?php echo $cita;?></p>
-                <footer class="blockquote-footer"><?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite></footer>
-            </blockquote>
+            <div class="mb-3">
+                <blockquote class="col-sm-12 blockquote mb-1">
+                    <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
+                    <p class=""><?php echo $cita;?></p>
+                    <footer class="text-right blockquote-footer">
+                        <?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite>
+                    </footer>
+                </blockquote>
+                <p class="pl-3 text-muted small"><?php echo $tags;?></p>
+            </div>
             <?php 
         } 
         ?> 
