@@ -8,11 +8,10 @@ TEST: ejemplo tag test
 */
 use App\Entity\BookWpFactory;
 use App\Entity\Review;
-$libro       = BookWpFactory::create($post);
-$tituloLibro = $libro->getTitulo();
-$shortTitle  = $libro->getShortTitle();
-$reviews     = $libro->getReviews();
-$autorName   = $libro->getFirstAuthorName();
+use App\Entity\Quote;
+
+$libro   = BookWpFactory::create($post);
+$reviews = $libro->getReviews();
 
 if(empty($reviews[0])){
     $object = $libro;
@@ -222,13 +221,20 @@ if ( ! empty( $citas ) ) { ?>
         <h2 class="pt-3">Citas</h2>
         <?php
         foreach ( $citas as $cita ) { 
-            $idCita = $cita['ID'];
-            $cita = get_post_meta( $idCita, 'cita', true );
-            $citatags = get_the_terms( $idCita, 'citatag' );
+            
+            $post       = get_post( $cita['ID'] );
+            $Quote      = new Quote($post);
+            $cita       = $Quote->getCita();
+            $citatags   = $Quote->getCitatags();
+            $book       = $Quote->getBook();
+            $longTitle  = $Quote->getLibroLongTitle();
+            $shortTitle = $Quote->getLibroShortTitle();
+            $autorName  = $Quote->getAutorName();
+            
             echo view('../partials/quote', [
                 'cita'        => $cita, 
                 'autorName'   => $autorName,
-                'tituloLibro' => $tituloLibro,
+                'tituloLibro' => $longTitle,
                 'shortTitle'  => $shortTitle,
                 'citatags'    => $citatags
                 ]

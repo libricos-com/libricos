@@ -2,14 +2,9 @@
 /*
 The template for displaying content in the tpl/libros.php template
 @see: https://developer.wordpress.org/themes/template-files-section/taxonomy-templates/
-@see: https://stackoverflow.com/questions/44219423/php-fatal-error-cannot-instantiate-abstract-class
-@see: https://stackoverflow.com/questions/53895044/clarifying-uml-class-diagram-of-factory-method-design-pattern
-@see: https://docs.pods.io/tutorials/get-values-from-a-relationship-field/
-
-Ideas/más buscadas:
-<h2>Libros sobre el sentido del sufrimiento</h2>
-<h2>Libros sobre la palabra de Dios Padre Nuestro (Oración?)</h2>
 */
+use App\Entity\Quote;
+
 $tamano_grid = 4;
 $asins = $ids = '';
 $term = get_queried_object();
@@ -18,17 +13,20 @@ $term = get_queried_object();
 <h2>Citas sobre <span class="font-italic">"<?php echo $term->name;?>"</span></h2>
 <?php
 while ( have_posts() ) : the_post();
-    $post = get_post();
-    $post_type = $post->post_type;
-    $id = $post->ID;
-    $cita = get_post_meta( $id, 'cita', true );
-    $citatags = get_the_terms( $id, 'citatag' );
+    $post       = get_post();
+    $Quote      = new Quote($post);
+    $cita       = $Quote->getCita();
+    $citatags   = $Quote->getCitatags();
+    $book       = $Quote->getBook();
+    $longTitle  = $Quote->getLibroLongTitle();
+    $shortTitle = $Quote->getLibroShortTitle();
+    $autorName  = $Quote->getAutorName();
 
     echo view('../partials/quote', [
         'cita'        => $cita, 
-        'autorName'   => 'autorName',
-        'tituloLibro' => 'tituloLibro',
-        'shortTitle'  => 'shortTitle',
+        'autorName'   => $autorName,
+        'tituloLibro' => $longTitle,
+        'shortTitle'  => $shortTitle,
         'citatags'    => $citatags
         ]
     );
