@@ -1,7 +1,7 @@
 <?php 
+$str = '';
 if(!empty($citatags)){ 
     $numCitas = count($citatags);
-    $str = '';
     foreach ( $citatags as $term ) {
         $str .= '<a href="'.get_term_link($term->term_id).'">'.$term->name.'</a>, ';
     }
