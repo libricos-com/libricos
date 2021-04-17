@@ -225,31 +225,14 @@ if ( ! empty( $citas ) ) { ?>
             $idCita = $cita['ID'];
             $cita = get_post_meta( $idCita, 'cita', true );
             $citatags = get_the_terms( $idCita, 'citatag' );
-            ?>
-            <div class="mb-3">
-                <blockquote class="col-sm-12 blockquote mb-0">
-                    <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
-                    <p class=""><?php echo $cita;?></p>
-                    <footer class="text-right blockquote-footer">
-                        <?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite>
-                    </footer>
-                </blockquote>
-                <?php if(!empty($citatags)){ ?>
-                    <ul class="ml-3 list-unstyled">  
-                        <?php 
-                        foreach ( $citatags as $term ) {
-                        ?>
-                            <li class="d-inline">
-                                <a href="<?php echo get_term_link($term->term_id);?>" class="">
-                                    <?php echo $term->name;?></a>
-                            </li>
-                        <?php 
-                        }
-                        ?>
-                    </ul>
-                <?php } ?>
-            </div>
-            <?php 
+            echo view('../partials/quote', [
+                'cita'        => $cita, 
+                'autorName'   => $autorName,
+                'tituloLibro' => $tituloLibro,
+                'shortTitle'  => $shortTitle,
+                'citatags'    => $citatags
+                ]
+            );
         } 
         ?> 
     </div>

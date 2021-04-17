@@ -15,7 +15,7 @@ $asins = $ids = '';
 $term = get_queried_object();
 ?>
 
-<h2>Citas sobre <?php echo $term->name;?></h2>
+<h2>Citas sobre <span class="font-italic">"<?php echo $term->name;?>"</span></h2>
 <?php
 while ( have_posts() ) : the_post();
     $post = get_post();
@@ -24,15 +24,22 @@ while ( have_posts() ) : the_post();
     $cita = get_post_meta( $id, 'cita', true );
     $citatags = get_the_terms( $id, 'citatag' );
 
-    echo $cita;
+    echo view('../partials/quote', [
+        'cita'        => $cita, 
+        'autorName'   => 'autorName',
+        'tituloLibro' => 'tituloLibro',
+        'shortTitle'  => 'shortTitle',
+        'citatags'    => $citatags
+        ]
+    );
 
 endwhile; 
 ?>
 
+<div class="jei-amz-grd">
+    <h2>Otros libros de <span class="font-italic">"<?php echo $term->name;?>"</span></h2>
 
-<h2>Otros libros de <?php echo $term->name;?></h2>
-<?php echo do_shortcode('[amazon template="vertical" grid="'.$tamano_grid.'" items="12" bestseller="'.$term->name.'"]'); ?>
-
-<h2>Novedades Amazon de <?php echo $term->name;?></h2>
-<?php echo do_shortcode('[amazon template="vertical" items="12" new="libros+'.$term->name.'" grid="'.$tamano_grid.'"]'); ?>
+    <h2>Novedades Amazon de <span class="font-italic">"<?php echo $term->name;?>"</span></h2>
+    <?php echo do_shortcode('[amazon template="vertical" items="12" new="libros+'.$term->name.'" grid="'.$tamano_grid.'"]'); ?>
+</div>
 
