@@ -64,6 +64,13 @@ class Quote
      */
     private $_autorName;
 
+    /**
+     * ASIN del libro
+     *
+     * @var string
+     */
+    private $_asin;
+
 
     /**
      * Constructor.
@@ -82,6 +89,7 @@ class Quote
         $this->libroPod        = pods('libro', $this->libroId);
         $this->libroLongTitle  = $this->book['post_title'];
         $this->libroShortTitle = $this->libroPod->field( 'titulo' );
+        $this->asin            = $this->libroPod->field( 'asin' );
 
         $this->jeiBook         = BookWpFactory::create( $this->libroPost );
         $this->autorName       = $this->jeiBook->getFirstAuthorName();

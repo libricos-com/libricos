@@ -22,13 +22,15 @@ $term = get_queried_object();
         $longTitle  = $Quote->getLibroLongTitle();
         $shortTitle = $Quote->getLibroShortTitle();
         $autorName  = $Quote->getAutorName();
+        $asin       = $Quote->getAsin();
 
-        echo view('../partials/quote', [
+        echo view('../partials/quote-sell', [
             'cita'        => $cita, 
             'autorName'   => $autorName,
             'tituloLibro' => $longTitle,
             'shortTitle'  => $shortTitle,
-            'citatags'    => $citatags
+            'citatags'    => $citatags,
+            'asin'        => $asin
             ]
         );
     endwhile; 
