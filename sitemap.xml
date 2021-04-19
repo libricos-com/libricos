@@ -27,4 +27,7 @@
     <sitemap>
       <loc>https://libricos.com/sitemap-blog.xml</loc>
     </sitemap>
+    <sitemap>
+      <loc>https://libricos.com/sitemap-citatags.xml</loc>
+    </sitemap>
   </sitemapindex>
