@@ -10,10 +10,10 @@ if(!empty($citatags)){
 }
 ?>
 <div class="row mb-3">
-    <div class="col-md-4">
+    <div class="col-xs-12 col-sm-4 col-md-4">
         <?php echo do_shortcode('[amazon box="'.$asin.'" template="vertical" style="dark" value="thumb" image_size="large"] ');?>
     </div>
-    <div class="col-md-8">
+    <div class="col-xs-12 col-sm-8 col-md-8">
         <blockquote class="col-sm-12 blockquote mb-0">
             <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
             <p><?php echo $cita;?></p>

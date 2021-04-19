@@ -75,14 +75,14 @@ $citas = $libro->getCitas();
     </div>
 
     <div class="row">
-        <div class="col-sm-4 col-md-4">
+        <div class="col-xs-12 col-sm-5 col-md-4">
             <?php echo do_shortcode('[amazon box="'.$libro->getAsin().'" template="book-vertical" style="dark" value="thumb" image_size="large" 
                 
                 tpl_pages="'.$paginas.'"
             
             ] ');?>
         </div> 
-        <div class="lbc-contenido2 col-sm-8 col-md-8">
+        <div class="lbc-contenido2 col-xs-12 col-sm-7 col-md-8">
             <h2>Sinopsis</h2>
             <?php echo $libro->getSinopsis();?>
         </div>  
