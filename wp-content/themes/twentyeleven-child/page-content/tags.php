@@ -47,7 +47,7 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
 ?>
 
 <h2>Otros libros de <?php echo $term->name;?></h2>
-<?php echo do_shortcode('[amazon template="vertical" grid="'.$tamano_grid.'" items="12" bestseller="%'.$term->name.'%"]'); ?>
+<?php echo do_shortcode('[amazon template="vertical" grid="'.$tamano_grid.'" items="12" bestseller="'.$term->name.'"]'); ?>
 
 <h2>Novedades Amazon de <?php echo $term->name;?></h2>
 <?php echo do_shortcode('[amazon template="vertical" items="12" new="libros+'.$term->name.'" grid="'.$tamano_grid.'"]'); ?>

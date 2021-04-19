@@ -8,8 +8,11 @@ TEST: ejemplo tag test
 */
 use App\Entity\BookWpFactory;
 use App\Entity\Review;
-$libro = BookWpFactory::create($post);
+use App\Entity\Quote;
+
+$libro   = BookWpFactory::create($post);
 $reviews = $libro->getReviews();
+
 if(empty($reviews[0])){
     $object = $libro;
 }else{
@@ -32,6 +35,8 @@ $paginas = '';
 if(!empty($libro->getPaginas())){
     $paginas = $libro->getPaginas();    
 }
+
+$citas = $libro->getCitas();
 ?>
 
 <div class="lbc-file container-fluid">
@@ -115,7 +120,6 @@ if(!empty($libro->getPaginas())){
                     $urlNota = esc_url( get_permalink( $id ) );
                     $nombreNota = get_the_title( $id );
                     $fecha = date('d-m-y', strtotime($nota['post_date']));
-                    $tituloLibro = $libro->getTitulo();
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
@@ -144,68 +148,104 @@ if(!empty($libro->getPaginas())){
         <?php
     } 
     ?>
+
 </div>
 
 <hr />
 
 <div class="row">
+    <div class="col-sm-12 col-md-6">
     <?php 
-    if ( ! empty( $libro->getGeneros() ) ) {
-    ?>
-        <div class="card text-white bg-dark mb-3">
+        if ( ! empty( $libro->getGeneros() ) ) {
+        ?>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h2>Géneros</h2>
+                    <ul class="jei-tag-cloud list-unstyled"> 
+                        <?php 
+                        foreach ( $libro->getGeneros() as $genero ) { 
+                            $idA = $genero->term_id;
+                            $nombreGenero = $genero->name;
+                            $urlGenero = get_term_link($genero->term_id);
+                            $numPosts = $genero->count;
+                        ?>
+                            <li class="d-inline">
+                                <a href="<?php echo $urlGenero;?>" class="btn btn-sm mb-2"><?php echo $nombreGenero;?>
+                                    <span class="badge badge-light"><?php echo $numPosts;?></span>
+                                </a>  
+                            </li>
+                        <?php 
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            <?php
+        } 
+        ?>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <?php 
+        if ( ! empty( $libro->getTags() ) ) {
+        ?>
+        <div class="card text-white bg-dark">
             <div class="card-body">
-                <h2>Géneros</h2>
-                <ul class="jei-tag-cloud list-unstyled"> 
+                <h2>Temáticas</h2>
+                <ul class="jei-tag-cloud list-unstyled">
                     <?php 
-                    foreach ( $libro->getGeneros() as $genero ) { 
-                        $idA = $genero['term_id'];
-                        $nombreGenero = $genero['name'];
-                        $urlGenero = esc_url( get_bloginfo('url').'/generos/'.$genero['slug'] );
-                        $numPosts = $genero['count'];
+                    $tags = $libro->getTags();
+                    foreach ($tags as $tag) { 
                     ?>
                         <li class="d-inline">
-                            <a href="<?php echo $urlGenero;?>" class="btn btn-sm mb-2"><?php echo $nombreGenero;?>
-                                <span class="badge badge-light"><?php echo $numPosts;?></span>
-                            </a>  
+                            <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm mb-2"><?php echo $tag->name;?>
+                                <span class="badge badge-light"><?php echo $tag->count;?></span>
+                            </a>
                         </li>
-                    <?php 
-                    }
+                    <?php
+                    }           
                     ?>
                 </ul>
             </div>
         </div>
         <?php
-    } 
-    ?>
+        } 
+        ?>
+    </div>    
 </div>
 
-<div class="row">
-    <?php 
-    if ( ! empty( $libro->getTags() ) ) {
-    ?>
-    <div class="card text-white bg-dark">
-        <div class="card-body">
-            <h2>Temáticas</h2>
-            <ul class="jei-tag-cloud list-unstyled">
-                <?php 
-                $tags = $libro->getTags();
-                foreach ($tags as $tag) { 
-                ?>
-                    <li class="d-inline">
-                        <a href="<?php echo get_tag_link($tag->term_id);?>" class="btn btn-sm mb-2"><?php echo $tag->name;?>
-                            <span class="badge badge-light"><?php echo $tag->count;?></span>
-                        </a>
-                    </li>
-                <?php
-                }           
-                ?>
-            </ul>
-        </div>
+
+
+<?php 
+if ( ! empty( $citas ) ) { ?>
+    <div id="citas" class="row pl-3 pr-3">
+        <h2 class="pt-3">Citas</h2>
+        <?php
+        foreach ( $citas as $cita ) { 
+            
+            $post       = get_post( $cita['ID'] );
+            $Quote      = new Quote($post);
+            $cita       = $Quote->getCita();
+            $citatags   = $Quote->getCitatags();
+            $book       = $Quote->getBook();
+            $longTitle  = $Quote->getLibroLongTitle();
+            $shortTitle = $Quote->getLibroShortTitle();
+            $autorName  = $Quote->getAutorName();
+            
+            echo view('../partials/quote', [
+                'cita'        => $cita, 
+                'autorName'   => $autorName,
+                'tituloLibro' => $longTitle,
+                'shortTitle'  => $shortTitle,
+                'citatags'    => $citatags
+                ]
+            );
+        } 
+        ?> 
     </div>
     <?php
-    } 
-    ?>
-</div>
+} 
+?>
+
 
 <hr />
 
