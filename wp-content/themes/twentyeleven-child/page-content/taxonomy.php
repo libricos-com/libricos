@@ -41,6 +41,9 @@ $term = get_queried_object();
     ?>
 
     <h2>Otros libros de <span class="font-italic">"<?php echo $term->name;?>"</span></h2>
+    <?php echo do_shortcode('[amazon template="vertical" grid="4" bestseller="%libros+'.$term->name.'%"]');?>
+
+    <hr />
 
     <h2>Novedades Amazon de <span class="font-italic">"<?php echo $term->name;?>"</span></h2>
     <?php echo do_shortcode('[amazon template="vertical" items="12" new="libros+'.$term->name.'" grid="'.$tamano_grid.'"]'); ?>
