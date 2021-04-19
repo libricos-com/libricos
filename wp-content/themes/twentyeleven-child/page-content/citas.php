@@ -8,13 +8,19 @@ use App\Entity\Quote;
 $tamano_grid = 4;
 $asins = $ids = '';
 $term = get_queried_object();
+$posts = get_posts(
+    array(
+        'post_type'      => array('cita'),
+        'post_status'    => 'publish',
+        'posts_per_page' => -1
+    )
+);
 ?>
 
 <h2>Todas las citas</h2>
 <div id="citas" class="row pl-3 pr-3 jei-amz-grd">
     <?php
-    while ( have_posts() ) : the_post();
-        $post       = get_post();
+    foreach( $posts as $post ){
         $Quote      = new Quote($post);
         $cita       = $Quote->getCita();
         $citatags   = $Quote->getCitatags();
@@ -25,7 +31,7 @@ $term = get_queried_object();
         $asin       = $Quote->getAsin();
         $libroUrl   = esc_url( get_permalink( $book['ID'] ) );
         $autorUrl   = esc_url( get_permalink( $Quote->getAutorId() ) );
-
+    
         echo view('../partials/quote-sell', [
             'cita'        => $cita, 
             'autorName'   => $autorName,
@@ -37,7 +43,7 @@ $term = get_queried_object();
             'autorUrl'    => $autorUrl
             ]
         );
-    endwhile; 
+    } 
     ?>
 
     <h2>Novedades Amazon</h2>
