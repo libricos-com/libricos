@@ -2,6 +2,7 @@
 $str = '';
 if(!empty($citatags)){ 
     $numCitas = count($citatags);
+    $str = '<i class="fas fa-tag"></i> ';
     foreach ( $citatags as $term ) {
         $str .= '<a href="'.get_term_link($term->term_id).'">'.$term->name.'</a>, ';
     }
