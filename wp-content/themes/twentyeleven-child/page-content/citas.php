@@ -6,8 +6,6 @@ The template for displaying content in the tpl/libros.php template
 use App\Entity\Quote;
 
 $tamano_grid = 4;
-$asins = $ids = '';
-$term = get_queried_object();
 $posts = get_posts(
     array(
         'post_type'      => array('cita'),
