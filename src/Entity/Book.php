@@ -265,6 +265,17 @@ abstract class Book
         $this->titulo = get_the_title( $this->id );
     }
 
+    public function getFirstAuthorId()
+    {
+        $autores = $this->getAutores();
+        if(!empty($autores)){
+            foreach($autores as $autor){
+                return $autor['ID'];
+            }
+        }
+        return false;
+    }
+
     public function getFirstAuthorName()
     {
         $autores = $this->getAutores();

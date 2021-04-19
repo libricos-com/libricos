@@ -17,10 +17,10 @@ if(!empty($citatags)){
             <i class="fas fa-quote-left fa-2x float-left pl-0 pr-3 pt-0 pb-3"></i>
             <p><?php echo $cita;?></p>
             <footer class="text-right blockquote-footer">
-                <?php echo $autorName;?> en <cite title="<?php echo $tituloLibro;?>"><?php echo $shortTitle;?></cite>
+                <a href="<?php echo $autorUrl;?>"><?php echo $autorName;?></a> en <cite title="<?php echo $tituloLibro;?>"><a href="<?php echo $libroUrl;?>"><?php echo $shortTitle;?></a></cite>
             </footer>
         </blockquote>
-        <div class="col-md-12 ml-3 text-muted">
+        <div class="col-md-12 text-muted">
             <?php echo $str;?>
         </div>
     </div> 

@@ -23,6 +23,8 @@ $term = get_queried_object();
         $shortTitle = $Quote->getLibroShortTitle();
         $autorName  = $Quote->getAutorName();
         $asin       = $Quote->getAsin();
+        $libroUrl   = esc_url( get_permalink( $book['ID'] ) );
+        $autorUrl   = esc_url( get_permalink( $Quote->getAutorId() ) );
 
         echo view('../partials/quote-sell', [
             'cita'        => $cita, 
@@ -30,7 +32,9 @@ $term = get_queried_object();
             'tituloLibro' => $longTitle,
             'shortTitle'  => $shortTitle,
             'citatags'    => $citatags,
-            'asin'        => $asin
+            'asin'        => $asin,
+            'libroUrl'    => $libroUrl,
+            'autorUrl'    => $autorUrl
             ]
         );
     endwhile; 

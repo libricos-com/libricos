@@ -65,6 +65,13 @@ class Quote
     private $_autorName;
 
     /**
+     * ID del primer autor del libro
+     *
+     * @var integer
+     */
+    private $_autorId;
+
+    /**
      * ASIN del libro
      *
      * @var string
@@ -93,6 +100,7 @@ class Quote
 
         $this->jeiBook         = BookWpFactory::create( $this->libroPost );
         $this->autorName       = $this->jeiBook->getFirstAuthorName();
+        $this->autorId         = $this->jeiBook->getFirstAuthorId();
     }
 
 
