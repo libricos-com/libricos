@@ -17,24 +17,27 @@
 
     $libros = $pod->field( 'libros' );
     $asins = $ids = '';
-    foreach ( $libros as $libro ){
-        $id = $libro['ID'];
-        $libro = pods( 'libro', $id );
-        $asin = $libro->field( 'asin' );
-        if(empty($asin)){
-            continue;
+    if(!empty($libros)){
+        foreach ( $libros as $libro ){
+            $id = $libro['ID'];
+            $libro = pods( 'libro', $id );
+            $asin = $libro->field( 'asin' );
+            if(empty($asin)){
+                continue;
+            }
+            $asins .= $asin.',';
+            $ids .= $id.',';
         }
-        $asins .= $asin.',';
-        $ids .= $id.',';
+        
+        // Remove duplicate ids 
+        $asins = implode(',', array_unique(explode(',', $asins)));
+        $ids = implode(',', array_unique(explode(',', $ids)));
+    
+        // and remove last comma
+        $asins = rtrim($asins,',');
+        $ids = rtrim($ids,',');
     }
     
-    // Remove duplicate ids 
-    $asins = implode(',', array_unique(explode(',', $asins)));
-    $ids = implode(',', array_unique(explode(',', $ids)));
-
-    // and remove last comma
-    $asins = rtrim($asins,',');
-    $ids = rtrim($ids,',');
     $fecha = get_the_date('d F Y');
 ?>
 
