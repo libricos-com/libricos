@@ -22,7 +22,7 @@ get_header();
                                 <?php comments_template( '', true ); ?>                       
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-3">
+                        <div class="jei-sidebar col-xs-12 col-sm-12 col-md-3">
                                 <?php require_once('sidebar.php');?>
                         </div>
                         
