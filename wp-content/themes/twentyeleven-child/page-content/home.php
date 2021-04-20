@@ -32,6 +32,11 @@ echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,','
     ?>
 </div>
 
+<div>
+    <h2><a href="citas/">Últimas citas</a></h2>
+    <?php echo view('../partials/quotes-latest', []);?>
+</div>
+
 
 <h2><a href="<?php echo get_tag_link(470);?>">Libros de cocina</a></h2>
 <?php 
