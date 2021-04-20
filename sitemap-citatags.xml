@@ -6,6 +6,26 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
+  <loc>https://libricos.com/citas/muerte/</loc>
+  <lastmod>2021-04-19T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/citas/sufrimiento/</loc>
+  <lastmod>2021-04-19T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/citas/enfermedad/</loc>
+  <lastmod>2021-04-19T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://libricos.com/citas/palabras/</loc>
+  <lastmod>2021-04-19T09:10:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
   <loc>https://libricos.com/citas/abandono/</loc>
   <lastmod>2021-04-19T09:10:00+00:00</lastmod>
   <priority>0.70</priority>

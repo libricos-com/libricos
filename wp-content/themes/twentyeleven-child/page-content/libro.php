@@ -123,7 +123,7 @@ $citas = $libro->getCitas();
                     $src = get_the_post_thumbnail_url( $id, 'post_thumbnail'  );
                     ?>
                     
-                    <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">    
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">    
                         <div class="card bg-secondary border-secondary text-white">
                             <div class="card-header">
                                 <i class="fas fa-bookmark text-primary"></i>
@@ -137,9 +137,6 @@ $citas = $libro->getCitas();
                         </div>   
                     </div>
                 <?php
-                    
-                    if($i % 3 == 0) echo '</div><div class="row">';
-                    $i++;
                 } 
                 ?>
             
@@ -251,7 +248,7 @@ if ( ! empty( $citas ) ) { ?>
 
 
 <h2>Libros similares a <?php echo $libro->getTitulo();?></h2>
-<div class="text-center p-2">
+<div class="text-center p-2 jei-amz-grd">
     <?php 
     echo do_shortcode('[amazon template="vertical" grid="4" bestseller="'.$keywords.'"]');
     // echo do_shortcode('[amazon box="'.rtrim($asins,',').'" tpl_ids="'.rtrim($ids,',').'" grid="'.$tamano_grid.'" template="my-vertical"]');
