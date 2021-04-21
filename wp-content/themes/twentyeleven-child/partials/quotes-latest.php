@@ -44,3 +44,4 @@ $posts = get_posts(
         );
     } 
     ?>
+</div>
