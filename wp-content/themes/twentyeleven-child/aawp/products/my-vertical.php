@@ -32,8 +32,8 @@ if($notas){
     <?php $this->the_product_ribbons(); ?>
 
     <a class="aawp-product__image--link aawp-product__image"
-       href="<?php echo $urlLibro;?>" title="Ficha libro: <?php echo $this->get_product_image_link_title(); ?>" target="_blank" style="background-image: url('<?php echo $this->get_product_image('large'); ?>');">
-        <img class="aawp-product__image-spacer" src="<?php echo aawp_get_assets_url(); ?>img/thumb-spacer.png" alt="<?php echo $this->get_product_image_alt(); ?>" />
+       href="<?php echo $urlLibro;?>" title="Ficha libro: <?php echo $this->get_product_image_link_title();?>" rel="nofollow" target="_blank">
+        <img class="aawp-product__image" src="<?php echo $this->get_product_image('large'); ?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
     </a>
 
     <?php if($numNotas > 0){ ?>
