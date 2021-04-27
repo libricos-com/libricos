@@ -12,11 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 use App\Entity\Review;
 $review = new Review($this);
 $urlLibro = $review->url_libro;
-$url = $this->get_product_url();
+// $url = $this->get_product_url();
 
-$imgProduct = $this->get_product_image();
-$id = $review->getReviewIdWp(); 
-$img = get_the_post_thumbnail_url($id, 'medium'); // large, thumbnail, post_thumbnail, medium  
+// $imgProduct = $this->get_product_image();
+// $id = $review->getReviewIdWp(); 
+// $img = get_the_post_thumbnail_url($id, 'medium'); // large, thumbnail, post_thumbnail, medium  
 ?>
 
 <div class="container-fluid p-3 rounded lbc-review-item-h <?php echo $this->get_product_container_classes('aawp-product'); ?>" <?php $this->the_product_container(); ?>>
@@ -28,7 +28,7 @@ $img = get_the_post_thumbnail_url($id, 'medium'); // large, thumbnail, post_thum
         <div class="col-sm-2 col-md-2 aawp-product__thumb">
             <a class="aawp-product__image-link"
             href="<?php echo $urlLibro; ?>" title="<?php echo $this->get_product_image_link_title(); ?>" target="_blank">
-                <img class="aawp-product__image rounded" src="<?php echo $img; ?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
+                <img class="aawp-product__image rounded" src="<?php echo $this->get_product_image('large');?>" alt="<?php echo $this->get_product_image_alt(); ?>" <?php $this->the_product_image_title(); ?> />
             </a>
 
             <?php if ( $this->get_product_rating() ) { ?>
