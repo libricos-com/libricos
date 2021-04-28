@@ -78,6 +78,13 @@ class Quote
      */
     private $_asin;
 
+    /**
+     * Comentario de la cita
+     *
+     * @var string
+     */
+    private $_comentario;
+
 
     /**
      * Constructor.
@@ -90,6 +97,7 @@ class Quote
         $this->cita            = get_post_meta( $this->id, 'cita', true );
         $this->citatags        = get_the_terms( $this->id, 'citatag' );
         $this->pod             = pods( 'cita', $this->id );
+        $this->comentario      = $this->pod->field( 'comentario' );
         $this->book            = $this->pod->field( 'libro' );
 
         if(!empty($this->book['ID'])){
