@@ -91,16 +91,22 @@ class Quote
         $this->citatags        = get_the_terms( $this->id, 'citatag' );
         $this->pod             = pods( 'cita', $this->id );
         $this->book            = $this->pod->field( 'libro' );
-        $this->libroId         = $this->book['ID'];
-        $this->libroPost       = get_post($this->libroId);
-        $this->libroPod        = pods('libro', $this->libroId);
-        $this->libroLongTitle  = $this->book['post_title'];
-        $this->libroShortTitle = $this->libroPod->field( 'titulo' );
-        $this->asin            = $this->libroPod->field( 'asin' );
 
-        $this->jeiBook         = BookWpFactory::create( $this->libroPost );
-        $this->autorName       = $this->jeiBook->getFirstAuthorName();
-        $this->autorId         = $this->jeiBook->getFirstAuthorId();
+        if(!empty($this->book['ID'])){
+            $this->libroId         = $this->book['ID'];
+            $this->libroPost       = get_post($this->libroId);
+            $this->libroPod        = pods('libro', $this->libroId);
+            $this->libroLongTitle  = $this->book['post_title'];
+            $this->libroShortTitle = $this->libroPod->field( 'titulo' );
+            $this->asin            = $this->libroPod->field( 'asin' );
+
+            $this->jeiBook         = BookWpFactory::create( $this->libroPost );
+            $this->autorName       = $this->jeiBook->getFirstAuthorName();
+            $this->autorId         = $this->jeiBook->getFirstAuthorId();
+        }else{
+            return null;
+        }
+        
     }
 
 

@@ -19,24 +19,32 @@ $term = get_queried_object();
         $cita       = $Quote->getCita();
         $citatags   = $Quote->getCitatags();
         $book       = $Quote->getBook();
-        $longTitle  = $Quote->getLibroLongTitle();
-        $shortTitle = $Quote->getLibroShortTitle();
-        $autorName  = $Quote->getAutorName();
-        $asin       = $Quote->getAsin();
-        $libroUrl   = esc_url( get_permalink( $book['ID'] ) );
-        $autorUrl   = esc_url( get_permalink( $Quote->getAutorId() ) );
 
-        echo view('../partials/quote-sell', [
-            'cita'        => $cita, 
-            'autorName'   => $autorName,
-            'tituloLibro' => $longTitle,
-            'shortTitle'  => $shortTitle,
-            'citatags'    => $citatags,
-            'asin'        => $asin,
-            'libroUrl'    => $libroUrl,
-            'autorUrl'    => $autorUrl
-            ]
-        );
+        if(!empty($book)){
+            $longTitle  = $Quote->getLibroLongTitle();
+            $shortTitle = $Quote->getLibroShortTitle();
+            $autorName  = $Quote->getAutorName();
+            $asin       = $Quote->getAsin();
+            $libroUrl   = esc_url( get_permalink( $book['ID'] ) );
+            $autorUrl   = esc_url( get_permalink( $Quote->getAutorId() ) );
+
+            echo view('../partials/quote-sell', [
+                'cita'        => $cita, 
+                'autorName'   => $autorName,
+                'tituloLibro' => $longTitle,
+                'shortTitle'  => $shortTitle,
+                'citatags'    => $citatags,
+                'asin'        => $asin,
+                'libroUrl'    => $libroUrl,
+                'autorUrl'    => $autorUrl
+                ]
+            );
+        }else{
+            continue;
+        }
+        
+
+        
     endwhile; 
     ?>
 
