@@ -26,9 +26,46 @@ $tituloLibro = '-';
 if(!empty($postLibro)){
     $tituloLibro = $postLibro[0]->post_title; 
 }
+
+while ( have_posts() ) : the_post();
+    $post       = get_post();
+    $Quote      = new Quote($post);
+    $cita       = $Quote->getCita();
+    $citatags   = $Quote->getCitatags();
+    $book       = $Quote->getBook();
+
+    if(!empty($book)){
+        $longTitle  = $Quote->getLibroLongTitle();
+        $shortTitle = $Quote->getLibroShortTitle();
+        $autorName  = $Quote->getAutorName();
+        $asin       = $Quote->getAsin();
+        $libroUrl   = esc_url( get_permalink( $book['ID'] ) );
+        $autorUrl   = esc_url( get_permalink( $Quote->getAutorId() ) );
+
+    }else{
+        continue;
+    }  
+endwhile; 
 ?>
 
 <h2>Citas del libro <span class="font-italic"><?php echo $tituloLibro;?></span></h2>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-4">
+        <?php echo do_shortcode('[amazon box="'.$asin.'" template="book-vertical" style="dark" value="thumb" image_size="large" 
+            
+            tpl_pages="16"
+        
+        ] ');?>
+    </div> 
+    <div class="lbc-contenido2 col-xs-12 col-sm-7 col-md-8">
+        <h2>Sinopsis</h2>
+        Lorem ipsum dolor sit amet
+    </div>  
+</div>
+
+
 <div id="citas" class="row pl-3 pr-3 jei-amz-grd">
     <?php
     while ( have_posts() ) : the_post();
@@ -39,14 +76,8 @@ if(!empty($postLibro)){
         $book       = $Quote->getBook();
 
         if(!empty($book)){
-            $longTitle  = $Quote->getLibroLongTitle();
-            $shortTitle = $Quote->getLibroShortTitle();
-            $autorName  = $Quote->getAutorName();
-            $asin       = $Quote->getAsin();
-            $libroUrl   = esc_url( get_permalink( $book['ID'] ) );
-            $autorUrl   = esc_url( get_permalink( $Quote->getAutorId() ) );
-
-            echo view('../partials/quote-sell', [
+    
+            echo view('../partials/quote', [
                 'cita'        => $cita, 
                 'autorName'   => $autorName,
                 'tituloLibro' => $longTitle,
@@ -59,10 +90,7 @@ if(!empty($postLibro)){
             );
         }else{
             continue;
-        }
-        
-
-        
+        }  
     endwhile; 
     ?>
 </div>
