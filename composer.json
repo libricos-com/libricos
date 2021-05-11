@@ -25,6 +25,7 @@
       "wpackagist-plugin/better-recent-comments":">=1.1.4",
       "wpackagist-plugin/contact-form-7":">=5.4",
       "wpackagist-plugin/cookie-notice":">=2.0.4",
+      "wpackagist-plugin/disable-xml-rpc":">=1.0.1",
       "wpackagist-plugin/instagram-feed":">=2.6.2",
       "wpackagist-plugin/permalink-manager":">=2.2.9.9",
       "wpackagist-plugin/pods":">=2.7.27",
